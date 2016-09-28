@@ -17,7 +17,7 @@ public class ThreeDRTSCamera : MonoBehaviour {
 	//camera orbit variables
 	public float xMax;
 	public float xMin;
-	public float yMax = 100.0f;
+	public float yMax = 200.0f;
 	public float yMin = 2.0f;
 	public float zMax;
 	public float zMin;
@@ -84,9 +84,9 @@ public class ThreeDRTSCamera : MonoBehaviour {
 		transform.position = Vector3.Lerp(transform.position, desiredPosition, 0.2f);
 
 		//panning when zooming not working
-		var pan = GetComponent<Camera>().transform.eulerAngles.x - y * -1;
+		var pan = GetComponent<Camera>().transform.eulerAngles.x - (y/3) * -1;
 		pan = Mathf.Clamp (pan, panAngleMin, panAngleMax);
-		if (y < 0 || GetComponent<Camera>().transform.position.y > (yMax / 4)){
+		if (y < 0 || GetComponent<Camera>().transform.position.y > (yMax / 6)){
 			GetComponent<Camera>().transform.eulerAngles = new Vector3(pan,0,0);
 		}
 
