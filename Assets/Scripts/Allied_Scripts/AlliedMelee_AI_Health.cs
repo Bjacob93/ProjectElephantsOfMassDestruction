@@ -18,6 +18,10 @@ public class AlliedMelee_AI_Health : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 	
+		if (currentHealth <= 0) {
+			Die ();
+		}
+
 	}
 
 	public void TakeDamage (int damageTaken)

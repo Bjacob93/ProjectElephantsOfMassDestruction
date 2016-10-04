@@ -25,10 +25,10 @@ public class EnemyMelee_AI_Movement : MonoBehaviour {
 		enemyPathNodeIndex--;
 	}
 
-	
+
 	// Update is called once per frame
 	void Update () {
-
+		
 		GameObject[] playerUnits = GameObject.FindGameObjectsWithTag ("playerUnits");
 		nearestPlayer = null;
 		float dist = Mathf.Infinity;
@@ -57,7 +57,11 @@ public class EnemyMelee_AI_Movement : MonoBehaviour {
 
 			if (dist < MeleeRange) {
 				isInMeleeRange = true;
-				}
+			} else if (dist > MeleeRange) {
+				isInMeleeRange = false;
+			}
+			Debug.Log (isInMeleeRange);
+
 		}else if (isInMeleeRange == false)
 		{
 			if (targetPathNode == null) {

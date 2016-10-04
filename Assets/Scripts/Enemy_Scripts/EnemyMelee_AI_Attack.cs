@@ -3,37 +3,65 @@ using System.Collections;
 
 public class EnemyMelee_AI_Attack : MonoBehaviour {
 
-	public float timeBetweenAttacks = 0.5f;
-	public float attackDamage = 20;
+//	public float timeBetweenAttacks = 0.5f; // time in sec. before each attack
 
-	GameObject alliedUnit;
-	AlliedMelee_AI_Health AlliedHealth;
+	float meleeCoolDown = 0.5f;
+	float meleeCoolDownLeft = 0f;
+	int attackDamage = 20; // damage of each attack
+//
+//	GameObject alliedUnit; // reference the targeted game object
+//	AlliedMelee_AI_Health AlliedHealth; // reference the health of target
+//
+//	float timer; //time for counting to next attack
 
-	float timer;
 
+	//do this much better
+	public GameObject nearestPlayer;
+	float MeleeRange = 10f;
 	// Use this for initialization
 	void Start () {
-		alliedUnit = GetComponent<EnemyMelee_AI_Movement> ().nearestPlayer;
-		AlliedHealth = GetComponent<AlliedMelee_AI_Health> ().currentHealth;
+//		alliedUnit = GameObject.Find()
 	}
 	
 	// Update is called once per frame
 	void Update () {
 
-		timer += Time.deltaTime;
-		if (timer >= timeBetweenAttacks && AlliedHealth > 0) {
-			Attack ();
+//		timer += Time.deltaTime;
+//		if (timer >= timeBetweenAttacks && AlliedHealth > 0) {
+//			Attack ();
+//		}
+
+		GameObject[] playerUnits = GameObject.FindGameObjectsWithTag ("playerUnits");
+		nearestPlayer = null;
+		float dist = Mathf.Infinity;
+
+		foreach (GameObject e in playerUnits) {
+			float d = Vector3.Distance (this.transform.position, e.transform.position);
+
+			if (nearestPlayer == null || d < dist) {
+				nearestPlayer = e;
+				dist = d;
+			}
 		}
-	
+
+		if (dist < MeleeRange && nearestPlayer != null) {
+			meleeCoolDownLeft -= Time.deltaTime;
+				if (meleeCoolDownLeft <= 0) {
+					meleeCoolDownLeft = meleeCoolDown;
+
+			nearestPlayer.GetComponent<AlliedMelee_AI_Health> ().currentHealth -=  attackDamage;
+				Debug.Log (nearestPlayer.GetComponent<AlliedMelee_AI_Health> ().currentHealth);
+		}
 	}
-
-	void Attack()
-	{
-		timer = 0f;
-
-		if (AlliedHealth.currentHealth > 0)
-		{
-			AlliedHealth.TakeDamage (attackDamage);
-		}
 	}
 }
+
+//	void Attack()
+//	{
+//		timer = 0f;
+//
+//		if (AlliedHealth.currentHealth > 0)
+//		{
+//			AlliedHealth.TakeDamage (attackDamage);
+//		}
+//	}
