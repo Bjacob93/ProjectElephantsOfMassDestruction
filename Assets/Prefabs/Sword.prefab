@@ -121,6 +121,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 30
   target: {fileID: 0}
+  playerMeleeDamage: 2
+  enemyMeleeDamage: 2
 --- !u!135 &135000012811572864
 SphereCollider:
   m_ObjectHideFlags: 1

@@ -6,6 +6,7 @@ TagManager:
   tags:
   - MapCorner
   - playerUnits
+  - enemyUnits
   layers:
   - Default
   - TransparentFX

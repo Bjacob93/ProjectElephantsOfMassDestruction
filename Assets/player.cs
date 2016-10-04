@@ -11,7 +11,7 @@ public class player : MonoBehaviour {
 	public float health = 10f;
 	public float speed = 10f;
 
-	float MeleeRange = 5f;
+	public float MeleeRange = 5f;
 	public GameObject meleePrefab;
 
 	float meleeCoolDown = 0.5f;
@@ -21,24 +21,26 @@ public class player : MonoBehaviour {
 	void Start () {
 		pathGO = GameObject.Find ("Path");
 		unitTransform = transform.Find ("player");
+
 	}
 
 	void GetNextPathNode(){
 		targetPathNode = pathGO.transform.GetChild (playerPathNodeIndex);
 		playerPathNodeIndex++;
 	}
+		
 
 	// Update is called once per frame
 	void Update () {
 
 		// TODO: optimize
 		//find player(enemies enemy)
-		Enemy[] enemies = GameObject.FindObjectsOfType<Enemy> ();
+		Enemy_AI[] enemies = GameObject.FindObjectsOfType<Enemy_AI> ();
 
-		Enemy nearestEnemy = null;
+		Enemy_AI nearestEnemy = null;
 		float dist = Mathf.Infinity;
 
-		foreach (Enemy e in enemies) {
+		foreach (Enemy_AI e in enemies) {
 			float d = Vector3.Distance (this.transform.position, e.transform.position);
 			//Debug.Log(d);
 
@@ -82,28 +84,35 @@ public class player : MonoBehaviour {
 			}
 
 			transform.position = Vector3.MoveTowards (this.transform.position, nearestEnemy.transform.position, speed * Time.deltaTime);
+//
+//			Vector3 dir = nearestEnemy.transform.position - this.transform.position;
+//
+//			Quaternion lookRot = Quaternion.LookRotation (dir);
+//
+//			transform.LookAt (nearestEnemy.transform);
+//
+//			//unitTransform.rotation = Quaternion.Euler (0, lookRot.eulerAngles.y, 0);
 
-			Vector3 dir = nearestEnemy.transform.position - this.transform.position;
+			Vector3 Lookdir = nearestEnemy.transform.position - transform.position;
 
-			Quaternion lookRot = Quaternion.LookRotation (dir);
+			Quaternion lookRot = Quaternion.Slerp (transform.rotation, Quaternion.LookRotation (Lookdir), 360 * Time.deltaTime);
 
-
-			unitTransform.rotation = Quaternion.Euler (0, lookRot.eulerAngles.y, 0);
-
-			meleeCoolDownLeft -= Time.deltaTime;
-			if(meleeCoolDownLeft <= 0){
-				meleeCoolDownLeft = meleeCoolDown;
-				meleeHit (nearestEnemy);
-			}
-
+			transform.eulerAngles = new Vector3 (0, 0, transform.eulerAngles.z);
+//			if (dist < MeleeRange) {
+//				meleeCoolDownLeft -= Time.deltaTime;
+//				if (meleeCoolDownLeft <= 0) {
+//					meleeCoolDownLeft = meleeCoolDown;
+//					meleeHit (nearestEnemy);
+//				}
+//			}
 		}
 	}
 
-	void meleeHit(Enemy e){
+	void meleeHit(Enemy_AI e){
 		//fire from weapon
 		GameObject meleeGo = (GameObject)Instantiate (meleePrefab, this.transform.position, this.transform.rotation);
 
-		Melee s = meleeGo.GetComponent<Melee> ();
+		Melee s = meleeGo.GetComponent<Melee>();
 		s.target = e.transform;
 		Debug.Log ("Enemy hit");
 	}
@@ -111,6 +120,21 @@ public class player : MonoBehaviour {
 	void ReachedEnemyBase(){
 		Destroy (gameObject);
 
+	}
+
+	public void TakeDamage(float damage){
+		health -= damage;
+		Debug.Log ( "player: DAMAGE TAKEN" );
+		if (health <= 0) {
+			Die ();
+		}
+	}
+
+	public void Die() {
+		//TODO: do this better, can fail.
+//		GameObject.FindObjectOfType<GameManager> ().money += moneyValue;
+		Destroy (gameObject);
+		Debug.Log ("player died");
 	}
 		
 }

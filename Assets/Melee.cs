@@ -5,6 +5,8 @@ public class Melee : MonoBehaviour {
 
 	public float speed = 30;
 	public Transform target;
+	public float playerMeleeDamage = 2;
+	public float enemyMeleeDamage = 2;
 
 	// Use this for initialization
 	void Start () {
@@ -21,7 +23,6 @@ public class Melee : MonoBehaviour {
 			// we reached the node
 			DoMeleeHit();
 		} else {
-			//TODO: add the A* pathfinding instead
 
 			transform.Translate (dir.normalized * distThisFrame, Space.World);
 			Quaternion targetRotation = Quaternion.LookRotation (dir);
@@ -29,7 +30,10 @@ public class Melee : MonoBehaviour {
 		}
 	}
 
-	void DoMeleeHit(){
+	public void DoMeleeHit(){
+		Debug.Log ("do melee hit");
+		//gameObject.GetComponentInChildren<player>().TakeDamage (enemyMeleeDamage);
+		gameObject.GetComponent<player>().TakeDamage(enemyMeleeDamage);
 		Destroy (gameObject);
 	}
 }
