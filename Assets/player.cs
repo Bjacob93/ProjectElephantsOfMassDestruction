@@ -35,12 +35,12 @@ public class player : MonoBehaviour {
 
 		// TODO: optimize
 		//find player(enemies enemy)
-		Enemy_AI[] enemies = GameObject.FindObjectsOfType<Enemy_AI> ();
+		EnemyMelee_AI_Movement[] enemies = GameObject.FindObjectsOfType<EnemyMelee_AI_Movement> ();
 
-		Enemy_AI nearestEnemy = null;
+		EnemyMelee_AI_Movement nearestEnemy = null;
 		float dist = Mathf.Infinity;
 
-		foreach (Enemy_AI e in enemies) {
+		foreach (EnemyMelee_AI_Movement e in enemies) {
 			float d = Vector3.Distance (this.transform.position, e.transform.position);
 			//Debug.Log(d);
 
@@ -75,7 +75,7 @@ public class player : MonoBehaviour {
 			}
 
 		}
-			else
+		else if (dist < 5)
 		{
 
 			if (nearestEnemy == null) {

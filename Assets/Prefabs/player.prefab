@@ -36,7 +36,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 4000013115456006}
-  - 114: {fileID: 114000013811019794}
+  - 114: {fileID: 114000013573341784}
   m_Layer: 0
   m_Name: player
   m_TagString: playerUnits
@@ -64,7 +64,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000013724621254}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -311.9, y: 0, z: 347.3}
+  m_LocalPosition: {x: -309, y: 0, z: 346}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children:
@@ -107,7 +107,7 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000010772760262}
   m_Mesh: {fileID: 10208, guid: 0000000000000000e000000000000000, type: 0}
---- !u!114 &114000013811019794
+--- !u!114 &114000013573341784
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -115,10 +115,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1000013724621254}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 14f023bd4bb6fe2409c0311ee446b09e, type: 3}
+  m_Script: {fileID: 11500000, guid: 1f69f7f9bd8d42744ac0befeba96b716, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 10
   speed: 30
-  MeleeRange: 5
-  meleePrefab: {fileID: 0}
