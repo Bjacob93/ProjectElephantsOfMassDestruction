@@ -30,7 +30,6 @@ public class AlliedMelee_AI_Health : MonoBehaviour {
 		{
 			return;
 		}
-		Debug.Log ("DAMAGE TAKEN");
 		//reduce the alliedHealth
 		currentHealth -= damageTaken;
 

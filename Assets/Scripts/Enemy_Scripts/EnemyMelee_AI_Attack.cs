@@ -29,19 +29,20 @@ public class EnemyMelee_AI_Attack : MonoBehaviour {
 //		if (timer >= timeBetweenAttacks && AlliedHealth > 0) {
 //			Attack ();
 //		}
+		nearestPlayer = this.GetComponent<EnemyMelee_AI_Movement>().nearestPlayer;
+//		GameObject[] playerUnits = GameObject.FindGameObjectsWithTag ("playerUnits");
+//		nearestPlayer = null;
+//		float dist = Mathf.Infinity;
 
-		GameObject[] playerUnits = GameObject.FindGameObjectsWithTag ("playerUnits");
-		nearestPlayer = null;
-		float dist = Mathf.Infinity;
-
-		foreach (GameObject e in playerUnits) {
-			float d = Vector3.Distance (this.transform.position, e.transform.position);
-
-			if (nearestPlayer == null || d < dist) {
-				nearestPlayer = e;
-				dist = d;
-			}
-		}
+		float dist = Vector3.Distance (this.transform.position, nearestPlayer.transform.position);
+//		foreach (GameObject e in playerUnits) {
+//			float d = Vector3.Distance (this.transform.position, e.transform.position);
+//
+//			if (nearestPlayer == null || d < dist) {
+//				nearestPlayer = e;
+//				dist = d;
+//			}
+//		}
 
 		if (dist < MeleeRange && nearestPlayer != null) {
 			meleeCoolDownLeft -= Time.deltaTime;
