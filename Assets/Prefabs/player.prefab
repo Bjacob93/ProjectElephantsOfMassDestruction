@@ -120,8 +120,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   startingHealth: 100
-  alliedArmour: 10
-  currentHealth: 0
+  alliedArmour: 0
+  currentHealth: 100
   moneyValue: 5
 --- !u!114 &114000013573341784
 MonoBehaviour:
