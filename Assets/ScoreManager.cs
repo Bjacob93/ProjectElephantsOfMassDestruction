@@ -27,7 +27,7 @@ public class ScoreManager : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
-		moneyText.text = money.ToString ();
-		livesText.text = lives.ToString ();
+		moneyText.text = "Money: $" + money.ToString ();
+		livesText.text = "Lives" + lives.ToString ();
 	}
 }
