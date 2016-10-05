@@ -8,12 +8,11 @@ public class EnemyMelee_AI_Attack : MonoBehaviour {
 	float meleeCoolDown = 0.5f;
 	float meleeCoolDownLeft = 0f;
 	int attackDamage = 20; // damage of each attack
-//
+
 //	GameObject alliedUnit; // reference the targeted game object
 //	AlliedMelee_AI_Health AlliedHealth; // reference the health of target
 //
 //	float timer; //time for counting to next attack
-
 
 	//do this much better
 	public GameObject nearestPlayer;
@@ -49,7 +48,8 @@ public class EnemyMelee_AI_Attack : MonoBehaviour {
 				if (meleeCoolDownLeft <= 0) {
 					meleeCoolDownLeft = meleeCoolDown;
 
-			nearestPlayer.GetComponent<AlliedMelee_AI_Health> ().currentHealth -=  attackDamage;
+				//nearestPlayer.GetComponent<AlliedMelee_AI_Health> ().currentHealth -= attackDamage;
+				nearestPlayer.GetComponent<AlliedMelee_AI_Health>().TakeDamage(attackDamage);
 				Debug.Log (nearestPlayer.GetComponent<AlliedMelee_AI_Health> ().currentHealth);
 		}
 	}

@@ -4,7 +4,7 @@ using System.Collections;
 public class AlliedMelee_AI_Health : MonoBehaviour {
 
 	public int startingHealth = 100;
-	public int alliedArmour = 0;
+	public int alliedArmour = 10;
 	public int currentHealth;
 	public int moneyValue = 5;
 
@@ -30,7 +30,7 @@ public class AlliedMelee_AI_Health : MonoBehaviour {
 		{
 			return;
 		}
-
+		Debug.Log ("DAMAGE TAKEN");
 		//reduce the alliedHealth
 		currentHealth -= damageTaken;
 

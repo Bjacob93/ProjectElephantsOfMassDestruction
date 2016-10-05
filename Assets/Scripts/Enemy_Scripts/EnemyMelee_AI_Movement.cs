@@ -56,10 +56,9 @@ public class EnemyMelee_AI_Movement : MonoBehaviour {
 			transform.eulerAngles = new Vector3 (0, 0, transform.eulerAngles.z);
 
 			if (dist < MeleeRange) {
-				isInMeleeRange = true;
-			} else if (dist > MeleeRange) {
-				isInMeleeRange = false;
-			}
+					isInMeleeRange = true;
+				} 
+
 			Debug.Log (isInMeleeRange);
 
 		}else if (isInMeleeRange == false)
@@ -87,6 +86,7 @@ public class EnemyMelee_AI_Movement : MonoBehaviour {
 			}
 
 		}
+
 		} 
 
 	void ReachedPlayerBase(){

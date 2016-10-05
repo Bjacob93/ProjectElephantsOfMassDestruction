@@ -37,6 +37,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 4000013115456006}
   - 114: {fileID: 114000013573341784}
+  - 114: {fileID: 114000010374060492}
   m_Layer: 0
   m_Name: player
   m_TagString: playerUnits
@@ -107,6 +108,21 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000010772760262}
   m_Mesh: {fileID: 10208, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &114000010374060492
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000013724621254}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 662613dc0687f9b458297d49fdb03673, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  startingHealth: 100
+  alliedArmour: 10
+  currentHealth: 0
+  moneyValue: 5
 --- !u!114 &114000013573341784
 MonoBehaviour:
   m_ObjectHideFlags: 1
