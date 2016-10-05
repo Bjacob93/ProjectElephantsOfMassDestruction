@@ -5,7 +5,7 @@ public class AlledMelee_AI_Attack : MonoBehaviour {
 
 	float meleeCoolDown = 0.5f;
 	float meleeCoolDownLeft = 0f;
-	int attackDamage = 20; // damage of each attack
+	public int attackDamage = 20; // damage of each attack
 
 	public GameObject nearestPlayer;
 	float MeleeRange = 10f;

@@ -41,6 +41,8 @@ public class EnemyMelee_AI_Health : MonoBehaviour {
 	{
 		//enemy is dead
 		Died = true;
+		Debug.Log ("Died");
+		GameObject.FindObjectOfType<ScoreManager> ().money += moneyValue;
 		Destroy (gameObject);
 	}
 }

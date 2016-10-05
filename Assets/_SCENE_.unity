@@ -37,7 +37,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44692534, g: 0.49678725, b: 0.5750856, a: 1}
+  m_IndirectSpecularColor: {r: 0.44692492, g: 0.4967869, b: 0.57508546, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -654,7 +654,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   astarData:
-    dataString: UEsDBBQAAAgIAAAIIez5QCm55gEAAMkDAAALACQAZ3JhcGgwLmpzb24KACAAAAAAAAEAGAAAgD7V3rGdAQCAPtXesZ0BAIA+1d6xnQF1Ustu2zAQ/JWCZ7eQ/EKsW2onboG0MeIWPVPSSlqIIgU+6kfgf++SkmUrQC+EtDucnZnlOysd5ix5Z3+5cMASFkVZOnsAWM7SxSpdpp+XsziPVvN4XuQP+QpSdpkwblrI7Bu3qFgSTxga1YDVmD3KUhBLNGFOYqF085SXsFbGGpYUXBiYMK2svyf90GOAnsJ5ppOoM5AW9H+aTmaCNy3kezxDj4mjqIP5D8JIlUPXXhCbEgJNP82eWu9wzVvjSOWE5chJtp9GHirAsrIsmd7dei0KAzYo0Py0QU2uAxn7qmxFDA039V16i3h6uTL9GLemiyW1Cq2ab/2g2Ou2FWb1Gz9l3Nghovvi5l6jkwcuap4K+FOB/Km2WjlJ67Pa0TVnYLoZSAYT6wqy+orptI1Krh2lHfdpX7y741pgk9Lvl/nt9/GIJuCosBfKh7qiu6Ap+e8kNazXBD6qeQm/Dfzi5e0N9OVn1MZSI5BxZ9ULynqrMb8hr9UNGvuCDYbcaMneRqqcJiR7CnmSY2fXSkvwxc5aC5ILe9rRNDte54fOMO9D/ZlnVnXZ953+hY/hoThgo2jc2KlDvz+UxMrFrmsGIRSfvMqVtGry4xP4tNW89S8s1/ywxXOjBlMoC7XPNIB8He5e/gFQSwMEFAAACAAAAAgh7B5/XXYyAAAAMgAAABIAJABncmFwaDBfZWRpdG9yLmpzb24KACAAAAAAAAEAGAAAgD7V3rGdAQCAPtXesZ0BAIA+1d6xnQF7ImxvY2tlZCI6dHJ1ZSwic2hvd0V4dHJhIjpmYWxzZSwicGl2b3QiOiJDZW50ZXIifVBLAwQUAAAICAAACCHslVkHqXUAAACDAAAACQAkAG1ldGEuanNvbgoAIAAAAAAAAQAYAACAPtXesZ0BAIA+1d6xnQEAgD7V3rGdAR2MsQ7CIBQA/+XNlYBUAl0dujXupgP4Xts3CA2lJsb47xa3G+7uAy/KG6cIHWhhxRkamLNflw06deDOeNAdpHwEbYmMDhcXTDgZrVC6VrUTWnQUYGygvFca/JP+xc2XZeKIHGfRZ8a+XqsVE9I17bFUTY7fH1BLAQItABQAAAgIAAAIIez5QCm55gEAAMkDAAALACQAAAAAAAAAAAAAAAAAAABncmFwaDAuanNvbgoAIAAAAAAAAQAYAACAPtXesZ0BAIA+1d6xnQEAgD7V3rGdAVBLAQItABQAAAgAAAAIIewef112MgAAADIAAAASACQAAAAAAAAAAAAAADMCAABncmFwaDBfZWRpdG9yLmpzb24KACAAAAAAAAEAGAAAgD7V3rGdAQCAPtXesZ0BAIA+1d6xnQFQSwECLQAUAAAICAAACCHslVkHqXUAAACDAAAACQAkAAAAAAAAAAAAAAC5AgAAbWV0YS5qc29uCgAgAAAAAAABABgAAIA+1d6xnQEAgD7V3rGdAQCAPtXesZ0BUEsFBgAAAAADAAMAHAEAAHkDAAAAAA==
+    dataString: UEsDBBQAAAgIAAAIIeyUkrnQ5gEAAMoDAAALACQAZ3JhcGgwLmpzb24KACAAAAAAAAEAGAAAgD7V3rGdAQCAPtXesZ0BAIA+1d6xnQF1Ul2PmzAQ/CuVn9MK8qVL3q7kLq107UWXVn02sMAqxkb+aEJO+e9dG0LCSX2xYHY8Ozvrd1Y6zNn6nf3lwgFbsyjK0tkDwHKWLlbpMv28nMV5tJrH8yJ/yFeQssuEcdNAZt+4RcXW8YShUTVYjdmjLAWpRBPmJBZK1095CYky1rB1wYWBCdPK+nvSNz0FahvOM50knYG0oP9TdDITvG4g3+MZek4cRR3NfxBHqhy68oLUlBBo+m62bfyECW+MI5cTliMn274bzVABlpVl6+ndrdeiMGCDA83bDWqaOoixr8pWpFBzc7hLbxFPL1elH+PSdLGkUqFV/a1vFHvftsLs8MbbjBs7RHQPbu49Onnk4sBTAX8qkD/VVisnaX1WO7rmDEw3g8gwRFJBdrhyOm8jyDWjtOM+7Yuf7pQIrFP6/TK//T6e0AQeAXuhfKgruguakv9OVsN6TdAjzFv4beAXL29voIefURtLhSDGnVUvKA9bjfmNeUU3aOwL1hhyoyX7MVLlNDHZU8iTJnY2UVqCB7vRGpBc2HZH3ex4nR8qQ78P+DPPrOqy7yv9Cx/TAzhwo2hc2Kljvz+UpMrFrisGIxSfvNqVtGqaxyfwaat5419Yrvlxi+da3TJBWah9pgHk63D58g9QSwMEFAAACAAAAAgh7B5/XXYyAAAAMgAAABIAJABncmFwaDBfZWRpdG9yLmpzb24KACAAAAAAAAEAGAAAgD7V3rGdAQCAPtXesZ0BAIA+1d6xnQF7ImxvY2tlZCI6dHJ1ZSwic2hvd0V4dHJhIjpmYWxzZSwicGl2b3QiOiJDZW50ZXIifVBLAwQUAAAICAAACCHslVkHqXUAAACDAAAACQAkAG1ldGEuanNvbgoAIAAAAAAAAQAYAACAPtXesZ0BAIA+1d6xnQEAgD7V3rGdAR2MsQ7CIBQA/+XNlYBUAl0dujXupgP4Xts3CA2lJsb47xa3G+7uAy/KG6cIHWhhxRkamLNflw06deDOeNAdpHwEbYmMDhcXTDgZrVC6VrUTWnQUYGygvFca/JP+xc2XZeKIHGfRZ8a+XqsVE9I17bFUTY7fH1BLAQItABQAAAgIAAAIIeyUkrnQ5gEAAMoDAAALACQAAAAAAAAAAAAAAAAAAABncmFwaDAuanNvbgoAIAAAAAAAAQAYAACAPtXesZ0BAIA+1d6xnQEAgD7V3rGdAVBLAQItABQAAAgAAAAIIewef112MgAAADIAAAASACQAAAAAAAAAAAAAADMCAABncmFwaDBfZWRpdG9yLmpzb24KACAAAAAAAAEAGAAAgD7V3rGdAQCAPtXesZ0BAIA+1d6xnQFQSwECLQAUAAAICAAACCHslVkHqXUAAACDAAAACQAkAAAAAAAAAAAAAAC5AgAAbWV0YS5qc29uCgAgAAAAAAABABgAAIA+1d6xnQEAgD7V3rGdAQCAPtXesZ0BUEsFBgAAAAADAAMAHAEAAHkDAAAAAA==
     upgradeData: 
     data_backup: 
     file_cachedStartup: {fileID: 0}
@@ -1685,7 +1685,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Lives : 20'
+  m_Text: 'Lives : 99'
 --- !u!222 &1155449160
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1848,11 +1848,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1278377079}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 34c74066a3a5303419c4bd211d0e8d0a, type: 3}
+  m_Script: {fileID: 11500000, guid: a9bdf72c0ae272143bcfd7b6ebf25959, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  money: 100
   lives: 20
+  money: 100
   moneyText: {fileID: 2114221306}
   livesText: {fileID: 1155449159}
 --- !u!4 &1278377081
@@ -2178,6 +2178,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   targetPosition: {x: 100, y: 0, z: 400}
+  speed: 30
+  maxWaypointDistance: 3
 --- !u!114 &1436336805
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2189,6 +2191,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 626755f682fed4447969737a0c284a0d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  attackDamage: 20
   nearestPlayer: {fileID: 0}
 --- !u!143 &1436336806
 CharacterController:
@@ -2326,11 +2329,11 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4000014014651528, guid: 1674625c6c1add64fb3b3c45d96f18e2, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 3
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4000014014651528, guid: 1674625c6c1add64fb3b3c45d96f18e2, type: 2}
       propertyPath: m_LocalPosition.z
-      value: 3
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4000014014651528, guid: 1674625c6c1add64fb3b3c45d96f18e2, type: 2}
       propertyPath: m_LocalRotation.x
@@ -2352,6 +2355,11 @@ Prefab:
       propertyPath: m_RootOrder
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 114000012895982028, guid: 1674625c6c1add64fb3b3c45d96f18e2,
+        type: 2}
+      propertyPath: attackDamage
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 1674625c6c1add64fb3b3c45d96f18e2, type: 2}
   m_IsPrefabParent: 0
@@ -2360,26 +2368,6 @@ Transform:
   m_PrefabParentObject: {fileID: 4000014014651528, guid: 1674625c6c1add64fb3b3c45d96f18e2,
     type: 2}
   m_PrefabInternal: {fileID: 1554643945}
---- !u!1 &1554643947 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 1000010551218826, guid: 1674625c6c1add64fb3b3c45d96f18e2,
-    type: 2}
-  m_PrefabInternal: {fileID: 1554643945}
---- !u!114 &1554643948
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1554643947}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: aa425be30c65c2444b3df023e852b9a7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  startingHealth: 100
-  alliedArmour: 10
-  currentHealth: 0
-  moneyValue: 5
 --- !u!1 &1567461732
 GameObject:
   m_ObjectHideFlags: 0
@@ -3071,7 +3059,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Money : 222222'
+  m_Text: 'Money : 9999999'
 --- !u!222 &2114221307
 CanvasRenderer:
   m_ObjectHideFlags: 0
