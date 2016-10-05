@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class AlliedMelee_AI_Health : MonoBehaviour {
+public class EnemyMelee_AI_Health : MonoBehaviour {
 
 	public int startingHealth = 100;
 	public int alliedArmour = 10;
@@ -15,9 +15,8 @@ public class AlliedMelee_AI_Health : MonoBehaviour {
 		currentHealth = startingHealth;
 	}
 	
-	// Update is called once per frame
 	void Update () {
-	
+
 		if (currentHealth <= 0) {
 			Die ();
 		}

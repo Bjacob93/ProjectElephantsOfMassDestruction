@@ -49,8 +49,8 @@ public class EnemyMelee_AI_Attack : MonoBehaviour {
 				if (meleeCoolDownLeft <= 0) {
 					meleeCoolDownLeft = meleeCoolDown;
 
-				//nearestPlayer.GetComponent<AlliedMelee_AI_Health> ().currentHealth -= attackDamage;
-				nearestPlayer.GetComponent<AlliedMelee_AI_Health>().TakeDamage(attackDamage);
+				nearestPlayer.GetComponent<AlliedMelee_AI_Health> ().currentHealth -= attackDamage;
+				//nearestPlayer.GetComponent<AlliedMelee_AI_Health>().TakeDamage(attackDamage);
 				Debug.Log (nearestPlayer.GetComponent<AlliedMelee_AI_Health> ().currentHealth);
 		}
 	}
