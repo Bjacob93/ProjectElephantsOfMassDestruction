@@ -26,7 +26,7 @@ public class AlliedMelee_AI_Health : MonoBehaviour {
 
 	public void TakeDamage (int damageTaken)
 	{
-		if (Died = true) 
+		if (Died) 
 		{
 			return;
 		}

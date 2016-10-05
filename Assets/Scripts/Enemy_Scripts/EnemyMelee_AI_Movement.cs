@@ -59,7 +59,7 @@ public class EnemyMelee_AI_Movement : MonoBehaviour {
 					isInMeleeRange = true;
 				} 
 
-			Debug.Log (isInMeleeRange);
+			//Debug.Log (isInMeleeRange);
 
 		}else if (isInMeleeRange == false)
 		{

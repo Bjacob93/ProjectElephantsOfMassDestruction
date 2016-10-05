@@ -18,7 +18,7 @@ public class AlledMelee_AI_Attack : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 	
-		nearestPlayer = this.GetComponent<AlliedMelee_AI_Movement>().nearestPlayer;
+		nearestPlayer = this.GetComponent<Astar> ().nearestEnemy;
 
 		float dist = Vector3.Distance (this.transform.position, nearestPlayer.transform.position);
 
