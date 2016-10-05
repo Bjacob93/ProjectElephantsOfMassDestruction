@@ -23,7 +23,7 @@ GameObject:
   - 114: {fileID: 114000012895982028}
   - 114: {fileID: 114000010340283080}
   m_Layer: 0
-  m_Name: Enemy
+  m_Name: EnemyMelee
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -135,6 +135,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dba5ab2055f4ebe4d9d552da863accef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  attackDamage: 20
   nearestPlayer: {fileID: 0}
 --- !u!114 &114000013103278492
 MonoBehaviour:

@@ -43,6 +43,16 @@ public class EnemySpawner : MonoBehaviour {
 			if (enemySpawn == false) {
 				//waveComps is hopefully over
 				//TODO: Instantiate next wave
+				if (transform.parent.childCount > 1) {
+					transform.parent.GetChild (1).gameObject.SetActive (true);
+				} else {
+					//what can be done then
+					//what if instad of destorying they were made inactive
+					//and when all waves are finished
+					//we restard the first one but double
+					//all enemy health or something
+				
+				}
 				Destroy(gameObject);
 			}
 		
