@@ -3,12 +3,12 @@ using System.Collections;
 
 public class AlledMelee_AI_Attack : MonoBehaviour {
 
-	float meleeCoolDown = 0.5f;
+	public float meleeCoolDown = 0.5f;
 	float meleeCoolDownLeft = 0f;
 	public int attackDamage = 20; // damage of each attack
 
 	public GameObject nearestPlayer;
-	float MeleeRange = 10f;
+	public float MeleeRange = 10f;
 
 	// Use this for initialization
 	void Start () {
