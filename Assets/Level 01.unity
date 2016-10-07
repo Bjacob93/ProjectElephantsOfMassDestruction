@@ -907,7 +907,6 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 1118710566}
-  - 114: {fileID: 1118710571}
   - 114: {fileID: 1118710570}
   - 114: {fileID: 1118710569}
   - 143: {fileID: 1118710568}
@@ -927,7 +926,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1118710565}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 1, z: 0}
+  m_LocalPosition: {x: -45, y: 1, z: -45}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children:
@@ -1012,20 +1011,6 @@ MonoBehaviour:
   attackDamage: 0
   nearestPlayer: {fileID: 0}
   MeleeRange: 10
---- !u!114 &1118710571
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 114000012681138842, guid: fa23133687bed424fbf53ca530827017,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1118710565}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b8bc76b850630a4449d48018abf46716, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed: 30
-  nearestPlayer: {fileID: 0}
 --- !u!1 &1128640227
 GameObject:
   m_ObjectHideFlags: 0
@@ -1204,7 +1189,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1583159060}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 1, z: 0}
+  m_LocalPosition: {x: 45, y: 1, z: 45}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children:
@@ -1267,8 +1252,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cad5c1b6cc7631b438c33f5b17cba69d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  targetPosition: {x: 340, y: 0, z: -340}
-  speed: 10000
+  targetPosition: {x: -45, y: 0, z: -45}
+  speed: 50
   nearestEnemy: {fileID: 0}
   maxWaypointDistance: 3
 --- !u!143 &1583159065
