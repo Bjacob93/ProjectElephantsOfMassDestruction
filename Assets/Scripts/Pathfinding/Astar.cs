@@ -14,6 +14,7 @@ public class Astar : MonoBehaviour {
 
 	//Cache variables for behaviour
 	public float speed = 30f;
+	Vector3 lookDirection;
 	float meleeRange = 1f;
 	float engagementRange = 10f;
 	bool isInMeleeRange = false;
@@ -103,6 +104,13 @@ public class Astar : MonoBehaviour {
 			Debug.Log ("I'm here now");
 			return;
 		}
+
+		//Set unit to look in the direction it is travelling
+		lookDirection = (path.vectorPath [currentWaypoint] - transform.position).normalized;
+		Quaternion lookRotation = Quaternion.Slerp (transform.rotation, Quaternion.LookRotation (lookDirection), 360 * Time.deltaTime);
+		//transform.eulerAngles = new Vector3 (0, 0, transform.eulerAngles.z);
+		//Quaternion
+		transform.rotation = Quaternion.Lerp ( transform.rotation, lookRotation, Time.deltaTime * 5);
 
 		Debug.Log ("Moving");
 		//Set's the direction of movement to a vector form current position to next waypoint, then calls the SimpleMove command in the CharacterController.

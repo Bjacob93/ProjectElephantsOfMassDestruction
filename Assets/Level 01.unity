@@ -456,9 +456,10 @@ MonoBehaviour:
     dataString: UEsDBBQAAAgIAAAIIeyYmU7c4wEAAMcDAAALACQAZ3JhcGgwLmpzb24KACAAAAAAAAEAGAAAgD7V3rGdAQCAPtXesZ0BAIA+1d6xnQF1Ustu2zAQ/JWCZ7eQlMaNfEvtxC2QNkHcoue1tLIWpkiBj/oR+N+7pGTZCtALBc0OZ2dn+SY2nkoxexN/QXoUM3GXJHk2vcswv1lP8+rmY5pmkGcMrStIqvyLOE0E2BYL9wqOtJilE0FWN+gMFfdqI1klmQivqNKmeSg3ONfWWTGrQFqcCKNduKdC032kHuJ55JOlC1QOzX+KXhUSmhbLFR2x56RJx+IvM5QusSuyrUJLSbbv5Q5tmG8OrfXscSJKAjYdejG1RtrUTsyyq1vPVWXRxf4GDgsyPHMUE1+1q1mhAbu9yu42zU5npR/jUnY75VJldPOtbxRtu5qK7SscCrBuCOgaXFx79GoHcgtriX9qVD/10miveHnOeL7mLWaLQWQYYl5jsT1zOm8jyLejrNM+61OYbj+X1Kz599Pny+/9nmzkMbCSOoSa8100nPx3thqXa6MeY8HCb4u/YHN5AT38SMY6LkQx8E4/kdouDZUX5hldkHVP1FDMjZccxlhrb5gpHmKePLF3c20UBrAbrUUF0h1euJsbr/NdZej3Dn+Ewuku+77Sv+8xPYIDN0nGhRe96/dHilVBvnTFaITjU2e7ilfN84QEPiwNtOGFlQZ2Szo2ehiKVKVXhUFUz8Pd0z9QSwMEFAAACAAAAAgh7B5/XXYyAAAAMgAAABIAJABncmFwaDBfZWRpdG9yLmpzb24KACAAAAAAAAEAGAAAgD7V3rGdAQCAPtXesZ0BAIA+1d6xnQF7ImxvY2tlZCI6dHJ1ZSwic2hvd0V4dHJhIjpmYWxzZSwicGl2b3QiOiJDZW50ZXIifVBLAwQUAAAICAAACCHs8ePfznYAAACDAAAACQAkAG1ldGEuanNvbgoAIAAAAAAAAQAYAACAPtXesZ0BAIA+1d6xnQEAgD7V3rGdAR2MOwrDMBAF77K1I/QBR+s2hTuTPriQ0creIpKR5UAIuXukdMNj5n3gRfngFGEAI6zQ0MGa3b4dMKiKJ/tKD7BSou6tJjRLj8FclNIOdZ2W4GTAK8wdlPdOk3vSv7i7sgWOnuMqxsx+bK/NisnTLZ2xNE3O3x9QSwECLQAUAAAICAAACCHsmJlO3OMBAADHAwAACwAkAAAAAAAAAAAAAAAAAAAAZ3JhcGgwLmpzb24KACAAAAAAAAEAGAAAgD7V3rGdAQCAPtXesZ0BAIA+1d6xnQFQSwECLQAUAAAIAAAACCHsHn9ddjIAAAAyAAAAEgAkAAAAAAAAAAAAAAAwAgAAZ3JhcGgwX2VkaXRvci5qc29uCgAgAAAAAAABABgAAIA+1d6xnQEAgD7V3rGdAQCAPtXesZ0BUEsBAi0AFAAACAgAAAgh7PHj3852AAAAgwAAAAkAJAAAAAAAAAAAAAAAtgIAAG1ldGEuanNvbgoAIAAAAAAAAQAYAACAPtXesZ0BAIA+1d6xnQEAgD7V3rGdAVBLBQYAAAAAAwADABwBAAB3AwAAAAA=
     upgradeData: 
     data_backup: 
-    file_cachedStartup: {fileID: 0}
+    file_cachedStartup: {fileID: 4900000, guid: 83a92bbc1bf372747a610a4938edef16,
+      type: 3}
     data_cachedStartup: 
-    cacheStartup: 0
+    cacheStartup: 1
   showNavGraphs: 1
   showUnwalkableNodes: 1
   debugMode: 0
@@ -559,6 +560,8 @@ GameObject:
   - 114: {fileID: 1583159064}
   - 114: {fileID: 1583159063}
   - 114: {fileID: 1583159062}
+  - 114: {fileID: 1583159068}
+  - 114: {fileID: 1583159067}
   m_Layer: 0
   m_Name: player
   m_TagString: playerUnits
@@ -675,6 +678,37 @@ MonoBehaviour:
   alliedArmour: 0
   currentHealth: 100
   moneyValue: 5
+--- !u!114 &1583159067
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1583159060}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cb6a34d769a1e4ac7b0b30e433aa443c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  smoothType: 0
+  subdivisions: 2
+  iterations: 2
+  strength: 0.5
+  uniformLength: 1
+  maxSegmentLength: 2
+  bezierTangentLength: 0.4
+  offset: 0.2
+  factor: 0.1
+--- !u!114 &1583159068
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1583159060}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 77f586f285b3847808d79083bd19ef1f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &1611421078 stripped
 Transform:
   m_PrefabParentObject: {fileID: 400000, guid: 6939f212ffec5c142a2ccffc0971bad8, type: 3}
@@ -765,6 +799,10 @@ Prefab:
       propertyPath: m_TagString
       value: playerUnits
       objectReference: {fileID: 0}
+    - target: {fileID: 2300008, guid: 6939f212ffec5c142a2ccffc0971bad8, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: cc9da96504c573d4c87512111796be40, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 6939f212ffec5c142a2ccffc0971bad8, type: 3}
   m_IsPrefabParent: 0
@@ -993,6 +1031,10 @@ Prefab:
       propertyPath: m_TagString
       value: enemyUnits
       objectReference: {fileID: 0}
+    - target: {fileID: 2300010, guid: dd1c26c242ba6064c829f82547c405f0, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 3788688ca205eec4388a26f619869bdf, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: dd1c26c242ba6064c829f82547c405f0, type: 3}
   m_IsPrefabParent: 0
