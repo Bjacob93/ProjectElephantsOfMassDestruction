@@ -14,9 +14,13 @@ public class Astar : MonoBehaviour {
 
 	//Cache variables for behaviour
 	public float speed = 30f;
-	float meleeRange = 10f;
-	float engagementRange = 100f;
+	float meleeRange = 1f;
+	float engagementRange = 10f;
 	bool isInMeleeRange = false;
+
+	//Cache variables that limits calls to pathfinding to once every second.
+	float pathCooldown = 1;
+	float pathCooldownRemaining = 0;
 
 	//Cache variables for enemies
 	public GameObject nearestEnemy;
@@ -64,13 +68,20 @@ public class Astar : MonoBehaviour {
 			}
 		}
 
-		//Generate new path to nearest enemy, if within engagement range.
-		if (nearestEnemy != null && distNear <= engagementRange) {
-			seeker.StartPath (transform.position, nearestEnemy.transform.position, OnPathComplete);
+		pathCooldownRemaining -= Time.deltaTime;
+
+		if (pathCooldownRemaining <= 0) {
+			pathCooldownRemaining = pathCooldown;
+			//Generate new path to nearest enemy, if within engagement range.
+			if (nearestEnemy != null && distNear <= engagementRange) {
+				seeker.StartPath (transform.position, nearestEnemy.transform.position, OnPathComplete);
 		
-			//Determine if enemy is within melee range
-			if (distNear < meleeRange) {
-				isInMeleeRange = true;
+				//Determine if enemy is within melee range
+				if (distNear < meleeRange) {
+					isInMeleeRange = true;
+				} else {
+					isInMeleeRange = false;
+				}
 			}
 		}
 
