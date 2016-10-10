@@ -2,7 +2,7 @@
 using System.Collections;
 using Pathfinding;
 
-//TODO: make unit face the traveled direction.
+//TODO: attack?
 
 public class Astar : MonoBehaviour {
 
@@ -14,10 +14,12 @@ public class Astar : MonoBehaviour {
 
 	//Cache variables for behaviour
 	public float speed = 30f;
-	public Vector3 lookDirection;
+	float rotationSpeed = 10f;
+	public Vector3 direction;
 	float meleeRange = 1f;
 	float engagementRange = 10f;
 	bool isInMeleeRange = false;
+	bool hasPathToEnemy = false;
 
 	//Cache variables that limits calls to pathfinding to once every second.
 	float pathCooldown = 1;
@@ -25,6 +27,7 @@ public class Astar : MonoBehaviour {
 
 	//Cache variables for enemies
 	public GameObject nearestEnemy;
+	float distanceToEnemy;
 	float distFar = Mathf.Infinity;
 
 	//Float determines when a waypoint is close enough. Int references current target waypoint.
@@ -51,40 +54,83 @@ public class Astar : MonoBehaviour {
 		}
 	}
 
-
-	void Update () {
-
+	//Method for finding all enemies.
+	void FindNearestEnemy () {
 		//Put all enemies into an array, then find the one which is nearest.
 		GameObject[] enemyUnits = GameObject.FindGameObjectsWithTag ("enemyUnits");
 		nearestEnemy = null;
 		distFar = Mathf.Infinity;
-		float distNear = 0.0f;
 
-		foreach (GameObject enemy in enemyUnits) {
-			distNear = Vector3.Distance (transform.position, enemy.transform.position);
+		if (enemyUnits != null) {
+			foreach (GameObject enemy in enemyUnits) {
+				distanceToEnemy = Vector3.Distance (transform.position, enemy.transform.position);
 
-			if (nearestEnemy == null || distNear < distFar) {
-				nearestEnemy = enemy;
-				distFar = distNear;
+				if (nearestEnemy == null || distanceToEnemy < distFar) {
+					nearestEnemy = enemy;
+					distFar = distanceToEnemy;
+				}
 			}
+			PathToEnemy();
 		}
+	}
 
-		pathCooldownRemaining -= Time.deltaTime;
-
-		if (pathCooldownRemaining <= 0) {
+	void PathToEnemy () {
+		if (pathCooldownRemaining <= 0 && !hasPathToEnemy) {
 			pathCooldownRemaining = pathCooldown;
 			//Generate new path to nearest enemy, if within engagement range.
-			if (nearestEnemy != null && distNear <= engagementRange) {
+			if (nearestEnemy != null && distanceToEnemy <= engagementRange) {
 				seeker.StartPath (transform.position, nearestEnemy.transform.position, OnPathComplete);
-		
+				hasPathToEnemy = true;
+
 				//Determine if enemy is within melee range
-				if (distNear < meleeRange) {
+				if (distanceToEnemy < meleeRange) {
 					isInMeleeRange = true;
 				} else {
 					isInMeleeRange = false;
 				}
 			}
+		} else if (distanceToEnemy >= engagementRange && hasPathToEnemy) {
+			hasPathToEnemy = false;
 		}
+	}
+
+	//Method that rotates the unit towards its target.
+	void RotateUnit(Vector3 direction){
+		pathCooldownRemaining -= Time.deltaTime;
+
+		if (direction == Vector3.zero) {
+			return;
+		} else {
+			Quaternion rotation = transform.rotation;
+			Quaternion toTarget = Quaternion.LookRotation(direction);
+
+			rotation = Quaternion.Slerp (rotation, toTarget, rotationSpeed * Time.deltaTime);
+			Vector3 euler = rotation.eulerAngles;
+			euler.z = 0;
+			euler.x = 0;
+			rotation = Quaternion.Euler (euler);
+
+			transform.rotation = rotation;
+		}
+	}
+
+	//Method for moving the unit.
+	void Move(Vector3 direction, Path path){
+		//Set's the direction of movement to a vector form current position to next waypoint, then calls the SimpleMove command in the CharacterController.
+		Vector3 dir = direction * speed * Time.deltaTime;
+		controller.SimpleMove (dir);
+
+		//If it has reached it's current waypoint.
+		if (Vector3.Distance (transform.position, path.vectorPath[currentWaypoint]) < maxWaypointDistance) {
+			currentWaypoint++;
+		}
+	}
+
+
+	void Update () {
+
+		//Find nearest enemy, and path to it if it exist and is close enough.
+		FindNearestEnemy();
 
 		//If there is no path.
 		if (path == null) {
@@ -93,7 +139,6 @@ public class Astar : MonoBehaviour {
 		}
 
 		if (isInMeleeRange) {
-
 			Debug.Log ("I'm in range");
 			return;
 		} else {
@@ -106,20 +151,11 @@ public class Astar : MonoBehaviour {
 		}
 	
 		//Set unit to look in the direction it is travelling
-		lookDirection = (path.vectorPath [currentWaypoint] - transform.position).normalized;
-		lookDirection.y = 0;
-		Quaternion lookRotation = Quaternion.Slerp (transform.rotation, Quaternion.LookRotation (lookDirection), 360 * Time.deltaTime);
-		transform.rotation = Quaternion.Lerp ( transform.rotation, lookRotation, Time.deltaTime * 5);
+		direction = (path.vectorPath [currentWaypoint] - transform.position).normalized;
+		RotateUnit (direction);
 
-		Debug.Log ("Moving");
-		//Set's the direction of movement to a vector form current position to next waypoint, then calls the SimpleMove command in the CharacterController.
-		Vector3 dir = (path.vectorPath [currentWaypoint] - transform.position).normalized * speed * Time.deltaTime;
-		controller.SimpleMove (dir);
-
-		//If it has reached it's current waypoint.
-		if (Vector3.Distance (transform.position, path.vectorPath[currentWaypoint]) < maxWaypointDistance) {
-			currentWaypoint++;
-		}
+		//Move the unit
+		Move (direction, path);
 	}
 }
 

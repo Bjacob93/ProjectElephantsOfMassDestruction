@@ -1345,7 +1345,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   targetPosition: {x: -45, y: 0, z: -45}
   speed: 80
-  lookDirection: {x: 0, y: 0, z: 0}
+  direction: {x: 0, y: 0, z: 0}
   nearestEnemy: {fileID: 0}
   maxWaypointDistance: 3
 --- !u!143 &1583159065
