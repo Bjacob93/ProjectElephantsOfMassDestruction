@@ -2,8 +2,6 @@
 using System.Collections;
 using Pathfinding;
 
-//TODO: attack?
-
 public class Astar : MonoBehaviour {
 
 	//Cache target coordinates, seeker, controller and path.
@@ -20,6 +18,8 @@ public class Astar : MonoBehaviour {
 	float engagementRange = 10f;
 	bool isInMeleeRange = false;
 	bool hasPathToEnemy = false;
+	bool goToWaypoint = true;
+	bool movingToWaypoint = true;
 
 	//Cache variables that limits calls to pathfinding to once every second.
 	float pathCooldown = 1;
@@ -27,6 +27,7 @@ public class Astar : MonoBehaviour {
 
 	//Cache variables for enemies
 	public GameObject nearestEnemy;
+	public GameObject previousEnemy;
 	float distanceToEnemy;
 	float distFar = Mathf.Infinity;
 
@@ -45,7 +46,8 @@ public class Astar : MonoBehaviour {
 	}
 
 
-	//Method to print out errors in the log if we get any. If we don't, it will set first waypoint in the path to be the current waypoint for the unit.
+	/** Method to print out errors in the log if we get any. If we don't, it will set first waypoint 
+	in the path to be the current waypoint for the unit. */
 	void OnPathComplete(Path p){
 		Debug.Log ("Path Completed" + p.error);
 		if (!p.error) {
@@ -74,23 +76,38 @@ public class Astar : MonoBehaviour {
 		}
 	}
 
+	//Method for pathing to the nearest enemy.
 	void PathToEnemy () {
 		if (pathCooldownRemaining <= 0 && !hasPathToEnemy) {
 			pathCooldownRemaining = pathCooldown;
 			//Generate new path to nearest enemy, if within engagement range.
 			if (nearestEnemy != null && distanceToEnemy <= engagementRange) {
 				seeker.StartPath (transform.position, nearestEnemy.transform.position, OnPathComplete);
+				previousEnemy = nearestEnemy;
 				hasPathToEnemy = true;
-
-				//Determine if enemy is within melee range
-				if (distanceToEnemy < meleeRange) {
-					isInMeleeRange = true;
-				} else {
-					isInMeleeRange = false;
-				}
+				goToWaypoint = false;
+				movingToWaypoint = false;
 			}
+		} else if (distanceToEnemy <= engagementRange && previousEnemy != nearestEnemy) {
+			hasPathToEnemy = false;
+			goToWaypoint = false;
 		} else if (distanceToEnemy >= engagementRange && hasPathToEnemy) {
 			hasPathToEnemy = false;
+			goToWaypoint = true;
+		}
+
+		//Determine if enemy is within melee range
+		if (distanceToEnemy < meleeRange) {
+			isInMeleeRange = true;
+		} else {
+			isInMeleeRange = false;
+		}
+	}
+
+	//Make a new path to the target position, if not currently pathing to enemy, and not already pathing to the targe position.
+	void PathToWaypoint(){
+		if (goToWaypoint && !movingToWaypoint) {
+			seeker.StartPath (transform.position, targetPosition, OnPathComplete);
 		}
 	}
 
@@ -132,6 +149,9 @@ public class Astar : MonoBehaviour {
 		//Find nearest enemy, and path to it if it exist and is close enough.
 		FindNearestEnemy();
 
+		//If no enemy is near enough, make sure unit is pathing to waypoint.
+		PathToWaypoint();
+
 		//If there is no path.
 		if (path == null) {
 			Debug.Log ("No path");
@@ -158,4 +178,3 @@ public class Astar : MonoBehaviour {
 		Move (direction, path);
 	}
 }
-
