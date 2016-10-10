@@ -2,7 +2,37 @@
 using System.Collections;
 
 public class EnemySpawner : MonoBehaviour {
-	public float spawnCD = 0.25f;
+
+    public GameObject enemy;
+    //public Vector3 spawnValues;
+    public int enemyCount;
+    public float spawnWait;
+    public float startWait;
+    public float waveWait;
+
+    void Start()
+    {
+        StartCoroutine(SpawnWaves());
+    }
+
+    IEnumerator SpawnWaves()
+    {
+        yield return new WaitForSeconds(startWait);
+        while (true)
+        {
+            for (int i = 0; i < enemyCount; i++)
+            {
+                //Vector3 spawnPosition = new Vector3(Random.Range(-spawnValues.x, spawnValues.x), spawnValues.y, spawnValues.z);
+
+                //Quaternion spawnRotation = Quaternion.identity;
+                Instantiate(enemy, this.transform.position, this.transform.rotation);
+                yield return new WaitForSeconds(spawnWait);
+            }
+            yield return new WaitForSeconds(waveWait);
+        }
+    }
+
+    /*	public float spawnCD = 0.25f;
 	public float spawnCDremaning = 0;
 
 	[System.Serializable]
@@ -57,5 +87,5 @@ public class EnemySpawner : MonoBehaviour {
 			}
 		
 		}
-	}
+	} */
 }
