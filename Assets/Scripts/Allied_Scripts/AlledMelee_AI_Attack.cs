@@ -8,7 +8,7 @@ public class AlledMelee_AI_Attack : MonoBehaviour {
 	public int attackDamage = 20; // damage of each attack
 
 	public GameObject nearestPlayer;
-	public float MeleeRange = 10f;
+	public float MeleeRange = 1f;
 
 	// Use this for initialization
 	void Start () {
@@ -18,7 +18,7 @@ public class AlledMelee_AI_Attack : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 	
-		nearestPlayer = this.GetComponent<Astar> ().nearestEnemy;
+		nearestPlayer = this.GetComponent<Astar> ().previousEnemy;
 
 		float dist = Vector3.Distance (this.transform.position, nearestPlayer.transform.position);
 
