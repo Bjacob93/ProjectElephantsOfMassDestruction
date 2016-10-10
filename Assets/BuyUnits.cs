@@ -13,7 +13,16 @@ public class BuyUnits : MonoBehaviour {
 	void OnMouseDown ()
 	{
 		if (gameObject.tag == "PlayerBase") {
-			Instantiate(playerUnits, new Vector3(-4, 1, -4), Quaternion.Euler(0,180,0));
+			ScoreManager sm = GameObject.FindObjectOfType<ScoreManager> ();
+			if (sm.money < GameObject.FindObjectOfType<AlliedMelee_AI_Health> ().cost) {
+				Debug.Log("Not enought money");
+				return;
+			}
+
+			sm.money -= GameObject.FindObjectOfType<AlliedMelee_AI_Health> ().cost;
+
+			Instantiate(playerUnits, new Vector3(45, 1, 45), Quaternion.Euler(0,0,0));
+			//Debug.Log("fuck");
 		}
 	}
 }
