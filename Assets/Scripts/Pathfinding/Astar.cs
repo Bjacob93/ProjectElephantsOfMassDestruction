@@ -1,5 +1,4 @@
 ﻿using UnityEngine;
-using System.Collections;
 using Pathfinding;
 
 public class Astar : MonoBehaviour {
@@ -26,15 +25,14 @@ public class Astar : MonoBehaviour {
 	float pathCooldownRemaining = 0;
 
 	//Cache variables for enemies
-	public GameObject nearestEnemy;
-	public GameObject previousEnemy;
+	public GameObject nearestEnemy = null;
+	public GameObject previousEnemy = null;
 	float distanceToEnemy;
 	float distFar = Mathf.Infinity;
 
 	//Float determines when a waypoint is close enough. Int references current target waypoint.
 	public float maxWaypointDistance = 3f;
 	private int currentWaypoint;
-
 
 	void Start () {
 		//Reference the seeker and controller component.
@@ -44,7 +42,6 @@ public class Astar : MonoBehaviour {
 		//Call the pathfinding method in 
 		seeker.StartPath (transform.position, targetPosition, OnPathComplete);
 	}
-
 
 	/** Method to print out errors in the log if we get any. If we don't, it will set first waypoint 
 	in the path to be the current waypoint for the unit. */
@@ -60,7 +57,6 @@ public class Astar : MonoBehaviour {
 	void FindNearestEnemy () {
 		//Put all enemies into an array, then find the one which is nearest.
 		GameObject[] enemyUnits = GameObject.FindGameObjectsWithTag ("enemyUnits");
-		nearestEnemy = null;
 		distFar = Mathf.Infinity;
 
 		if (enemyUnits != null) {
@@ -142,7 +138,6 @@ public class Astar : MonoBehaviour {
 			currentWaypoint++;
 		}
 	}
-
 
 	void Update () {
 

@@ -12,7 +12,7 @@ public class EnemyMelee_AI_Movement : MonoBehaviour {
 	Transform unitTransform;
 	int enemyPathNodeIndex = 12;
 	bool isInMeleeRange;
-	public GameObject nearestPlayer;
+	public GameObject nearestPlayer = null;
 
 	// Use this for initialization
 	void Start () {
@@ -25,7 +25,6 @@ public class EnemyMelee_AI_Movement : MonoBehaviour {
 		enemyPathNodeIndex--;
 	}
 
-
 	// Update is called once per frame
 	void Update () {
 		
@@ -33,14 +32,17 @@ public class EnemyMelee_AI_Movement : MonoBehaviour {
 		nearestPlayer = null;
 		float dist = Mathf.Infinity;
 
-		foreach (GameObject e in playerUnits) {
-			float d = Vector3.Distance (this.transform.position, e.transform.position);
+        if (playerUnits != null){
+            foreach (GameObject e in playerUnits) {
+			    float d = Vector3.Distance (transform.position, e.transform.position);
 
-			if (nearestPlayer == null || d < dist) {
-				nearestPlayer = e;
-				dist = d;
-			}
-		}
+			    if (nearestPlayer == null || d < dist) {
+				    nearestPlayer = e;
+				    dist = d;
+			    }
+		    }
+        }
+		
 		if (dist < 100 && dist > 5) {
 			transform.position = Vector3.MoveTowards (this.transform.position, nearestPlayer.transform.position, speed * Time.deltaTime);
 
@@ -49,13 +51,11 @@ public class EnemyMelee_AI_Movement : MonoBehaviour {
 				Debug.Log ("No enemies?");
 			}
 
-			Vector3 Lookdir = nearestPlayer.transform.position - transform.position;
+            //Vector3 Lookdir = nearestPlayer.transform.position - transform.position;
+            //Quaternion lookRot = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(Lookdir), 360 * Time.deltaTime);
+            //transform.eulerAngles = new Vector3(0, 0, transform.eulerAngles.z);
 
-			Quaternion lookRot = Quaternion.Slerp (transform.rotation, Quaternion.LookRotation (Lookdir), 360 * Time.deltaTime);
-
-			transform.eulerAngles = new Vector3 (0, 0, transform.eulerAngles.z);
-
-			if (dist < MeleeRange) {
+            if (dist < MeleeRange) {
 					isInMeleeRange = true;
 				} 
 
@@ -92,6 +92,5 @@ public class EnemyMelee_AI_Movement : MonoBehaviour {
 	void ReachedPlayerBase(){
 	//	GameObject.FindObjectOfType<GameManager> ().loseLives();
 		Destroy (gameObject);
-
 	}
 }

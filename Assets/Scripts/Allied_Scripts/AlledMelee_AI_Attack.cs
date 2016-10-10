@@ -9,28 +9,26 @@ public class AlledMelee_AI_Attack : MonoBehaviour {
 
 	public GameObject nearestPlayer;
 	public float MeleeRange = 1f;
-
-	// Use this for initialization
-	void Start () {
 	
-	}
-	
-	// Update is called once per frame
 	void Update () {
 	
 		nearestPlayer = this.GetComponent<Astar> ().previousEnemy;
 
-		float dist = Vector3.Distance (this.transform.position, nearestPlayer.transform.position);
+        if (nearestPlayer != null){
+            float dist = Vector3.Distance(this.transform.position, nearestPlayer.transform.position);
 
-		if (dist < MeleeRange && nearestPlayer != null) {
-			meleeCoolDownLeft -= Time.deltaTime;
-			if (meleeCoolDownLeft <= 0) {
-				meleeCoolDownLeft = meleeCoolDown;
+            if (dist < MeleeRange && nearestPlayer != null)
+            {
+                meleeCoolDownLeft -= Time.deltaTime;
+                if (meleeCoolDownLeft <= 0)
+                {
+                    meleeCoolDownLeft = meleeCoolDown;
 
-				nearestPlayer.GetComponent<EnemyMelee_AI_Health> ().currentHealth -= attackDamage;
-				//nearestPlayer.GetComponent<EnemyMelee_AI_Health>().TakeDamage(attackDamage);
-				Debug.Log (nearestPlayer.GetComponent<EnemyMelee_AI_Health> ().currentHealth);
-			}
-		}
+                    nearestPlayer.GetComponent<EnemyMelee_AI_Health>().currentHealth -= attackDamage;
+                    //nearestPlayer.GetComponent<EnemyMelee_AI_Health>().TakeDamage(attackDamage);
+                    Debug.Log(nearestPlayer.GetComponent<EnemyMelee_AI_Health>().currentHealth);
+                }
+            }
+        }
 	}
 }
