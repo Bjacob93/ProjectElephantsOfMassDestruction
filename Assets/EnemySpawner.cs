@@ -1,18 +1,21 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class EnemySpawner : MonoBehaviour {
+public class EnemySpawner : MonoBehaviour
+{
+    public GameObject[] enemiesArray;
+    int index;
 
-    public GameObject enemy;
-    
     public int enemyCount; //How many enemies each wave have
     public float spawnWait; //How long to wait in each wave between the spawn of an enemy
     public float startWait; //How long to wait in the beginning before a wave spawns
     public float waveWait; //How long to wait between each wave
 
+
     void Start()
     {
         StartCoroutine(SpawnWaves());
+        enemiesArray = GameObject.FindGameObjectsWithTag("enemyUnits");
     }
 
     IEnumerator SpawnWaves()
@@ -22,12 +25,13 @@ public class EnemySpawner : MonoBehaviour {
         {
             for (int i = 0; i < enemyCount; i++)
             {
-                Instantiate(enemy, this.transform.position, this.transform.rotation);
+                Instantiate(enemiesArray[Random.Range(0, enemiesArray.Length)], this.transform.position, this.transform.rotation); //instantiate a random game object
                 yield return new WaitForSeconds(spawnWait);
             }
             yield return new WaitForSeconds(waveWait);
         }
     }
+}
 
     //OLD SPAWN WAVE CODE
     /*	public float spawnCD = 0.25f;
@@ -86,4 +90,3 @@ public class EnemySpawner : MonoBehaviour {
 		
 		}
 	} */
-}

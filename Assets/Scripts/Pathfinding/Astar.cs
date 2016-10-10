@@ -20,6 +20,9 @@ public class Astar : MonoBehaviour {
 	bool goToWaypoint = true;
 	bool movingToWaypoint = true;
 
+    //Boolean controlled by checkpoints
+    public bool receivedNewDestination = false;
+
 	//Cache variables that limits calls to pathfinding to once every second.
 	float pathCooldown = 1;
 	float pathCooldownRemaining = 0;
@@ -107,6 +110,13 @@ public class Astar : MonoBehaviour {
 		}
 	}
 
+    //Path to new destination, if a new destination has been received by checkpoint, building, etc.
+    void PathToNewDestination()
+    {
+        seeker.StartPath(transform.position, targetPosition, OnPathComplete);
+        receivedNewDestination = false;
+    }
+
 	//Method that rotates the unit towards its target.
 	void RotateUnit(Vector3 direction){
 		pathCooldownRemaining -= Time.deltaTime;
@@ -146,6 +156,11 @@ public class Astar : MonoBehaviour {
 
 		//If no enemy is near enough, make sure unit is pathing to waypoint.
 		PathToWaypoint();
+
+        //Path to another waypoint, if an update to destination has been received.
+        if (receivedNewDestination) {
+            PathToNewDestination();
+        }
 
 		//If there is no path.
 		if (path == null) {
