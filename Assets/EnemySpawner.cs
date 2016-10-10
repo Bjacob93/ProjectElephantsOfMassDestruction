@@ -4,11 +4,11 @@ using System.Collections;
 public class EnemySpawner : MonoBehaviour {
 
     public GameObject enemy;
-    //public Vector3 spawnValues;
-    public int enemyCount;
-    public float spawnWait;
-    public float startWait;
-    public float waveWait;
+    
+    public int enemyCount; //How many enemies each wave have
+    public float spawnWait; //How long to wait in each wave between the spawn of an enemy
+    public float startWait; //How long to wait in the beginning before a wave spawns
+    public float waveWait; //How long to wait between each wave
 
     void Start()
     {
@@ -22,9 +22,6 @@ public class EnemySpawner : MonoBehaviour {
         {
             for (int i = 0; i < enemyCount; i++)
             {
-                //Vector3 spawnPosition = new Vector3(Random.Range(-spawnValues.x, spawnValues.x), spawnValues.y, spawnValues.z);
-
-                //Quaternion spawnRotation = Quaternion.identity;
                 Instantiate(enemy, this.transform.position, this.transform.rotation);
                 yield return new WaitForSeconds(spawnWait);
             }
@@ -32,6 +29,7 @@ public class EnemySpawner : MonoBehaviour {
         }
     }
 
+    //OLD SPAWN WAVE CODE
     /*	public float spawnCD = 0.25f;
 	public float spawnCDremaning = 0;
 
