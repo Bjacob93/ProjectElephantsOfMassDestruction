@@ -3,13 +3,13 @@ using System.Collections;
 
 public class ThreeDRTSCamera : MonoBehaviour {
 
-	public GameObject TopLeft, BotRight;
+	public GameObject TopRight, BotLeft;
 
-	public float scrollZone = 30.0f;
+	public float scrollZone = 10.0f;
 	public float scrollSpeed = 3.0f;
 
 	//camera zoom variables
-	public float cameraSpeed = 5.0f;
+	public float cameraSpeed = 2.0f;
 	public float cameraZoomSpeed = 15.0f;
 	public float cameraZoomIn = 1.0f;
 	public float cameraZoomOut = 2.0f;
@@ -31,14 +31,14 @@ public class ThreeDRTSCamera : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		TopLeft = GameObject.Find ("GameMap/TheMap/BotRight");
-		BotRight = GameObject.Find ("GameMap/TheMap/TopLeft");
-
-		xMax = TopLeft.transform.position.x;
-		zMax = TopLeft.transform.position.z;
-
-		xMin = BotRight.transform.position.x;
-		zMin = BotRight.transform.position.z;
+//		TopRight = GameObject.Find ("GameMap/TheMap/TopRight");
+//		BotLeft = GameObject.Find ("GameMap/TheMap/BotLeft");
+//
+//		xMax = TopRight.transform.position.x;
+//		zMax = TopRight.transform.position.z;
+//
+//		xMin = BotLeft.transform.position.x;
+//		zMin = BotLeft.transform.position.z;
 	}
 
 
@@ -50,16 +50,16 @@ public class ThreeDRTSCamera : MonoBehaviour {
 		float speed = scrollZone * 3 *  Time.deltaTime;
 		//WASD movement
 		if (Input.GetKey(KeyCode.W)){
-			z -= speed;
-		}
-		if (Input.GetKey(KeyCode.A)){
-			x += speed;
-		}
-		if (Input.GetKey(KeyCode.S)){
 			z += speed;
 		}
-		if (Input.GetKey(KeyCode.D)){
+		if (Input.GetKey(KeyCode.A)){
 			x -= speed;
+		}
+		if (Input.GetKey(KeyCode.S)){
+			z -= speed;
+		}
+		if (Input.GetKey(KeyCode.D)){
+			x += speed;
 		}
 
 		//mouse movement
@@ -78,7 +78,7 @@ public class ThreeDRTSCamera : MonoBehaviour {
 
 		Vector3 move = new Vector3(x, y, z) + desiredPosition;
 		move.x = Mathf.Clamp (move.x, xMin, xMax);
-		move.y = Mathf.Clamp (move.y, 10, yMax);
+		move.y = Mathf.Clamp (move.y, 3, yMax);
 		move.z = Mathf.Clamp (move.z, zMin, zMax);
 		desiredPosition = move;
 		transform.position = Vector3.Lerp(transform.position, desiredPosition, 0.2f);
@@ -86,7 +86,7 @@ public class ThreeDRTSCamera : MonoBehaviour {
 		//panning when zooming not working
 		var pan = GetComponent<Camera>().transform.eulerAngles.x - (y/3) * -1;
 		pan = Mathf.Clamp (pan, panAngleMin, panAngleMax);
-		if (y < 0 || GetComponent<Camera>().transform.position.y > (yMax / 6)){
+		if (y < 0 || GetComponent<Camera>().transform.position.y > (yMax / 3)){
 			GetComponent<Camera>().transform.eulerAngles = new Vector3(pan,0,0);
 		}
 
