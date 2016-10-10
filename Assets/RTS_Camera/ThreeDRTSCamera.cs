@@ -17,8 +17,8 @@ public class ThreeDRTSCamera : MonoBehaviour {
 	//camera orbit variables
 	public float xMax;
 	public float xMin;
-	public float yMax = 200.0f;
-	public float yMin = 2.0f;
+	public float yMax = 40.0f;
+	public float yMin = 5.0f;
 	public float zMax;
 	public float zMin;
 
@@ -50,16 +50,16 @@ public class ThreeDRTSCamera : MonoBehaviour {
 		float speed = scrollZone * 3 *  Time.deltaTime;
 		//WASD movement
 		if (Input.GetKey(KeyCode.W)){
-			z += speed;
-		}
-		if (Input.GetKey(KeyCode.A)){
-			x -= speed;
-		}
-		if (Input.GetKey(KeyCode.S)){
 			z -= speed;
 		}
-		if (Input.GetKey(KeyCode.D)){
+		if (Input.GetKey(KeyCode.A)){
 			x += speed;
+		}
+		if (Input.GetKey(KeyCode.S)){
+			z += speed;
+		}
+		if (Input.GetKey(KeyCode.D)){
+			x -= speed;
 		}
 
 		//mouse movement
