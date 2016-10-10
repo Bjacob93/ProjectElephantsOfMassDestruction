@@ -20,6 +20,7 @@ public class ScoreManager : MonoBehaviour {
 	}
 
 	public void GameOver(){
+		anim.SetTrigger ("GameOver");
 		Debug.Log ("Game Over");
 		SceneManager.LoadScene (SceneManager.GetActiveScene ().name);
 	
@@ -30,4 +31,15 @@ public class ScoreManager : MonoBehaviour {
 		moneyText.text = "Money: $" + money.ToString ();
 		livesText.text = "Lives" + lives.ToString ();
 	}
+
+
+	Animator anim;                          // Reference to the animator component.
+
+
+	void Awake ()
+	{
+		// Set up the reference.
+		anim = GetComponent <Animator> ();
+	}
+		
 }
