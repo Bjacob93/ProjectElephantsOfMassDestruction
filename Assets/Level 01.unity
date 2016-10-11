@@ -2253,8 +2253,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ba825138797164547a4219720f659476, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  restartDelay: 5
-  enemyUnits: {fileID: 100000, guid: dd1c26c242ba6064c829f82547c405f0, type: 3}
+  restartDelay: 10
+  enemyUnits: {fileID: 1000011128704274, guid: d543aa80740de434aa925b89c77b4f33, type: 2}
 --- !u!1 &701751935
 GameObject:
   m_ObjectHideFlags: 0
@@ -2390,7 +2390,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 400002, guid: 7bbd6b88cb6ac194393214b69450ed26, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -3.3
+      value: -3.2
       objectReference: {fileID: 0}
     - target: {fileID: 400002, guid: 7bbd6b88cb6ac194393214b69450ed26, type: 3}
       propertyPath: m_LocalPosition.y
