@@ -7,6 +7,7 @@ public class AlliedMelee_AI_Health : MonoBehaviour {
 	public int alliedArmour = 10;
 	public int currentHealth;
 	public int moneyValue = 5;
+	public int cost = 10;
 
 	bool Died;
 
