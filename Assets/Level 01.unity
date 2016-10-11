@@ -190,7 +190,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6a4f35aed076de947a4d0cf7efd1936c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemy: {fileID: 0}
+  enemiesArray: []
   enemyCount: 0
   spawnWait: 0
   startWait: 0
@@ -1771,6 +1771,7 @@ MonoBehaviour:
   alliedArmour: 0
   currentHealth: 100
   moneyValue: 5
+  cost: 10
 --- !u!114 &1583159067
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1939,9 +1940,10 @@ GameObject:
   - 33: {fileID: 1866091530}
   - 65: {fileID: 1866091529}
   - 23: {fileID: 1866091528}
+  - 114: {fileID: 1866091531}
   m_Layer: 0
   m_Name: GiraffeBase
-  m_TagString: Untagged
+  m_TagString: PlayerBase
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2007,6 +2009,19 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1866091526}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &1866091531
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1866091526}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8e966f666731eba4aa929b82b86b6b81, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerUnits: {fileID: 1000012608832240, guid: a05b317e9abd0e041a58c9c5b09e2918,
+    type: 2}
 --- !u!1 &1883621715
 GameObject:
   m_ObjectHideFlags: 0
@@ -2149,7 +2164,7 @@ Prefab:
   m_IsPrefabParent: 0
 --- !u!4 &1940627422 stripped
 Transform:
-  m_PrefabParentObject: {fileID: 400000, guid: dd1c26c242ba6064c829f82547c405f0, type: 3}
+  m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 1940627421}
 --- !u!1001 &2007103183
 Prefab:
