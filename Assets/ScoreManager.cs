@@ -4,8 +4,9 @@ using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
 public class ScoreManager : MonoBehaviour {
+	Animator anim;   
 
-	public int lives = 20;
+	public int lives = 2;
 	public int money = 100;
 
 	public Text moneyText;
@@ -19,11 +20,15 @@ public class ScoreManager : MonoBehaviour {
 		}
 	}
 
-	public void GameOver(){
-		anim.SetTrigger ("GameOver");
-		Debug.Log ("Game Over");
-		SceneManager.LoadScene (SceneManager.GetActiveScene ().name);
-	
+	IEnumerator waitandprint(float waitTime){
+		yield return new WaitForSeconds (waitTime);
+
+	}
+
+	void Awake ()
+	{
+		// Set up the reference.
+		anim = GetComponent <Animator> ();
 	}
 
 	// Update is called once per frame
@@ -31,15 +36,18 @@ public class ScoreManager : MonoBehaviour {
 		moneyText.text = "Money: $" + money.ToString ();
 		livesText.text = "Lives" + lives.ToString ();
 	}
-
-
-	Animator anim;                          // Reference to the animator component.
-
-
-	void Awake ()
-	{
-		// Set up the reference.
-		anim = GetComponent <Animator> ();
+	void Start(){
+		LoseLife ();
 	}
-		
+	public void LoadByIndex(int sceneIndex) {
+		SceneManager.LoadScene(sceneIndex);
+	}
+			
+	public void GameOver(){
+		anim.SetTrigger ("GameOver");
+		//waitandprint (2);
+		//LoadByIndex();
+		//		Debug.Log ("Game Over");
+		//SceneManager.LoadScene (SceneManager.GetActiveScene (mainMenu).name);
+	}
 }
