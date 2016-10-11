@@ -216,7 +216,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: 40e32f22be8f9944f85943eb617af923, type: 2}
+  - {fileID: 2100000, guid: 181aac5280d383e4d8fd550241bfbfe1, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_ProbeAnchor: {fileID: 0}
@@ -435,9 +435,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   meleeCoolDown: 0.5
-  attackDamage: 0
   nearestPlayer: {fileID: 0}
-  MeleeRange: 1
+  MeleeRange: 3
 --- !u!114 &114000011732260168
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -450,9 +449,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   meleeCoolDown: 0.5
-  attackDamage: 20
   nearestPlayer: {fileID: 0}
-  MeleeRange: 10
+  MeleeRange: 3
 --- !u!114 &114000011825957986
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -483,9 +481,12 @@ MonoBehaviour:
   targetPosition: {x: -45, y: 0, z: -45}
   speed: 75
   direction: {x: 0, y: 0, z: 0}
+  meleeRange: 3
+  engagementRange: 10
   receivedNewDestination: 0
   nearestEnemy: {fileID: 0}
   previousEnemy: {fileID: 0}
+  distanceToEnemy: 0
   maxWaypointDistance: 3
 --- !u!114 &114000013769791272
 MonoBehaviour:

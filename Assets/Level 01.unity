@@ -37,7 +37,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44692492, g: 0.4967869, b: 0.57508546, a: 1}
+  m_IndirectSpecularColor: {r: 0.44692534, g: 0.49678725, b: 0.5750856, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -350,10 +350,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemiesArray: []
-  enemyCount: 20
-  spawnWait: 2
-  startWait: 1
-  waveWait: 1
+  enemyCount: 0
+  spawnWait: 0
+  startWait: 0
+  waveWait: 0
+  spawnCD: 0.25
+  spawnCDremaning: 0
+  waveComps:
+  - enemyPrefab: {fileID: 1000011856772026, guid: afde2324dfd96bb47bda104f702e4560,
+      type: 2}
+    num: 20
 --- !u!1 &168021581
 GameObject:
   m_ObjectHideFlags: 0
@@ -896,40 +902,6 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 354822401}
   m_Mesh: {fileID: 0}
---- !u!1 &368778478 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 1000011774838024, guid: afde2324dfd96bb47bda104f702e4560,
-    type: 2}
-  m_PrefabInternal: {fileID: 1836185052}
---- !u!114 &368778487
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 368778478}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 40150215fbb21624084497c46333ecb7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  paused: 0
---- !u!1 &384910195 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 1000011856772026, guid: afde2324dfd96bb47bda104f702e4560,
-    type: 2}
-  m_PrefabInternal: {fileID: 1836185052}
---- !u!114 &384910202
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 384910195}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 40150215fbb21624084497c46333ecb7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  paused: 0
 --- !u!1 &387951568
 GameObject:
   m_ObjectHideFlags: 0
@@ -1403,6 +1375,7 @@ MonoBehaviour:
   meleeDistination: {x: 0, y: 0, z: 0}
   rangedDistination: {x: 0, y: 0, z: 0}
   controlRange: 10
+  ID: Checkpoint A
 --- !u!1 &525931694
 GameObject:
   m_ObjectHideFlags: 0
@@ -1816,80 +1789,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 11
---- !u!1 &608704759
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
-  m_Component:
-  - 224: {fileID: 608704760}
-  - 222: {fileID: 608704762}
-  - 114: {fileID: 608704761}
-  m_Layer: 5
-  m_Name: Text
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &608704760
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 608704759}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_Children: []
-  m_Father: {fileID: 714279035}
-  m_RootOrder: 0
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
-  m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &608704761
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 608704759}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 708705254, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
-  m_Color: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
-  m_RaycastTarget: 1
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
-      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 14
-    m_FontStyle: 0
-    m_BestFit: 0
-    m_MinSize: 10
-    m_MaxSize: 40
-    m_Alignment: 4
-    m_AlignByGeometry: 0
-    m_RichText: 1
-    m_HorizontalOverflow: 0
-    m_VerticalOverflow: 0
-    m_LineSpacing: 1
-  m_Text: Pause
---- !u!222 &608704762
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 608704759}
 --- !u!1 &611271253
 GameObject:
   m_ObjectHideFlags: 0
@@ -2422,6 +2321,7 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 7bbd6b88cb6ac194393214b69450ed26, type: 3}
   m_IsPrefabParent: 0
+<<<<<<< HEAD
 --- !u!1 &714279034
 GameObject:
   m_ObjectHideFlags: 0
@@ -2568,6 +2468,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   paused: 0
+=======
+>>>>>>> e5f3b7025df364848c06a70f8d2f50419901708c
 --- !u!1 &741759970
 GameObject:
   m_ObjectHideFlags: 0
@@ -4827,7 +4729,6 @@ RectTransform:
   - {fileID: 525931695}
   - {fileID: 909739013}
   - {fileID: 1219179215}
-  - {fileID: 714279035}
   m_Father: {fileID: 701751936}
   m_RootOrder: 0
   m_AnchorMin: {x: 0, y: 0}
@@ -4935,31 +4836,6 @@ Prefab:
       propertyPath: m_RootOrder
       value: 2
       objectReference: {fileID: 0}
-    - target: {fileID: 114000011732260168, guid: afde2324dfd96bb47bda104f702e4560,
-        type: 2}
-      propertyPath: MeleeRange
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 114000012025344310, guid: afde2324dfd96bb47bda104f702e4560,
-        type: 2}
-      propertyPath: meleeRange
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 114000011647893440, guid: afde2324dfd96bb47bda104f702e4560,
-        type: 2}
-      propertyPath: MeleeRange
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 114000010705102416, guid: afde2324dfd96bb47bda104f702e4560,
-        type: 2}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 23000013412709086, guid: afde2324dfd96bb47bda104f702e4560,
-        type: 2}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: 181aac5280d383e4d8fd550241bfbfe1, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: afde2324dfd96bb47bda104f702e4560, type: 2}
   m_IsPrefabParent: 0
@@ -5054,7 +4930,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8e966f666731eba4aa929b82b86b6b81, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerUnits: {fileID: 368778478}
+  playerUnits: {fileID: 1000011774838024, guid: afde2324dfd96bb47bda104f702e4560,
+    type: 2}
 --- !u!1 &1883621715
 GameObject:
   m_ObjectHideFlags: 0
@@ -5130,6 +5007,7 @@ MonoBehaviour:
   meleeDistination: {x: 0, y: 0, z: 0}
   rangedDistination: {x: 0, y: 0, z: 0}
   controlRange: 10
+  ID: Checkpoint B
 --- !u!1 &1954770766
 GameObject:
   m_ObjectHideFlags: 0

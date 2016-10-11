@@ -51,16 +51,32 @@ public class UnitArrays : MonoBehaviour {
 
     public GameObject scan(GameObject scanner, string s) {
 
+        GameObject target = null;
+        float distance = Mathf.Infinity;
+
         if (s == "Ally") {
             foreach (GameObject o in allies) {
+                float enemyDist = Vector3.Distance(scanner.transform.position, o.transform.position);
+                if (enemyDist <= distance || target == null) {
+                    distance = enemyDist;
+                    target = o;
 
+                   
+                }
             }
+            if (target == null) Debug.Log("No target");
         }
         else if (s == "Enemy") {
-
+            foreach (GameObject o in enemies){
+                float enemyDist = Vector3.Distance(scanner.transform.position, o.transform.position);
+                if (enemyDist <= distance || target == null){
+                    distance = enemyDist;
+                    target = o;
+                }
+            }
         }
 
-        return null;
+        return target;
     }
 
 	// Update is called once per frame

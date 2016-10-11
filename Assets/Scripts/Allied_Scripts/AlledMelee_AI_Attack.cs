@@ -26,7 +26,7 @@ public class AlledMelee_AI_Attack : MonoBehaviour {
 
                    // nearestPlayer.GetComponent<EnemyMelee_AI_Health>().currentHealth -= attackDamage;
                     nearestPlayer.GetComponent<EnemyMelee_AI_Health>().TakeDamage(attackDamage);
-                    Debug.Log(nearestPlayer.GetComponent<EnemyMelee_AI_Health>().currentHealth);
+                    Debug.Log("Dealt" + nearestPlayer.GetComponent<EnemyMelee_AI_Health>().currentHealth + " damage to enemy");
                 }
             }
         }
