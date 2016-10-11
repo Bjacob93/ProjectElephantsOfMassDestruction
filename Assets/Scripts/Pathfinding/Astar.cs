@@ -13,7 +13,7 @@ public class Astar : MonoBehaviour {
 	public float speed = 30f;
 	float rotationSpeed = 10f;
 	public Vector3 direction;
-	float meleeRange = 1f;
+	public float meleeRange = 3f;
 	float engagementRange = 10f;
 	bool isInMeleeRange = false;
 	bool hasPathToEnemy = false;

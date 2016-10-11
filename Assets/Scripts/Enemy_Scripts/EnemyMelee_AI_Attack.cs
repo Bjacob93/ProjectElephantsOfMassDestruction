@@ -8,11 +8,11 @@ public class EnemyMelee_AI_Attack : MonoBehaviour {
 	public int attackDamage = 20; // damage of each attack
 
 	public GameObject nearestPlayer = null;
-	public float MeleeRange = 1f;
+	public float MeleeRange = 3f;
 	
 	void Update () {
 
-		nearestPlayer = GetComponent<EnemyMelee_AI_Movement>().nearestPlayer;
+		nearestPlayer = this.GetComponent<EnemyMelee_AI_Movement>().nearestPlayer;
 
         if (nearestPlayer != null) {
             float dist = Vector3.Distance(this.transform.position, nearestPlayer.transform.position);

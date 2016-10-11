@@ -3,8 +3,8 @@ using System.Collections;
 
 public class EnemyMelee_AI_Movement : MonoBehaviour {
 
-	public float speed = 10f;
-	float MeleeRange = 10f;
+	public float speed = 3f;
+	float MeleeRange = 3f;
 
 	// Use this for initialization
 	GameObject pathGO;
@@ -53,7 +53,7 @@ public class EnemyMelee_AI_Movement : MonoBehaviour {
 		    }
         }
 		
-		if (dist < 100 && dist > 5) {
+		if (dist < 50 && dist > 1) {
 			transform.position = Vector3.MoveTowards (this.transform.position, nearestPlayer.transform.position, speed * Time.deltaTime);
 
 			if (nearestPlayer == null) {
