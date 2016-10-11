@@ -31,7 +31,6 @@ public class Astar : MonoBehaviour {
 	public GameObject nearestEnemy = null;
 	public GameObject previousEnemy = null;
 	public float distanceToEnemy;
-	//float distFar = Mathf.Infinity;
 
 	//Float determines when a waypoint is close enough. Int references current target waypoint.
 	public float maxWaypointDistance = 3f;
@@ -66,20 +65,8 @@ public class Astar : MonoBehaviour {
 
         distanceToEnemy = Vector3.Distance(transform.position, nearestEnemy.transform.position);
 
-        //GameObject[] enemyUnits = GameObject.FindGameObjectsWithTag ("enemyUnits");
-        //distFar = Mathf.Infinity;
-
-        //if (enemyUnits != null) {
-        //	foreach (GameObject enemy in enemyUnits) {
-        //		distanceToEnemy = Vector3.Distance (transform.position, enemy.transform.position);
-
-        //		if (nearestEnemy == null || distanceToEnemy < distFar) {
-        //			nearestEnemy = enemy;
-        //			distFar = distanceToEnemy;
-        //}
-        //}
         PathToEnemy();
-		//}
+
 	}
 
 	//Method for pathing to the nearest enemy.
@@ -125,8 +112,7 @@ public class Astar : MonoBehaviour {
     }
 
 	//Method that rotates the unit towards its target.
-	void RotateUnit(Vector3 direction){
-		pathCooldownRemaining -= Time.deltaTime;
+	void RotateUnit(Vector3 direction){ 
 
 		if (direction == Vector3.zero) {
 			return;
@@ -157,6 +143,7 @@ public class Astar : MonoBehaviour {
 	}
 
 	void Update () {
+        pathCooldownRemaining -= Time.deltaTime;
 
 		//Find nearest enemy, and path to it if it exist and is close enough.
 		FindNearestEnemy();
