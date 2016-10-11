@@ -14,7 +14,7 @@ public class Astar : MonoBehaviour {
 	float rotationSpeed = 10f;
 	public Vector3 direction;
 	public float meleeRange = 3f;
-	float engagementRange = 10f;
+	public float engagementRange = 10f;
 	bool isInMeleeRange = false;
 	bool hasPathToEnemy = false;
 	bool goToWaypoint = true;
@@ -30,7 +30,7 @@ public class Astar : MonoBehaviour {
 	//Cache variables for enemies
 	public GameObject nearestEnemy = null;
 	public GameObject previousEnemy = null;
-	float distanceToEnemy;
+	public float distanceToEnemy;
 	float distFar = Mathf.Infinity;
 
 	//Float determines when a waypoint is close enough. Int references current target waypoint.
