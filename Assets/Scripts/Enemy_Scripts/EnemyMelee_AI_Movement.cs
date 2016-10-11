@@ -12,7 +12,7 @@ public class EnemyMelee_AI_Movement : MonoBehaviour {
 	Transform unitTransform;
 	int enemyPathNodeIndex = 0;
 	bool isInMeleeRange;
-	public GameObject nearestPlayer = null;
+	public GameObject nearestPlayer;
 
 	// Use this for initialization
 	void Start () {
