@@ -85,5 +85,5 @@ MonoBehaviour:
   - {fileID: 1000010551218826, guid: 61e321e535473a14f8a19c442f81cd3b, type: 2}
   enemyCount: 2
   spawnWait: 1
-  startWait: 2
+  startWait: 1
   waveWait: 10
