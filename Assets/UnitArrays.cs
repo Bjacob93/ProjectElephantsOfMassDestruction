@@ -20,7 +20,7 @@ public class UnitArrays : MonoBehaviour {
                 }
             }
         }
-        else if (unit.tag == "enemyUnits") {
+		else if (unit.tag == "enemyUnits") {
             for (int i = 0; i < allies.Length; i++) {
                 if (enemies[i] == null) {
                     enemies[i] = unit;

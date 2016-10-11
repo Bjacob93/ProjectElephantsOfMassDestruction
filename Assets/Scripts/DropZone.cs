@@ -39,6 +39,6 @@ public class DropZone : MonoBehaviour, IDropHandler, IPointerEnterHandler, IPoin
         DragNDrop d = eventData.pointerDrag.GetComponent<DragNDrop>();
         if (d != null) {
             d.returnToHand = this.transform;
-        }
+        } 
     }
 }

@@ -7,7 +7,6 @@ public class BasicCheckpointScript : MonoBehaviour {
     public Vector3 rangedDistination;
 
     public float controlRange = 10f;
-    public string ID;
 
 	// Use this for initialization
 	void Start () {
