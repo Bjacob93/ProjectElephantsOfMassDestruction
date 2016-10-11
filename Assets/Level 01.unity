@@ -37,7 +37,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44692492, g: 0.4967869, b: 0.57508546, a: 1}
+  m_IndirectSpecularColor: {r: 0.44692534, g: 0.49678725, b: 0.5750856, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -367,6 +367,7 @@ MonoBehaviour:
   meleeDistination: {x: 0, y: 0, z: 0}
   rangedDistination: {x: 0, y: 0, z: 0}
   controlRange: 10
+  ID: Checkpoint A
 --- !u!1 &525931694
 GameObject:
   m_ObjectHideFlags: 0
@@ -1731,7 +1732,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   targetPosition: {x: -45, y: 0, z: -45}
-  speed: 80
+  speed: 75
   direction: {x: 0, y: 0, z: 0}
   receivedNewDestination: 0
   nearestEnemy: {fileID: 0}
@@ -2096,6 +2097,7 @@ MonoBehaviour:
   meleeDistination: {x: 0, y: 0, z: 0}
   rangedDistination: {x: 0, y: 0, z: 0}
   controlRange: 10
+  ID: Checkpoint B
 --- !u!1001 &1940627421
 Prefab:
   m_ObjectHideFlags: 0
