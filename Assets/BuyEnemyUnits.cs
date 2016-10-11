@@ -17,8 +17,6 @@ public class BuyEnemyUnits : MonoBehaviour
 
     void Update()
     {
-        
-        Debug.Log("her");
         restartTimer += Time.deltaTime;
         ScoreManager sm = GameObject.FindObjectOfType<ScoreManager>();
         if (enemymoney <= 0)
@@ -34,7 +32,7 @@ public class BuyEnemyUnits : MonoBehaviour
             if (enemymoney > 0)
             {
                 enemymoney -= GameObject.FindObjectOfType<AlliedMelee_AI_Health>().cost;
-                Instantiate(enemyUnits, new Vector3(-45, 0, -45), Quaternion.Euler(0, 0, 0));
+                Instantiate(enemyUnits, new Vector3(-45, 1, -45), Quaternion.Euler(0, 0, 0));
                 restartTimer = 0;
             }
 

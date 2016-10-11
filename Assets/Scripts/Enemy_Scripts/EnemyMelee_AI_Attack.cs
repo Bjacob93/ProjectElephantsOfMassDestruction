@@ -12,7 +12,7 @@ public class EnemyMelee_AI_Attack : MonoBehaviour {
 	
 	void Update () {
 
-		nearestPlayer = this.GetComponent<EnemyMelee_AI_Movement>().nearestPlayer;
+		nearestPlayer = this.GetComponent<AstarEnemy>().nearestEnemy;
 
         if (nearestPlayer != null) {
             float dist = Vector3.Distance(this.transform.position, nearestPlayer.transform.position);

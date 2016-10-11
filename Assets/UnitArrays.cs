@@ -13,6 +13,7 @@ public class UnitArrays : MonoBehaviour {
 	
     public void add(GameObject unit, string s)
     {
+        Debug.Log("Tried to add unit to array");
         if (s == "playerUnit"){
             for (int i = 0; i<allies.Length; i++) {
                 if(allies[i] == null){
@@ -20,14 +21,13 @@ public class UnitArrays : MonoBehaviour {
                 }
             }
         }
-		else if (unit.tag == "enemyUnit") {
+		else if (s == "enemyUnit") {
             for (int i = 0; i < allies.Length; i++) {
                 if (enemies[i] == null) {
                     enemies[i] = unit;
                 }
             }
         }
-        else return;
     }
 
     public void remove(GameObject unit, string s)
@@ -65,15 +65,6 @@ public class UnitArrays : MonoBehaviour {
                     }
                 }
             }
-            //foreach (GameObject o in allies) {
-            //    float enemyDist = Vector3.Distance(scanner.transform.position, o.transform.position);
-            //    if (enemyDist <= distance || target == null) {
-            //        distance = enemyDist;
-            //        target = o;
-
-                   
-            //    }
-            //}
         }
         else if (s == "Enemy") {
             for (int i = 0; i < enemies.Length; i++){
@@ -86,20 +77,8 @@ public class UnitArrays : MonoBehaviour {
                     }
                 }  
             }
-            //foreach (GameObject o in enemies) {
-            //    float enemyDist = Vector3.Distance(scanner.transform.position, o.transform.position);
-            //    if (enemyDist <= distance || target == null) {
-            //        distance = enemyDist;
-            //        target = o;
-            //    }
-            //}
         }
-
         return target;
     }
 
-	// Update is called once per frame
-	void Update () {
-	
-	}
 }

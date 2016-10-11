@@ -23,9 +23,9 @@ public class Astar : MonoBehaviour {
     //Boolean controlled by checkpoints
     public bool receivedNewDestination = false;
 
-	//Cache variables that limits calls to pathfinding to once every second.
-	float pathCooldown = 1;
-	float pathCooldownRemaining = 0;
+    //Cache variables that limits calls to pathfinding to once every second.
+    bool pathCompleted = false;
+
 
 	//Cache variables for enemies
 	public GameObject nearestEnemy = null;
@@ -52,6 +52,7 @@ public class Astar : MonoBehaviour {
 		if (!p.error) {
 			path = p;
 			currentWaypoint = 0;
+            pathCompleted = true;
 		}
 	}
 
@@ -71,15 +72,18 @@ public class Astar : MonoBehaviour {
 
 	//Method for pathing to the nearest enemy.
 	void PathToEnemy () {
-		if (pathCooldownRemaining <= 0 && !hasPathToEnemy) {
-			pathCooldownRemaining = pathCooldown;
+		if (pathCompleted && !hasPathToEnemy) {
 			//Generate new path to nearest enemy, if within engagement range.
 			if (nearestEnemy != null && distanceToEnemy <= engagementRange) {
-				seeker.StartPath (transform.position, nearestEnemy.transform.position, OnPathComplete);
-				previousEnemy = nearestEnemy;
-				hasPathToEnemy = true;
-				goToWaypoint = false;
-				movingToWaypoint = false;
+                if (pathCompleted) {
+                    pathCompleted = false;
+                    seeker.StartPath(transform.position, nearestEnemy.transform.position, OnPathComplete);
+                    previousEnemy = nearestEnemy;
+                    hasPathToEnemy = true;
+                    goToWaypoint = false;
+                    movingToWaypoint = false;
+                }
+				
 			}
 		} else if (distanceToEnemy <= engagementRange && previousEnemy != nearestEnemy) {
 			hasPathToEnemy = false;
@@ -100,14 +104,22 @@ public class Astar : MonoBehaviour {
 	//Make a new path to the target position, if not currently pathing to enemy, and not already pathing to the targe position.
 	void PathToWaypoint(){
 		if (goToWaypoint && !movingToWaypoint) {
-			seeker.StartPath (transform.position, targetPosition, OnPathComplete);
+            if (pathCompleted) {
+                pathCompleted = false;
+                seeker.StartPath(transform.position, targetPosition, OnPathComplete);
+            }
+            
 		}
 	}
 
     //Path to new destination, if a new destination has been received by checkpoint, building, etc.
     void PathToNewDestination()
     {
-        seeker.StartPath(transform.position, targetPosition, OnPathComplete);
+        if (pathCompleted)
+        {
+            pathCompleted = false;
+            seeker.StartPath(transform.position, targetPosition, OnPathComplete);
+        }
         receivedNewDestination = false;
     }
 
@@ -143,7 +155,6 @@ public class Astar : MonoBehaviour {
 	}
 
 	void Update () {
-        pathCooldownRemaining -= Time.deltaTime;
 
 		//Find nearest enemy, and path to it if it exist and is close enough.
 		FindNearestEnemy();
