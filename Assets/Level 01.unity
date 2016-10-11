@@ -350,10 +350,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemiesArray: []
-  enemyCount: 20
-  spawnWait: 2
-  startWait: 1
-  waveWait: 1
+  enemyCount: 0
+  spawnWait: 0
+  startWait: 0
+  waveWait: 0
+  spawnCD: 0.25
+  spawnCDremaning: 0
+  waveComps:
+  - enemyPrefab: {fileID: 1000011856772026, guid: afde2324dfd96bb47bda104f702e4560,
+      type: 2}
+    num: 20
 --- !u!1 &168021581
 GameObject:
   m_ObjectHideFlags: 0
@@ -896,11 +902,6 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 354822401}
   m_Mesh: {fileID: 0}
---- !u!1 &368778478 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 1000011774838024, guid: afde2324dfd96bb47bda104f702e4560,
-    type: 2}
-  m_PrefabInternal: {fileID: 1836185052}
 --- !u!1 &387951568
 GameObject:
   m_ObjectHideFlags: 0
@@ -4686,31 +4687,6 @@ Prefab:
       propertyPath: m_RootOrder
       value: 2
       objectReference: {fileID: 0}
-    - target: {fileID: 114000011732260168, guid: afde2324dfd96bb47bda104f702e4560,
-        type: 2}
-      propertyPath: MeleeRange
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 114000012025344310, guid: afde2324dfd96bb47bda104f702e4560,
-        type: 2}
-      propertyPath: meleeRange
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 114000011647893440, guid: afde2324dfd96bb47bda104f702e4560,
-        type: 2}
-      propertyPath: MeleeRange
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 114000010705102416, guid: afde2324dfd96bb47bda104f702e4560,
-        type: 2}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 23000013412709086, guid: afde2324dfd96bb47bda104f702e4560,
-        type: 2}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: 181aac5280d383e4d8fd550241bfbfe1, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: afde2324dfd96bb47bda104f702e4560, type: 2}
   m_IsPrefabParent: 0
@@ -4805,7 +4781,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8e966f666731eba4aa929b82b86b6b81, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerUnits: {fileID: 368778478}
+  playerUnits: {fileID: 1000011774838024, guid: afde2324dfd96bb47bda104f702e4560,
+    type: 2}
 --- !u!1 &1883621715
 GameObject:
   m_ObjectHideFlags: 0

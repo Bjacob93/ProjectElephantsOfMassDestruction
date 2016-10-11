@@ -31,7 +31,7 @@ public class Astar : MonoBehaviour {
 	public GameObject nearestEnemy = null;
 	public GameObject previousEnemy = null;
 	public float distanceToEnemy;
-	float distFar = Mathf.Infinity;
+	//float distFar = Mathf.Infinity;
 
 	//Float determines when a waypoint is close enough. Int references current target waypoint.
 	public float maxWaypointDistance = 3f;
@@ -58,21 +58,26 @@ public class Astar : MonoBehaviour {
 
 	//Method for finding all enemies.
 	void FindNearestEnemy () {
-		//Put all enemies into an array, then find the one which is nearest.
-		GameObject[] enemyUnits = GameObject.FindGameObjectsWithTag ("enemyUnits");
-		distFar = Mathf.Infinity;
+        //Put all enemies into an array, then find the one which is nearest.
+        GameObject unitManager = GameObject.Find("UnitManager");
+        nearestEnemy = unitManager.GetComponent<UnitArrays>().scan(this.gameObject, "Enemy");
 
-		if (enemyUnits != null) {
-			foreach (GameObject enemy in enemyUnits) {
-				distanceToEnemy = Vector3.Distance (transform.position, enemy.transform.position);
+        distanceToEnemy = Vector3.Distance(transform.position, nearestEnemy.transform.position);
 
-				if (nearestEnemy == null || distanceToEnemy < distFar) {
-					nearestEnemy = enemy;
-					distFar = distanceToEnemy;
-				}
-			}
-			PathToEnemy();
-		}
+        //GameObject[] enemyUnits = GameObject.FindGameObjectsWithTag ("enemyUnits");
+        //distFar = Mathf.Infinity;
+
+        //if (enemyUnits != null) {
+        //	foreach (GameObject enemy in enemyUnits) {
+        //		distanceToEnemy = Vector3.Distance (transform.position, enemy.transform.position);
+
+        //		if (nearestEnemy == null || distanceToEnemy < distFar) {
+        //			nearestEnemy = enemy;
+        //			distFar = distanceToEnemy;
+        //}
+        //}
+        PathToEnemy();
+		//}
 	}
 
 	//Method for pathing to the nearest enemy.

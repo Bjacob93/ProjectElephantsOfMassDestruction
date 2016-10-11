@@ -13,6 +13,7 @@ public class EnemyMelee_AI_Movement : MonoBehaviour {
 	int enemyPathNodeIndex = 0;
 	bool isInMeleeRange;
 	public GameObject nearestPlayer;
+    float dist = Mathf.Infinity;
 
 	// Use this for initialization
 	void Start () {
@@ -34,26 +35,31 @@ public class EnemyMelee_AI_Movement : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
-		
-		GameObject[] playerUnits = GameObject.FindGameObjectsWithTag ("playerUnits");
-		if (nearestPlayer != null) {
-			Debug.Log ("Enemy Found");
-		}
-		nearestPlayer = null;
-		float dist = Mathf.Infinity;
 
-        if (playerUnits != null){
-            foreach (GameObject e in playerUnits) {
-			    float d = Vector3.Distance (transform.position, e.transform.position);
+        GameObject unitManager = GameObject.Find("UnitManager");
+        nearestPlayer = unitManager.GetComponent<UnitArrays>().scan(this.gameObject, "Ally");
 
-			    if (nearestPlayer == null || d < dist) {
-				    nearestPlayer = e;
-				    dist = d;
-			    }
-		    }
-        }
-		
-		if (dist < 50 && dist > 1) {
+        dist = Vector3.Distance(transform.position, nearestPlayer.transform.position);
+
+        //GameObject[] playerUnits = GameObject.FindGameObjectsWithTag ("playerUnits");
+        //if (nearestPlayer != null) {
+        //	Debug.Log ("Enemy Found");
+        //}
+        //nearestPlayer = null;
+       
+
+        //      if (playerUnits != null){
+        //          foreach (GameObject e in playerUnits) {
+        //	    float d = Vector3.Distance (transform.position, e.transform.position);
+
+        //	    if (nearestPlayer == null || d < dist) {
+        //		    nearestPlayer = e;
+        //		    dist = d;
+        //	    }
+        //    }
+        //      }
+
+        if (dist < 50 && dist > 1) {
 			transform.position = Vector3.MoveTowards (this.transform.position, nearestPlayer.transform.position, speed * Time.deltaTime);
 
 			if (nearestPlayer == null) {
