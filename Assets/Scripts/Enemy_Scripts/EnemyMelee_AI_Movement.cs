@@ -3,32 +3,42 @@ using System.Collections;
 
 public class EnemyMelee_AI_Movement : MonoBehaviour {
 
-	public float speed = 10f;
-	float MeleeRange = 10f;
+	public float speed = 3f;
+	float MeleeRange = 3f;
 
 	// Use this for initialization
 	GameObject pathGO;
 	Transform targetPathNode;
 	Transform unitTransform;
-	int enemyPathNodeIndex = 12;
+	int enemyPathNodeIndex = 0;
 	bool isInMeleeRange;
-	public GameObject nearestPlayer = null;
+	public GameObject nearestPlayer;
 
 	// Use this for initialization
 	void Start () {
-		pathGO = GameObject.Find ("Path");
+
+		if (Random.Range (0, 100) < 50) {
+			pathGO = GameObject.Find ("EnemyPathA");
+			Debug.Log ("A");
+		} else {
+			pathGO = GameObject.Find ("EnemyPathB");
+			Debug.Log ("A");
+		}
 		isInMeleeRange = false;
 	}
 
 	void GetNextPathNode(){
 		targetPathNode = pathGO.transform.GetChild (enemyPathNodeIndex);
-		enemyPathNodeIndex--;
+		enemyPathNodeIndex++;
 	}
 
 	// Update is called once per frame
 	void Update () {
 		
 		GameObject[] playerUnits = GameObject.FindGameObjectsWithTag ("playerUnits");
+		if (nearestPlayer != null) {
+			Debug.Log ("Enemy Found");
+		}
 		nearestPlayer = null;
 		float dist = Mathf.Infinity;
 
@@ -43,7 +53,7 @@ public class EnemyMelee_AI_Movement : MonoBehaviour {
 		    }
         }
 		
-		if (dist < 100 && dist > 5) {
+		if (dist < 50 && dist > 1) {
 			transform.position = Vector3.MoveTowards (this.transform.position, nearestPlayer.transform.position, speed * Time.deltaTime);
 
 			if (nearestPlayer == null) {
@@ -90,7 +100,7 @@ public class EnemyMelee_AI_Movement : MonoBehaviour {
 		} 
 
 	void ReachedPlayerBase(){
-	//	GameObject.FindObjectOfType<GameManager> ().loseLives();
+		GameObject.FindObjectOfType<ScoreManager> ().LoseLife();
 		Destroy (gameObject);
 	}
 }

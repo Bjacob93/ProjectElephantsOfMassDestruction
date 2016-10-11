@@ -5,10 +5,10 @@ public class AlledMelee_AI_Attack : MonoBehaviour {
 
 	public float meleeCoolDown = 0.5f;
 	float meleeCoolDownLeft = 0f;
-	public int attackDamage = 20; // damage of each attack
+	int attackDamage = 20; // damage of each attack
 
 	public GameObject nearestPlayer;
-	public float MeleeRange = 1f;
+	public float MeleeRange = 3f;
 	
 	void Update () {
 	
@@ -24,8 +24,8 @@ public class AlledMelee_AI_Attack : MonoBehaviour {
                 {
                     meleeCoolDownLeft = meleeCoolDown;
 
-                    nearestPlayer.GetComponent<EnemyMelee_AI_Health>().currentHealth -= attackDamage;
-                    //nearestPlayer.GetComponent<EnemyMelee_AI_Health>().TakeDamage(attackDamage);
+                   // nearestPlayer.GetComponent<EnemyMelee_AI_Health>().currentHealth -= attackDamage;
+                    nearestPlayer.GetComponent<EnemyMelee_AI_Health>().TakeDamage(attackDamage);
                     Debug.Log(nearestPlayer.GetComponent<EnemyMelee_AI_Health>().currentHealth);
                 }
             }
