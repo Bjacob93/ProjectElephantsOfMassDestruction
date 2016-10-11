@@ -3,110 +3,98 @@ using System.Collections;
 
 public class EnemyMelee_AI_Movement : MonoBehaviour {
 
-	public float speed = 3f;
-	float MeleeRange = 3f;
+    public float speed = 3f;
+    float MeleeRange = 3f;
 
-	// Use this for initialization
-	GameObject pathGO;
-	Transform targetPathNode;
-	Transform unitTransform;
-	int enemyPathNodeIndex = 0;
-	bool isInMeleeRange;
-	public GameObject nearestPlayer;
+    // Use this for initialization
+    GameObject pathGO;
+    Transform targetPathNode;
+    Transform unitTransform;
+    int enemyPathNodeIndex = 0;
+    bool isInMeleeRange;
+    public GameObject nearestPlayer;
     float dist = Mathf.Infinity;
+    GameObject unitManager;
 
-	// Use this for initialization
-	void Start () {
+    // Use this for initialization
+    void Start() {
 
-		if (Random.Range (0, 100) < 50) {
-			pathGO = GameObject.Find ("EnemyPathA");
-			Debug.Log ("A");
-		} else {
-			pathGO = GameObject.Find ("EnemyPathB");
-			Debug.Log ("A");
-		}
-		isInMeleeRange = false;
-	}
+        if (Random.Range(0, 100) < 50) {
+            pathGO = GameObject.Find("EnemyPathA");
+            Debug.Log("A");
+        } else {
+            pathGO = GameObject.Find("EnemyPathB");
+            Debug.Log("A");
+        }
+        isInMeleeRange = false;
+    }
 
-	void GetNextPathNode(){
-		targetPathNode = pathGO.transform.GetChild (enemyPathNodeIndex);
-		enemyPathNodeIndex++;
-	}
+    void GetNextPathNode() {
+        targetPathNode = pathGO.transform.GetChild(enemyPathNodeIndex);
+        enemyPathNodeIndex++;
+    }
 
-	// Update is called once per frame
-	void Update () {
+    // Update is called once per frame
+    void Update() {
 
-        GameObject unitManager = GameObject.Find("UnitManager");
+        unitManager = GameObject.Find("UnitManager");
         nearestPlayer = unitManager.GetComponent<UnitArrays>().scan(this.gameObject, "Ally");
 
-        dist = Vector3.Distance(transform.position, nearestPlayer.transform.position);
+        if (nearestPlayer != null) {
 
-        //GameObject[] playerUnits = GameObject.FindGameObjectsWithTag ("playerUnits");
-        //if (nearestPlayer != null) {
-        //	Debug.Log ("Enemy Found");
-        //}
-        //nearestPlayer = null;
-       
+            dist = Vector3.Distance(transform.position, nearestPlayer.transform.position);
 
-        //      if (playerUnits != null){
-        //          foreach (GameObject e in playerUnits) {
-        //	    float d = Vector3.Distance (transform.position, e.transform.position);
+            if (dist < 50 && dist > 1)
+            {
+                transform.position = Vector3.MoveTowards(this.transform.position, nearestPlayer.transform.position, speed * Time.deltaTime);
 
-        //	    if (nearestPlayer == null || d < dist) {
-        //		    nearestPlayer = e;
-        //		    dist = d;
-        //	    }
-        //    }
-        //      }
+                if (nearestPlayer == null)
+                {
+                    //no players?
+                    Debug.Log("No enemies?");
+                }
 
-        if (dist < 50 && dist > 1) {
-			transform.position = Vector3.MoveTowards (this.transform.position, nearestPlayer.transform.position, speed * Time.deltaTime);
+                //Vector3 Lookdir = nearestPlayer.transform.position - transform.position;
+                //Quaternion lookRot = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(Lookdir), 360 * Time.deltaTime);
+                //transform.eulerAngles = new Vector3(0, 0, transform.eulerAngles.z);
 
-			if (nearestPlayer == null) {
-				//no players?
-				Debug.Log ("No enemies?");
-			}
+                if (dist < MeleeRange)
+                {
+                    isInMeleeRange = true;
+                }
 
-            //Vector3 Lookdir = nearestPlayer.transform.position - transform.position;
-            //Quaternion lookRot = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(Lookdir), 360 * Time.deltaTime);
-            //transform.eulerAngles = new Vector3(0, 0, transform.eulerAngles.z);
+                //Debug.Log (isInMeleeRange);
+            }
+       } else if (isInMeleeRange == false)
+            {
+                if (targetPathNode == null) {
+                    GetNextPathNode();
+                    if (targetPathNode == null) {
+                        //at player base
+                        ReachedPlayerBase();
+                    }
+                }
+                Vector3 dir = targetPathNode.position - this.transform.localPosition;
 
-            if (dist < MeleeRange) {
-					isInMeleeRange = true;
-				} 
+                float distThisFrame = speed * Time.deltaTime;
 
-			//Debug.Log (isInMeleeRange);
+                if (dir.magnitude <= distThisFrame) {
+                    // we reached the node
+                    targetPathNode = null;
+                } else {
+                    //TODO: add the A* pathfinding instead
+                    //move towards node
+                    transform.Translate(dir.normalized * distThisFrame, Space.World);
+                    Quaternion targetRotation = Quaternion.LookRotation(dir);
+                    this.transform.rotation = Quaternion.Lerp(this.transform.rotation, targetRotation, Time.deltaTime * 5);
+                }
 
-		}else if (isInMeleeRange == false)
-		{
-			if (targetPathNode == null) {
-				GetNextPathNode ();
-				if (targetPathNode == null) {
-					//at player base
-					ReachedPlayerBase ();
-				}
-			}
-			Vector3 dir = targetPathNode.position - this.transform.localPosition;
+            }
 
-			float distThisFrame = speed * Time.deltaTime;
+        }
 
-			if (dir.magnitude <= distThisFrame) {
-				// we reached the node
-				targetPathNode = null;
-			} else {
-				//TODO: add the A* pathfinding instead
-				//move towards node
-				transform.Translate (dir.normalized * distThisFrame, Space.World);
-				Quaternion targetRotation = Quaternion.LookRotation (dir);
-				this.transform.rotation = Quaternion.Lerp (this.transform.rotation, targetRotation, Time.deltaTime * 5);
-			}
-
-		}
-
-		} 
-
-	void ReachedPlayerBase(){
-		GameObject.FindObjectOfType<ScoreManager> ().LoseLife();
-		Destroy (gameObject);
-	}
-}
+        void ReachedPlayerBase(){
+            GameObject.FindObjectOfType<ScoreManager>().LoseLife();
+            Destroy(gameObject);
+        }
+    }

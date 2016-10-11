@@ -62,6 +62,8 @@ public class Astar : MonoBehaviour {
         GameObject unitManager = GameObject.Find("UnitManager");
         nearestEnemy = unitManager.GetComponent<UnitArrays>().scan(this.gameObject, "Enemy");
 
+        if (nearestEnemy == null) return;
+
         distanceToEnemy = Vector3.Distance(transform.position, nearestEnemy.transform.position);
 
         //GameObject[] enemyUnits = GameObject.FindGameObjectsWithTag ("enemyUnits");

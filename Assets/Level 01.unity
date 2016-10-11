@@ -357,9 +357,9 @@ MonoBehaviour:
   spawnCD: 0.25
   spawnCDremaning: 0
   waveComps:
-  - enemyPrefab: {fileID: 1000011856772026, guid: afde2324dfd96bb47bda104f702e4560,
+  - enemyPrefab: {fileID: 1000011128704274, guid: d543aa80740de434aa925b89c77b4f33,
       type: 2}
-    num: 20
+    num: 10
 --- !u!1 &168021581
 GameObject:
   m_ObjectHideFlags: 0
@@ -1375,7 +1375,6 @@ MonoBehaviour:
   meleeDistination: {x: 0, y: 0, z: 0}
   rangedDistination: {x: 0, y: 0, z: 0}
   controlRange: 10
-  ID: Checkpoint A
 --- !u!1 &525931694
 GameObject:
   m_ObjectHideFlags: 0
@@ -3014,6 +3013,48 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 961174730}
   m_Mesh: {fileID: 0}
+--- !u!1001 &962364137
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4000013735507610, guid: afde2324dfd96bb47bda104f702e4560, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000013735507610, guid: afde2324dfd96bb47bda104f702e4560, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000013735507610, guid: afde2324dfd96bb47bda104f702e4560, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000013735507610, guid: afde2324dfd96bb47bda104f702e4560, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000013735507610, guid: afde2324dfd96bb47bda104f702e4560, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000013735507610, guid: afde2324dfd96bb47bda104f702e4560, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000013735507610, guid: afde2324dfd96bb47bda104f702e4560, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000013735507610, guid: afde2324dfd96bb47bda104f702e4560, type: 2}
+      propertyPath: m_RootOrder
+      value: 2
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: afde2324dfd96bb47bda104f702e4560, type: 2}
+  m_IsPrefabParent: 0
 --- !u!1 &1102535768
 GameObject:
   m_ObjectHideFlags: 0
@@ -4648,48 +4689,6 @@ Camera:
   m_PrefabParentObject: {fileID: 20000012884806692, guid: 9ea4f18199eca014faad2940ee5e1b63,
     type: 2}
   m_PrefabInternal: {fileID: 35360694}
---- !u!1001 &1836185052
-Prefab:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 4000013735507610, guid: afde2324dfd96bb47bda104f702e4560, type: 2}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4000013735507610, guid: afde2324dfd96bb47bda104f702e4560, type: 2}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4000013735507610, guid: afde2324dfd96bb47bda104f702e4560, type: 2}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4000013735507610, guid: afde2324dfd96bb47bda104f702e4560, type: 2}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4000013735507610, guid: afde2324dfd96bb47bda104f702e4560, type: 2}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4000013735507610, guid: afde2324dfd96bb47bda104f702e4560, type: 2}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4000013735507610, guid: afde2324dfd96bb47bda104f702e4560, type: 2}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4000013735507610, guid: afde2324dfd96bb47bda104f702e4560, type: 2}
-      propertyPath: m_RootOrder
-      value: 2
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_ParentPrefab: {fileID: 100100000, guid: afde2324dfd96bb47bda104f702e4560, type: 2}
-  m_IsPrefabParent: 0
 --- !u!1 &1866091526
 GameObject:
   m_ObjectHideFlags: 0
@@ -4781,7 +4780,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8e966f666731eba4aa929b82b86b6b81, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerUnits: {fileID: 1000011774838024, guid: afde2324dfd96bb47bda104f702e4560,
+  playerUnits: {fileID: 1000012104990920, guid: e80221baaaed1a54e9596458826acf7d,
     type: 2}
 --- !u!1 &1883621715
 GameObject:
@@ -4858,7 +4857,6 @@ MonoBehaviour:
   meleeDistination: {x: 0, y: 0, z: 0}
   rangedDistination: {x: 0, y: 0, z: 0}
   controlRange: 10
-  ID: Checkpoint B
 --- !u!1 &1954770766
 GameObject:
   m_ObjectHideFlags: 0
