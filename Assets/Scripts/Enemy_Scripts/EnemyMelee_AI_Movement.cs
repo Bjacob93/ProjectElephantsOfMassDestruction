@@ -10,25 +10,35 @@ public class EnemyMelee_AI_Movement : MonoBehaviour {
 	GameObject pathGO;
 	Transform targetPathNode;
 	Transform unitTransform;
-	int enemyPathNodeIndex = 12;
+	int enemyPathNodeIndex = 0;
 	bool isInMeleeRange;
 	public GameObject nearestPlayer = null;
 
 	// Use this for initialization
 	void Start () {
-		pathGO = GameObject.Find ("Path");
+
+		if (Random.Range (0, 100) < 50) {
+			pathGO = GameObject.Find ("EnemyPathA");
+			Debug.Log ("A");
+		} else {
+			pathGO = GameObject.Find ("EnemyPathB");
+			Debug.Log ("A");
+		}
 		isInMeleeRange = false;
 	}
 
 	void GetNextPathNode(){
 		targetPathNode = pathGO.transform.GetChild (enemyPathNodeIndex);
-		enemyPathNodeIndex--;
+		enemyPathNodeIndex++;
 	}
 
 	// Update is called once per frame
 	void Update () {
 		
 		GameObject[] playerUnits = GameObject.FindGameObjectsWithTag ("playerUnits");
+		if (nearestPlayer != null) {
+			Debug.Log ("Enemy Found");
+		}
 		nearestPlayer = null;
 		float dist = Mathf.Infinity;
 
@@ -90,7 +100,7 @@ public class EnemyMelee_AI_Movement : MonoBehaviour {
 		} 
 
 	void ReachedPlayerBase(){
-	//	GameObject.FindObjectOfType<GameManager> ().loseLives();
+		GameObject.FindObjectOfType<ScoreManager> ().LoseLife();
 		Destroy (gameObject);
 	}
 }

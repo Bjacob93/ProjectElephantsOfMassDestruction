@@ -97,6 +97,7 @@ GameObject:
   - 114: {fileID: 114000013920842306}
   - 143: {fileID: 143000013848457388}
   - 114: {fileID: 114000010357701894}
+  - 114: {fileID: 114000013874642160}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: enemyUnits
@@ -393,8 +394,8 @@ MonoBehaviour:
     seed: 0
     pivotPointRoot: {fileID: 0}
     spreadOutCount: 1
-  showGraphs: 1
-  lastUniqueAreaIndex: 4
+  showGraphs: 0
+  lastUniqueAreaIndex: 7
 --- !u!114 &114000010990605558
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -436,7 +437,7 @@ MonoBehaviour:
   meleeCoolDown: 0.5
   attackDamage: 0
   nearestPlayer: {fileID: 0}
-  MeleeRange: 10
+  MeleeRange: 1
 --- !u!114 &114000011732260168
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -506,6 +507,19 @@ MonoBehaviour:
   bezierTangentLength: 0.4
   offset: 0.2
   factor: 0.1
+--- !u!114 &114000013874642160
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000011856772026}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b8bc76b850630a4449d48018abf46716, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 4
+  nearestPlayer: {fileID: 0}
 --- !u!114 &114000013920842306
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -520,7 +534,7 @@ MonoBehaviour:
   startingHealth: 100
   alliedArmour: 10
   currentHealth: 0
-  moneyValue: 5
+  moneyValue: 7
 --- !u!114 &114000014084708432
 MonoBehaviour:
   m_ObjectHideFlags: 1
