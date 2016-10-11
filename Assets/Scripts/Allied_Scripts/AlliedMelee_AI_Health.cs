@@ -17,7 +17,7 @@ public class AlliedMelee_AI_Health : MonoBehaviour {
 		currentHealth = startingHealth;
 
         unitManager = GameObject.Find("UnitManager");
-        unitManager.GetComponent<UnitArrays>().add(this.gameObject);
+        unitManager.GetComponent<UnitArrays>().add(this.gameObject, "playerUnit");
 
 	}
 	
@@ -48,7 +48,7 @@ public class AlliedMelee_AI_Health : MonoBehaviour {
 	{
 		//enemy is dead
 		Died = true;
-        unitManager.GetComponent<UnitArrays>().remove(this.gameObject);
-        Destroy (gameObject);
+        unitManager.GetComponent<UnitArrays>().remove(this.gameObject, "playerUnit");
+        Destroy (this.gameObject);
 	}
 }

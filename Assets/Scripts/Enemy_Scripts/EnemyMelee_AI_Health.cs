@@ -17,7 +17,7 @@ public class EnemyMelee_AI_Health : MonoBehaviour {
 
         unitManager = GameObject.Find("UnitManager");
 
-        unitManager.GetComponent<UnitArrays>().add(this.gameObject);
+        unitManager.GetComponent<UnitArrays>().add(this.gameObject, "enemyUnit");
 
     }
 	
@@ -50,8 +50,8 @@ public class EnemyMelee_AI_Health : MonoBehaviour {
 		Debug.Log ("Died");
 		GameObject.FindObjectOfType<ScoreManager> ().money += moneyValue;
 
-        unitManager.GetComponent<UnitArrays>().remove(this.gameObject);
+        unitManager.GetComponent<UnitArrays>().remove(this.gameObject, "enemyUnit");
 
-		Destroy (gameObject);
+		Destroy (this.gameObject);
 	}
 }

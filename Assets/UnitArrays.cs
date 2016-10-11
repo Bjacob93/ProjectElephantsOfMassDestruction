@@ -11,16 +11,16 @@ public class UnitArrays : MonoBehaviour {
 	
 	}
 	
-    public void add(GameObject unit)
+    public void add(GameObject unit, string s)
     {
-        if (unit.tag == "playerUnits"){
+        if (s == "playerUnit"){
             for (int i = 0; i<allies.Length; i++) {
                 if(allies[i] == null){
                     allies[i] = unit;
                 }
             }
         }
-		else if (unit.tag == "enemyUnits") {
+		else if (unit.tag == "enemyUnit") {
             for (int i = 0; i < allies.Length; i++) {
                 if (enemies[i] == null) {
                     enemies[i] = unit;
@@ -30,16 +30,16 @@ public class UnitArrays : MonoBehaviour {
         else return;
     }
 
-    public void remove(GameObject unit)
+    public void remove(GameObject unit, string s)
     {
-        if (unit.tag == "playerUnits") {
+        if (s == "playerUnit") {
             for (int i = 0; i < allies.Length; i++) {
                 if (allies[i] == unit){
                     allies[i] = null;
                 }
             }
         }
-        else if (unit.tag == "enemyUnits") {
+        else if (s == "enemyUnit") {
             for (int i = 0; i < allies.Length; i++) {
                 if (enemies[i] == unit) {
                     enemies[i] = null;
@@ -55,25 +55,44 @@ public class UnitArrays : MonoBehaviour {
         float distance = Mathf.Infinity;
 
         if (s == "Ally") {
-            foreach (GameObject o in allies) {
-                float enemyDist = Vector3.Distance(scanner.transform.position, o.transform.position);
-                if (enemyDist <= distance || target == null) {
-                    distance = enemyDist;
-                    target = o;
+            for (int i = 0; i < allies.Length; i++) {
+                if (enemies[i] != null){
+                    GameObject o = allies[i];
+                    float enemyDist = Vector3.Distance(scanner.transform.position, o.transform.position);
+                    if (enemyDist <= distance || target == null) {
+                        distance = enemyDist;
+                        target = o;
+                    }
+                }
+            }
+            //foreach (GameObject o in allies) {
+            //    float enemyDist = Vector3.Distance(scanner.transform.position, o.transform.position);
+            //    if (enemyDist <= distance || target == null) {
+            //        distance = enemyDist;
+            //        target = o;
 
                    
-                }
-            }
-            if (target == null) Debug.Log("No target");
+            //    }
+            //}
         }
         else if (s == "Enemy") {
-            foreach (GameObject o in enemies){
-                float enemyDist = Vector3.Distance(scanner.transform.position, o.transform.position);
-                if (enemyDist <= distance || target == null){
-                    distance = enemyDist;
-                    target = o;
-                }
+            for (int i = 0; i < enemies.Length; i++){
+                if(enemies[i] != null) {
+                    GameObject o = enemies[i];
+                    float enemyDist = Vector3.Distance(scanner.transform.position, o.transform.position);
+                    if (enemyDist <= distance || target == null){
+                        distance = enemyDist;
+                        target = o;
+                    }
+                }  
             }
+            //foreach (GameObject o in enemies) {
+            //    float enemyDist = Vector3.Distance(scanner.transform.position, o.transform.position);
+            //    if (enemyDist <= distance || target == null) {
+            //        distance = enemyDist;
+            //        target = o;
+            //    }
+            //}
         }
 
         return target;
