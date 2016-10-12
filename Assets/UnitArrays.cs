@@ -13,7 +13,6 @@ public class UnitArrays : MonoBehaviour {
 	
     public void add(GameObject unit, string s)
     {
-        Debug.Log("Tried to add unit to array");
         if (s == "playerUnit"){
             for (int i = 0; i<allies.Length; i++) {
                 if(allies[i] == null){

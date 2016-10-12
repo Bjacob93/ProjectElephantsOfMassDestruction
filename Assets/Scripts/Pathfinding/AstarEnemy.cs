@@ -31,10 +31,13 @@ public class AstarEnemy : MonoBehaviour
     public GameObject nearestEnemy = null;
     public GameObject previousEnemy = null;
     public float distanceToEnemy;
+    UnitArrays uArray;
+    GameObject unitManager;
 
     //Float determines when a waypoint is close enough. Int references current target waypoint.
     public float maxWaypointDistance = 3f;
     private int currentWaypoint;
+
 
     void Start()
     {
@@ -44,13 +47,15 @@ public class AstarEnemy : MonoBehaviour
 
         //Call the pathfinding method in 
         seeker.StartPath(transform.position, targetPosition, OnPathComplete);
+        unitManager = GameObject.Find("UnitManager");
+        uArray = unitManager.GetComponent<UnitArrays>();
     }
 
     /** Method to print out errors in the log if we get any. If we don't, it will set first waypoint 
 	in the path to be the current waypoint for the unit. */
     void OnPathComplete(Path p)
     {
-        Debug.Log("Path Completed" + p.error);
+        Debug.Log(p.error);
         if (!p.error)
         {
             path = p;
@@ -63,8 +68,8 @@ public class AstarEnemy : MonoBehaviour
     void FindNearestEnemy()
     {
         //Put all enemies into an array, then find the one which is nearest.
-        GameObject unitManager = GameObject.Find("UnitManager");
-        nearestEnemy = unitManager.GetComponent<UnitArrays>().scan(this.gameObject, "Ally");
+         
+        nearestEnemy = uArray.scan(this.gameObject, "Ally");
 
         if (nearestEnemy == null) return;
 
@@ -198,7 +203,6 @@ public class AstarEnemy : MonoBehaviour
 
         if (isInMeleeRange)
         {
-            Debug.Log("I'm in range");
             return;
         }
         else

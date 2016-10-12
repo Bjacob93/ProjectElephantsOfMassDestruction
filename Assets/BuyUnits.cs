@@ -1,6 +1,8 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+//TODO: Make "Not Enough Money" message appear in-game.
+
 public class BuyUnits : MonoBehaviour {
 
 	public GameObject playerUnits;
@@ -22,7 +24,6 @@ public class BuyUnits : MonoBehaviour {
 			sm.money -= GameObject.FindObjectOfType<AlliedMelee_AI_Health> ().cost;
 
 			Instantiate(playerUnits, new Vector3(45, 1, 45), Quaternion.Euler(0,0,0));
-			//Debug.Log("fuck");
 		}
 	}
 }
