@@ -17,7 +17,7 @@ public class BuyUnits : MonoBehaviour {
         unitManager = GameObject.Find("UnitManager");
         unitPrices = unitManager.GetComponent<UnitPrices>();
 
-        scoreHolder = GameObject.Find("ScoreHolder");
+        scoreHolder = GameObject.Find("ScoreManager");
         scoreManager = scoreHolder.GetComponent<ScoreManager>();
     }
 

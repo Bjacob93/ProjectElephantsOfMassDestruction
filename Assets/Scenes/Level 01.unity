@@ -541,7 +541,7 @@ GameObject:
   - 95: {fileID: 701751937}
   - 114: {fileID: 701751938}
   m_Layer: 0
-  m_Name: ScoreHolder
+  m_Name: ScoreManager
   m_TagString: ScoreManager
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
