@@ -5,14 +5,14 @@ public class EnemyMelee_AI_Attack : MonoBehaviour {
 
 	public float meleeCoolDown = 0.5f;
 	float meleeCoolDownLeft = 0f;
-	public int attackDamage = 20; // damage of each attack
+	int attackDamage = 20; // damage of each attack
 
-	public GameObject nearestPlayer = null;
-	public float MeleeRange = 1f;
+	public GameObject nearestPlayer;
+	public float MeleeRange = 3f;
 	
 	void Update () {
 
-		nearestPlayer = GetComponent<EnemyMelee_AI_Movement>().nearestPlayer;
+		nearestPlayer = this.GetComponent<AstarEnemy>().nearestEnemy;
 
         if (nearestPlayer != null) {
             float dist = Vector3.Distance(this.transform.position, nearestPlayer.transform.position);
@@ -24,9 +24,9 @@ public class EnemyMelee_AI_Attack : MonoBehaviour {
                 {
                     meleeCoolDownLeft = meleeCoolDown;
 
-                    nearestPlayer.GetComponent<AlliedMelee_AI_Health>().currentHealth -= attackDamage;
-                    //nearestPlayer.GetComponent<AlliedMelee_AI_Health>().TakeDamage(attackDamage);
-                    Debug.Log(nearestPlayer.GetComponent<AlliedMelee_AI_Health>().currentHealth);
+					//nearestPlayer.GetComponent<AlliedMelee_AI_Health> ().currentHealth -= attackDamage;
+                    nearestPlayer.GetComponent<AlliedMelee_AI_Health>().TakeDamage(attackDamage);
+                    Debug.Log("Dealt" + nearestPlayer.GetComponent<AlliedMelee_AI_Health>().currentHealth + "damage to ally");
                 }
             }
         }

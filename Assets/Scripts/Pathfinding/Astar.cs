@@ -13,8 +13,8 @@ public class Astar : MonoBehaviour {
 	public float speed = 30f;
 	float rotationSpeed = 10f;
 	public Vector3 direction;
-	float meleeRange = 1f;
-	float engagementRange = 10f;
+	public float meleeRange = 3f;
+	public float engagementRange = 10f;
 	bool isInMeleeRange = false;
 	bool hasPathToEnemy = false;
 	bool goToWaypoint = true;
@@ -23,15 +23,14 @@ public class Astar : MonoBehaviour {
     //Boolean controlled by checkpoints
     public bool receivedNewDestination = false;
 
-	//Cache variables that limits calls to pathfinding to once every second.
-	float pathCooldown = 1;
-	float pathCooldownRemaining = 0;
+    //Cache variables that limits calls to pathfinding to once every second.
+    bool pathCompleted = false;
+
 
 	//Cache variables for enemies
 	public GameObject nearestEnemy = null;
 	public GameObject previousEnemy = null;
-	float distanceToEnemy;
-	float distFar = Mathf.Infinity;
+	public float distanceToEnemy;
 
 	//Float determines when a waypoint is close enough. Int references current target waypoint.
 	public float maxWaypointDistance = 3f;
@@ -53,39 +52,38 @@ public class Astar : MonoBehaviour {
 		if (!p.error) {
 			path = p;
 			currentWaypoint = 0;
+            pathCompleted = true;
 		}
 	}
 
 	//Method for finding all enemies.
 	void FindNearestEnemy () {
-		//Put all enemies into an array, then find the one which is nearest.
-		GameObject[] enemyUnits = GameObject.FindGameObjectsWithTag ("enemyUnits");
-		distFar = Mathf.Infinity;
+        //Put all enemies into an array, then find the one which is nearest.
+        GameObject unitManager = GameObject.Find("UnitManager");
+        nearestEnemy = unitManager.GetComponent<UnitArrays>().scan(this.gameObject, "Enemy");
 
-		if (enemyUnits != null) {
-			foreach (GameObject enemy in enemyUnits) {
-				distanceToEnemy = Vector3.Distance (transform.position, enemy.transform.position);
+        if (nearestEnemy == null) return;
 
-				if (nearestEnemy == null || distanceToEnemy < distFar) {
-					nearestEnemy = enemy;
-					distFar = distanceToEnemy;
-				}
-			}
-			PathToEnemy();
-		}
+        distanceToEnemy = Vector3.Distance(transform.position, nearestEnemy.transform.position);
+
+        PathToEnemy();
+
 	}
 
 	//Method for pathing to the nearest enemy.
 	void PathToEnemy () {
-		if (pathCooldownRemaining <= 0 && !hasPathToEnemy) {
-			pathCooldownRemaining = pathCooldown;
+		if (pathCompleted && !hasPathToEnemy) {
 			//Generate new path to nearest enemy, if within engagement range.
 			if (nearestEnemy != null && distanceToEnemy <= engagementRange) {
-				seeker.StartPath (transform.position, nearestEnemy.transform.position, OnPathComplete);
-				previousEnemy = nearestEnemy;
-				hasPathToEnemy = true;
-				goToWaypoint = false;
-				movingToWaypoint = false;
+                if (pathCompleted) {
+                    pathCompleted = false;
+                    seeker.StartPath(transform.position, nearestEnemy.transform.position, OnPathComplete);
+                    previousEnemy = nearestEnemy;
+                    hasPathToEnemy = true;
+                    goToWaypoint = false;
+                    movingToWaypoint = false;
+                }
+				
 			}
 		} else if (distanceToEnemy <= engagementRange && previousEnemy != nearestEnemy) {
 			hasPathToEnemy = false;
@@ -106,20 +104,27 @@ public class Astar : MonoBehaviour {
 	//Make a new path to the target position, if not currently pathing to enemy, and not already pathing to the targe position.
 	void PathToWaypoint(){
 		if (goToWaypoint && !movingToWaypoint) {
-			seeker.StartPath (transform.position, targetPosition, OnPathComplete);
+            if (pathCompleted) {
+                pathCompleted = false;
+                seeker.StartPath(transform.position, targetPosition, OnPathComplete);
+            }
+            
 		}
 	}
 
     //Path to new destination, if a new destination has been received by checkpoint, building, etc.
     void PathToNewDestination()
     {
-        seeker.StartPath(transform.position, targetPosition, OnPathComplete);
+        if (pathCompleted)
+        {
+            pathCompleted = false;
+            seeker.StartPath(transform.position, targetPosition, OnPathComplete);
+        }
         receivedNewDestination = false;
     }
 
 	//Method that rotates the unit towards its target.
-	void RotateUnit(Vector3 direction){
-		pathCooldownRemaining -= Time.deltaTime;
+	void RotateUnit(Vector3 direction){ 
 
 		if (direction == Vector3.zero) {
 			return;

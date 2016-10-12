@@ -7,13 +7,19 @@ public class EnemyMelee_AI_Health : MonoBehaviour {
 	public int alliedArmour = 10;
 	public int currentHealth;
 	public int moneyValue = 5;
+    GameObject unitManager;
 
-	bool Died;
+    bool Died;
 
-	// Use this for initialization
+	// Use this for initialization 
 	void Start () {
 		currentHealth = startingHealth;
-	}
+
+        unitManager = GameObject.Find("UnitManager");
+
+        unitManager.GetComponent<UnitArrays>().add(this.gameObject, "enemyUnit");
+
+    }
 	
 	void Update () {
 
@@ -43,6 +49,9 @@ public class EnemyMelee_AI_Health : MonoBehaviour {
 		Died = true;
 		Debug.Log ("Died");
 		GameObject.FindObjectOfType<ScoreManager> ().money += moneyValue;
-		Destroy (gameObject);
+
+        unitManager.GetComponent<UnitArrays>().remove(this.gameObject, "enemyUnit");
+
+		Destroy (this.gameObject);
 	}
 }

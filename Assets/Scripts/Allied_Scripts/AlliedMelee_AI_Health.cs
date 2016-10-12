@@ -8,12 +8,17 @@ public class AlliedMelee_AI_Health : MonoBehaviour {
 	public int currentHealth;
 	public int moneyValue = 5;
 	public int cost = 10;
+    GameObject unitManager;
 
 	bool Died;
 
 	// Use this for initialization
 	void Start () {
 		currentHealth = startingHealth;
+
+        unitManager = GameObject.Find("UnitManager");
+        unitManager.GetComponent<UnitArrays>().add(this.gameObject, "playerUnit");
+
 	}
 	
 	// Update is called once per frame
@@ -43,6 +48,7 @@ public class AlliedMelee_AI_Health : MonoBehaviour {
 	{
 		//enemy is dead
 		Died = true;
-		Destroy (gameObject);
+        unitManager.GetComponent<UnitArrays>().remove(this.gameObject, "playerUnit");
+        Destroy (this.gameObject);
 	}
 }
