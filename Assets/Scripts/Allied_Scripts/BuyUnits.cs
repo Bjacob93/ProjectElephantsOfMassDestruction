@@ -23,18 +23,14 @@ public class BuyUnits : MonoBehaviour {
 
 	void OnMouseDown ()
 	{
-		if (gameObject.tag == "PlayerBase") {
-            
-
-            Debug.Log(unitPrices.alliedMeleeCost);
-
+		if (gameObject.tag == "PlayerBase")
+        {
             if (scoreManager.money < unitPrices.alliedMeleeCost)
             {
                 Debug.Log("Not enought money");
-
                 return;
             }
-
+      
             scoreManager.money -= unitPrices.alliedMeleeCost;
 
             Instantiate(playerUnits, new Vector3(45, 1, 45), Quaternion.Euler(0, 0, 0));

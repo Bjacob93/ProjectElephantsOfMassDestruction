@@ -55,7 +55,6 @@ public class AstarEnemy : MonoBehaviour
 	in the path to be the current waypoint for the unit. */
     void OnPathComplete(Path p)
     {
-        Debug.Log(p.error);
         if (!p.error)
         {
             path = p;
@@ -199,7 +198,6 @@ public class AstarEnemy : MonoBehaviour
         //If there is no path.
         if (path == null)
         {
-            Debug.Log("No path");
             return;
         }
 
@@ -210,7 +208,6 @@ public class AstarEnemy : MonoBehaviour
         //If the unit has reached it's goal.
         if (currentWaypoint >= path.vectorPath.Count)
         {
-            Debug.Log("I'm here now");
             return;
         }
 

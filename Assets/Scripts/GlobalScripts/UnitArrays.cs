@@ -5,24 +5,14 @@ public class UnitArrays : MonoBehaviour {
 
     GameObject[] allies = new GameObject[50];
     GameObject[] enemies = new GameObject[50];
-
-	// Use this for initialization
-	void Start () {
-	
-	}
 	
     public void add(GameObject unit, string s)
     {
-
-        
-
         if (s == "playerUnit"){
             for (int i = 0; i < allies.Length; i++) {
                 if(allies[i] == null){
                     allies[i] = unit;
-                    Debug.Log("Added player");
-                    return;
-                    
+                    return; 
                 }
             }
         }
@@ -30,9 +20,7 @@ public class UnitArrays : MonoBehaviour {
             for (int i = 0; i < enemies.Length; i++) {
                 if (enemies[i] == null) {
                     enemies[i] = unit;
-                    Debug.Log("Added enemy");
                     return;
-                    
                 }
             }
         }
