@@ -11,6 +11,8 @@ public class AlliedMelee_AI_Health : MonoBehaviour {
     GameObject unitManager;
     UnitArrays Uarray;
 
+    bool unitAdded = false;
+
 	bool Died;
 
 	// Use this for initialization
@@ -19,12 +21,18 @@ public class AlliedMelee_AI_Health : MonoBehaviour {
 
         unitManager = GameObject.Find("UnitManager");
         Uarray = unitManager.GetComponent<UnitArrays>();
-        Uarray.add(this.gameObject, "playerUnit");
+        //Uarray.add(this.gameObject, "playerUnit");
 
     }
 	
 	// Update is called once per frame
 	void Update () {
+
+        if (!unitAdded)
+        {
+            Uarray.add(this.gameObject, "playerUnit");
+            unitAdded = true;
+        }
 	
 		if (currentHealth <= 0) {
 			Die ();

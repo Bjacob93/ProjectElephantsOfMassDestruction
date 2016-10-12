@@ -8,8 +8,9 @@ public class EnemyMelee_AI_Health : MonoBehaviour {
 	public int currentHealth;
 	public int moneyValue = 5;
     GameObject unitManager;
-
     UnitArrays Uarray;
+
+    bool unitAdded = false;
 
     bool Died;
 
@@ -21,13 +22,19 @@ public class EnemyMelee_AI_Health : MonoBehaviour {
 
         Uarray = unitManager.GetComponent<UnitArrays>();
 
-        Uarray.add(this.gameObject, "enemyUnit");
+        //Uarray.add(this.gameObject, "enemyUnit");
 
     }
 	
 	void Update () {
 
-		if (currentHealth <= 0) {
+        if (!unitAdded)
+        {
+            Uarray.add(this.gameObject, "enemyUnit");
+            unitAdded = true;
+        }
+
+        if (currentHealth <= 0) {
 			Die ();
 		}
 

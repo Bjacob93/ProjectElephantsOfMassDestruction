@@ -71,10 +71,10 @@ public class AstarEnemy : MonoBehaviour
          
         nearestEnemy = uArray.scan(this.gameObject, "Ally");
 
-        if (nearestEnemy == null) return;
-
-        distanceToEnemy = Vector3.Distance(transform.position, nearestEnemy.transform.position);
-
+        if (nearestEnemy != null)
+        {
+            distanceToEnemy = Vector3.Distance(transform.position, nearestEnemy.transform.position);
+        }
         PathToEnemy();
     }
 
@@ -96,15 +96,16 @@ public class AstarEnemy : MonoBehaviour
                 }
             }
         }
-        else if (distanceToEnemy <= engagementRange && previousEnemy != nearestEnemy)
+        else if (nearestEnemy != null && distanceToEnemy <= engagementRange && previousEnemy != nearestEnemy)
         {
             hasPathToEnemy = false;
             goToWaypoint = false;
         }
-        else if (distanceToEnemy >= engagementRange && hasPathToEnemy)
+        else if ((distanceToEnemy >= engagementRange && hasPathToEnemy) || nearestEnemy == null)
         {
             hasPathToEnemy = false;
             goToWaypoint = true;
+            previousEnemy = null;
         }
 
         //Determine if enemy is within melee range
@@ -125,6 +126,7 @@ public class AstarEnemy : MonoBehaviour
         {
             if (pathCompleted)
             {
+                movingToWaypoint = true;
                 pathCompleted = false;
                 seeker.StartPath(transform.position, targetPosition, OnPathComplete);
             }
@@ -204,10 +206,6 @@ public class AstarEnemy : MonoBehaviour
         if (isInMeleeRange)
         {
             return;
-        }
-        else
-        {
-
         }
         //If the unit has reached it's goal.
         if (currentWaypoint >= path.vectorPath.Count)
