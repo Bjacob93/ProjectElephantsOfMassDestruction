@@ -65,7 +65,10 @@ public class Astar : MonoBehaviour {
         //Put all enemies into an array, then find the one which is nearest.
         nearestEnemy = uArray.scan(this.gameObject, "Enemy");
 
-        distanceToEnemy = Vector3.Distance(transform.position, nearestEnemy.transform.position);
+        if (nearestEnemy != null)
+        {
+            distanceToEnemy = Vector3.Distance(transform.position, nearestEnemy.transform.position);
+        }
 
         PathToEnemy();
 
@@ -95,24 +98,30 @@ public class Astar : MonoBehaviour {
             previousEnemy = null;
         }
 
-		//Determine if enemy is within melee range
-		if (distanceToEnemy < meleeRange) {
-			isInMeleeRange = true;
-		} else {
-			isInMeleeRange = false;
-		}
-	}
+        //Determine if enemy is within melee range
+        if (nearestEnemy != null && distanceToEnemy < meleeRange)
+        {
+            isInMeleeRange = true;
+        }
+        else if (nearestEnemy == null || distanceToEnemy > meleeRange)
+        {
+            isInMeleeRange = false;
+        }
+    }
 
-	//Make a new path to the target position, if not currently pathing to enemy, and not already pathing to the targe position.
-	void PathToWaypoint(){
-		if (goToWaypoint && !movingToWaypoint) {
-            if (pathCompleted) {
+    //Make a new path to the target position, if not currently pathing to enemy, and not already pathing to the targe position.
+    void PathToWaypoint()
+    {
+        if (goToWaypoint && !movingToWaypoint)
+        {
+            if (pathCompleted)
+            {
+                movingToWaypoint = true;
                 pathCompleted = false;
                 seeker.StartPath(transform.position, targetPosition, OnPathComplete);
             }
-            
-		}
-	}
+        }
+    }
 
     //Path to new destination, if a new destination has been received by checkpoint, building, etc.
     void PathToNewDestination()

@@ -16,7 +16,7 @@ public class AstarEnemy : MonoBehaviour
     public Vector3 direction;
     public float meleeRange = 3f;
     public float engagementRange = 10f;
-    bool isInMeleeRange = false;
+    public bool isInMeleeRange = false;
     bool hasPathToEnemy = false;
     bool goToWaypoint = true;
     bool movingToWaypoint = true;
@@ -109,11 +109,11 @@ public class AstarEnemy : MonoBehaviour
         }
 
         //Determine if enemy is within melee range
-        if (distanceToEnemy < meleeRange)
+        if (nearestEnemy != null && distanceToEnemy < meleeRange)
         {
             isInMeleeRange = true;
         }
-        else
+        else if (nearestEnemy == null || distanceToEnemy > meleeRange)
         {
             isInMeleeRange = false;
         }
