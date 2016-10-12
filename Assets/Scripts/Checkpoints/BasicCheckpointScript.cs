@@ -8,9 +8,11 @@ public class BasicCheckpointScript : MonoBehaviour {
 
     public float controlRange = 10f;
 
+
+
 	// Use this for initialization
 	void Start () {
-	    
+
 	}
 	
 	// Update is called once per frame 
@@ -21,8 +23,9 @@ public class BasicCheckpointScript : MonoBehaviour {
             float distance = Vector3.Distance(transform.position, e.transform.position);
             if (distance < controlRange) {
                 //TODO: Check melee or ranged
-                e.GetComponent<Astar>().targetPosition = meleeDistination;
-                e.GetComponent<Astar>().receivedNewDestination = true;
+                Astar aStar = e.GetComponent<Astar>();
+                aStar.targetPosition = meleeDistination;
+                aStar.receivedNewDestination = true;
             }
         }
 	}

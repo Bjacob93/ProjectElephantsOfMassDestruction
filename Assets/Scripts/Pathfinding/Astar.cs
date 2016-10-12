@@ -31,9 +31,11 @@ public class Astar : MonoBehaviour {
 	public GameObject nearestEnemy = null;
 	public GameObject previousEnemy = null;
 	public float distanceToEnemy;
+    UnitArrays uArray;
+    GameObject unitManager;
 
-	//Float determines when a waypoint is close enough. Int references current target waypoint.
-	public float maxWaypointDistance = 3f;
+    //Float determines when a waypoint is close enough. Int references current target waypoint.
+    public float maxWaypointDistance = 3f;
 	private int currentWaypoint;
 
 	void Start () {
@@ -43,12 +45,14 @@ public class Astar : MonoBehaviour {
 
 		//Call the pathfinding method in 
 		seeker.StartPath (transform.position, targetPosition, OnPathComplete);
-	}
+        unitManager = GameObject.Find("UnitManager");
+        uArray = unitManager.GetComponent<UnitArrays>();
+    }
 
 	/** Method to print out errors in the log if we get any. If we don't, it will set first waypoint 
 	in the path to be the current waypoint for the unit. */
 	void OnPathComplete(Path p){
-		Debug.Log ("Path Completed" + p.error);
+		Debug.Log (p.error);
 		if (!p.error) {
 			path = p;
 			currentWaypoint = 0;
@@ -59,10 +63,7 @@ public class Astar : MonoBehaviour {
 	//Method for finding all enemies.
 	void FindNearestEnemy () {
         //Put all enemies into an array, then find the one which is nearest.
-        GameObject unitManager = GameObject.Find("UnitManager");
-        nearestEnemy = unitManager.GetComponent<UnitArrays>().scan(this.gameObject, "Enemy");
-
-        if (nearestEnemy == null) return;
+        nearestEnemy = uArray.scan(this.gameObject, "Enemy");
 
         distanceToEnemy = Vector3.Distance(transform.position, nearestEnemy.transform.position);
 
@@ -85,13 +86,14 @@ public class Astar : MonoBehaviour {
                 }
 				
 			}
-		} else if (distanceToEnemy <= engagementRange && previousEnemy != nearestEnemy) {
+		} else if (nearestEnemy != null && distanceToEnemy <= engagementRange && previousEnemy != nearestEnemy) {
 			hasPathToEnemy = false;
 			goToWaypoint = false;
-		} else if (distanceToEnemy >= engagementRange && hasPathToEnemy) {
+		} else if ((distanceToEnemy >= engagementRange && hasPathToEnemy) || nearestEnemy == null) {
 			hasPathToEnemy = false;
 			goToWaypoint = true;
-		}
+            previousEnemy = null;
+        }
 
 		//Determine if enemy is within melee range
 		if (distanceToEnemy < meleeRange) {
@@ -174,7 +176,6 @@ public class Astar : MonoBehaviour {
 		}
 
 		if (isInMeleeRange) {
-			Debug.Log ("I'm in range");
 			return;
 		} else {
 		
