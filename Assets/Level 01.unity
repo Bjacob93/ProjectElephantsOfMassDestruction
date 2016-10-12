@@ -658,6 +658,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 600709545}
   - 114: {fileID: 600709544}
+  - 114: {fileID: 600709546}
   m_Layer: 0
   m_Name: UnitManager
   m_TagString: Untagged
@@ -689,6 +690,20 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 9
+--- !u!114 &600709546
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 600709543}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2e0b906023546604dbcf1a7d69a66276, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  checkpointA: {x: 29, y: 0, z: -35}
+  checkpointB: {x: -36, y: 0, z: 45}
+  controlRange: 10
 --- !u!1 &608704759
 GameObject:
   m_ObjectHideFlags: 0
