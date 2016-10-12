@@ -16,7 +16,7 @@ public class AstarEnemy : MonoBehaviour
     public Vector3 direction;
     public float meleeRange = 3f;
     public float engagementRange = 10f;
-    bool isInMeleeRange = false;
+    public bool isInMeleeRange = false;
     bool hasPathToEnemy = false;
     bool goToWaypoint = true;
     bool movingToWaypoint = true;
@@ -55,7 +55,6 @@ public class AstarEnemy : MonoBehaviour
 	in the path to be the current waypoint for the unit. */
     void OnPathComplete(Path p)
     {
-        Debug.Log(p.error);
         if (!p.error)
         {
             path = p;
@@ -109,11 +108,11 @@ public class AstarEnemy : MonoBehaviour
         }
 
         //Determine if enemy is within melee range
-        if (distanceToEnemy < meleeRange)
+        if (nearestEnemy != null && distanceToEnemy < meleeRange)
         {
             isInMeleeRange = true;
         }
-        else
+        else if (nearestEnemy == null || distanceToEnemy > meleeRange)
         {
             isInMeleeRange = false;
         }
@@ -199,7 +198,6 @@ public class AstarEnemy : MonoBehaviour
         //If there is no path.
         if (path == null)
         {
-            Debug.Log("No path");
             return;
         }
 
@@ -210,7 +208,6 @@ public class AstarEnemy : MonoBehaviour
         //If the unit has reached it's goal.
         if (currentWaypoint >= path.vectorPath.Count)
         {
-            Debug.Log("I'm here now");
             return;
         }
 

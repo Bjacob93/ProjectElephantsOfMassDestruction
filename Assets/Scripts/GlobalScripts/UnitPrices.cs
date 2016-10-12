@@ -1,7 +1,9 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class PathNode : MonoBehaviour {
+public class UnitPrices : MonoBehaviour {
+
+    public int alliedMeleeCost = 10;
 
 	// Use this for initialization
 	void Start () {

@@ -24,6 +24,11 @@ public class ScoreManager : MonoBehaviour {
 		}
 	}
 
+    public int getMoney()
+    {
+        return money;
+    }
+
 	IEnumerator waitandprint(float waitTime){
 		yield return new WaitForSeconds (waitTime);
 
