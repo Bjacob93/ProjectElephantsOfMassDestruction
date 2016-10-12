@@ -13,40 +13,31 @@ public class BuyUnits : MonoBehaviour {
     GameObject scoreHolder;
     ScoreManager scoreManager;
 
-	void start(){
-        unitManager = GameObject.FindGameObjectWithTag("UnitManager");
+	void Start(){
+        unitManager = GameObject.Find("UnitManager");
         unitPrices = unitManager.GetComponent<UnitPrices>();
 
-        scoreHolder = GameObject.FindGameObjectWithTag("ScoreManager");
+        scoreHolder = GameObject.Find("ScoreHolder");
         scoreManager = scoreHolder.GetComponent<ScoreManager>();
-    }
-	void update(){
-
-    }
-
-    void BuyMeleeUnit()
-    {
-        int money = scoreManager.getMoney();
-
-        Debug.Log(money);
-        Debug.Log(unitPrices.alliedMeleeCost);
-        if (scoreManager.money < unitPrices.alliedMeleeCost)
-        {
-            Debug.Log("Not enought money");
-
-            return;
-        }
-
-        scoreManager.money -= unitPrices.alliedMeleeCost;
-
-        Instantiate(playerUnits, new Vector3(45, 1, 45), Quaternion.Euler(0, 0, 0));
     }
 
 	void OnMouseDown ()
 	{
 		if (gameObject.tag == "PlayerBase") {
+            
 
-            BuyMeleeUnit();
-		}
+            Debug.Log(unitPrices.alliedMeleeCost);
+
+            if (scoreManager.money < unitPrices.alliedMeleeCost)
+            {
+                Debug.Log("Not enought money");
+
+                return;
+            }
+
+            scoreManager.money -= unitPrices.alliedMeleeCost;
+
+            Instantiate(playerUnits, new Vector3(45, 1, 45), Quaternion.Euler(0, 0, 0));
+        }
 	}
 }
