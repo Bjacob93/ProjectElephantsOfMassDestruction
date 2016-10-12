@@ -8,7 +8,6 @@ public class BuyEnemyUnits : MonoBehaviour
     float restartTimer;                     // Timer to count up to restarting the level
 
     public GameObject enemyUnits;
-    int enemymoney = 500;
 
     void start()
     {
@@ -18,27 +17,12 @@ public class BuyEnemyUnits : MonoBehaviour
     void Update()
     {
         restartTimer += Time.deltaTime;
-        ScoreManager sm = GameObject.FindObjectOfType<ScoreManager>();
-        if (enemymoney <= 0)
-        {
-            Debug.Log("Not enought money");
-            return;
-        }
-
-
-
+        
         if (restartTimer >= restartDelay)
         {
-            if (enemymoney > 0)
-            {
-                enemymoney -= GameObject.FindObjectOfType<AlliedMelee_AI_Health>().cost;
-                Instantiate(enemyUnits, new Vector3(-45, 1, -45), Quaternion.Euler(0, 0, 0));
-                restartTimer = 0;
-            }
-
+            Instantiate(enemyUnits, new Vector3(-45, 1, -45), Quaternion.Euler(0, 0, 0));
+            restartTimer = 0;
         }
-
-        //Debug.Log("fuck");
     }
 
     void OnMouseDown()

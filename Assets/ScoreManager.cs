@@ -24,6 +24,11 @@ public class ScoreManager : MonoBehaviour {
 		}
 	}
 
+    public int getMoney()
+    {
+        return money;
+    }
+
 	IEnumerator waitandprint(float waitTime){
 		yield return new WaitForSeconds (waitTime);
 
@@ -59,9 +64,5 @@ public class ScoreManager : MonoBehaviour {
 			
 	public void GameOver(){
 		anim.SetTrigger ("GameOver");
-		//waitandprint (2);
-		//LoadByIndex();
-		//		Debug.Log ("Game Over");
-		//SceneManager.LoadScene (SceneManager.GetActiveScene (mainMenu).name);
 	}
 }

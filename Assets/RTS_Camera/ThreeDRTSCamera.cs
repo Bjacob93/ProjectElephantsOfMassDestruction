@@ -29,16 +29,11 @@ public class ThreeDRTSCamera : MonoBehaviour {
 
 	private Vector3 desiredPosition;
 
+    Camera camera;
+
 	// Use this for initialization
 	void Start () {
-//		TopRight = GameObject.Find ("GameMap/TheMap/TopRight");
-//		BotLeft = GameObject.Find ("GameMap/TheMap/BotLeft");
-//
-//		xMax = TopRight.transform.position.x;
-//		zMax = TopRight.transform.position.z;
-//
-//		xMin = BotLeft.transform.position.x;
-//		zMin = BotLeft.transform.position.z;
+        camera = GetComponent<Camera>();
 	}
 
 
@@ -84,10 +79,10 @@ public class ThreeDRTSCamera : MonoBehaviour {
 		transform.position = Vector3.Lerp(transform.position, desiredPosition, 0.2f);
 
 		//panning when zooming not working
-		var pan = GetComponent<Camera>().transform.eulerAngles.x - (y/3) * -1;
+		var pan = camera.transform.eulerAngles.x - (y/3) * -1;
 		pan = Mathf.Clamp (pan, panAngleMin, panAngleMax);
-		if (y < 0 || GetComponent<Camera>().transform.position.y > (yMax / 3)){
-			GetComponent<Camera>().transform.eulerAngles = new Vector3(pan,0,0);
+		if (y < 0 || camera.transform.position.y > (yMax / 3)){
+			camera.transform.eulerAngles = new Vector3(pan,0,0);
 		}
 
 

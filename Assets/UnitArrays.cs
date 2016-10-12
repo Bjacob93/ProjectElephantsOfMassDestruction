@@ -13,18 +13,26 @@ public class UnitArrays : MonoBehaviour {
 	
     public void add(GameObject unit, string s)
     {
-        Debug.Log("Tried to add unit to array");
+
+        
+
         if (s == "playerUnit"){
-            for (int i = 0; i<allies.Length; i++) {
+            for (int i = 0; i < allies.Length; i++) {
                 if(allies[i] == null){
                     allies[i] = unit;
+                    Debug.Log("Added player");
+                    return;
+                    
                 }
             }
         }
 		else if (s == "enemyUnit") {
-            for (int i = 0; i < allies.Length; i++) {
+            for (int i = 0; i < enemies.Length; i++) {
                 if (enemies[i] == null) {
                     enemies[i] = unit;
+                    Debug.Log("Added enemy");
+                    return;
+                    
                 }
             }
         }
@@ -40,7 +48,7 @@ public class UnitArrays : MonoBehaviour {
             }
         }
         else if (s == "enemyUnit") {
-            for (int i = 0; i < allies.Length; i++) {
+            for (int i = 0; i < enemies.Length; i++) {
                 if (enemies[i] == unit) {
                     enemies[i] = null;
                 }
@@ -56,9 +64,10 @@ public class UnitArrays : MonoBehaviour {
 
         if (s == "Ally") {
             for (int i = 0; i < allies.Length; i++) {
-                if (enemies[i] != null){
+                if (allies[i] != null){
                     GameObject o = allies[i];
-                    float enemyDist = Vector3.Distance(scanner.transform.position, o.transform.position);
+                    Vector3 enemyDir = o.transform.position - scanner.transform.position;
+                    float enemyDist = enemyDir.sqrMagnitude;
                     if (enemyDist <= distance || target == null) {
                         distance = enemyDist;
                         target = o;
@@ -70,7 +79,8 @@ public class UnitArrays : MonoBehaviour {
             for (int i = 0; i < enemies.Length; i++){
                 if(enemies[i] != null) {
                     GameObject o = enemies[i];
-                    float enemyDist = Vector3.Distance(scanner.transform.position, o.transform.position);
+                    Vector3 enemyDir = o.transform.position - scanner.transform.position;
+                    float enemyDist = enemyDir.sqrMagnitude;
                     if (enemyDist <= distance || target == null){
                         distance = enemyDist;
                         target = o;
@@ -80,5 +90,4 @@ public class UnitArrays : MonoBehaviour {
         }
         return target;
     }
-
 }
