@@ -9,19 +9,20 @@ public class UIPop : MonoBehaviour
     public GameObject menu;
     public GameObject building;
     public GameObject editorPanel;
+    public GameObject commandListPanel;
     private GameObject[] commands;
     public List<string> commandList;
 
-    private Animator anim;
-    public GameObject commandListPanel;
+    private Animator anim;    
     private bool slideIn = false;
-    Bounds buildingBounds;
-    RectTransform rt;
+    private Bounds buildingBounds;
+    private RectTransform rt;
     void Start()
     {
         rt = editorPanel.GetComponent<RectTransform>();
         anim = commandListPanel.GetComponent<Animator>();
         buildingBounds = building.GetComponent<Renderer>().bounds;
+        menu.SetActive(false);
         anim.enabled = false;
     }
     private bool activeMenu = false;
@@ -69,6 +70,7 @@ public class UIPop : MonoBehaviour
             menu.SetActive(false);           
         }
     }
+    //makes the Editor window always be at the building.
     void EditorPos()
     {
         Vector3[] buildingCorners = new Vector3[8];
@@ -112,7 +114,7 @@ public class UIPop : MonoBehaviour
             (buildingBounds.center.x + buildingBounds.extents.x,
             buildingBounds.center.y + buildingBounds.extents.y,
             buildingBounds.center.z + buildingBounds.extents.z));
-        //find min and max
+        //find min pos of building.
         float min_x = buildingCorners[0].x;
         float min_y = buildingCorners[0].y;
 
@@ -129,6 +131,7 @@ public class UIPop : MonoBehaviour
         }
         rt.position = new Vector2(min_x - 420, min_y);
     }
+    //controls the slider animation of the Command List window.
     public void MenuSlider()
     {
         slideIn = !slideIn;
@@ -142,6 +145,7 @@ public class UIPop : MonoBehaviour
             anim.Play("CommandListSlideOut");
         }   
     }
+    //selector for buildings and objects;
     void SelectObject(GameObject obj)
     {
         if (selectedObject != null)//is an object all ready selected?
