@@ -9,21 +9,29 @@ public class Astar : MonoBehaviour {
 	CharacterController controller;
 	Path path;
 
-	//Cache variables for behaviour
-	public float speed = 30f;
+    //Cache variables for base stats
+    public float speed = 30f;
 	float rotationSpeed = 10f;
-	public Vector3 direction;
-	public float meleeRange = 3f;
+    public float meleeRange = 3f;
 	public float engagementRange = 10f;
+
+	//Cache variables for pathfinding behaviour
+	public Vector3 direction;
 	bool isInMeleeRange = false;
 	bool hasPathToEnemy = false;
 	bool goToWaypoint = true;
 	bool movingToWaypoint = true;
 
+    //Cache variables for defence order
+    float maxDistanceFromTargetAllowed = 15f;
+    float distanceFromTarget;
+    bool receivedDefenceOrder = false;
+    bool isDefending = false;
+
     //Boolean controlled by checkpoints
     public bool receivedNewDestination = false;
 
-    //Cache variables that limits calls to pathfinding to once every second.
+    //Cache variable that limits calls to pathfinding to once every second.
     bool pathCompleted = false;
 
 
@@ -67,6 +75,11 @@ public class Astar : MonoBehaviour {
         if (nearestEnemy != null)
         {
             distanceToEnemy = Vector3.Distance(transform.position, nearestEnemy.transform.position);
+            if (isDefending)
+            {
+                distanceFromTarget = Vector3.Distance(nearestEnemy.transform.position, targetPosition);
+
+            }
         }
 
         PathToEnemy();
@@ -75,9 +88,9 @@ public class Astar : MonoBehaviour {
 
 	//Method for pathing to the nearest enemy.
 	void PathToEnemy () {
-		if (pathCompleted && !hasPathToEnemy) {
+		if (nearestEnemy != null && pathCompleted && !hasPathToEnemy && (!isDefending || (isDefending && distanceFromTarget <= maxDistanceFromTargetAllowed))) {
 			//Generate new path to nearest enemy, if within engagement range.
-			if (nearestEnemy != null && distanceToEnemy <= engagementRange) {
+			if (distanceToEnemy <= engagementRange) {
                 if (pathCompleted) {
                     pathCompleted = false;
                     seeker.StartPath(transform.position, nearestEnemy.transform.position, OnPathComplete);
@@ -189,6 +202,11 @@ public class Astar : MonoBehaviour {
 		}
 		//If the unit has reached it's goal.
 		if (currentWaypoint >= path.vectorPath.Count) {
+            if(receivedDefenceOrder)
+            {
+                receivedDefenceOrder = false;
+                isDefending = true;
+            }
 			return;
 		}
 	

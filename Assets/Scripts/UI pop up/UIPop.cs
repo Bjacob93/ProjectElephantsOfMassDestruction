@@ -17,6 +17,7 @@ public class UIPop : MonoBehaviour
     private bool slideIn = false;
     private Bounds buildingBounds;
     private RectTransform rt;
+
     void Start()
     {
         rt = editorPanel.GetComponent<RectTransform>();
@@ -25,12 +26,15 @@ public class UIPop : MonoBehaviour
         menu.SetActive(false);
         anim.enabled = false;
     }
+
     private bool activeMenu = false;
+
     void Update()
     {
         if (Input.GetMouseButtonDown(0))
         {
             commandList.Clear();
+
             //draws a ray from the main camera to the mouse position
             Ray mouseRay = Camera.main.ScreenPointToRay(Input.mousePosition);
             RaycastHit targetObject;
@@ -55,6 +59,7 @@ public class UIPop : MonoBehaviour
         {
             EditorPos();
         }
+
         //This is temp since graphic raycast is not working
         if (Input.GetKey(KeyCode.I))
         {
@@ -114,6 +119,7 @@ public class UIPop : MonoBehaviour
             (buildingBounds.center.x + buildingBounds.extents.x,
             buildingBounds.center.y + buildingBounds.extents.y,
             buildingBounds.center.z + buildingBounds.extents.z));
+       
         //find min pos of building.
         float min_x = buildingCorners[0].x;
         float min_y = buildingCorners[0].y;
