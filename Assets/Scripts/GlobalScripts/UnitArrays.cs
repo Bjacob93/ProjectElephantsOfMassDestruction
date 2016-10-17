@@ -78,4 +78,17 @@ public class UnitArrays : MonoBehaviour {
         }
         return target;
     }
+
+	public void resetGame(){
+
+		for (int i = 0; i < enemies.Length; i++) {
+			Destroy (enemies [i]);
+			enemies [i] = null;
+		}
+		for (int i = 0; i < allies.Length; i++) {
+			Destroy (allies [i]);
+			allies [i] = null;
+		}
+	
+	}
 }
