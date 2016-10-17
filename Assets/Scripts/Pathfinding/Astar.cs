@@ -25,7 +25,7 @@ public class Astar : MonoBehaviour {
     //Cache variables for defence order
     float maxDistanceFromTargetAllowed = 15f;
     float distanceFromTarget;
-    bool receivedDefenceOrder = false;
+    public bool receivedDefenceOrder = false;
     bool isDefending = false;
 
     //Boolean controlled by checkpoints
