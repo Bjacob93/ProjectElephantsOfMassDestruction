@@ -10,9 +10,32 @@ public class EditorList : MonoBehaviour {
 
     public CommandDatabase commandDatabase;
 
+    private bool drawEditor = false;
+
     void Start()
     {
         //Cache the database of commands so that we can always find any command we need.
         commandDatabase = GameObject.FindGameObjectWithTag("CommandDatabase").GetComponent<CommandDatabase>();
+    }
+
+    void Update()
+    {
+        if (Input.GetButtonDown("SequenceEditor"))
+        {
+            drawEditor = !drawEditor;
+        }
+    }
+
+    void OnGUI()
+    {
+        if (drawEditor)
+        {
+            DrawEditor();
+        }
+    }
+
+    void DrawEditor()
+    {
+
     }
 }
