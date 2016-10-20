@@ -1,11 +1,12 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Command : MonoBehaviour {
+[System.Serializable]
+public class Command {
 
     //Variables for all commands
     public string commandName;
-    public int commandId;
+	public string commandId;
     public string commandDesc;
 
     //Empty constructor for a command
@@ -15,7 +16,7 @@ public class Command : MonoBehaviour {
     }
 
     //Constructor for specific commands
-    public Command (string name, int id, string desc)
+	public Command (string name, string id, string desc)
     {
         commandName = name;
         commandId = id;
