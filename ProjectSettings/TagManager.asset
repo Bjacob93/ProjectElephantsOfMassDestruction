@@ -12,6 +12,10 @@ TagManager:
   - PlayerBase
   - UnitManager
   - ScoreManager
+  - UIManager
+  - CommandDatabase
+  - CommandList
+  - EditorList
   layers:
   - Default
   - TransparentFX

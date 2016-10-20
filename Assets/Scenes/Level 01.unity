@@ -157,7 +157,7 @@ GameObject:
   - 4: {fileID: 67831981}
   m_Layer: 0
   m_Name: UIManager
-  m_TagString: Untagged
+  m_TagString: UIManager
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1205,7 +1205,7 @@ GameObject:
   - 114: {fileID: 1243863650}
   m_Layer: 0
   m_Name: EditorList
-  m_TagString: Untagged
+  m_TagString: EditorList
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1245,6 +1245,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3a9c2ff252b1bc9408d13b30fad89d8c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  availableCommands: []
+  slots: []
+  commandDatabase: {fileID: 0}
 --- !u!1 &1279016135 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 1000013645180952, guid: 74683726fe313ed41bf14492be6d1c27,
@@ -1585,7 +1588,7 @@ GameObject:
   - 114: {fileID: 1721909816}
   m_Layer: 0
   m_Name: CommandList
-  m_TagString: Untagged
+  m_TagString: CommandList
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1906,11 +1909,10 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 2071492074}
-  - 114: {fileID: 2071492076}
   - 114: {fileID: 2071492075}
   m_Layer: 0
   m_Name: CommandDatabase
-  m_TagString: Untagged
+  m_TagString: CommandDatabase
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1939,17 +1941,3 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 61079647943d9c341ac919f3ba49d430, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &2071492076
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 2071492073}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 53b32101d32499b40bd7a8aa9fee51eb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  commandName: 
-  commandId: 0
-  commandDesc: 
