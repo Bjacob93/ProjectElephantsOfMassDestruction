@@ -1,15 +1,13 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class CommandDatabase : MonoBehaviour {
+	public List<Command> command = new List<> (Command);
 
-	// Use this for initialization
-	void Start () {
-	
-	}
-	
-	// Update is called once per frame
-	void Update () {
+
+	void Start(){
+		command.Add (new Command ());
 	
 	}
 }
