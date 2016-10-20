@@ -37,7 +37,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44692492, g: 0.4967869, b: 0.57508546, a: 1}
+  m_IndirectSpecularColor: {r: 0.44692534, g: 0.49678725, b: 0.5750856, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -1201,6 +1201,8 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 1243863649}
+  - 114: {fileID: 1243863651}
+  - 114: {fileID: 1243863650}
   m_Layer: 0
   m_Name: EditorList
   m_TagString: Untagged
@@ -1221,6 +1223,28 @@ Transform:
   m_Children: []
   m_Father: {fileID: 67831981}
   m_RootOrder: 2
+--- !u!114 &1243863650
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1243863648}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a36cb61a83f467047b2f4905080b75f3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1243863651
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1243863648}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3a9c2ff252b1bc9408d13b30fad89d8c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1279016135 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 1000013645180952, guid: 74683726fe313ed41bf14492be6d1c27,
@@ -1557,6 +1581,8 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 1721909815}
+  - 114: {fileID: 1721909817}
+  - 114: {fileID: 1721909816}
   m_Layer: 0
   m_Name: CommandList
   m_TagString: Untagged
@@ -1577,6 +1603,28 @@ Transform:
   m_Children: []
   m_Father: {fileID: 67831981}
   m_RootOrder: 1
+--- !u!114 &1721909816
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1721909814}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1d46558acfd42d743b4fff0c2799d225, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1721909817
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1721909814}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3c5012c024ebb3d4da4ecd082c075a09, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!20 &1831536907 stripped
 Camera:
   m_PrefabParentObject: {fileID: 20000012884806692, guid: 9ea4f18199eca014faad2940ee5e1b63,
@@ -1858,6 +1906,8 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 2071492074}
+  - 114: {fileID: 2071492076}
+  - 114: {fileID: 2071492075}
   m_Layer: 0
   m_Name: CommandDatabase
   m_TagString: Untagged
@@ -1878,3 +1928,28 @@ Transform:
   m_Children: []
   m_Father: {fileID: 67831981}
   m_RootOrder: 0
+--- !u!114 &2071492075
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2071492073}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 61079647943d9c341ac919f3ba49d430, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &2071492076
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2071492073}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 53b32101d32499b40bd7a8aa9fee51eb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  commandName: 
+  commandId: 0
+  commandDesc: 
