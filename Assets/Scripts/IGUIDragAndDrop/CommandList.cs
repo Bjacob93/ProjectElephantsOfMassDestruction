@@ -78,7 +78,7 @@ public class CommandList : MonoBehaviour {
 
 		}
 		if (showToolTip) {
-			GUI.Box (new Rect (Event.current.mousePosition.x + 13, Event.current.mousePosition.y, 100, 40), toolTip, commandSkin.GetStyle("tooltipBackground"));
+			GUI.Box (new Rect (Event.current.mousePosition.x + 13, Event.current.mousePosition.y, 200, 40), toolTip, commandSkin.GetStyle("tooltipBackground"));
 
 			if (toolTip == "") {
 				showToolTip = false;
