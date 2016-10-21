@@ -25,6 +25,11 @@ public class CommandList : MonoBehaviour {
 	float boundingBoxY;
 	Rect slotRect;
 
+	//Drag and Drop
+	private bool draggingCommand;
+	private Command draggedCommand;
+	private int previousCommandIndex;
+
 	//Tooltip
 	private bool showToolTip;
 	private string toolTip;
@@ -55,7 +60,6 @@ public class CommandList : MonoBehaviour {
 		for (int j = 0; j < availableCommands.Count; j++) {
 			slots [j] = availableCommands [j];
 		}
-
     }
 
 	void Update(){
@@ -64,7 +68,6 @@ public class CommandList : MonoBehaviour {
 			//TODO: fill lists, we need to find how many variables and commands are available when we open the list
 			drawCommandList = !drawCommandList;
 		}
-	
 	}
 
 	void OnGUI(){
@@ -84,13 +87,16 @@ public class CommandList : MonoBehaviour {
 				showToolTip = false;
 			}
 		}
+		if(draggingCommand){
+			
+		}
 
 		
 	
 	}
 
 	void DrawCommandList(){
-		
+		Event e = Event.current;
 		float previousRectY =  boxStartingPosY;
 		bool firstRectDrawn = false;
 		GUI.Box (new Rect (boundingBoxX ,boundingBoxY, boundingBoxWidth ,boundingBoxHeight), "Command List");
@@ -100,20 +106,52 @@ public class CommandList : MonoBehaviour {
 			for(int y = 0; y < slotsY; y++){
 
 				Command thisCommand = slots [slotNumber];
-				if (firstRectDrawn == false && slots[slotNumber].commandName != null) {		
-					GUI.Box (slotRect, "<color=#000000>" +  thisCommand.commandName  + "</color>", commandSkin.GetStyle("commandSkin"));
+				if (firstRectDrawn == false && slots [slotNumber].commandName != null) {		
+					GUI.Box (slotRect, "<color=#000000>" + thisCommand.commandName + "</color>", commandSkin.GetStyle ("commandSkin"));
 					firstRectDrawn = true;
-					if (slotRect.Contains (Event.current.mousePosition)) {
+					if (slotRect.Contains (e.mousePosition)) {
 						toolTip = CreateToolTip (thisCommand);
 						showToolTip = true;
+						if (e.button == 0 && e.type == EventType.mouseDrag && !draggingCommand) {
+							draggingCommand = true;
+							previousCommandIndex = slotNumber;
+							draggedCommand = thisCommand;
+							//availableCommands[slotNumber] = new Command(); //used to delete the dragged items so that it doesnt multiply/copy itself
+						}
+						if (e.type == EventType.mouseUp && draggingCommand) {
+							availableCommands [previousCommandIndex] = availableCommands [slotNumber];
+							availableCommands [slotNumber] = draggedCommand;
+							draggingCommand = false;
+							draggedCommand = null;
+						}
 					}
-				} else if(slots[slotNumber].commandName != null) {
+				} else if (slots [slotNumber].commandName != null) {
 					previousRectY += boxOffSet;
-					slotRect = new Rect(boxStartingPosX, previousRectY, boxWidth, boxHeight);
-					GUI.Box (slotRect, "<color=#000000>" +  thisCommand.commandName  + "</color>", commandSkin.GetStyle("commandSkin"));	
-					if (slotRect.Contains (Event.current.mousePosition)) {
+					slotRect = new Rect (boxStartingPosX, previousRectY, boxWidth, boxHeight);
+					GUI.Box (slotRect, "<color=#000000>" + thisCommand.commandName + "</color>", commandSkin.GetStyle ("commandSkin"));	
+					if (slotRect.Contains (e.mousePosition)) {
 						toolTip = CreateToolTip (slots [slotNumber]);
 						showToolTip = true;
+						if (e.button == 0 && e.type == EventType.mouseDrag && !draggingCommand) {
+							draggingCommand = true;
+							previousCommandIndex = slotNumber;
+							draggedCommand = thisCommand;
+							//availableCommands[slotNumber] = new Command(); //used to delete the dragged items so that it doesnt multiply/copy itself
+						}
+						if (e.type == EventType.mouseUp && draggingCommand) {
+							availableCommands [previousCommandIndex] = availableCommands [slotNumber];
+							availableCommands [slotNumber] = draggedCommand;
+							draggingCommand = false;
+							draggedCommand = null;
+						}
+					}
+				} else {
+					if(slotRect.Contains (e.mousePosition)){
+						if(e.type == EventType.mouseUp && draggingCommand){
+							availableCommands [slotNumber] = draggedCommand;
+							draggingCommand = false;
+							draggedCommand = null;
+						}
 					}
 				}
 				slotNumber++;
