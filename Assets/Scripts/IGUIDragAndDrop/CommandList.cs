@@ -24,9 +24,14 @@ public class CommandList : MonoBehaviour {
 	float boundingBoxX;
 	float boundingBoxY;
 	Rect slotRect;
+
 	//Tooltip
 	private bool showToolTip;
 	private string toolTip;
+
+    //GUI apperance
+    public GUISkin commandSkin;
+    //public GUISkin tooltipSkin;
 
     void Start(){
 		boundingBoxHeight = 12 * (boxHeight + ((Screen.height / 24) / 10)) + Screen.width/35;
@@ -64,13 +69,16 @@ public class CommandList : MonoBehaviour {
 
 	void OnGUI(){
 
+        GUI.skin = commandSkin;
+
+
 		toolTip = "";
 		if(drawCommandList){
 			DrawCommandList ();
 
 		}
 		if (showToolTip) {
-			GUI.Box (new Rect (Event.current.mousePosition.x + 13, Event.current.mousePosition.y, 100, 40), toolTip);
+			GUI.Box (new Rect (Event.current.mousePosition.x + 13, Event.current.mousePosition.y, 100, 40), toolTip, commandSkin.GetStyle("tooltipBackground"));
 
 			if (toolTip == "") {
 				showToolTip = false;
@@ -93,7 +101,7 @@ public class CommandList : MonoBehaviour {
 
 				Command thisCommand = slots [slotNumber];
 				if (firstRectDrawn == false && slots[slotNumber].commandName != null) {		
-					GUI.Box (slotRect, "<color=#000000>" +  thisCommand.commandName  + "</color>");
+					GUI.Box (slotRect, "<color=#000000>" +  thisCommand.commandName  + "</color>", commandSkin.GetStyle("commandSkin"));
 					firstRectDrawn = true;
 					if (slotRect.Contains (Event.current.mousePosition)) {
 						toolTip = CreateToolTip (thisCommand);
@@ -102,7 +110,7 @@ public class CommandList : MonoBehaviour {
 				} else if(slots[slotNumber].commandName != null) {
 					previousRectY += boxOffSet;
 					slotRect = new Rect(boxStartingPosX, previousRectY, boxWidth, boxHeight);
-					GUI.Box (slotRect, "<color=#000000>" +  thisCommand.commandName  + "</color>");	
+					GUI.Box (slotRect, "<color=#000000>" +  thisCommand.commandName  + "</color>", commandSkin.GetStyle("commandSkin"));	
 					if (slotRect.Contains (Event.current.mousePosition)) {
 						toolTip = CreateToolTip (slots [slotNumber]);
 						showToolTip = true;
