@@ -5,8 +5,6 @@ using System.Collections.Generic;
 public class CommandDatabase : MonoBehaviour {
 	public List<Command> commandDatabase = new List<Command>();
 
-    public List<Variable> variableDatabase = new List<Variable>();
-
 	void Start(){
 		//Use this srcipt to create new commands as below and store them in the database.
   
@@ -19,13 +17,10 @@ public class CommandDatabase : MonoBehaviour {
 		    //production orders
 		    commandDatabase.Add (new Command ("Produce", "P01", "Produce a unit at base"));
 
-        //Add new variables to the variable database like so:
+		commandDatabase.Add (new Command ("checkpoint A", "var01", "location of checkpoint A"));
 
-            //Checkpoints
-            variableDatabase.Add(new Variable("cA"));
-            variableDatabase.Add(new Variable("cB"));
+		commandDatabase.Add (new Command ("checkpoint B", "var02", "location of checkpoint A"));
 
-        //Homebase
-            variableDatabase.Add(new Variable("bHOME"));
+		commandDatabase.Add (new Command ("Homebase", "var03", "location of checkpoint Homebase"));
 	}
 }
