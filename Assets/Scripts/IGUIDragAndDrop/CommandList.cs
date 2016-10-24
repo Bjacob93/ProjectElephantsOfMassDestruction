@@ -52,11 +52,12 @@ public class CommandList : MonoBehaviour {
 		database = GameObject.FindGameObjectWithTag("CommandDatabase").GetComponent<CommandDatabase>();
 
 
-		//
+		//Add all available commands to the list.
 		for (int i = 0; i < database.commandDatabase.Count; i++) {
 			availableCommands.Add (database.commandDatabase [i]);
 		}
 
+        //Make the "slots" list contain the same elements as the "available" list
 		for (int j = 0; j < availableCommands.Count; j++) {
 			slots [j] = availableCommands [j];
 		}
@@ -64,29 +65,37 @@ public class CommandList : MonoBehaviour {
 
 	void Update(){
 
+        //Open or close the Command List
 		if(Input.GetButtonDown("Commandlist")){	
-			//TODO: fill lists, we need to find how many variables and commands are available when we open the list
 			drawCommandList = !drawCommandList;
 		}
 	}
 
 	void OnGUI(){
 
+        //Set the skin for the boxes
         GUI.skin = commandSkin;
 
-
+        //Set the current tooltip string to be blank
 		toolTip = "";
+
+        //Draw the command list
 		if(drawCommandList){
 			DrawCommandList ();
 
 		}
+
+        //Show the tooltip at the mouse position
 		if (showToolTip) {
 			GUI.Box (new Rect (Event.current.mousePosition.x + 13, Event.current.mousePosition.y, 200, 40), toolTip, commandSkin.GetStyle("tooltipBackground"));
 
+            //If the tooltip string is blank, stop drawing the tooltip
 			if (toolTip == "") {
 				showToolTip = false;
 			}
 		}
+
+        //DragonDrop
 		if(draggingCommand){
 			GUI.Box (new Rect (Event.current.mousePosition.x + 13, Event.current.mousePosition.y, 200, 40), "<color=#000000>" + draggedCommand.commandName + "</color>", commandSkin.GetStyle ("commandSkin"));
 		}
@@ -95,29 +104,48 @@ public class CommandList : MonoBehaviour {
 	
 	}
 
+    //Method that takes care of drawing the command list
 	void DrawCommandList(){
+
+        //Event handles mouse input
 		Event e = Event.current;
-		float previousRectY =  boxStartingPosY;
+
+        //Draw the bounding box.
+        GUI.Box (new Rect (boundingBoxX ,boundingBoxY, boundingBoxWidth ,boundingBoxHeight), "Command List");
+
+        //Variables for drawing the commands
+        float previousRectY =  boxStartingPosY;
 		bool firstRectDrawn = false;
-		GUI.Box (new Rect (boundingBoxX ,boundingBoxY, boundingBoxWidth ,boundingBoxHeight), "Command List");
 		int slotNumber = 0;
 		slotRect = new Rect(boxStartingPosX, previousRectY, boxWidth, boxHeight);
+
+        //Nested for-loop draws the commands
 		for (int x = 0; x < slotsX; x++) {
 			for(int y = 0; y < slotsY; y++){
 
+                //Specify the current command
 				Command thisCommand = slots [slotNumber];
-				if (firstRectDrawn == false && slots [slotNumber].commandName != null) {		
+
+                //Draw the first command if it exists
+				if (firstRectDrawn == false && slots [slotNumber].commandName != null) {
 					GUI.Box (slotRect, "<color=#000000>" + thisCommand.commandName + "</color>", commandSkin.GetStyle ("commandSkin"));
-					firstRectDrawn = true;
+                    
+                    //Specify that the first command has been drawn
+                    firstRectDrawn = true;
+
+                    //Check if the mouse cursor is over the command and draw the tooltip if so
 					if (slotRect.Contains (e.mousePosition)) {
 						toolTip = CreateToolTip (thisCommand);
 						showToolTip = true;
+
+                        //Check if the mouse is dragging the current command
 						if (e.button == 0 && e.type == EventType.mouseDrag && !draggingCommand) {
 							draggingCommand = true;
 							previousCommandIndex = slotNumber;
 							draggedCommand = thisCommand;
 							//availableCommands[slotNumber] = new Command(); //used to delete the dragged items so that it doesnt multiply/copy itself
 						}
+                        //Check if mouse stops dragging a command
 						if (e.type == EventType.mouseUp && draggingCommand) {
 							availableCommands [previousCommandIndex] = availableCommands [slotNumber];
 							availableCommands [slotNumber] = draggedCommand;
@@ -125,7 +153,9 @@ public class CommandList : MonoBehaviour {
 							draggedCommand = null;
 						}
 					}
-				} else if (slots [slotNumber].commandName != null) {
+				}
+                //Draw the rest of the commands and - as above - check for mouse over and drag.
+                else if (slots [slotNumber].commandName != null) {
 					previousRectY += boxOffSet;
 					slotRect = new Rect (boxStartingPosX, previousRectY, boxWidth, boxHeight);
 					GUI.Box (slotRect, "<color=#000000>" + thisCommand.commandName + "</color>", commandSkin.GetStyle ("commandSkin"));	
@@ -154,11 +184,13 @@ public class CommandList : MonoBehaviour {
 						}
 					}
 				}
+                //Increment the slot in the list we're currently interested in.
 				slotNumber++;
 			}
 		}
 	}
 
+    //Method for returning the text for the tooltip
 	string CreateToolTip(Command command){
 		toolTip = command.commandDesc;
 		return toolTip;
