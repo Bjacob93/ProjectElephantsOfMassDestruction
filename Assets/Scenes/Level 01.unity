@@ -1235,7 +1235,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enteredCommands: []
   slots: []
+  slotPositions: []
   commandDatabase: {fileID: 0}
+  commandSkin: {fileID: 11400000, guid: af1d55f012321ba4fb142ce096bc0ec4, type: 2}
 --- !u!1 &1279016135 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 1000013645180952, guid: 74683726fe313ed41bf14492be6d1c27,
@@ -1607,6 +1609,7 @@ MonoBehaviour:
   availableCommands: []
   slots: []
   database: {fileID: 0}
+  sequenceEditor: {fileID: 0}
   commandSkin: {fileID: 11400000, guid: af1d55f012321ba4fb142ce096bc0ec4, type: 2}
 --- !u!20 &1831536907 stripped
 Camera:

@@ -10,6 +10,8 @@ public class CommandList : MonoBehaviour {
 	private bool drawCommandList = false;
     public CommandDatabase database;
 
+    public EditorList sequenceEditor;
+
 
 	//variables to draw the UI
 	int slotsX = 1;
@@ -18,7 +20,7 @@ public class CommandList : MonoBehaviour {
 	float boxWidth = Screen.width / 8;
 	float boxStartingPosX = (Screen.width - Screen.width / 7) - Screen.width / 80;
 	float boxStartingPosY = Screen.height / 4;
-	float boxOffSet = Screen.height / 24;
+	float boxOffSetY = Screen.height / 24;
 	float boundingBoxHeight;
 	float boundingBoxWidth;
 	float boundingBoxX;
@@ -39,23 +41,27 @@ public class CommandList : MonoBehaviour {
     //public GUISkin tooltipSkin;
 
     void Start(){
-		boundingBoxHeight = 12 * (boxHeight + ((Screen.height / 24) / 10)) + Screen.width/35;
+		boundingBoxHeight = slotsY * (boxHeight + ((Screen.height / 24) / 10)) + Screen.width/35;
 		boundingBoxWidth = boxWidth + Screen.width / 40;
 		boundingBoxX = boxStartingPosX - Screen.width/80;
-		boundingBoxY = boxStartingPosY - Screen.width/70;
+		boundingBoxY = boxStartingPosY - Screen.width/70 - 5;
 
 		for (int i = 0; i < (slotsX * slotsY); i++) {
 			slots.Add (new Command ());
+            availableCommands.Add(new Command());
 		}
 
         //Cache the database of commands so that we can always find any command we need.
 		database = GameObject.FindGameObjectWithTag("CommandDatabase").GetComponent<CommandDatabase>();
 
+        //Cache the sequenceEditor
+        sequenceEditor = GameObject.FindGameObjectWithTag("EditorList").GetComponent<EditorList>();
 
 		//Add all available commands to the list.
-		for (int i = 0; i < database.commandDatabase.Count; i++) {
-			availableCommands.Add (database.commandDatabase [i]);
-		}
+        for (int i = 0; i < database.commandDatabase.Count; i++)
+        {
+            availableCommands[i] = database.commandDatabase[i];
+        }
 
         //Make the "slots" list contain the same elements as the "available" list
 		for (int j = 0; j < availableCommands.Count; j++) {
@@ -115,88 +121,93 @@ public class CommandList : MonoBehaviour {
 
         //Variables for drawing the commands
         float previousRectY =  boxStartingPosY;
-		bool firstRectDrawn = false;
 		int slotNumber = 0;
-		slotRect = new Rect(boxStartingPosX, previousRectY, boxWidth, boxHeight);
 
         //Nested for-loop draws the commands
 		for (int x = 0; x < slotsX; x++) {
 			for(int y = 0; y < slotsY; y++){
 
+                slotRect = new Rect(boxStartingPosX, previousRectY + y * boxOffSetY, boxWidth, boxHeight);
+
                 //Specify the current command
-				Command thisCommand = slots [slotNumber];
+                Command thisCommand = slots [slotNumber];
 
                 //Draw the first command if it exists
-				if (firstRectDrawn == false && slots [slotNumber].commandName != null) {
-					GUI.Box (slotRect, "<color=#000000>" + thisCommand.commandName + "</color>", commandSkin.GetStyle ("commandSkin"));
-                    
-                    //Specify that the first command has been drawn
-                    firstRectDrawn = true;
+                if (slots[slotNumber].commandName != "")
+                {
+                    GUI.Box(slotRect, "<color=#000000>" + thisCommand.commandName + "</color>", commandSkin.GetStyle("commandSkin"));
 
                     //Check if the mouse cursor is over the command and draw the tooltip if so
-					if (slotRect.Contains (e.mousePosition)) {
-						toolTip = CreateToolTip (thisCommand);
-						showToolTip = true;
+                    if (slotRect.Contains(e.mousePosition))
+                    {
+                        toolTip = CreateToolTip(thisCommand);
+                        showToolTip = true;
 
-                        //Check if the mouse is dragging the current command
-						if (e.button == 0 && e.type == EventType.mouseDrag && !draggingCommand) {
-							draggingCommand = true;
-							previousCommandIndex = slotNumber;
-							draggedCommand = thisCommand;
-							//availableCommands[slotNumber] = new Command(); //used to delete the dragged items so that it doesnt multiply/copy itself
-						}
-                        //Check if mouse stops dragging a command
-						if (e.type == EventType.mouseUp && draggingCommand) {
-							availableCommands [previousCommandIndex] = availableCommands [slotNumber];
-							availableCommands [slotNumber] = draggedCommand;
-							draggingCommand = false;
-							draggedCommand = null;
-						}
-					}
-				}
-                //Draw the rest of the commands and - as above - check for mouse over and drag.
-                else if (slots [slotNumber].commandName != null) {
-					previousRectY += boxOffSet;
-					slotRect = new Rect (boxStartingPosX, previousRectY, boxWidth, boxHeight);
-					GUI.Box (slotRect, "<color=#000000>" + thisCommand.commandName + "</color>", commandSkin.GetStyle ("commandSkin"));	
-					if (slotRect.Contains (e.mousePosition)) {
-						toolTip = CreateToolTip (slots [slotNumber]);
-						showToolTip = true;
-						if (e.button == 0 && e.type == EventType.mouseDrag && !draggingCommand) {
-							draggingCommand = true;
-							previousCommandIndex = slotNumber;
-							draggedCommand = thisCommand;
-							//availableCommands[slotNumber] = new Command(); //used to delete the dragged items so that it doesnt multiply/copy itself
-						}
-						if (e.type == EventType.mouseUp && draggingCommand) {
-							availableCommands [previousCommandIndex] = availableCommands [slotNumber];
-							availableCommands [slotNumber] = draggedCommand;
-							draggingCommand = false;
-							draggedCommand = null;
-						}
-					}
-				} else {
-					if (slotRect.Contains (e.mousePosition)) {
-						if (e.type == EventType.mouseUp && draggingCommand) {
-							availableCommands [slotNumber] = draggedCommand;
-							draggingCommand = false;
-							draggedCommand = null;
-						}
-					} else {
-						// if left mouse click is lifted outside in the command list it will strop the draggin of a command and null the stored values in the drag int.
-						if (!slotRect.Contains (e.mousePosition)) {
-							if (e.type == EventType.mouseUp && draggingCommand) {
-								draggingCommand = false;
-								draggedCommand = null;
-							}
-						}
-					}
-				}
-                //Increment the slot in the list we're currently interested in.
-				slotNumber++;
+                        //Call the function that handles drag and drop
+                        DragonDrop(slotNumber, thisCommand);
+                    }
+                }
+
+                //Check if drag release
+                CheckForRelease(slotNumber);
+                slotNumber++;                
 			}
 		}
 	}
+
+    //Method for DragonDrop
+    void DragonDrop(int slotNumber, Command thisCommand)
+    {
+
+        Event e = Event.current;
+
+        //Check if the mouse is dragging the current command
+        if (e.button == 0 && e.type == EventType.mouseDrag && !draggingCommand)
+        {
+            draggingCommand = true;
+            previousCommandIndex = slotNumber;
+            draggedCommand = thisCommand;
+            //availableCommands[slotNumber] = new Command(); //used to delete the dragged items so that it doesnt multiply/copy itself
+        }
+        //Check if mouse stops dragging a command by releasing left mouse button
+        if (e.type == EventType.mouseUp && draggingCommand)
+        {
+            availableCommands[previousCommandIndex] = availableCommands[slotNumber];
+            availableCommands[slotNumber] = draggedCommand;
+            draggingCommand = false;
+            draggedCommand = null;
+        }
+    }
+
+    void CheckForRelease(int slotNumber)
+    {
+        Event e = Event.current;
+
+        //This statements handles placing commands in different slots
+        if (slotRect.Contains(e.mousePosition) && e.type == EventType.mouseUp && draggingCommand)
+        {
+            availableCommands[slotNumber] = draggedCommand;
+            draggingCommand = false;
+            draggedCommand = null;
+
+        }// if left mouse click is lifted outside in the command list it will strop the draggin of a command and null the stored values in the drag int.
+        else if (!slotRect.Contains(e.mousePosition) && e.type == EventType.mouseUp && draggingCommand)
+        {
+            for (int i = 0; i < sequenceEditor.slotPositions.Count; i++)
+            {
+                slotRect = sequenceEditor.slotPositions[i];
+
+                if (slotRect.Contains(e.mousePosition))
+                {
+                    sequenceEditor.enteredCommands[i] = draggedCommand;
+                }
+            }
+           
+
+            draggingCommand = false;
+            draggedCommand = null;
+        }
+    }
 
     //Method for returning the text for the tooltip
 	string CreateToolTip(Command command){

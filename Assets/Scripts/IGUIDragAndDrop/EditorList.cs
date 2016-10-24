@@ -7,12 +7,17 @@ public class EditorList : MonoBehaviour {
     //Initialise lists for the Editor window. These will contain the Command objects that has been dragged to the Editor-window.
     public List<Command> enteredCommands = new List<Command>();
     public List<Command> slots = new List<Command>();
+
+    public List<Rect> slotPositions = new List<Rect>();
+
     public CommandDatabase commandDatabase;
     private bool drawEditorWindow = false;
 
     //Variables hold the numver of rows and coloumns in the sequence editor
     int slotsRow = 6;
     int slotsCol = 2;
+
+    int totalSlots;
 
     //Varibles that hold the dimensions of the drawn commands
     float boxHeight = Screen.height / 24 - (Screen.height / 24) / 10;
@@ -45,6 +50,8 @@ public class EditorList : MonoBehaviour {
 
     void Start()
     {
+        totalSlots = slotsCol * slotsRow;
+
         //Calculate the dimensions of the bounding box
         boundingBoxHeight = 6 * (boxHeight + ((Screen.height / 24) / 10)) + Screen.width / 35;
         boundingBoxWidth = 2 * boxWidth + Screen.width / 40;
@@ -52,7 +59,7 @@ public class EditorList : MonoBehaviour {
         boundingBoxY = boxStartingPosY - Screen.width / 70 - 5;
 
         //Fill the slots list and enteredCommands list with empty commands
-        for (int i = 0; i < 12; i++)
+        for (int i = 0; i < totalSlots; i++)
         {
             slots.Add (new Command());
             enteredCommands.Add (new Command());
@@ -61,6 +68,15 @@ public class EditorList : MonoBehaviour {
         //Cache the database of commands so that we can always find any command we need.
         commandDatabase = GameObject.FindGameObjectWithTag("CommandDatabase").GetComponent<CommandDatabase>();
 
+        //Add all the positions and dimensions of the slots to a list for reference
+        for (int y = 0; y < slotsCol; y++)
+        {
+            for (int x = 0; x < slotsRow; x++)
+            {
+                slotRect = new Rect(boxStartingPosX + y * boxOffsetY, boxStartingPosY + x * boxOffSetX, boxWidth, boxHeight);
+                slotPositions.Add(slotRect);
+            }
+        }
 
     }
 
@@ -113,7 +129,6 @@ public class EditorList : MonoBehaviour {
 
         //Variables for drawing the commands
         float previousRectY = boxStartingPosY;
-        bool firstRectDrawn = false;
         int slotNumber = 0;
         
 
@@ -121,6 +136,8 @@ public class EditorList : MonoBehaviour {
         {
             for (int x = 0; x < slotsRow; x++)
             {
+                slots[slotNumber] = enteredCommands[slotNumber];
+
                 //Specify the command we're currenly handling
                 Command thisCommand = slots[slotNumber];
 
