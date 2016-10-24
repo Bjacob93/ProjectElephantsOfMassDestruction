@@ -33,12 +33,9 @@ public class EditorList : MonoBehaviour {
     Rect slotRect;
 
     //Drag and Drop
-    private bool draggingCommand;
-    private Command draggedCommand;
+    public bool isDraggingCommand;
+    public Command draggedCommand;
     private int previousCommandIndex;
-
-    //Event handles mouse input
-    Event e = Event.current;
 
     //Tooltip
     private bool showToolTip;
@@ -105,7 +102,7 @@ public class EditorList : MonoBehaviour {
         //Show tooltip at the mouse position
         if (showToolTip)
         {
-            GUI.Box(new Rect(e.mousePosition.x + 13, e.mousePosition.y, 200, 40), toolTip, commandSkin.GetStyle("tooltipBackground"));
+            GUI.Box(new Rect(Event.current.mousePosition.x + 13, Event.current.mousePosition.y, 200, 40), toolTip, commandSkin.GetStyle("tooltipBackground"));
 
             //If the tooltip string is blank, stop drawing the tooltip
             if (toolTip == "")
@@ -115,20 +112,21 @@ public class EditorList : MonoBehaviour {
         }
 
         //DragonDrop
-        if (draggingCommand)
+        if (isDraggingCommand)
         {
-            GUI.Box(new Rect(e.mousePosition.x + 13, e.mousePosition.y, 200, 40), "<color=#000000>" + draggedCommand.commandName + "</color>", commandSkin.GetStyle("commandSkin"));
+            GUI.Box(new Rect(Event.current.mousePosition.x + 13, Event.current.mousePosition.y, 200, 40), "<color=#000000>" + draggedCommand.commandName + "</color>", commandSkin.GetStyle("commandSkin"));
         }
     }
 
     //Method that draws the editor window
     void DrawEditor()
     {
+        Event e = Event.current;
+
         //Draw the bounding box.
         GUI.Box(new Rect(boundingBoxX, boundingBoxY, boundingBoxWidth, boundingBoxHeight), "Sequence Editor");
 
         //Variables for drawing the commands
-        float previousRectY = boxStartingPosY;
         int slotNumber = 0;
         
 
@@ -148,13 +146,76 @@ public class EditorList : MonoBehaviour {
                 if (thisCommand.commandName == "")
                 {
                     GUI.Box(slotRect, "");
+                    CheckReleased(slotNumber);
+
+                //Draw any filled slots
                 }else if (thisCommand.commandName != "")
                 {
                     GUI.Box(slotRect, "<color=#000000>" + thisCommand.commandName + "</color>", commandSkin.GetStyle("commandSkin"));
-                }
 
+                    //Check if the mouse is over the slot
+                    if (slotRect.Contains(e.mousePosition))
+                    {
+
+                        //Get tooltip text and tell it to draw
+                        showToolTip = true;
+                        toolTip = CreateToolTip(thisCommand);
+
+                        //Call the drag and drop method
+                        DragonDrop(slotNumber);
+                    }
+                }
                 slotNumber++;
             }
         }
+    }
+
+    //Method for DragonDrop
+    void DragonDrop(int slotNumber) { 
+
+        Event e = Event.current;
+
+        //Check if the mouse is dragging the current command
+        if (e.button == 0 && e.type == EventType.mouseDrag && !isDraggingCommand)
+        {
+            isDraggingCommand = true;
+            previousCommandIndex = slotNumber;
+            draggedCommand = enteredCommands[slotNumber];
+            enteredCommands[slotNumber] = new Command();
+        }
+
+        //Swap positions if the mouse is released over a slot.
+        else if (slotRect.Contains(e.mousePosition) && e.type == EventType.mouseUp && isDraggingCommand)
+        {
+            enteredCommands[previousCommandIndex] = enteredCommands[slotNumber];
+            enteredCommands[slotNumber] = draggedCommand;
+            isDraggingCommand = false;
+            draggedCommand = null;
+        }
+        
+    }
+
+    void CheckReleased(int slotNumber)
+    {
+        Event e = Event.current;
+        if (slotRect.Contains(e.mousePosition) && e.type == EventType.MouseUp && isDraggingCommand)
+        {
+            enteredCommands[slotNumber] = draggedCommand;
+            draggedCommand = null;
+            isDraggingCommand = false;
+        }
+
+        else if (!slotRect.Contains(e.mousePosition) && e.type == EventType.mouseUp && isDraggingCommand)
+        {
+            isDraggingCommand = false;
+            draggedCommand = null;
+        }
+    }
+
+    //Method for returning the text for the tooltip
+    string CreateToolTip(Command command)
+    {
+        toolTip = command.commandDesc;
+        return toolTip;
     }
 }

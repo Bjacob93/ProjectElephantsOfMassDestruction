@@ -27,11 +27,6 @@ public class CommandList : MonoBehaviour {
 	float boundingBoxY;
 	Rect slotRect;
 
-	//Drag and Drop
-	private bool draggingCommand;
-	private Command draggedCommand;
-	private int previousCommandIndex;
-
 	//Tooltip
 	private bool showToolTip;
 	private string toolTip;
@@ -102,8 +97,8 @@ public class CommandList : MonoBehaviour {
 		}
 
         //DragonDrop
-		if(draggingCommand){
-			GUI.Box (new Rect (Event.current.mousePosition.x + 13, Event.current.mousePosition.y, 200, 40), "<color=#000000>" + draggedCommand.commandName + "</color>", commandSkin.GetStyle ("commandSkin"));
+		if(sequenceEditor.isDraggingCommand){
+			GUI.Box (new Rect (Event.current.mousePosition.x + 13, Event.current.mousePosition.y, 200, 40), "<color=#000000>" + sequenceEditor.draggedCommand.commandName + "</color>", commandSkin.GetStyle ("commandSkin"));
 		}
 
 		
@@ -162,20 +157,12 @@ public class CommandList : MonoBehaviour {
         Event e = Event.current;
 
         //Check if the mouse is dragging the current command
-        if (e.button == 0 && e.type == EventType.mouseDrag && !draggingCommand)
+        if (e.button == 0 && e.type == EventType.mouseDrag && !sequenceEditor.isDraggingCommand)
         {
-            draggingCommand = true;
-            previousCommandIndex = slotNumber;
-            draggedCommand = thisCommand;
-            //availableCommands[slotNumber] = new Command(); //used to delete the dragged items so that it doesnt multiply/copy itself
-        }
-        //Check if mouse stops dragging a command by releasing left mouse button
-        if (e.type == EventType.mouseUp && draggingCommand)
-        {
-            availableCommands[previousCommandIndex] = availableCommands[slotNumber];
-            availableCommands[slotNumber] = draggedCommand;
-            draggingCommand = false;
-            draggedCommand = null;
+            sequenceEditor.isDraggingCommand = true;
+            sequenceEditor.isDraggingCommand = true;
+            sequenceEditor.draggedCommand = thisCommand;
+            sequenceEditor.draggedCommand = thisCommand;
         }
     }
 
@@ -184,14 +171,14 @@ public class CommandList : MonoBehaviour {
         Event e = Event.current;
 
         //This statements handles placing commands in different slots
-        if (slotRect.Contains(e.mousePosition) && e.type == EventType.mouseUp && draggingCommand)
+        if (slotRect.Contains(e.mousePosition) && e.type == EventType.mouseUp && sequenceEditor.isDraggingCommand)
         {
-            availableCommands[slotNumber] = draggedCommand;
-            draggingCommand = false;
-            draggedCommand = null;
+            availableCommands[slotNumber] = sequenceEditor.draggedCommand;
+            sequenceEditor.isDraggingCommand = false;
+            sequenceEditor.draggedCommand = null;
 
         }// if left mouse click is lifted outside in the command list it will strop the draggin of a command and null the stored values in the drag int.
-        else if (!slotRect.Contains(e.mousePosition) && e.type == EventType.mouseUp && draggingCommand)
+        else if (!slotRect.Contains(e.mousePosition) && e.type == EventType.mouseUp && sequenceEditor.isDraggingCommand)
         {
             for (int i = 0; i < sequenceEditor.slotPositions.Count; i++)
             {
@@ -199,13 +186,13 @@ public class CommandList : MonoBehaviour {
 
                 if (slotRect.Contains(e.mousePosition))
                 {
-                    sequenceEditor.enteredCommands[i] = draggedCommand;
+                    sequenceEditor.enteredCommands[i] = sequenceEditor.draggedCommand;
                 }
             }
-           
 
-            draggingCommand = false;
-            draggedCommand = null;
+
+            sequenceEditor.isDraggingCommand = false;
+            sequenceEditor.draggedCommand = null;
         }
     }
 
