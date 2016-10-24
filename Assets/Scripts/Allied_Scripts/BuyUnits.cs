@@ -13,6 +13,8 @@ public class BuyUnits : MonoBehaviour {
     GameObject scoreHolder;
     ScoreManager scoreManager;
 
+    public bool gameIsPaused = true;
+
 	void Start(){
         unitManager = GameObject.Find("UnitManager");
         unitPrices = unitManager.GetComponent<UnitPrices>();
@@ -23,6 +25,11 @@ public class BuyUnits : MonoBehaviour {
 
 	void OnMouseDown ()
 	{
+        if (gameIsPaused)
+        {
+            return;
+        }
+
 		if (gameObject.tag == "PlayerBase")
         {
             if (scoreManager.money < unitPrices.alliedMeleeCost)

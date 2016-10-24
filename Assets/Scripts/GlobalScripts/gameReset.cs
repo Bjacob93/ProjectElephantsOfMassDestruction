@@ -3,7 +3,9 @@ using System.Collections;
 
 public class gameReset : MonoBehaviour {
 
-	GameObject scoreManagerGO;
+    GameObject reset;
+
+    GameObject scoreManagerGO;
 	ScoreManager scoreManagerScript;
 
 	GameObject buyEnemyUnitsGO;
@@ -25,7 +27,10 @@ public class gameReset : MonoBehaviour {
 
 		unitManager = GameObject.Find("UnitManager");
 		Uarray = unitManager.GetComponent<UnitArrays>();
-	}
+
+        reset = GameObject.FindGameObjectWithTag("ResetButton");
+        reset.SetActive(false);
+    }
 	
 	// Update is called once per frame
 	void Update () {

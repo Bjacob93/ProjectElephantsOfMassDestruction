@@ -9,6 +9,8 @@ public class BuyEnemyUnits : MonoBehaviour
 
     public GameObject enemyUnits;
 
+    public bool gameIsPaused = true;
+
     void start()
     {
         
@@ -16,6 +18,11 @@ public class BuyEnemyUnits : MonoBehaviour
 
     void Update()
     {
+        if (gameIsPaused)
+        {
+            return;
+        }
+
         restartTimer += Time.deltaTime;
         
         if (restartTimer >= restartDelay)

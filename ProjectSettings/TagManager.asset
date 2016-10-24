@@ -16,6 +16,8 @@ TagManager:
   - CommandDatabase
   - CommandList
   - EditorList
+  - ResetButton
+  - PlayButton
   layers:
   - Default
   - TransparentFX
