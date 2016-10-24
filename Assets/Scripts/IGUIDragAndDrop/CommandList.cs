@@ -88,7 +88,7 @@ public class CommandList : MonoBehaviour {
 			}
 		}
 		if(draggingCommand){
-			
+			GUI.Box (new Rect (Event.current.mousePosition.x + 13, Event.current.mousePosition.y, 200, 40), "<color=#000000>" + draggedCommand.commandName + "</color>", commandSkin.GetStyle ("commandSkin"));
 		}
 
 		
