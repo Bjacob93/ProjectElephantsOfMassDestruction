@@ -12,7 +12,7 @@ public class Command {
     //Empty constructor for a command
     public Command()
     {
-
+        commandName = "";
     }
 
     //Constructor for specific commands
