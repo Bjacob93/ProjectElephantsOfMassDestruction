@@ -176,11 +176,19 @@ public class CommandList : MonoBehaviour {
 						}
 					}
 				} else {
-					if(slotRect.Contains (e.mousePosition)){
-						if(e.type == EventType.mouseUp && draggingCommand){
+					if (slotRect.Contains (e.mousePosition)) {
+						if (e.type == EventType.mouseUp && draggingCommand) {
 							availableCommands [slotNumber] = draggedCommand;
 							draggingCommand = false;
 							draggedCommand = null;
+						}
+					} else {
+						// if left mouse click is lifted outside in the command list it will strop the draggin of a command and null the stored values in the drag int.
+						if (!slotRect.Contains (e.mousePosition)) {
+							if (e.type == EventType.mouseUp && draggingCommand) {
+								draggingCommand = false;
+								draggedCommand = null;
+							}
 						}
 					}
 				}
