@@ -4,6 +4,8 @@ using System.Collections.Generic;
 
 public class EditorList : MonoBehaviour {
 
+    public string listID;
+
     //Initialise lists for the Editor window. These will contain the Command objects that has been dragged to the Editor-window.
     public List<Command> enteredCommands = new List<Command>();
     public List<Command> slots = new List<Command>();
@@ -44,6 +46,10 @@ public class EditorList : MonoBehaviour {
     //GUI apperance
     public GUISkin commandSkin;
 
+    public EditorList(string id)
+    {
+        listID = id;
+    }
 
     void Start()
     {
