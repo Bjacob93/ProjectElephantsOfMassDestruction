@@ -12,6 +12,8 @@ public class BasicCheckpointScript : MonoBehaviour {
 	SequenceManager sm;
 	string checkpointName;
 
+  
+
     //Bool that determines what kind of order a checkpoint should issue units.
     bool giveMoveOrder = false;
     bool giveDefenceOrder = false;
@@ -19,10 +21,11 @@ public class BasicCheckpointScript : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		this.gameObject.AddComponent<EditorList> ();
 		sm = GameObject.Find ("UIManager").GetComponent<SequenceManager> ();
 		checkpointName = this.gameObject.name;
-	}
+
+
+    }
 	
 	// Update is called once per frame 
 	void Update () {
@@ -91,5 +94,16 @@ public class BasicCheckpointScript : MonoBehaviour {
     }
 
 	void OnMouseDown(){
+        for(int i = 0; i < sm.editorlistGO.Count; i++)
+        {
+            if (sm.editorlistGO[i].listID == checkpointName)
+            {
+                sm.editorlistGO[i].drawEditorWindow = true;
+            }
+            else
+            {
+                sm.editorlistGO[i].drawEditorWindow = false;
+            }
+        }
 	}
 }

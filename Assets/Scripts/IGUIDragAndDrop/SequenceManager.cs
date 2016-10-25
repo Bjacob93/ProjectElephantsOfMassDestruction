@@ -18,8 +18,8 @@ public class SequenceManager : MonoBehaviour {
 			editorlistGO.Add (new EditorList (id));
 		}
 
-		editorlistGO.Add (UImanager.AddComponent<EditorList("GiraffeBase")>)();
-	}
+        editorlistGO.Add(new EditorList("GiraffeBase"));
+    }
 
 	void Update(){
 		//Debug.Log (editorlistGO.Count);

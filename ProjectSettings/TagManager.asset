@@ -18,6 +18,7 @@ TagManager:
   - EditorList
   - ResetButton
   - PlayButton
+  - Checkpoint
   layers:
   - Default
   - TransparentFX

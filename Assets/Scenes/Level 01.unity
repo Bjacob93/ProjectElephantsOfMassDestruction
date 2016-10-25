@@ -155,6 +155,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 67831981}
+  - 114: {fileID: 67831982}
   m_Layer: 0
   m_Name: UIManager
   m_TagString: UIManager
@@ -178,6 +179,18 @@ Transform:
   - {fileID: 1243863649}
   m_Father: {fileID: 0}
   m_RootOrder: 7
+--- !u!114 &67831982
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 67831980}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3a07b6e419e766947b09ab56c4f31aad, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  editorlistGO: []
 --- !u!1 &100136589 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 1000011053526964, guid: afde2324dfd96bb47bda104f702e4560,
@@ -1220,10 +1233,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3a9c2ff252b1bc9408d13b30fad89d8c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  listID: 
   enteredCommands: []
   slots: []
   slotPositions: []
   commandDatabase: {fileID: 0}
+  drawEditorWindow: 0
   isDraggingCommand: 0
   draggedCommand:
     commandName: 
@@ -1611,7 +1626,14 @@ MonoBehaviour:
   availableCommands: []
   slots: []
   database: {fileID: 0}
+  sequenceManager: {fileID: 0}
   sequenceEditor: {fileID: 0}
+  boundingRect:
+    serializedVersion: 2
+    x: 0
+    y: 0
+    width: 0
+    height: 0
   commandSkin: {fileID: 11400000, guid: af1d55f012321ba4fb142ce096bc0ec4, type: 2}
 --- !u!20 &1831536907 stripped
 Camera:
@@ -1808,6 +1830,14 @@ Prefab:
         type: 2}
       propertyPath: restartDelay
       value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1000013511449158, guid: 74683726fe313ed41bf14492be6d1c27, type: 2}
+      propertyPath: m_TagString
+      value: Checkpoint
+      objectReference: {fileID: 0}
+    - target: {fileID: 1000010915266590, guid: 74683726fe313ed41bf14492be6d1c27, type: 2}
+      propertyPath: m_TagString
+      value: Checkpoint
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 74683726fe313ed41bf14492be6d1c27, type: 2}

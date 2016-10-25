@@ -16,11 +16,15 @@ public class EditorList : MonoBehaviour{
     public CommandDatabase commandDatabase;
     public bool drawEditorWindow = false;
 
-    //Variables hold the numver of rows and coloumns in the sequence editor
+    //Variables hold the number of rows and coloumns in the sequence editor
     int slotsRow = 6;
     int slotsCol = 2;
 
     int totalSlots;
+
+    //Cache the command list window
+    Rect commandBoundRect;
+    Rect thisBoundingRect;
 
     //Varibles that hold the dimensions of the drawn commands
     float boxHeight = Screen.height / 24 - (Screen.height / 24) / 10;
@@ -54,6 +58,9 @@ public class EditorList : MonoBehaviour{
 
     void Start()
     {
+
+        commandBoundRect = GameObject.FindGameObjectWithTag("CommandList").GetComponent<CommandList>().boundingRect;
+
         totalSlots = slotsCol * slotsRow;
 
         //Calculate the dimensions of the bounding box
@@ -61,6 +68,8 @@ public class EditorList : MonoBehaviour{
         boundingBoxWidth = 2 * boxWidth + Screen.width / 40;
         boundingBoxX = boxStartingPosX - Screen.width / 80;
         boundingBoxY = boxStartingPosY - Screen.width / 70 - 5;
+
+        thisBoundingRect = new Rect(boundingBoxX, boundingBoxY, boundingBoxWidth, boundingBoxHeight);
 
         //Fill the slots list and enteredCommands list with empty commands
         for (int i = 0; i < totalSlots; i++)
@@ -181,6 +190,12 @@ public class EditorList : MonoBehaviour{
     void DragonDrop(int slotNumber) { 
 
         Event e = Event.current;
+
+        //Check if we are even clicking a bounding box
+        if (e.type == EventType.mouseDown && (!thisBoundingRect.Contains(e.mousePosition) || !commandBoundRect.Contains(e.mousePosition)))
+        {
+            drawEditorWindow = false;
+        }
 
         //Check if the mouse is dragging the current command
         if (e.button == 0 && e.type == EventType.mouseDrag && !isDraggingCommand)

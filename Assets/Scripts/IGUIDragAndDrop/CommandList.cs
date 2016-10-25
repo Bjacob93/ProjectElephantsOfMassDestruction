@@ -10,6 +10,7 @@ public class CommandList : MonoBehaviour {
 	private bool drawCommandList = false;
     public CommandDatabase database;
 
+    public SequenceManager sequenceManager;
     public EditorList sequenceEditor;
 
 
@@ -26,6 +27,7 @@ public class CommandList : MonoBehaviour {
 	float boundingBoxX;
 	float boundingBoxY;
 	Rect slotRect;
+    public Rect boundingRect;
 
 	//Tooltip
 	private bool showToolTip;
@@ -36,10 +38,14 @@ public class CommandList : MonoBehaviour {
     //public GUISkin tooltipSkin;
 
     void Start(){
+        sequenceManager = GameObject.Find("UIManager").GetComponent<SequenceManager>();
+
 		boundingBoxHeight = slotsY * (boxHeight + ((Screen.height / 24) / 10)) + Screen.width/35;
 		boundingBoxWidth = boxWidth + Screen.width / 40;
 		boundingBoxX = boxStartingPosX - Screen.width/80;
 		boundingBoxY = boxStartingPosY - Screen.width/70 - 5;
+
+        boundingRect = new Rect(boundingBoxX, boundingBoxY, boundingBoxWidth, boundingBoxHeight);
 
 		for (int i = 0; i < (slotsX * slotsY); i++) {
 			slots.Add (new Command ());
@@ -48,9 +54,6 @@ public class CommandList : MonoBehaviour {
 
         //Cache the database of commands so that we can always find any command we need.
 		database = GameObject.FindGameObjectWithTag("CommandDatabase").GetComponent<CommandDatabase>();
-
-        //Cache the sequenceEditor
-        sequenceEditor = GameObject.FindGameObjectWithTag("EditorList").GetComponent<EditorList>();
 
 		//Add all available commands to the list.
         for (int i = 0; i < database.commandDatabase.Count; i++)
@@ -84,6 +87,14 @@ public class CommandList : MonoBehaviour {
 		if(drawCommandList){
 			DrawCommandList ();
 
+            for(int i = 0; i < sequenceManager.editorlistGO.Count; i++)
+            {
+                if (sequenceManager.editorlistGO[i].drawEditorWindow)
+                {
+                    sequenceEditor = sequenceManager.editorlistGO[i];
+                }
+            }
+
 		}
 
         //Show the tooltip at the mouse position
@@ -97,9 +108,11 @@ public class CommandList : MonoBehaviour {
 		}
 
         //DragonDrop
-		if(sequenceEditor.isDraggingCommand){
-			GUI.Box (new Rect (Event.current.mousePosition.x + 13, Event.current.mousePosition.y, 200, 40), "<color=#000000>" + sequenceEditor.draggedCommand.commandName + "</color>", commandSkin.GetStyle ("commandSkin"));
-		}
+        if (sequenceEditor != null) {
+            if (sequenceEditor.isDraggingCommand) {
+                GUI.Box(new Rect(Event.current.mousePosition.x + 13, Event.current.mousePosition.y, 200, 40), "<color=#000000>" + sequenceEditor.draggedCommand.commandName + "</color>", commandSkin.GetStyle("commandSkin"));
+            }
+        }
 
 		
 	
