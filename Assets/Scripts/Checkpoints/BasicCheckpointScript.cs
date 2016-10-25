@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class BasicCheckpointScript : MonoBehaviour {
 
@@ -13,10 +14,8 @@ public class BasicCheckpointScript : MonoBehaviour {
     bool giveDefenceOrder = false;
     bool giveAttackOrder = false;
 
-
 	// Use this for initialization
 	void Start () {
-
 	}
 	
 	// Update is called once per frame 
