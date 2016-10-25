@@ -9,6 +9,9 @@ public class BasicCheckpointScript : MonoBehaviour {
 
     public float controlRange = 10f;
 
+	SequenceManager sm;
+	string checkpointName;
+
     //Bool that determines what kind of order a checkpoint should issue units.
     bool giveMoveOrder = false;
     bool giveDefenceOrder = false;
@@ -16,6 +19,9 @@ public class BasicCheckpointScript : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+		this.gameObject.AddComponent<EditorList> ();
+		sm = GameObject.Find ("UIManager").GetComponent<SequenceManager> ();
+		checkpointName = this.gameObject.name;
 	}
 	
 	// Update is called once per frame 
@@ -83,4 +89,7 @@ public class BasicCheckpointScript : MonoBehaviour {
             }
         }
     }
+
+	void OnMouseDown(){
+	}
 }

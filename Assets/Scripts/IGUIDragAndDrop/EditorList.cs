@@ -2,7 +2,8 @@
 using System.Collections;
 using System.Collections.Generic;
 
-public class EditorList : MonoBehaviour {
+
+public class EditorList : MonoBehaviour{
 
     public string listID;
 
@@ -13,7 +14,7 @@ public class EditorList : MonoBehaviour {
     public List<Rect> slotPositions = new List<Rect>();
 
     public CommandDatabase commandDatabase;
-    private bool drawEditorWindow = false;
+    public bool drawEditorWindow = false;
 
     //Variables hold the numver of rows and coloumns in the sequence editor
     int slotsRow = 6;
