@@ -5,26 +5,41 @@ using System.Collections.Generic;
 
 public class EditorList : MonoBehaviour{
 
+    /**
+     * This class handles the Sequence Editor. It controls drawing it in the UI, and has an ID so that multiple instances
+     * of it can be initialised, one for each checkpoint and the homebase.
+     */
+
+    //The ID of the list
     public string listID;
 
     //Initialise lists for the Editor window. These will contain the Command objects that has been dragged to the Editor-window.
     public List<Command> enteredCommands = new List<Command>();
     public List<Command> slots = new List<Command>();
 
+    //A list of the slot positions so that they can be easily accessed by the CommandList script.
     public List<Rect> slotPositions = new List<Rect>();
 
+    //Cache the database of commands.
     public CommandDatabase commandDatabase;
+
+    //Bool that controls when to draw the editor window.
     public bool drawEditorWindow = false;
 
-    //Variables hold the number of rows and coloumns in the sequence editor
+    //Variables hold the number of rows and coloumns in the sequence editor, and the resulting total number of slots.
     int slotsRow = 6;
     int slotsCol = 2;
-
     int totalSlots;
 
-    //Cache the command list window
+    //Cache the command list window.
     Rect commandBoundRect;
+
+    //Cache the Sequence editor window, and its dimensions.
     Rect thisBoundingRect;
+    float boundingBoxHeight;
+    float boundingBoxWidth;
+    float boundingBoxX;
+    float boundingBoxY;
 
     //Varibles that hold the dimensions of the drawn commands
     float boxHeight = Screen.height / 24 - (Screen.height / 24) / 10;
@@ -33,10 +48,6 @@ public class EditorList : MonoBehaviour{
     float boxStartingPosY = Screen.height / 4;
     float boxOffSetX = Screen.height / 24;
     float boxOffsetY = Screen.width / 8;
-    float boundingBoxHeight;
-    float boundingBoxWidth;
-    float boundingBoxX;
-    float boundingBoxY;
     Rect slotRect;
 
     //Drag and Drop
@@ -51,6 +62,7 @@ public class EditorList : MonoBehaviour{
     //GUI apperance
     public GUISkin commandSkin;
 
+    //Constructor which sets the ID of the list.
     public EditorList(string id)
     {
         listID = id;
@@ -58,20 +70,22 @@ public class EditorList : MonoBehaviour{
 
     void Start()
     {
-
+        //Get the dimensions of the command window from the CommandList script.
         commandBoundRect = GameObject.FindGameObjectWithTag("CommandList").GetComponent<CommandList>().boundingRect;
 
+        //Calculate the total number of slots.
         totalSlots = slotsCol * slotsRow;
 
-        //Calculate the dimensions of the bounding box
+        //Calculate the dimensions of the bounding box.
         boundingBoxHeight = 6 * (boxHeight + ((Screen.height / 24) / 10)) + Screen.width / 35;
         boundingBoxWidth = 2 * boxWidth + Screen.width / 40;
         boundingBoxX = boxStartingPosX - Screen.width / 80;
         boundingBoxY = boxStartingPosY - Screen.width / 70 - 5;
 
+        //Define the bounding box.
         thisBoundingRect = new Rect(boundingBoxX, boundingBoxY, boundingBoxWidth, boundingBoxHeight);
 
-        //Fill the slots list and enteredCommands list with empty commands
+        //Fill the slots list and enteredCommands list with empty commands.
         for (int i = 0; i < totalSlots; i++)
         {
             slots.Add (new Command());
@@ -81,7 +95,7 @@ public class EditorList : MonoBehaviour{
         //Cache the database of commands so that we can always find any command we need.
         commandDatabase = GameObject.FindGameObjectWithTag("CommandDatabase").GetComponent<CommandDatabase>();
 
-        //Add all the positions and dimensions of the slots to a list for reference
+        //Add all the positions and dimensions of the slots to a list, to be referenced by the CommandList script.
         for (int y = 0; y < slotsCol; y++)
         {
             for (int x = 0; x < slotsRow; x++)
@@ -95,13 +109,14 @@ public class EditorList : MonoBehaviour{
 
     void Update()
     {
-        if (Input.GetButtonDown("SequenceEditor"))
+        //Check if the hotkey "e" for opening the Sequence Editor is pressed, and change the state of the window if so.
+        if (Input.GetButtonDown("SequenceEditor")) 
         {
-            drawEditorWindow = !drawEditorWindow;
+            drawEditorWindow = false;
         }
     }
 
-    void OnGUI()
+    public void OnGUI()
     {
         //Set the GUI skin
         GUI.skin = commandSkin;
@@ -145,7 +160,7 @@ public class EditorList : MonoBehaviour{
         //Variables for drawing the commands
         int slotNumber = 0;
         
-
+        //For every slot in the Sequence Editor
         for (int y = 0; y < slotsCol; y++)
         {
             for (int x = 0; x < slotsRow; x++)
@@ -181,6 +196,7 @@ public class EditorList : MonoBehaviour{
                         DragonDrop(slotNumber);
                     }
                 }
+                //Increment the current slot.
                 slotNumber++;
             }
         }
@@ -189,9 +205,10 @@ public class EditorList : MonoBehaviour{
     //Method for DragonDrop
     void DragonDrop(int slotNumber) { 
 
+        //Initialise the event condition.
         Event e = Event.current;
 
-        //Check if we are even clicking a bounding box
+        //Check if we are clicking within a bounding box, and close all windows if we are not.
         if (e.type == EventType.mouseDown && (!thisBoundingRect.Contains(e.mousePosition) || !commandBoundRect.Contains(e.mousePosition)))
         {
             drawEditorWindow = false;
@@ -217,16 +234,19 @@ public class EditorList : MonoBehaviour{
         
     }
 
+    //Check if the mouse button is released (...)
     void CheckReleased(int slotNumber)
     {
         Event e = Event.current;
+
+        //(...) on an empty slot.
         if (slotRect.Contains(e.mousePosition) && e.type == EventType.MouseUp && isDraggingCommand)
         {
             enteredCommands[slotNumber] = draggedCommand;
             draggedCommand = null;
             isDraggingCommand = false;
         }
-
+        //(...) outside the slots.
         else if (!slotRect.Contains(e.mousePosition) && e.type == EventType.mouseUp && isDraggingCommand)
         {
             isDraggingCommand = false;
