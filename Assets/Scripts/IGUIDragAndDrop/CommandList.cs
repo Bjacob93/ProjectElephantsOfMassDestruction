@@ -33,9 +33,9 @@ public class CommandList : MonoBehaviour {
     public Rect boundingRect;
 
     //Variables the hold the dimensions of the slots
-    float boxHeight = Screen.height / 24 - ((Screen.height / 24) / 10);
-	float boxWidth = Screen.width / 8;
-	float boxStartingPosX = (Screen.width - Screen.width / 7) - Screen.width / 80;
+    float boxHeight = (Screen.height / 24) - ((Screen.height / 24) / 10);
+	float boxWidth = (Screen.width / 8);
+	float boxStartingPosX = (Screen.width - (Screen.width / 7)) - (Screen.width / 80);
 	float boxStartingPosY = Screen.height / 4;
 	float boxOffSetY = Screen.height / 24;
 	Rect slotRect;
@@ -56,10 +56,10 @@ public class CommandList : MonoBehaviour {
         sequenceManager = GameObject.Find("UIManager").GetComponent<SequenceManager>();
 
         //Calculate the bounding box dimensions and define the resulting Rect.
-        boundingBoxHeight = numberOfSlots * (boxHeight + ((Screen.height / 24) / 10)) + Screen.width/35;
-		boundingBoxWidth = boxWidth + Screen.width / 40;
-		boundingBoxX = boxStartingPosX - Screen.width/80;
-		boundingBoxY = boxStartingPosY - Screen.width/70 - 5;
+        boundingBoxHeight = numberOfSlots * (boxHeight + ((Screen.height / 24) / 10)) + (Screen.width/35);
+		boundingBoxWidth = boxWidth + (Screen.width / 40);
+		boundingBoxX = boxStartingPosX - (Screen.width/80);
+		boundingBoxY = (boxStartingPosY - (Screen.width/70)) - 5;
         boundingRect = new Rect(boundingBoxX, boundingBoxY, boundingBoxWidth, boundingBoxHeight);
 
         //Fill the lists with empty commands.

@@ -14,41 +14,42 @@ public class EditorList : MonoBehaviour{
     public string listID;
 
     //Initialise lists for the Editor window. These will contain the Command objects that has been dragged to the Editor-window.
-    public List<Command> enteredCommands = new List<Command>();
-    public List<Command> slots = new List<Command>();
+    public List<Command> enteredCommands;
+    public List<Command> slots;
 
     //A list of the slot positions so that they can be easily accessed by the CommandList script.
-    public List<Rect> slotPositions = new List<Rect>();
+    public List<Rect> slotPositions;
 
     //Cache the database of commands.
     public CommandDatabase commandDatabase;
 
     //Bool that controls when to draw the editor window.
-    public bool drawEditorWindow = false;
+    public bool drawEditorWindow;
 
     //Variables hold the number of rows and coloumns in the sequence editor, and the resulting total number of slots.
-    int slotsRow = 6;
-    int slotsCol = 2;
+    int slotsRow;
+    int slotsCol;
     int totalSlots;
 
     //Cache the command list window.
     Rect commandBoundRect;
 
     //Cache the Sequence editor window, and its dimensions.
-    Rect thisBoundingRect;
+    Rect  boundingRect;
     float boundingBoxHeight;
     float boundingBoxWidth;
     float boundingBoxX;
     float boundingBoxY;
 
     //Varibles that hold the dimensions of the drawn commands
-    float boxHeight = Screen.height / 24 - (Screen.height / 24) / 10;
-    float boxWidth = Screen.width / 8 - (Screen.height / 24) / 10;
-    float boxStartingPosX = (Screen.width / 6);
-    float boxStartingPosY = Screen.height / 4;
-    float boxOffSetX = Screen.height / 24;
-    float boxOffsetY = Screen.width / 8;
     Rect slotRect;
+    float boxHeight;
+    float boxWidth;
+    float boxStartingPosX;
+    float boxStartingPosY;
+    float boxOffSetX;
+    float boxOffsetY;
+    
 
     //Drag and Drop
     public bool isDraggingCommand;
@@ -70,6 +71,22 @@ public class EditorList : MonoBehaviour{
 
     void Start()
     {
+        //Define the variables
+        enteredCommands = new List<Command>();
+        slots = new List<Command>();
+        slotPositions = new List<Rect>();
+
+        drawEditorWindow = false;
+        slotsRow = 6;
+        slotsCol = 2;
+
+        boxHeight = Screen.height / 24 - (Screen.height / 24) / 10;
+        boxWidth = Screen.width / 8 - (Screen.height / 24) / 10;
+        boxStartingPosX = Screen.width / 6;
+        boxStartingPosY = Screen.height / 4;
+        boxOffSetX = Screen.height / 24;
+        boxOffsetY = Screen.width / 8;
+
         //Get the dimensions of the command window from the CommandList script.
         commandBoundRect = GameObject.FindGameObjectWithTag("CommandList").GetComponent<CommandList>().boundingRect;
 
@@ -83,7 +100,7 @@ public class EditorList : MonoBehaviour{
         boundingBoxY = boxStartingPosY - Screen.width / 70 - 5;
 
         //Define the bounding box.
-        thisBoundingRect = new Rect(boundingBoxX, boundingBoxY, boundingBoxWidth, boundingBoxHeight);
+        boundingRect = new Rect(boundingBoxX, boundingBoxY, boundingBoxWidth, boundingBoxHeight);
 
         //Fill the slots list and enteredCommands list with empty commands.
         for (int i = 0; i < totalSlots; i++)
@@ -96,15 +113,14 @@ public class EditorList : MonoBehaviour{
         commandDatabase = GameObject.FindGameObjectWithTag("CommandDatabase").GetComponent<CommandDatabase>();
 
         //Add all the positions and dimensions of the slots to a list, to be referenced by the CommandList script.
-        for (int y = 0; y < slotsCol; y++)
+        for (int y = 0; y < slotsRow; y++)
         {
-            for (int x = 0; x < slotsRow; x++)
+            for (int x = 0; x < slotsCol; x++)
             {
-                slotRect = new Rect(boxStartingPosX + y * boxOffsetY, boxStartingPosY + x * boxOffSetX, boxWidth, boxHeight);
+                slotRect = new Rect(boxStartingPosX + x * boxOffsetY, boxStartingPosY + y * boxOffSetX, boxWidth, boxHeight);
                 slotPositions.Add(slotRect);
             }
         }
-
     }
 
     void Update()
@@ -145,6 +161,7 @@ public class EditorList : MonoBehaviour{
         //DragonDrop
         if (isDraggingCommand)
         {
+            Debug.Log(draggedCommand.commandName);
             GUI.Box(new Rect(Event.current.mousePosition.x + 13, Event.current.mousePosition.y, 200, 40), "<color=#000000>" + draggedCommand.commandName + "</color>", commandSkin.GetStyle("commandSkin"));
         }
     }
@@ -171,7 +188,7 @@ public class EditorList : MonoBehaviour{
                 Command thisCommand = slots[slotNumber];
 
                 //Update the slot position
-                slotRect = new Rect(boxStartingPosX + y * boxOffsetY, boxStartingPosY + x * boxOffSetX, boxWidth, boxHeight);
+                slotRect = new Rect(boxStartingPosX + y * boxOffsetY, boxStartingPosY + y * boxOffSetX, boxWidth, boxHeight);
 
                 //Draw any empty slots
                 if (thisCommand.commandName == "")
@@ -209,7 +226,7 @@ public class EditorList : MonoBehaviour{
         Event e = Event.current;
 
         //Check if we are clicking within a bounding box, and close all windows if we are not.
-        if (e.type == EventType.mouseDown && (!thisBoundingRect.Contains(e.mousePosition) || !commandBoundRect.Contains(e.mousePosition)))
+        if (e.type == EventType.mouseDown && (!boundingRect.Contains(e.mousePosition) || !commandBoundRect.Contains(e.mousePosition)))
         {
             drawEditorWindow = false;
         }

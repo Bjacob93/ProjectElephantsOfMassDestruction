@@ -1,10 +1,12 @@
 fileFormatVersion: 2
 guid: 3a9c2ff252b1bc9408d13b30fad89d8c
-timeCreated: 1477049677
+timeCreated: 1477489501
 licenseType: Free
 MonoImporter:
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - commandDatabase: {instanceID: 0}
+  - commandSkin: {fileID: 11400000, guid: af1d55f012321ba4fb142ce096bc0ec4, type: 2}
   executionOrder: 300
   icon: {instanceID: 0}
   userData: 
