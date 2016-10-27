@@ -32,33 +32,57 @@ public class BasicCheckpointScript : MonoBehaviour {
 		sm = GameObject.Find ("UIManager").GetComponent<SequenceManager> ();
 		checkpointName = this.gameObject.name;
 
+        //Save the location of this checkpoint to a variable.
+        location = gameObject.transform.position;
+
         //Create an EditorList component attached to this game object and add it to the list in SequenceManager.
         listComponent = gameObject.AddComponent<EditorList>();
         listComponent.listID = checkpointName;
         listComponent.belongsToCheckpoint = true;
         sm.editorlistGO.Add(listComponent);
 
-        location = gameObject.transform.position;
+        
     }
 	
 	void Update () {
-        //Find all player units.
-        GameObject[] units = GameObject.FindGameObjectsWithTag("playerUnits");
 
-        //Issue the correct order
-        if (giveMoveOrder)
+        for (int i = 0; i < listComponent.slots.Count; i++)
         {
-            Move(units);
-        }else if (giveAttackOrder)
-        {
-            Attack(units);
-        }else if (giveDefenceOrder)
-        {
-            Defend(units);
+            if (i % 2 == 0)
+            {
+                string id = listComponent.slots[i].commandId;
+
+                switch (id)
+                {
+                    case "A01":
+                        Vector3 target = listComponent.slots[i + 1].locationOfTarget;
+                        break;
+
+                    case "D01":
+
+                        break;
+
+                    case "P01":
+
+                        break;
+
+                    default:
+                        break;
+                }
+            }
         }
 
-        
-	}
+
+
+
+
+
+
+
+
+        //Find all player units.
+        GameObject[] units = GameObject.FindGameObjectsWithTag("playerUnits");
+    }
 
     void Move(GameObject[] units)
     {
