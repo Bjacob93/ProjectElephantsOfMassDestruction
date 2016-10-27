@@ -26,7 +26,9 @@ GameObject:
   - 114: {fileID: 114000013991502646}
   - 114: {fileID: 114000014182195986}
   - 114: {fileID: 114000012180343068}
-  m_Layer: 0
+  - 114: {fileID: 114000010357476502}
+  - 114: {fileID: 114000011950552902}
+  m_Layer: 10
   m_Name: player
   m_TagString: playerUnits
   m_Icon: {fileID: 0}
@@ -46,7 +48,10 @@ GameObject:
   - 143: {fileID: 143000014207804354}
   - 114: {fileID: 114000014010160634}
   - 114: {fileID: 114000014224996152}
-  m_Layer: 0
+  - 114: {fileID: 114000012375138684}
+  - 114: {fileID: 114000010891339284}
+  - 114: {fileID: 114000010135621820}
+  m_Layer: 10
   m_Name: Enemy
   m_TagString: enemyUnits
   m_Icon: {fileID: 0}
@@ -64,7 +69,7 @@ GameObject:
   - 33: {fileID: 33000011454082652}
   - 23: {fileID: 23000011490890150}
   - 95: {fileID: 95000013562635696}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Elephante
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -82,7 +87,7 @@ GameObject:
   - 33: {fileID: 33000013272806808}
   - 23: {fileID: 23000013232290206}
   - 95: {fileID: 95000012737266060}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: giraffe(brick)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -280,6 +285,26 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!114 &114000010135621820
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000011053526964}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cb6a34d769a1e4ac7b0b30e433aa443c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  smoothType: 0
+  subdivisions: 2
+  iterations: 2
+  strength: 0.5
+  uniformLength: 1
+  maxSegmentLength: 2
+  bezierTangentLength: 0.4
+  offset: 0.2
+  factor: 0.1
 --- !u!114 &114000010139256964
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -295,7 +320,7 @@ MonoBehaviour:
     dataString: UEsDBBQAAAgIAAAIIeyYmU7c4wEAAMcDAAALACQAZ3JhcGgwLmpzb24KACAAAAAAAAEAGAAAgD7V3rGdAQCAPtXesZ0BAIA+1d6xnQF1Ustu2zAQ/JWCZ7eQlMaNfEvtxC2QNkHcoue1tLIWpkiBj/oR+N+7pGTZCtALBc0OZ2dn+SY2nkoxexN/QXoUM3GXJHk2vcswv1lP8+rmY5pmkGcMrStIqvyLOE0E2BYL9wqOtJilE0FWN+gMFfdqI1klmQivqNKmeSg3ONfWWTGrQFqcCKNduKdC032kHuJ55JOlC1QOzX+KXhUSmhbLFR2x56RJx+IvM5QusSuyrUJLSbbv5Q5tmG8OrfXscSJKAjYdejG1RtrUTsyyq1vPVWXRxf4GDgsyPHMUE1+1q1mhAbu9yu42zU5npR/jUnY75VJldPOtbxRtu5qK7SscCrBuCOgaXFx79GoHcgtriX9qVD/10miveHnOeL7mLWaLQWQYYl5jsT1zOm8jyLejrNM+61OYbj+X1Kz599Pny+/9nmzkMbCSOoSa8100nPx3thqXa6MeY8HCb4u/YHN5AT38SMY6LkQx8E4/kdouDZUX5hldkHVP1FDMjZccxlhrb5gpHmKePLF3c20UBrAbrUUF0h1euJsbr/NdZej3Dn+Ewuku+77Sv+8xPYIDN0nGhRe96/dHilVBvnTFaITjU2e7ilfN84QEPiwNtOGFlQZ2Szo2ehiKVKVXhUFUz8Pd0z9QSwMEFAAACAAAAAgh7B5/XXYyAAAAMgAAABIAJABncmFwaDBfZWRpdG9yLmpzb24KACAAAAAAAAEAGAAAgD7V3rGdAQCAPtXesZ0BAIA+1d6xnQF7ImxvY2tlZCI6dHJ1ZSwic2hvd0V4dHJhIjpmYWxzZSwicGl2b3QiOiJDZW50ZXIifVBLAwQUAAAICAAACCHs8ePfznYAAACDAAAACQAkAG1ldGEuanNvbgoAIAAAAAAAAQAYAACAPtXesZ0BAIA+1d6xnQEAgD7V3rGdAR2MOwrDMBAF77K1I/QBR+s2hTuTPriQ0creIpKR5UAIuXukdMNj5n3gRfngFGEAI6zQ0MGa3b4dMKiKJ/tKD7BSou6tJjRLj8FclNIOdZ2W4GTAK8wdlPdOk3vSv7i7sgWOnuMqxsx+bK/NisnTLZ2xNE3O3x9QSwECLQAUAAAICAAACCHsmJlO3OMBAADHAwAACwAkAAAAAAAAAAAAAAAAAAAAZ3JhcGgwLmpzb24KACAAAAAAAAEAGAAAgD7V3rGdAQCAPtXesZ0BAIA+1d6xnQFQSwECLQAUAAAIAAAACCHsHn9ddjIAAAAyAAAAEgAkAAAAAAAAAAAAAAAwAgAAZ3JhcGgwX2VkaXRvci5qc29uCgAgAAAAAAABABgAAIA+1d6xnQEAgD7V3rGdAQCAPtXesZ0BUEsBAi0AFAAACAgAAAgh7PHj3852AAAAgwAAAAkAJAAAAAAAAAAAAAAAtgIAAG1ldGEuanNvbgoAIAAAAAAAAQAYAACAPtXesZ0BAIA+1d6xnQEAgD7V3rGdAVBLBQYAAAAAAwADABwBAAB3AwAAAAA=
     upgradeData: 
     data_backup: 
-    file_cachedStartup: {fileID: 4900000, guid: 83a92bbc1bf372747a610a4938edef16,
+    file_cachedStartup: {fileID: 4900000, guid: 0929756694d4e594ab8c6a61d5e5b357,
       type: 3}
     data_cachedStartup: 
     cacheStartup: 1
@@ -369,6 +394,28 @@ MonoBehaviour:
     spreadOutCount: 1
   showGraphs: 1
   lastUniqueAreaIndex: 7
+--- !u!114 &114000010357476502
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000011007423004}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 40150215fbb21624084497c46333ecb7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &114000010891339284
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000011053526964}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 77f586f285b3847808d79083bd19ef1f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114000011676289936
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -382,9 +429,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   targetPosition: {x: -45, y: 0, z: -45}
   speed: 75
-  direction: {x: 0, y: 0, z: 0}
   meleeRange: 3
   engagementRange: 10
+  direction: {x: 0, y: 0, z: 0}
+  receivedDefenceOrder: 0
   receivedNewDestination: 0
   nearestEnemy: {fileID: 0}
   previousEnemy: {fileID: 0}
@@ -404,6 +452,19 @@ MonoBehaviour:
   meleeCoolDown: 0.5
   nearestPlayer: {fileID: 0}
   MeleeRange: 3
+--- !u!114 &114000011950552902
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000011007423004}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a537d958aa5bb4f35b0d7b40d72278f2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  penalty: 100000
+  randomStep: 10
 --- !u!114 &114000012096312222
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -440,6 +501,17 @@ MonoBehaviour:
   bezierTangentLength: 0.4
   offset: 0.2
   factor: 0.1
+--- !u!114 &114000012375138684
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000011053526964}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 40150215fbb21624084497c46333ecb7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114000013635667380
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -550,6 +622,7 @@ MonoBehaviour:
   direction: {x: 0, y: 0, z: 0}
   meleeRange: 3
   engagementRange: 10
+  isInMeleeRange: 0
   receivedNewDestination: 0
   nearestEnemy: {fileID: 0}
   previousEnemy: {fileID: 0}

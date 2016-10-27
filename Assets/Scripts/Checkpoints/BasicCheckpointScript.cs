@@ -102,8 +102,12 @@ public class BasicCheckpointScript : MonoBehaviour {
             if (distance < controlRange)
             {
                 Astar aStar = e.GetComponent<Astar>();
-                aStar.targetPosition = targetLocation;
-                aStar.receivedNewDestination = true;
+                if (checkpointName != aStar.commanderID)
+                {
+                    aStar.targetPosition = targetLocation;
+                    aStar.receivedNewDestination = true;
+                    aStar.commanderID = checkpointName;
+                }
             }
         }
     }
@@ -116,9 +120,13 @@ public class BasicCheckpointScript : MonoBehaviour {
             float distance = Vector3.Distance(transform.position, e.transform.position);
             if (distance < controlRange)
             {
-                //TODO: Check melee or ranged
                 Astar aStar = e.GetComponent<Astar>();
-                aStar.targetPosition = targetLocation;
+                if (checkpointName != aStar.commanderID)
+                {
+                    aStar.targetPosition = targetLocation;
+                    aStar.receivedNewDestination = true;
+                    aStar.commanderID = checkpointName;
+                }
                 aStar.receivedNewDestination = true;
             }
         }
@@ -132,11 +140,14 @@ public class BasicCheckpointScript : MonoBehaviour {
             float distance = Vector3.Distance(transform.position, e.transform.position);
             if (distance < controlRange)
             {
-                //TODO: Check melee or ranged
                 Astar aStar = e.GetComponent<Astar>();
-                aStar.targetPosition = targetLocation;
-                aStar.receivedNewDestination = true;
-                aStar.receivedDefenceOrder = true;
+                if (checkpointName != aStar.commanderID)
+                {
+                    aStar.targetPosition = targetLocation;
+                    aStar.receivedNewDestination = true;
+                    aStar.commanderID = checkpointName;
+                    aStar.receivedDefenceOrder = true;
+                }
             }
         }
     }

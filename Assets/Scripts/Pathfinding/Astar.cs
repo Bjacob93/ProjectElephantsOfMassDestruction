@@ -9,6 +9,9 @@ public class Astar : MonoBehaviour {
 	CharacterController controller;
 	Path path;
 
+    //Cache which checkpoint that was the most recent to give it a command.
+    public string commanderID;
+
     //Cache variables for base stats
     public float speed = 30f;
 	float rotationSpeed = 10f;
