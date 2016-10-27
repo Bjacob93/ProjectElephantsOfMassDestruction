@@ -1790,6 +1790,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 1243863649}
+  - 114: {fileID: 1243863650}
   m_Layer: 0
   m_Name: EditorList
   m_TagString: EditorList
@@ -1810,6 +1811,29 @@ Transform:
   m_Children: []
   m_Father: {fileID: 67831981}
   m_RootOrder: 2
+--- !u!114 &1243863650
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1243863648}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3a9c2ff252b1bc9408d13b30fad89d8c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  listID: 
+  enteredCommands: []
+  slots: []
+  slotPositions: []
+  commandDatabase: {fileID: 0}
+  drawEditorWindow: 0
+  isDraggingCommand: 0
+  draggedCommand:
+    commandName: 
+    commandId: 
+    commandDesc: 
+  commandSkin: {fileID: 0}
 --- !u!1 &1279016135
 GameObject:
   m_ObjectHideFlags: 0
@@ -2166,18 +2190,14 @@ Transform:
 --- !u!114 &1585162771
 MonoBehaviour:
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 114000011574583060, guid: 74683726fe313ed41bf14492be6d1c27,
-    type: 2}
+  m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1585162769}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8e966f666731eba4aa929b82b86b6b81, type: 3}
+  m_Script: {fileID: 11500000, guid: 07115fd3865ad194eb7cdfa1e7adff0e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerUnits: {fileID: 1000011007423004, guid: afde2324dfd96bb47bda104f702e4560,
-    type: 2}
-  gameIsPaused: 1
 --- !u!23 &1585162772
 MeshRenderer:
   m_ObjectHideFlags: 0
