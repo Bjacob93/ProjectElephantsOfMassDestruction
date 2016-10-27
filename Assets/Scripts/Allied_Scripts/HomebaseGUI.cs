@@ -11,6 +11,9 @@ public class HomebaseGUI : MonoBehaviour {
     //The base's location
     public Vector3 location;
 
+    //Boolean for checking if the game is paused
+    public bool gameIsPaused;
+
     // Use this for initialization
     void Start () {
         //Find the SequenceManager, and same the name of the checkpoint to a string.
@@ -20,14 +23,24 @@ public class HomebaseGUI : MonoBehaviour {
         //Add the sequenceEditor component to the list in SequenceManager.
         listComponent = gameObject.AddComponent<EditorList>();
         listComponent.listID = baseName;
+        listComponent.belongsToCheckpoint = false;
 
         sequenceManager.editorlistGO.Add(listComponent);
 
         location = gameObject.transform.position;
+
+        gameIsPaused = true;
     }
 	
 	// Update is called once per frame
 	void Update () {
+
+        if (gameIsPaused)
+        {
+            return;
+        }
+
+
 	
 	}
 

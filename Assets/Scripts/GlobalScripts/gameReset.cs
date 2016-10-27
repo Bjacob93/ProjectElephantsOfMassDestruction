@@ -17,8 +17,8 @@ public class gameReset : MonoBehaviour {
 	GameObject[] allies;
 	GameObject[] enemies;
 
-	// Use this for initialization
-	void Start () {
+    // Use this for initialization
+    void Start () {
 		scoreManagerGO = GameObject.Find("ScoreManager");
 		scoreManagerScript = scoreManagerGO.GetComponent<ScoreManager>();
 
@@ -30,6 +30,7 @@ public class gameReset : MonoBehaviour {
 
         reset = GameObject.FindGameObjectWithTag("ResetButton");
         reset.SetActive(false);
+
     }
 	
 	// Update is called once per frame

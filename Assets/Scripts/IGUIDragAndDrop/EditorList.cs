@@ -12,6 +12,7 @@ public class EditorList : MonoBehaviour{
 
     //The ID of the list
     public string listID;
+    public bool belongsToCheckpoint;
 
     //Initialise lists for the Editor window. These will contain the Command objects that has been dragged to the Editor-window.
     public List<Command> enteredCommands;
@@ -61,12 +62,6 @@ public class EditorList : MonoBehaviour{
 
     //GUI apperance
     public GUISkin commandSkin;
-
-    //Constructor which sets the ID of the list.
-    public EditorList(string id)
-    {
-        listID = id;
-    }
 
     void Start()
     {
@@ -199,7 +194,14 @@ public class EditorList : MonoBehaviour{
                 //Draw any filled slots
                 }else if (thisCommand.commandName != "")
                 {
-                    GUI.Box(slotRect, "<color=#000000>" + thisCommand.commandName + "</color>", commandSkin.GetStyle("commandSkin"));
+                    if(x == 1 && slots[slotNumber - 1].commandName == "")
+                    {
+                        GUI.Box(slotRect, "<color=#000000>" + thisCommand.commandName + "</color>", commandSkin.GetStyle("commandError"));
+                    }
+                    else
+                    {
+                        GUI.Box(slotRect, "<color=#000000>" + thisCommand.commandName + "</color>", commandSkin.GetStyle("commandSkin"));
+                    }
 
                     //Check if the mouse is over the slot
                     if (slotRect.Contains(e.mousePosition))
@@ -225,11 +227,11 @@ public class EditorList : MonoBehaviour{
         //Initialise the event condition.
         Event e = Event.current;
 
-        //Check if we are clicking within a bounding box, and close all windows if we are not.
-        if (e.type == EventType.mouseDown && (!boundingRect.Contains(e.mousePosition) || !commandBoundRect.Contains(e.mousePosition)))
-        {
-            drawEditorWindow = false;
-        }
+        ////Check if we are clicking within a bounding box, and close all windows if we are not.
+        //if (e.type == EventType.mouseDown && (!boundingRect.Contains(e.mousePosition) || !commandBoundRect.Contains(e.mousePosition)))
+        //{
+        //    drawEditorWindow = false;
+        //}
 
         //Check if the mouse is dragging the current command
         if (e.button == 0 && e.type == EventType.mouseDrag && !isDraggingCommand)

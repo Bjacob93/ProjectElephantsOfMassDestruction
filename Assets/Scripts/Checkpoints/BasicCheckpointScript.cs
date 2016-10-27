@@ -35,6 +35,7 @@ public class BasicCheckpointScript : MonoBehaviour {
         //Create an EditorList component attached to this game object and add it to the list in SequenceManager.
         listComponent = gameObject.AddComponent<EditorList>();
         listComponent.listID = checkpointName;
+        listComponent.belongsToCheckpoint = true;
         sm.editorlistGO.Add(listComponent);
 
         location = gameObject.transform.position;

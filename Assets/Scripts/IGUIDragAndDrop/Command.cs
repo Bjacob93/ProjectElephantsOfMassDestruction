@@ -9,6 +9,10 @@ public class Command {
 	public string commandId;
     public string commandDesc;
 
+    public bool requiresVariable;
+    public bool availableAtCheckpoint;
+    public bool availableAtBase;
+
     //Empty constructor for a command
     public Command()
     {
@@ -16,10 +20,13 @@ public class Command {
     }
 
     //Constructor for specific commands
-	public Command (string name, string id, string desc)
+	public Command (string name, string id, string desc, bool reqVar, bool atCheck, bool atBase)
     {
         commandName = name;
         commandId = id;
         commandDesc = desc;
+        requiresVariable = reqVar;
+        availableAtBase = atBase;
+        availableAtCheckpoint = atCheck;
     }
 }

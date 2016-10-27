@@ -98,8 +98,6 @@ public class CommandList : MonoBehaviour {
 
         //Draw the command list.
 		if(drawCommandList){
-			DrawCommandList ();
-
             //Go through all instances of EditorList.
             for(int i = 0; i < sequenceManager.editorlistGO.Count; i++)
             {
@@ -107,8 +105,15 @@ public class CommandList : MonoBehaviour {
                 if (sequenceManager.editorlistGO[i].drawEditorWindow)
                 {
                     sequenceEditor = sequenceManager.editorlistGO[i];
+                    break;
+                }
+                if(!sequenceManager.editorlistGO[i].drawEditorWindow && i == sequenceManager.editorlistGO.Count - 1)
+                {
+                    sequenceEditor = null;
                 }
             }
+
+            DrawCommandList ();
 
 		}
 
@@ -158,7 +163,36 @@ public class CommandList : MonoBehaviour {
             //Draw the first command if it exists
             if (slots[slotNumber].commandName != "")
             {
-                GUI.Box(slotRect, "<color=#000000>" + thisCommand.commandName + "</color>", commandSkin.GetStyle("commandSkin"));
+                if(sequenceEditor != null)
+                {
+                    if (sequenceEditor.belongsToCheckpoint)
+                    {
+                        if (thisCommand.availableAtCheckpoint)
+                        {
+                            GUI.Box(slotRect, "<color=#000000>" + thisCommand.commandName + "</color>", commandSkin.GetStyle("commandSkin"));
+                        }
+                        else
+                        {
+                            GUI.Box(slotRect, "<color=#000000>" + thisCommand.commandName + "</color>", commandSkin.GetStyle("greyedOut"));
+                        }
+                        
+                    }
+                    else
+                    {
+                        if (thisCommand.availableAtBase)
+                        {
+                            GUI.Box(slotRect, "<color=#000000>" + thisCommand.commandName + "</color>", commandSkin.GetStyle("commandSkin"));
+                        }
+                        else
+                        {
+                            GUI.Box(slotRect, "<color=#000000>" + thisCommand.commandName + "</color>", commandSkin.GetStyle("greyedOut"));
+                        }
+                    }
+                }
+                else
+                {
+                    GUI.Box(slotRect, "<color=#000000>" + thisCommand.commandName + "</color>", commandSkin.GetStyle("commandSkin"));
+                }
 
                 //Check if the mouse cursor is over the command.
                 if (slotRect.Contains(e.mousePosition))
@@ -209,7 +243,22 @@ public class CommandList : MonoBehaviour {
                 //If any of them contains the mouse, but the dragged command in that slot.
                 if (slotRect.Contains(e.mousePosition))
                 {
-                    sequenceEditor.enteredCommands[i] = sequenceEditor.draggedCommand;
+                    if(i % 2 == 0)
+                    {
+                        sequenceEditor.enteredCommands[i] = sequenceEditor.draggedCommand;
+                    }
+                    else 
+                    {
+                        if (sequenceEditor.enteredCommands[i - 1].commandName == "")
+                        {
+                            sequenceEditor.enteredCommands[i -1] = sequenceEditor.draggedCommand;
+                        }
+                        else
+                        {
+                            sequenceEditor.enteredCommands[i] = sequenceEditor.draggedCommand;
+
+                        }
+                    }
                 }
             }
 
