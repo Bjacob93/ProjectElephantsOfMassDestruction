@@ -180,7 +180,7 @@ public class HomebaseGUI : MonoBehaviour {
 		if (unitSpawnCoolDownLeft <= 0)
 		{
 			//reset the Cooldown
-			unitSpawnCoolDown = unitSpawnCoolDown;
+			unitSpawnCoolDownLeft = unitSpawnCoolDown;
 
 			//if you do ot have the money to buy/produce a unit give a feedback
 			if (scoreManager.money < unitPrices.alliedMeleeCost)
