@@ -22,11 +22,6 @@ public class BasicCheckpointScript : MonoBehaviour {
     //Range within which the checkpoint will give orders to units.
     public float controlRange = 10f;
 
-    //Bools that determines what kind of order a checkpoint should issue units.
-    bool giveMoveOrder = false;
-    bool giveDefenceOrder = false;
-    bool giveAttackOrder = false;
-
 	void Start () {
         //Find the SequenceManager, and same the name of the checkpoint to a string.
 		sm = GameObject.Find ("UIManager").GetComponent<SequenceManager> ();
@@ -46,45 +41,59 @@ public class BasicCheckpointScript : MonoBehaviour {
 	
 	void Update () {
 
+        //Find all player units.
+        GameObject[] units = GameObject.FindGameObjectsWithTag("playerUnits");
+
+        //Go through all the slots in the Sequence Editor belonging to this checkpoint.
         for (int i = 0; i < listComponent.slots.Count; i++)
         {
-            if (i % 2 == 0)
+            //If the slot is in the left of the editor and has a command in it.
+            if (i % 2 == 0 && listComponent.slots[i].commandName != "")
             {
+                //Save the id of the command in that slot to a string, and initialise a vector for the target coordinates of the command.
                 string id = listComponent.slots[i].commandId;
+                Vector3 target;
 
+                //Switch that will catch the if of the command, and call the relevant function(s).
                 switch (id)
                 {
-                    case "A01":
-                        Vector3 target = listComponent.slots[i + 1].locationOfTarget;
+                    case "M01": //Move command.
+                        //If a variable in the next slot exists.
+                        if (listComponent.slots[i + 1].commandName != "")
+                        {
+                            //Get the target location of the command, and call the command.
+                            target = listComponent.slots[i + 1].locationOfTarget;
+                            Move(units, target);
+                        }
                         break;
 
-                    case "D01":
-
+                    case "A01": //Attack command.
+                        //If a variable in the next slot exists.
+                        if (listComponent.slots[i + 1].commandName != "")
+                        {
+                            //Get the target location of the command, and call the command.
+                            target = listComponent.slots[i + 1].locationOfTarget;
+                            Attack(units, target);
+                        }
                         break;
 
-                    case "P01":
-
+                    case "D01": //Defence command.
+                        //If a variable in the next slot exists.
+                        if (listComponent.slots[i + 1].commandName != "")
+                        {
+                            //Get the target location of the command, and call the command.
+                            target = listComponent.slots[i + 1].locationOfTarget;
+                            Defend(units, target);
+                        }
                         break;
-
                     default:
                         break;
                 }
             }
         }
-
-
-
-
-
-
-
-
-
-        //Find all player units.
-        GameObject[] units = GameObject.FindGameObjectsWithTag("playerUnits");
     }
 
-    void Move(GameObject[] units)
+    void Move(GameObject[] units, Vector3 targetLocation)
     {
         //For each unit that exist belonging to the player, check if it is within control range, and give it a new destination if it is
         foreach (GameObject e in units)
@@ -93,13 +102,13 @@ public class BasicCheckpointScript : MonoBehaviour {
             if (distance < controlRange)
             {
                 Astar aStar = e.GetComponent<Astar>();
-                aStar.targetPosition = meleeDistination;
+                aStar.targetPosition = targetLocation;
                 aStar.receivedNewDestination = true;
             }
         }
     }
 
-    void Attack(GameObject[] units)
+    void Attack(GameObject[] units, Vector3 targetLocation)
     {
         //For each unit that exist belonging to the player, check if it is within control range, and give it a new destination if it is
         foreach (GameObject e in units)
@@ -109,13 +118,13 @@ public class BasicCheckpointScript : MonoBehaviour {
             {
                 //TODO: Check melee or ranged
                 Astar aStar = e.GetComponent<Astar>();
-                aStar.targetPosition = meleeDistination;
+                aStar.targetPosition = targetLocation;
                 aStar.receivedNewDestination = true;
             }
         }
     }
 
-    void Defend(GameObject[] units)
+    void Defend(GameObject[] units, Vector3 targetLocation)
     {
         //For each unit that exist belonging to the player, check if it is within control range, and give it a new destination if it is
         foreach (GameObject e in units)
@@ -125,7 +134,7 @@ public class BasicCheckpointScript : MonoBehaviour {
             {
                 //TODO: Check melee or ranged
                 Astar aStar = e.GetComponent<Astar>();
-                aStar.targetPosition = meleeDistination;
+                aStar.targetPosition = targetLocation;
                 aStar.receivedNewDestination = true;
                 aStar.receivedDefenceOrder = true;
             }
