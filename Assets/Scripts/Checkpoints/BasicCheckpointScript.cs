@@ -12,18 +12,15 @@ public class BasicCheckpointScript : MonoBehaviour {
     //Cache destination vectors
     public Vector3 meleeDistination;
     public Vector3 rangedDistination;
+    public Vector3 location;
 
     //Cache SequenceEditor component.
     EditorList listComponent;
-
-    //Range within which the checkpoint will give orders to units.
-    public float controlRange = 10f;
-
-    //Cache the SequenceManager and the name of the checkpoint.
 	SequenceManager sm;
 	string checkpointName;
 
-  
+    //Range within which the checkpoint will give orders to units.
+    public float controlRange = 10f;
 
     //Bools that determines what kind of order a checkpoint should issue units.
     bool giveMoveOrder = false;
@@ -35,11 +32,12 @@ public class BasicCheckpointScript : MonoBehaviour {
 		sm = GameObject.Find ("UIManager").GetComponent<SequenceManager> ();
 		checkpointName = this.gameObject.name;
 
-        //Add the sequenceEditor component to the list in SequenceManager.
+        //Create an EditorList component attached to this game object and add it to the list in SequenceManager.
         listComponent = gameObject.AddComponent<EditorList>();
         listComponent.listID = checkpointName;
-
         sm.editorlistGO.Add(listComponent);
+
+        location = gameObject.transform.position;
     }
 	
 	void Update () {

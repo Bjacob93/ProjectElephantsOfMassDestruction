@@ -47,9 +47,8 @@ public class EditorList : MonoBehaviour{
     float boxWidth;
     float boxStartingPosX;
     float boxStartingPosY;
-    float boxOffSetX;
+    float boxOffsetX;
     float boxOffsetY;
-    
 
     //Drag and Drop
     public bool isDraggingCommand;
@@ -71,6 +70,8 @@ public class EditorList : MonoBehaviour{
 
     void Start()
     {
+        commandSkin = Resources.Load("Graphix/commandSkin") as GUISkin;
+
         //Define the variables
         enteredCommands = new List<Command>();
         slots = new List<Command>();
@@ -84,8 +85,8 @@ public class EditorList : MonoBehaviour{
         boxWidth = Screen.width / 8 - (Screen.height / 24) / 10;
         boxStartingPosX = Screen.width / 6;
         boxStartingPosY = Screen.height / 4;
-        boxOffSetX = Screen.height / 24;
-        boxOffsetY = Screen.width / 8;
+        boxOffsetY = Screen.height / 24;
+        boxOffsetX = Screen.width / 8;
 
         //Get the dimensions of the command window from the CommandList script.
         commandBoundRect = GameObject.FindGameObjectWithTag("CommandList").GetComponent<CommandList>().boundingRect;
@@ -117,7 +118,7 @@ public class EditorList : MonoBehaviour{
         {
             for (int x = 0; x < slotsCol; x++)
             {
-                slotRect = new Rect(boxStartingPosX + x * boxOffsetY, boxStartingPosY + y * boxOffSetX, boxWidth, boxHeight);
+                slotRect = new Rect(boxStartingPosX + x * boxOffsetX, boxStartingPosY + y * boxOffsetY, boxWidth, boxHeight);
                 slotPositions.Add(slotRect);
             }
         }
@@ -161,7 +162,6 @@ public class EditorList : MonoBehaviour{
         //DragonDrop
         if (isDraggingCommand)
         {
-            Debug.Log(draggedCommand.commandName);
             GUI.Box(new Rect(Event.current.mousePosition.x + 13, Event.current.mousePosition.y, 200, 40), "<color=#000000>" + draggedCommand.commandName + "</color>", commandSkin.GetStyle("commandSkin"));
         }
     }
@@ -178,9 +178,9 @@ public class EditorList : MonoBehaviour{
         int slotNumber = 0;
         
         //For every slot in the Sequence Editor
-        for (int y = 0; y < slotsCol; y++)
+        for (int y = 0; y < slotsRow; y++)
         {
-            for (int x = 0; x < slotsRow; x++)
+            for (int x = 0; x < slotsCol; x++)
             {
                 slots[slotNumber] = enteredCommands[slotNumber];
 
@@ -188,7 +188,7 @@ public class EditorList : MonoBehaviour{
                 Command thisCommand = slots[slotNumber];
 
                 //Update the slot position
-                slotRect = new Rect(boxStartingPosX + y * boxOffsetY, boxStartingPosY + y * boxOffSetX, boxWidth, boxHeight);
+                slotRect = new Rect(boxStartingPosX + x * boxOffsetX, boxStartingPosY + y * boxOffsetY, boxWidth, boxHeight);
 
                 //Draw any empty slots
                 if (thisCommand.commandName == "")
