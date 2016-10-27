@@ -17,10 +17,12 @@ public class CommandDatabase : MonoBehaviour {
 		    //production orders
 		    commandDatabase.Add (new Command ("Produce", "P01", "Produce a unit at base"));
 
-		commandDatabase.Add (new Command ("checkpoint A", "var01", "location of checkpoint A"));
+		//TODO: scan for variables and automatically add them instead of doing it manually
 
-		commandDatabase.Add (new Command ("checkpoint B", "var02", "location of checkpoint A"));
+		commandDatabase.Add (new Command ("checkpoint A", "varA", "location of checkpoint A"));
 
-		commandDatabase.Add (new Command ("Homebase", "var03", "location of checkpoint Homebase"));
+		commandDatabase.Add (new Command ("checkpoint B", "varB", "location of checkpoint B"));
+
+		commandDatabase.Add (new Command ("Homebase", "varGiraffeBase", "location of checkpoint Homebase"));
 	}
 }
