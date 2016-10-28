@@ -15,6 +15,8 @@ public class Command {
 
     public Vector3 locationOfTarget;
 
+    public int variableForEveryX;
+
     //Empty constructor for a command
     public Command()
     {
@@ -22,7 +24,7 @@ public class Command {
     }
 
     //Constructor for specific commands
-	public Command (string name, string id, string desc, bool reqVar, bool atCheck, bool atBase, Vector3 location)
+	public Command (string name, string id, string desc, bool reqVar, bool atCheck, bool atBase, Vector3 location, int varFoE)
     {
         commandName = name;
         commandId = id;
@@ -31,5 +33,6 @@ public class Command {
         availableAtBase = atBase;
         availableAtCheckpoint = atCheck;
         locationOfTarget = location;
+        variableForEveryX = varFoE;
     }
 }
