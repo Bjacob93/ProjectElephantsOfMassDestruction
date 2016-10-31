@@ -2199,6 +2199,7 @@ MonoBehaviour:
   controlRange: 10
   location: {x: 0, y: 0, z: 0}
   gameIsPaused: 0
+  shrimp: 1
 --- !u!23 &1585162772
 MeshRenderer:
   m_ObjectHideFlags: 0
