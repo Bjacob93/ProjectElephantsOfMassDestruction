@@ -227,19 +227,20 @@ public class EditorList : MonoBehaviour{
         //Initialise the event condition.
         Event e = Event.current;
 
-        ////Check if we are clicking within a bounding box, and close all windows if we are not.
-        //if (e.type == EventType.mouseDown && (!boundingRect.Contains(e.mousePosition) || !commandBoundRect.Contains(e.mousePosition)))
-        //{
-        //    drawEditorWindow = false;
-        //}
-
         //Check if the mouse is dragging the current command
         if (e.button == 0 && e.type == EventType.mouseDrag && !isDraggingCommand)
         {
-            isDraggingCommand = true;
-            previousCommandIndex = slotNumber;
-            draggedCommand = enteredCommands[slotNumber];
-            enteredCommands[slotNumber] = new Command();
+            if(belongsToCheckpoint && enteredCommands[slotNumber].commandId == "P01")
+            {
+
+            }
+            else
+            {
+                isDraggingCommand = true;
+                previousCommandIndex = slotNumber;
+                draggedCommand = enteredCommands[slotNumber];
+                enteredCommands[slotNumber] = new Command();
+            }
         }
 
         //Swap positions if the mouse is released over a slot.

@@ -222,8 +222,15 @@ public class CommandList : MonoBehaviour {
         //Check if the mouse is dragging the current command.
         if (e.button == 0 && e.type == EventType.mouseDrag && !sequenceEditor.isDraggingCommand)
         {
-            sequenceEditor.isDraggingCommand = true;
-            sequenceEditor.draggedCommand = thisCommand;
+            if(sequenceEditor.belongsToCheckpoint && thisCommand.commandId == "P01")
+            {
+
+            }
+            else
+            {
+                sequenceEditor.isDraggingCommand = true;
+                sequenceEditor.draggedCommand = thisCommand;
+            }
         }
     }
 
