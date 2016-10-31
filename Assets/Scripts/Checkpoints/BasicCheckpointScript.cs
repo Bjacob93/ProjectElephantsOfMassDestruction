@@ -8,6 +8,7 @@ public class BasicCheckpointScript : MonoBehaviour {
      * This class will control the checkpoints. They will read the editorlist pertaining to each checkpoint and give the
      * relevant orders to units in range.
      */
+    public bool gameIspaused = true;
 
     //Cache destination vectors
     public Vector3 meleeDistination;
@@ -51,7 +52,9 @@ public class BasicCheckpointScript : MonoBehaviour {
 
         //Find all player units.
         GameObject[] units = GameObject.FindGameObjectsWithTag("playerUnits");
-
+        if (gameIspaused) {
+            return;
+        }
         //check if the slot is to the left in the editor
         for (int i = 0; i < listComponent.slots.Count; i++)
         {

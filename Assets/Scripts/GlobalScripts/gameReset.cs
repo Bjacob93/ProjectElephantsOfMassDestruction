@@ -28,7 +28,7 @@ public class gameReset : MonoBehaviour {
         homeBaseGO = GameObject.Find("GiraffeBase");
         homeBaseGUI = homeBaseGO.GetComponent<HomebaseGUI>();
 
-        checkpointGO = GameObject.Find("Checkpoints");
+        checkpointGO = GameObject.Find("A");
         basicCheckpointScript = checkpointGO.GetComponent<BasicCheckpointScript>();
 
         scoreManagerGO = GameObject.Find("ScoreManager");
@@ -47,6 +47,7 @@ public class gameReset : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+
 	}
 
 	public void GameReset(){
