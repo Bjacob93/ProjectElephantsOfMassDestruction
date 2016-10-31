@@ -24,7 +24,7 @@ public class BasicCheckpointScript : MonoBehaviour {
 
     //Variables for the ForEvery() function
     bool forEveryRan = false;
-    int shrimp = 1;
+    public int shrimp = 1;
     int fish;
 
     //Cache target waypoint

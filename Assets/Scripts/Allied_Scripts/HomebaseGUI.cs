@@ -37,7 +37,7 @@ public class HomebaseGUI : MonoBehaviour {
 
     //Variables for the ForEvery() function
     bool forEveryRan = false;
-    int shrimp = 1;
+    public int shrimp = 1;
     int fish;
 
     // Use this for initialization

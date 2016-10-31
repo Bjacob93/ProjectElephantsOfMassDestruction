@@ -5,6 +5,12 @@ public class gameReset : MonoBehaviour {
 
     GameObject reset;
 
+    GameObject homeBaseGO;
+    HomebaseGUI homeBaseGUI;
+
+    GameObject checkpointGO;
+    BasicCheckpointScript basicCheckpointScript;
+
     GameObject scoreManagerGO;
 	ScoreManager scoreManagerScript;
 
@@ -19,7 +25,13 @@ public class gameReset : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
-		scoreManagerGO = GameObject.Find("ScoreManager");
+        homeBaseGO = GameObject.Find("GiraffeBase");
+        homeBaseGUI = homeBaseGO.GetComponent<HomebaseGUI>();
+
+        checkpointGO = GameObject.Find("Checkpoints");
+        basicCheckpointScript = checkpointGO.GetComponent<BasicCheckpointScript>();
+
+        scoreManagerGO = GameObject.Find("ScoreManager");
 		scoreManagerScript = scoreManagerGO.GetComponent<ScoreManager>();
 
 		buyEnemyUnitsGO = GameObject.Find("ElephantSpawn");
@@ -42,6 +54,9 @@ public class gameReset : MonoBehaviour {
 		scoreManagerScript.money = 100;
 
 		buyEnemyUnitsScript.restartTimer = 0;
+
+        homeBaseGUI.shrimp = 1;
+        basicCheckpointScript.shrimp = 1;
 
 		Uarray.resetGame ();
 
