@@ -35,10 +35,11 @@ public class HomebaseGUI : MonoBehaviour {
     //cache target location
     Vector3 target;
 
+    //Variables for the ForEvery() function
     bool forEveryRan = false;
     int shrimp = 1;
-
     int fish;
+
     // Use this for initialization
     void Start () {
 		//Find and cache unit manager script

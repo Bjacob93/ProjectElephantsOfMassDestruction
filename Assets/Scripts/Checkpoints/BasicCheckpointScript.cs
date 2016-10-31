@@ -22,7 +22,15 @@ public class BasicCheckpointScript : MonoBehaviour {
     //Range within which the checkpoint will give orders to units.
     public float controlRange = 10f;
 
-	void Start () {
+    //Variables for the ForEvery() function
+    bool forEveryRan = false;
+    int shrimp = 1;
+    int fish;
+
+    //Cache target waypoint
+    Vector3 target;
+
+    void Start () {
         //Find the SequenceManager, and same the name of the checkpoint to a string.
 		sm = GameObject.Find ("UIManager").GetComponent<SequenceManager> ();
 		checkpointName = this.gameObject.name;
@@ -44,53 +52,72 @@ public class BasicCheckpointScript : MonoBehaviour {
         //Find all player units.
         GameObject[] units = GameObject.FindGameObjectsWithTag("playerUnits");
 
-        //Go through all the slots in the Sequence Editor belonging to this checkpoint.
+        //check if the slot is to the left in the editor
         for (int i = 0; i < listComponent.slots.Count; i++)
         {
-            //If the slot is in the left of the editor and has a command in it.
+            //check to see if the slot is empty
             if (i % 2 == 0 && listComponent.slots[i].commandName != "")
             {
-                //Save the id of the command in that slot to a string, and initialise a vector for the target coordinates of the command.
+                //crate a sring to keep track of the slots commandId
                 string id = listComponent.slots[i].commandId;
-                Vector3 target;
+                fish = listComponent.slots[i + 1].variableForEveryX;
 
-                //Switch that will catch the if of the command, and call the relevant function(s).
-                switch (id)
+
+                if (forEveryRan == true)
                 {
-                    case "M01": //Move command.
-                        //If a variable in the next slot exists.
-                        if (listComponent.slots[i + 1].commandName != "")
-                        {
-                            //Get the target location of the command, and call the command.
-                            target = listComponent.slots[i + 1].locationOfTarget;
-                            Move(units, target);
-                        }
-                        break;
-
-                    case "A01": //Attack command.
-                        //If a variable in the next slot exists.
-                        if (listComponent.slots[i + 1].commandName != "")
-                        {
-                            //Get the target location of the command, and call the command.
-                            target = listComponent.slots[i + 1].locationOfTarget;
-                            Attack(units, target);
-                        }
-                        break;
-
-                    case "D01": //Defence command.
-                        //If a variable in the next slot exists.
-                        if (listComponent.slots[i + 1].commandName != "")
-                        {
-                            //Get the target location of the command, and call the command.
-                            target = listComponent.slots[i + 1].locationOfTarget;
-                            Defend(units, target);
-                        }
-                        break;
-                    default:
-                        break;
+                    shrimp++;
+                    forEveryRan = false;
                 }
+                command(i, id, units, fish);
             }
         }
+    }
+
+    void command(int i, string id, GameObject[] units, int fisk)
+    {
+        //determine the corrent ation based in the commandId
+        switch (id)
+        {
+            case "FoE":
+                if (forEveryRan == false)
+                {
+                    id = listComponent.slots[i].commandId;
+                    if (shrimp % fish != 0)
+                    {
+                        command(i + 2, id, units, fish);
+                    }
+                    else
+                    {
+                        command(i + 3, id, units, fish);
+                    }
+                }
+                break;
+
+
+            case "A01":
+                //if attack command is initiated set target to the slot var to the left of the attack command
+                target = listComponent.slots[i + 1].locationOfTarget;
+                // run the attack command
+                Attack(units, target);
+                break;
+
+            case "M01":
+                target = listComponent.slots[i + 1].locationOfTarget;
+                //run the move command
+                Move(units, target);
+                break;
+
+            case "D01":
+                target = listComponent.slots[i + 1].locationOfTarget;
+                //run the defend command
+                Defend(units, target);
+                break;
+
+            default:
+
+                break;
+        }
+
     }
 
     void Move(GameObject[] units, Vector3 targetLocation)
@@ -107,6 +134,7 @@ public class BasicCheckpointScript : MonoBehaviour {
                     aStar.targetPosition = targetLocation;
                     aStar.receivedNewDestination = true;
                     aStar.commanderID = checkpointName;
+                    forEveryRan = true;
                 }
             }
         }
@@ -126,6 +154,7 @@ public class BasicCheckpointScript : MonoBehaviour {
                     aStar.targetPosition = targetLocation;
                     aStar.receivedNewDestination = true;
                     aStar.commanderID = checkpointName;
+                    forEveryRan = true;
                 }
                 aStar.receivedNewDestination = true;
             }
@@ -147,6 +176,7 @@ public class BasicCheckpointScript : MonoBehaviour {
                     aStar.receivedNewDestination = true;
                     aStar.commanderID = checkpointName;
                     aStar.receivedDefenceOrder = true;
+                    forEveryRan = true;
                 }
             }
         }
