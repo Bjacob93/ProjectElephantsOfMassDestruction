@@ -10,22 +10,34 @@ public class AstarEnemy : MonoBehaviour
     CharacterController controller;
     Path path;
 
-    //Cache variables for behaviour
+    //Cache which checkpoint that was the most recent to give it a command.
+    public string commanderID;
+
+    //Cache variables for base stats
     public float speed = 30f;
     float rotationSpeed = 10f;
-    public Vector3 direction;
     public float meleeRange = 3f;
     public float engagementRange = 10f;
-    public bool isInMeleeRange = false;
+
+    //Cache variables for pathfinding behaviour
+    public Vector3 direction;
+    bool isInMeleeRange = false;
     bool hasPathToEnemy = false;
     bool goToWaypoint = true;
     bool movingToWaypoint = true;
 
+    //Cache variables for defence order
+    float maxDistanceFromTargetAllowed = 15f;
+    float distanceFromTarget;
+    public bool receivedDefenceOrder = false;
+    bool isDefending = false;
+
     //Boolean controlled by checkpoints
     public bool receivedNewDestination = false;
 
-    //Cache variables that limits calls to pathfinding to once every second.
+    //Cache variable that limits calls to pathfinding to once every second.
     bool pathCompleted = false;
+
 
     //Cache variables for enemies
     public GameObject nearestEnemy = null;
@@ -37,7 +49,6 @@ public class AstarEnemy : MonoBehaviour
     //Float determines when a waypoint is close enough. Int references current target waypoint.
     public float maxWaypointDistance = 3f;
     private int currentWaypoint;
-
 
     void Start()
     {
@@ -67,25 +78,32 @@ public class AstarEnemy : MonoBehaviour
     void FindNearestEnemy()
     {
         //Put all enemies into an array, then find the one which is nearest.
-         
-        nearestEnemy = uArray.scan(this.gameObject, "Ally");
+        nearestEnemy = uArray.scan(this.gameObject, "Enemy");
 
         if (nearestEnemy != null)
         {
             distanceToEnemy = Vector3.Distance(transform.position, nearestEnemy.transform.position);
+            if (isDefending)
+            {
+                distanceFromTarget = Vector3.Distance(nearestEnemy.transform.position, targetPosition);
+
+            }
         }
+
         PathToEnemy();
+
     }
 
     //Method for pathing to the nearest enemy.
     void PathToEnemy()
     {
-        if (pathCompleted && !hasPathToEnemy)
+        if (nearestEnemy != null && pathCompleted && !hasPathToEnemy && (!isDefending || (isDefending && distanceFromTarget <= maxDistanceFromTargetAllowed)))
         {
             //Generate new path to nearest enemy, if within engagement range.
-            if (nearestEnemy != null && distanceToEnemy <= engagementRange)
+            if (distanceToEnemy <= engagementRange)
             {
-                if (pathCompleted) {
+                if (pathCompleted)
+                {
                     pathCompleted = false;
                     seeker.StartPath(transform.position, nearestEnemy.transform.position, OnPathComplete);
                     previousEnemy = nearestEnemy;
@@ -93,6 +111,7 @@ public class AstarEnemy : MonoBehaviour
                     goToWaypoint = false;
                     movingToWaypoint = false;
                 }
+
             }
         }
         else if (nearestEnemy != null && distanceToEnemy <= engagementRange && previousEnemy != nearestEnemy)
@@ -169,8 +188,7 @@ public class AstarEnemy : MonoBehaviour
     //Method for moving the unit.
     void Move(Vector3 direction, Path path)
     {
-        /**Set's the direction of movement to a vector form current position to next waypoint, 
-        then calls the SimpleMove command in the CharacterController.*/
+        //Set's the direction of movement to a vector form current position to next waypoint, then calls the SimpleMove command in the CharacterController.
         Vector3 dir = direction * speed * Time.deltaTime;
         controller.SimpleMove(dir);
 
@@ -183,6 +201,7 @@ public class AstarEnemy : MonoBehaviour
 
     void Update()
     {
+
         //Find nearest enemy, and path to it if it exist and is close enough.
         FindNearestEnemy();
 
@@ -205,14 +224,23 @@ public class AstarEnemy : MonoBehaviour
         {
             return;
         }
+        else
+        {
+
+        }
         //If the unit has reached it's goal.
         if (currentWaypoint >= path.vectorPath.Count)
         {
+            if (receivedDefenceOrder)
+            {
+                receivedDefenceOrder = false;
+                isDefending = true;
+            }
             return;
         }
 
         //Set unit to look in the direction it is travelling
-        direction = (path.vectorPath[currentWaypoint] - this.transform.position).normalized;
+        direction = (path.vectorPath[currentWaypoint] - transform.position).normalized;
         RotateUnit(direction);
 
         //Move the unit
