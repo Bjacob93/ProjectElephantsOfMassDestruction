@@ -1,6 +1,6 @@
 fileFormatVersion: 2
-guid: 2cb5b900683ee264cbe0b552c280b6cc
-timeCreated: 1478004361
+guid: 4a4ed7eb3990b5d40a842dd8c2955e29
+timeCreated: 1478004355
 licenseType: Free
 ModelImporter:
   serializedVersion: 19
@@ -12,131 +12,6 @@ ModelImporter:
     100008: RightToe_End
     100010: RightToeBase
     100012: RightUpLeg
-    100014: Character1_Reference
-    100016: Head
-    100018: HeadTop_End
-    100020: LeftArm
-    100022: LeftFoot
-    100024: LeftForeArm
-    100026: LeftHand
-    100028: LeftHandIndex1
-    100030: LeftHandIndex2
-    100032: LeftHandIndex3
-    100034: LeftHandIndex4
-    100036: LeftHandMiddle1
-    100038: LeftHandMiddle2
-    100040: LeftHandMiddle3
-    100042: LeftHandMiddle4
-    100044: LeftHandPinky1
-    100046: LeftHandPinky2
-    100048: LeftHandPinky3
-    100050: LeftHandPinky4
-    100052: LeftHandRing1
-    100054: LeftHandRing2
-    100056: LeftHandRing3
-    100058: LeftHandRing4
-    100060: LeftHandThumb1
-    100062: LeftHandThumb2
-    100064: LeftHandThumb3
-    100066: LeftHandThumb4
-    100068: LeftLeg
-    100070: LeftShoulder
-    100072: LeftToe_End
-    100074: LeftToeBase
-    100076: LeftUpLeg
-    100078: Neck
-    100080: RightArm
-    100082: RightForeArm
-    100084: RightHand
-    100086: RightHandIndex1
-    100088: RightHandIndex2
-    100090: RightHandIndex3
-    100092: RightHandIndex4
-    100094: RightHandMiddle1
-    100096: RightHandMiddle2
-    100098: RightHandMiddle3
-    100100: RightHandMiddle4
-    100102: RightHandPinky1
-    100104: RightHandPinky2
-    100106: RightHandPinky3
-    100108: RightHandPinky4
-    100110: RightHandRing1
-    100112: RightHandRing2
-    100114: RightHandRing3
-    100116: RightHandRing4
-    100118: RightHandThumb1
-    100120: RightHandThumb2
-    100122: RightHandThumb3
-    100124: RightHandThumb4
-    100126: RightShoulder
-    100128: Spine
-    100130: Spine1
-    100132: Spine2
-    100134: mixamorig:Head
-    100136: mixamorig:HeadTop_End
-    100138: mixamorig:Hips
-    100140: mixamorig:LeftArm
-    100142: mixamorig:LeftFoot
-    100144: mixamorig:LeftForeArm
-    100146: mixamorig:LeftHand
-    100148: mixamorig:LeftHandIndex1
-    100150: mixamorig:LeftHandIndex2
-    100152: mixamorig:LeftHandIndex3
-    100154: mixamorig:LeftHandIndex4
-    100156: mixamorig:LeftHandMiddle1
-    100158: mixamorig:LeftHandMiddle2
-    100160: mixamorig:LeftHandMiddle3
-    100162: mixamorig:LeftHandMiddle4
-    100164: mixamorig:LeftHandPinky1
-    100166: mixamorig:LeftHandPinky2
-    100168: mixamorig:LeftHandPinky3
-    100170: mixamorig:LeftHandPinky4
-    100172: mixamorig:LeftHandRing1
-    100174: mixamorig:LeftHandRing2
-    100176: mixamorig:LeftHandRing3
-    100178: mixamorig:LeftHandRing4
-    100180: mixamorig:LeftHandThumb1
-    100182: mixamorig:LeftHandThumb2
-    100184: mixamorig:LeftHandThumb3
-    100186: mixamorig:LeftHandThumb4
-    100188: mixamorig:LeftLeg
-    100190: mixamorig:LeftShoulder
-    100192: mixamorig:LeftToe_End
-    100194: mixamorig:LeftToeBase
-    100196: mixamorig:LeftUpLeg
-    100198: mixamorig:Neck
-    100200: mixamorig:RightArm
-    100202: mixamorig:RightFoot
-    100204: mixamorig:RightForeArm
-    100206: mixamorig:RightHand
-    100208: mixamorig:RightHandIndex1
-    100210: mixamorig:RightHandIndex2
-    100212: mixamorig:RightHandIndex3
-    100214: mixamorig:RightHandIndex4
-    100216: mixamorig:RightHandMiddle1
-    100218: mixamorig:RightHandMiddle2
-    100220: mixamorig:RightHandMiddle3
-    100222: mixamorig:RightHandMiddle4
-    100224: mixamorig:RightHandPinky1
-    100226: mixamorig:RightHandPinky2
-    100228: mixamorig:RightHandPinky3
-    100230: mixamorig:RightHandPinky4
-    100232: mixamorig:RightHandRing1
-    100234: mixamorig:RightHandRing2
-    100236: mixamorig:RightHandRing3
-    100238: mixamorig:RightHandRing4
-    100240: mixamorig:RightHandThumb1
-    100242: mixamorig:RightHandThumb2
-    100244: mixamorig:RightHandThumb3
-    100246: mixamorig:RightHandThumb4
-    100248: mixamorig:RightLeg
-    100250: mixamorig:RightShoulder
-    100252: mixamorig:RightToe_End
-    100254: mixamorig:RightToeBase
-    100256: mixamorig:RightUpLeg
-    100258: mixamorig:Spine
-    100260: mixamorig:Spine1
-    100262: mixamorig:Spine2
     400000: //RootNode
     400002: Hips
     400004: RightFoot
@@ -144,6 +19,7 @@ ModelImporter:
     400008: RightToe_End
     400010: RightToeBase
     400012: RightUpLeg
+<<<<<<< HEAD
     400014: Character1_Reference
     400016: Head
     400018: HeadTop_End
@@ -270,6 +146,9 @@ ModelImporter:
     400260: mixamorig:Spine1
     400262: mixamorig:Spine2
     7400000: warrior_idle(2)
+=======
+    7400000: Take 001
+>>>>>>> a93f17ab358b4426ed86ac313e60d5d378353653
     9500000: //RootNode
   materials:
     importMaterials: 1
@@ -282,14 +161,18 @@ ModelImporter:
     optimizeGameObjects: 0
     motionNodeName: 
     animationImportErrors: 
+<<<<<<< HEAD
     animationImportWarnings: "\nClip 'Take 001' has import animation warnings that
       might lower retargeting quality:\nNote: Activate translation DOF on avatar to
       improve retargeting quality.\n\t'Spine2' is inbetween humanoid transforms and
       has rotation animation that will be discarded.\n\t'LeftUpLeg' has translation
       animation that will be discarded.\n"
+=======
+    animationImportWarnings: 
+>>>>>>> a93f17ab358b4426ed86ac313e60d5d378353653
     animationRetargetingWarnings: 
     animationDoRetargetingWarnings: 0
-    animationCompression: 3
+    animationCompression: 1
     animationRotationError: 0.5
     animationPositionError: 0.5
     animationScaleError: 0.5
@@ -483,6 +366,7 @@ ModelImporter:
   importAnimation: 1
   copyAvatar: 1
   humanDescription:
+<<<<<<< HEAD
     human:
     - boneName: Hips
       humanName: Hips
@@ -1238,6 +1122,10 @@ ModelImporter:
       rotation: {x: 0, y: -0, z: -0, w: 1}
       scale: {x: 1, y: 1, z: 1}
       transformModified: 1
+=======
+    human: []
+    skeleton: []
+>>>>>>> a93f17ab358b4426ed86ac313e60d5d378353653
     armTwist: 0.5
     foreArmTwist: 0.5
     upperLegTwist: 0.5
@@ -1247,9 +1135,14 @@ ModelImporter:
     feetSpacing: 0
     rootMotionBoneName: 
     hasTranslationDoF: 0
+<<<<<<< HEAD
   lastHumanDescriptionAvatarSource: {fileID: 9000000, guid: 69220b5611f3ff04b9c1f464be82ec53,
     type: 3}
   animationType: 3
+=======
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+>>>>>>> a93f17ab358b4426ed86ac313e60d5d378353653
   humanoidOversampling: 1
   additionalBone: 0
   userData: 
