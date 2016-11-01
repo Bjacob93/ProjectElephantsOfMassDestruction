@@ -145,8 +145,8 @@ public class Astar : MonoBehaviour {
         {
             pathCompleted = false;
             seeker.StartPath(transform.position, targetPosition, OnPathComplete);
-            receivedNewDestination = false;
         }
+        receivedNewDestination = false;
     }
 
 	//Method that rotates the unit towards its target.

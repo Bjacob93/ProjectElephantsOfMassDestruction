@@ -14,7 +14,7 @@ public class AstarEnemy : MonoBehaviour
     public string commanderID;
 
     //Cache variables for base stats
-    public float speed =30f;
+    public float speed = 30f;
     float rotationSpeed = 10f;
     public float meleeRange = 3f;
     public float engagementRange = 10f;
@@ -78,7 +78,7 @@ public class AstarEnemy : MonoBehaviour
     void FindNearestEnemy()
     {
         //Put all enemies into an array, then find the one which is nearest.
-        nearestEnemy = uArray.scan(this.gameObject, "Ally");
+        nearestEnemy = uArray.scan(this.gameObject, "Enemy");
 
         if (nearestEnemy != null)
         {
@@ -158,8 +158,8 @@ public class AstarEnemy : MonoBehaviour
         {
             pathCompleted = false;
             seeker.StartPath(transform.position, targetPosition, OnPathComplete);
-            receivedNewDestination = false;
         }
+        receivedNewDestination = false;
     }
 
     //Method that rotates the unit towards its target.
