@@ -40,7 +40,6 @@ public class HomebaseGUI : MonoBehaviour {
     public int shrimp = 1;
     int fish;
 
-    // Use this for initialization
     void Start () {
 		//Find and cache unit manager script
 		unitManager = GameObject.Find("UnitManager");
