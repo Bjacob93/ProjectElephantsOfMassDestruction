@@ -10,6 +10,7 @@ public class EnemyMelee_AI_Health : MonoBehaviour {
     GameObject unitManager;
     UnitArrays Uarray;
 
+    GameObject playerBase;
     bool unitAdded = false;
 
     bool Died;
@@ -22,6 +23,7 @@ public class EnemyMelee_AI_Health : MonoBehaviour {
 
         Uarray = unitManager.GetComponent<UnitArrays>();
 
+        playerBase = GameObject.FindGameObjectWithTag("PlayerBase");
         //Uarray.add(this.gameObject, "enemyUnit");
 
     }
@@ -37,6 +39,12 @@ public class EnemyMelee_AI_Health : MonoBehaviour {
         if (currentHealth <= 0) {
 			Die ();
 		}
+
+        float distance = Vector3.Distance(this.transform.position, playerBase.transform.position);
+        if (distance < 10)
+        {
+            AtPlayerBase();
+        }
 
 	}
 
@@ -54,7 +62,7 @@ public class EnemyMelee_AI_Health : MonoBehaviour {
 		}
 	}
 
-	void Die()
+	public void Die()
 	{
 		//enemy is dead
 		Died = true;
@@ -63,4 +71,10 @@ public class EnemyMelee_AI_Health : MonoBehaviour {
         Uarray.remove(this.gameObject, "enemyUnit");
 		Destroy (this.gameObject);
 	}
+
+    void AtPlayerBase()
+    {
+        Die();
+        GameObject.FindObjectOfType<ScoreManager>().LoseLife(1);
+    }
 }

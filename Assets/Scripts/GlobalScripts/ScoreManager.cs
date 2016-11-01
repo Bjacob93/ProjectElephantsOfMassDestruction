@@ -9,7 +9,7 @@ public class ScoreManager : MonoBehaviour {
 	public float restartDelay = 5f;         // Time to wait before restarting the level
 	float restartTimer;                     // Timer to count up to restarting the level
 
-	public int lives = 2;
+	public int lives = 20;
 	public int money = 100;
 
 	public Text moneyText;
@@ -56,7 +56,7 @@ public class ScoreManager : MonoBehaviour {
 		timeupdate ();
 	}
 	void Start(){
-		LoseLife ();
+		
 	}
 	public void LoadByIndex(int sceneIndex) {
 		SceneManager.LoadScene(sceneIndex);

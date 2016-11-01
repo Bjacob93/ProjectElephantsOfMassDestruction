@@ -4,7 +4,7 @@ using System.Collections;
 public class BuyEnemyUnits : MonoBehaviour
 {
 
-    public float restartDelay = 5f;         // Time to wait before restarting the level
+    public float restartDelay = 5f;         // Time to wait before restarting the level, the number indicates seconds
     public float restartTimer;              // Timer to count up to restarting the level
 
     public int amountOfEnemySpawned = 0;    // Keep track of the amount of enemies spawn.
