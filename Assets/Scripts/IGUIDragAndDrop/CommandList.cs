@@ -167,25 +167,52 @@ public class CommandList : MonoBehaviour {
                 {
                     if (sequenceEditor.belongsToCheckpoint)
                     {
-                        if (thisCommand.availableAtCheckpoint)
-                        {
-                            GUI.Box(slotRect, "<color=#000000>" + thisCommand.commandName + "</color>", commandSkin.GetStyle("commandSkin"));
-                        }
-                        else
+                        if (!thisCommand.availableAtCheckpoint)
                         {
                             GUI.Box(slotRect, "<color=#000000>" + thisCommand.commandName + "</color>", commandSkin.GetStyle("greyedOut"));
                         }
-                        
+                        else
+                        {
+                            bool orderHasBeenEntered = false;
+                            bool forEveryHasBeenUsed = false;
+
+                            for (int i = 0; i < sequenceEditor.slots.Count; i++)
+                            {
+                                if (i % 2 == 0 )
+                                {
+                                    if (sequenceEditor.slots[i].commandId == "A01" || sequenceEditor.slots[i].commandId == "D01" || sequenceEditor.slots[i].commandId == "M01")
+                                    {
+                                        orderHasBeenEntered = true;
+                                    }
+                                    else if (sequenceEditor.slots[i].commandId == "FoE")
+                                    {
+                                        forEveryHasBeenUsed = true;
+                                    }   
+                                }
+                            }
+                            if (!orderHasBeenEntered && (thisCommand.commandId == "varA" || thisCommand.commandId == "varB" || thisCommand.commandId == "varC" || thisCommand.commandId == "varD" || thisCommand.commandId == "varPlayerBase"))
+                            {
+                                GUI.Box(slotRect, "<color=#000000>" + thisCommand.commandName + "</color>", commandSkin.GetStyle("greyedOut"));
+                            }
+                            else if(!forEveryHasBeenUsed && (thisCommand.commandId == "FoE2" || thisCommand.commandId == "FoE3"))
+                            {
+                                GUI.Box(slotRect, "<color=#000000>" + thisCommand.commandName + "</color>", commandSkin.GetStyle("greyedOut"));
+                            }
+                            else
+                            {
+                                GUI.Box(slotRect, "<color=#000000>" + thisCommand.commandName + "</color>", commandSkin.GetStyle("commandSkin"));
+                            }
+                        }
                     }
                     else
                     {
-                        if (thisCommand.availableAtBase)
+                        if (!thisCommand.availableAtBase)
                         {
-                            GUI.Box(slotRect, "<color=#000000>" + thisCommand.commandName + "</color>", commandSkin.GetStyle("commandSkin"));
+                            GUI.Box(slotRect, "<color=#000000>" + thisCommand.commandName + "</color>", commandSkin.GetStyle("greyedOut"));
                         }
                         else
                         {
-                            GUI.Box(slotRect, "<color=#000000>" + thisCommand.commandName + "</color>", commandSkin.GetStyle("greyedOut"));
+                            GUI.Box(slotRect, "<color=#000000>" + thisCommand.commandName + "</color>", commandSkin.GetStyle("commandSkin"));
                         }
                     }
                 }
