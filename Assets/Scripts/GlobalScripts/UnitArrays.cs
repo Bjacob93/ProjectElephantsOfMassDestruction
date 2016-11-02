@@ -4,7 +4,7 @@ using System.Collections;
 public class UnitArrays : MonoBehaviour {
 
     GameObject[] allies = new GameObject[50];
-    GameObject[] enemies = new GameObject[50];
+    public GameObject[] enemies = new GameObject[50];
 	
     public void add(GameObject unit, string s)
     {
@@ -91,4 +91,20 @@ public class UnitArrays : MonoBehaviour {
 		}
 	
 	}
+
+    public int getLength(string list)
+    {
+        if (list == "allies")
+        {
+            return allies.Length;
+        }
+        else if (list == "enemies")
+        {
+            return enemies.Length;
+        }
+        else
+        {
+            return 0;
+        }
+    }
 }

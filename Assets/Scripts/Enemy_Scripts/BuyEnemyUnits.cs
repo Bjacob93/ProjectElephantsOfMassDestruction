@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.SceneManagement;
 
 public class BuyEnemyUnits : MonoBehaviour
 {
@@ -13,16 +14,33 @@ public class BuyEnemyUnits : MonoBehaviour
 
     public GameObject enemyUnits;
 
-    public bool gameIsPaused = true;
+    UnitArrays listOfEnemyUnits;
 
-    void start()
+    PauseScript pause = null;
+
+    ScoreManager sm;
+
+    float waitTime = 5f;
+    float wattTimeTimer;
+    float victoryTimer;
+
+    void Start()
     {
-        
+        listOfEnemyUnits = GameObject.Find("UnitManager").GetComponent<UnitArrays>();
+
+        pause = GameObject.FindGameObjectWithTag("PlayButton").GetComponent<PauseScript>();
+
+        if(pause == null)
+        {
+            Debug.Log("Didn't find pause");
+        }
+
+        sm = GameObject.Find("ScoreManager").GetComponent<ScoreManager>();
     }
 
     void Update()
     {
-        if (gameIsPaused)
+        if (pause.gameIsPaused)
         {
             return;
         }
@@ -37,6 +55,35 @@ public class BuyEnemyUnits : MonoBehaviour
                 restartTimer = 0;
                 amountOfEnemySpawned++;
             }
+        }
+
+        if (amountOfEnemySpawned == maxEnemySpawn)
+        {
+            victoryTimer += Time.deltaTime;
+            if(victoryTimer >= waitTime)
+            {
+                for (int i = 0; i < listOfEnemyUnits.enemies.Length; i++)
+                {
+                    if (listOfEnemyUnits.enemies[i] != null)
+                    {
+                        break;
+                    }
+                    else if (i == listOfEnemyUnits.enemies.Length - 1)
+                    {
+                        sm.Victory();
+                        timeupdate();
+                    }
+                }
+            }
+        }
+    }
+
+    void timeupdate()
+    {
+        wattTimeTimer += Time.deltaTime;
+        if (wattTimeTimer >= waitTime)
+        {
+                SceneManager.LoadSceneAsync("Scenes/mainMenu", LoadSceneMode.Single);
         }
     }
 
