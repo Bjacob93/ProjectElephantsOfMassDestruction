@@ -21,7 +21,6 @@ public class CommandList : MonoBehaviour {
     public SequenceManager sequenceManager;
     public EditorList sequenceEditor;
 
-
 	//The number of slots in the window
 	int numberOfSlots = 12;
 
@@ -47,12 +46,10 @@ public class CommandList : MonoBehaviour {
     //GUI appearence.
     public GUISkin commandSkin;
 
-
     void Start(){
         //Reference the database of commands so that we can always find any command we need.
         database = GameObject.FindGameObjectWithTag("CommandDatabase").GetComponent<CommandDatabase>();
-        Debug.Log(boxHeight);
-        Debug.Log(boxWidth);
+
         //Reference the Sequence Manager script.
         sequenceManager = GameObject.Find("UIManager").GetComponent<SequenceManager>();
 
@@ -113,9 +110,7 @@ public class CommandList : MonoBehaviour {
                     sequenceEditor = null;
                 }
             }
-
             DrawCommandList ();
-
 		}
 
         //Show the tooltip at the mouse position.
@@ -141,12 +136,17 @@ public class CommandList : MonoBehaviour {
         //Draw a representation of the command at the mouse position if a command is being dragged.
         if (sequenceEditor != null) {
             if (sequenceEditor.isDraggingCommand) {
-                GUI.Box(new Rect(Event.current.mousePosition.x + 13, Event.current.mousePosition.y, 200, 40), "<color=#000000>" + sequenceEditor.draggedCommand.commandName + "</color>", commandSkin.GetStyle("commandSkin"));
+                if (sequenceEditor.draggedCommand.isVariable)
+                {
+                    GUI.Box(new Rect(Event.current.mousePosition.x + 13, Event.current.mousePosition.y, 200, 40), "<color=#000000>" + sequenceEditor.draggedCommand.commandName + "</color>", commandSkin.GetStyle("VariableBackAvailable"));
+
+                }else
+                {
+                    GUI.Box(new Rect(Event.current.mousePosition.x + 13, Event.current.mousePosition.y, 200, 40), "<color=#000000>" + sequenceEditor.draggedCommand.commandName + "</color>", commandSkin.GetStyle("CommandBackAvailable"));
+
+                }
             }
         }
-
-		
-	
 	}
 
     //Method that takes care of drawing the command list.
@@ -180,7 +180,16 @@ public class CommandList : MonoBehaviour {
                     {
                         if (!thisCommand.availableAtCheckpoint)
                         {
-                            GUI.Box(slotRect, "<color=#000000>" + thisCommand.commandName + "</color>", commandSkin.GetStyle("greyedOut"));
+                            if (thisCommand.isVariable)
+                            {
+                                GUI.Box(slotRect, "<color=#000000>" + thisCommand.commandName + "</color>", commandSkin.GetStyle("VariableBackUnavailable"));
+
+                            }
+                            else
+                            {
+                                GUI.Box(slotRect, "<color=#000000>" + thisCommand.commandName + "</color>", commandSkin.GetStyle("CommandBackUnavailable"));
+
+                            }
                         }
                         else
                         {
@@ -203,15 +212,42 @@ public class CommandList : MonoBehaviour {
                             }
                             if (!orderHasBeenEntered && (thisCommand.commandId == "varA" || thisCommand.commandId == "varB" || thisCommand.commandId == "varC" || thisCommand.commandId == "varD" || thisCommand.commandId == "varPlayerBase"))
                             {
-                                GUI.Box(slotRect, "<color=#000000>" + thisCommand.commandName + "</color>", commandSkin.GetStyle("greyedOut"));
+                                if (thisCommand.isVariable)
+                                {
+                                    GUI.Box(slotRect, "<color=#000000>" + thisCommand.commandName + "</color>", commandSkin.GetStyle("VariableBackUnavailable"));
+
+                                }
+                                else
+                                {
+                                    GUI.Box(slotRect, "<color=#000000>" + thisCommand.commandName + "</color>", commandSkin.GetStyle("CommandBackUnavailable"));
+
+                                }
                             }
                             else if(!forEveryHasBeenUsed && (thisCommand.commandId == "FoE2" || thisCommand.commandId == "FoE3"))
                             {
-                                GUI.Box(slotRect, "<color=#000000>" + thisCommand.commandName + "</color>", commandSkin.GetStyle("greyedOut"));
+                                if (thisCommand.isVariable)
+                                {
+                                    GUI.Box(slotRect, "<color=#000000>" + thisCommand.commandName + "</color>", commandSkin.GetStyle("VariableBackUnavailable"));
+
+                                }
+                                else
+                                {
+                                    GUI.Box(slotRect, "<color=#000000>" + thisCommand.commandName + "</color>", commandSkin.GetStyle("CommandBackUnavailable"));
+
+                                }
                             }
                             else
                             {
-                                GUI.Box(slotRect, "<color=#000000>" + thisCommand.commandName + "</color>", commandSkin.GetStyle("commandSkin"));
+                                if (thisCommand.isVariable)
+                                {
+                                    GUI.Box(slotRect, "<color=#000000>" + thisCommand.commandName + "</color>", commandSkin.GetStyle("VariableBackAvailable"));
+
+                                }
+                                else
+                                {
+                                    GUI.Box(slotRect, "<color=#000000>" + thisCommand.commandName + "</color>", commandSkin.GetStyle("CommandBackAvailable"));
+
+                                }
                             }
                         }
                     }
@@ -219,17 +255,44 @@ public class CommandList : MonoBehaviour {
                     {
                         if (!thisCommand.availableAtBase)
                         {
-                            GUI.Box(slotRect, "<color=#000000>" + thisCommand.commandName + "</color>", commandSkin.GetStyle("greyedOut"));
+                            if (thisCommand.isVariable)
+                            {
+                                GUI.Box(slotRect, "<color=#000000>" + thisCommand.commandName + "</color>", commandSkin.GetStyle("VariableBackUnavailable"));
+
+                            }
+                            else
+                            {
+                                GUI.Box(slotRect, "<color=#000000>" + thisCommand.commandName + "</color>", commandSkin.GetStyle("CommandBackUnavailable"));
+
+                            }
                         }
                         else
                         {
-                            GUI.Box(slotRect, "<color=#000000>" + thisCommand.commandName + "</color>", commandSkin.GetStyle("commandSkin"));
+                            if (thisCommand.isVariable)
+                            {
+                                GUI.Box(slotRect, "<color=#000000>" + thisCommand.commandName + "</color>", commandSkin.GetStyle("VariableBackAvailable"));
+
+                            }
+                            else
+                            {
+                                GUI.Box(slotRect, "<color=#000000>" + thisCommand.commandName + "</color>", commandSkin.GetStyle("CommandBackAvailable"));
+
+                            }
                         }
                     }
                 }
                 else
                 {
-                    GUI.Box(slotRect, "<color=#000000>" + thisCommand.commandName + "</color>", commandSkin.GetStyle("commandSkin"));
+                    if (thisCommand.isVariable)
+                    {
+                        GUI.Box(slotRect, "<color=#000000>" + thisCommand.commandName + "</color>", commandSkin.GetStyle("VariableBackAvailable"));
+
+                    }
+                    else
+                    {
+                        GUI.Box(slotRect, "<color=#000000>" + thisCommand.commandName + "</color>", commandSkin.GetStyle("CommandBackAvailable"));
+
+                    }
                 }
 
                 //Check if the mouse cursor is over the command.
@@ -307,7 +370,6 @@ public class CommandList : MonoBehaviour {
                         }
                     }
                 }
-
                 //Null the dragged command, and tell the script it is no longer dragging anything.
                 sequenceEditor.isDraggingCommand = false;
                 sequenceEditor.draggedCommand = null;

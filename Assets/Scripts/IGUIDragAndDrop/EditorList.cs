@@ -162,19 +162,12 @@ public class EditorList : MonoBehaviour{
                 showToolTip = false;
             }
         }
-
-        //DragonDrop
-        if (isDraggingCommand)
-        {
-            GUI.Box(new Rect(Event.current.mousePosition.x + 13, Event.current.mousePosition.y, 200, 40), "<color=#000000>" + draggedCommand.commandName + "</color>", commandSkin.GetStyle("commandSkin"));
-        }
     }
 
     //Method that draws the editor window
     void DrawEditor()
     {
         Event e = Event.current;
-
 
         //Draw the bounding box.
         if(this.gameObject.name != "GiraffeBase")
@@ -185,7 +178,6 @@ public class EditorList : MonoBehaviour{
         {
             GUI.Box(new Rect(boundingBoxX, boundingBoxY, boundingBoxWidth, boundingBoxHeight),  this.gameObject.name + "  Editor");
         }
-       
 
         //Variables for drawing the commands
         int slotNumber = 0;
@@ -206,7 +198,15 @@ public class EditorList : MonoBehaviour{
                 //Draw any empty slots
                 if (thisCommand.commandName == "")
                 {
-                    GUI.Box(slotRect, "");
+                    if(x == 0)
+                    {
+                        GUI.Box(slotRect, "", commandSkin.GetStyle("EmptySlot"));
+                    }
+                    else
+                    {
+                        GUI.Box(slotRect, "", commandSkin.GetStyle("EmptyVariable"));
+                    }
+
                     CheckReleased(slotNumber);
 
                 //Draw any filled slots
@@ -214,11 +214,29 @@ public class EditorList : MonoBehaviour{
                 {
                     if(x == 1 && slots[slotNumber - 1].commandName == "")
                     {
-                        GUI.Box(slotRect, "<color=#000000>" + thisCommand.commandName + "</color>", commandSkin.GetStyle("commandError"));
+                        if (thisCommand.isVariable)
+                        {
+                            GUI.Box(slotRect, "<color=#000000>" + thisCommand.commandName + "</color>", commandSkin.GetStyle("VariableBackWrong"));
+
+                        }
+                        else
+                        {
+                            GUI.Box(slotRect, "<color=#000000>" + thisCommand.commandName + "</color>", commandSkin.GetStyle("CommandBackWrong"));
+
+                        }
                     }
                     else
                     {
-                        GUI.Box(slotRect, "<color=#000000>" + thisCommand.commandName + "</color>", commandSkin.GetStyle("commandSkin"));
+                        if (thisCommand.isVariable)
+                        {
+                            GUI.Box(slotRect, "<color=#000000>" + thisCommand.commandName + "</color>", commandSkin.GetStyle("VariableBackAvailable"));
+
+                        }
+                        else
+                        {
+                            GUI.Box(slotRect, "<color=#000000>" + thisCommand.commandName + "</color>", commandSkin.GetStyle("CommandBackAvailable"));
+
+                        }
                     }
 
                     //Check if the mouse is over the slot
@@ -269,7 +287,6 @@ public class EditorList : MonoBehaviour{
             isDraggingCommand = false;
             draggedCommand = null;
         }
-        
     }
 
     //Check if the mouse button is released (...)
