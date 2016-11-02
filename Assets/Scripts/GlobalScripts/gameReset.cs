@@ -34,7 +34,7 @@ public class gameReset : MonoBehaviour {
         scoreManagerGO = GameObject.Find("ScoreManager");
 		scoreManagerScript = scoreManagerGO.GetComponent<ScoreManager>();
 
-		buyEnemyUnitsGO = GameObject.Find("ElephantSpawner");
+		buyEnemyUnitsGO = GameObject.Find("ElephantSpawn");
 		buyEnemyUnitsScript = buyEnemyUnitsGO.GetComponent<BuyEnemyUnits>();
 
 		unitManager = GameObject.Find("UnitManager");

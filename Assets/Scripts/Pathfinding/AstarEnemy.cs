@@ -78,7 +78,7 @@ public class AstarEnemy : MonoBehaviour
     void FindNearestEnemy()
     {
         //Put all enemies into an array, then find the one which is nearest.
-        nearestEnemy = uArray.scan(this.gameObject, "Enemy");
+        nearestEnemy = uArray.scan(this.gameObject, "Ally");
 
         if (nearestEnemy != null)
         {
@@ -158,8 +158,8 @@ public class AstarEnemy : MonoBehaviour
         {
             pathCompleted = false;
             seeker.StartPath(transform.position, targetPosition, OnPathComplete);
+            receivedNewDestination = false;
         }
-        receivedNewDestination = false;
     }
 
     //Method that rotates the unit towards its target.
