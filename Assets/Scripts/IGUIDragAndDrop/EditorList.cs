@@ -145,7 +145,16 @@ public class EditorList : MonoBehaviour{
         //Show tooltip at the mouse position
         if (showToolTip)
         {
-            GUI.Box(new Rect(Event.current.mousePosition.x + 13, Event.current.mousePosition.y, 200, 40), toolTip, commandSkin.GetStyle("tooltipBackground"));
+            float toolTipHeight = toolTip.Length;
+
+            if (Event.current.mousePosition.x > Screen.width - (boxWidth - 2))
+            {
+                GUI.Box(new Rect(Event.current.mousePosition.x - (boxWidth - 30), Event.current.mousePosition.y, 200, toolTipHeight), toolTip, commandSkin.GetStyle("tooltipBackground"));
+            }
+            else
+            {
+                GUI.Box(new Rect(Event.current.mousePosition.x + 13, Event.current.mousePosition.y, 200, toolTipHeight), toolTip, commandSkin.GetStyle("tooltipBackground"));
+            }
 
             //If the tooltip string is blank, stop drawing the tooltip
             if (toolTip == "")
@@ -166,8 +175,17 @@ public class EditorList : MonoBehaviour{
     {
         Event e = Event.current;
 
+
         //Draw the bounding box.
-        GUI.Box(new Rect(boundingBoxX, boundingBoxY, boundingBoxWidth, boundingBoxHeight), "Sequence Editor");
+        if(this.gameObject.name != "GiraffeBase")
+        {
+            GUI.Box(new Rect(boundingBoxX, boundingBoxY, boundingBoxWidth, boundingBoxHeight), "Checkpoint " + this.gameObject.name + "  Editor");
+        }
+        else
+        {
+            GUI.Box(new Rect(boundingBoxX, boundingBoxY, boundingBoxWidth, boundingBoxHeight),  this.gameObject.name + "  Editor");
+        }
+       
 
         //Variables for drawing the commands
         int slotNumber = 0;

@@ -68,9 +68,6 @@ public class HomebaseGUI : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        //array containing each enemyUnits which can be affected by this script
-        GameObject[] enemyUnits = GameObject.FindGameObjectsWithTag("enemyUnits");
-
 		//array containing each playerUnits which can be affected by the script
 		GameObject[] units = GameObject.FindGameObjectsWithTag("playerUnits");
 
