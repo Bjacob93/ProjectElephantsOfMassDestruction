@@ -51,7 +51,8 @@ public class CommandList : MonoBehaviour {
     void Start(){
         //Reference the database of commands so that we can always find any command we need.
         database = GameObject.FindGameObjectWithTag("CommandDatabase").GetComponent<CommandDatabase>();
-
+        Debug.Log(boxHeight);
+        Debug.Log(boxWidth);
         //Reference the Sequence Manager script.
         sequenceManager = GameObject.Find("UIManager").GetComponent<SequenceManager>();
 
@@ -119,11 +120,11 @@ public class CommandList : MonoBehaviour {
 
         //Show the tooltip at the mouse position.
 		if (showToolTip) {
-            float toolTipHeight = toolTip.Length;
+            float toolTipHeight = toolTip.Length / 1.4f;
 
             if(Event.current.mousePosition.x > Screen.width - (boxWidth-2))
             {
-                GUI.Box(new Rect(Event.current.mousePosition.x - (boxWidth - 30), Event.current.mousePosition.y, 200, toolTipHeight), toolTip, commandSkin.GetStyle("tooltipBackground"));
+                GUI.Box(new Rect(Event.current.mousePosition.x - (boxWidth * 1.02f), Event.current.mousePosition.y, 200, toolTipHeight), toolTip, commandSkin.GetStyle("tooltipBackground"));
             }
             else
             {
