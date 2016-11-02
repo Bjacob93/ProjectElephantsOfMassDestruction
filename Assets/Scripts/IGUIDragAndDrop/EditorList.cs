@@ -175,8 +175,17 @@ public class EditorList : MonoBehaviour{
     {
         Event e = Event.current;
 
+
         //Draw the bounding box.
-        GUI.Box(new Rect(boundingBoxX, boundingBoxY, boundingBoxWidth, boundingBoxHeight), "Sequence Editor");
+        if(this.gameObject.name != "GiraffeBase")
+        {
+            GUI.Box(new Rect(boundingBoxX, boundingBoxY, boundingBoxWidth, boundingBoxHeight), "Checkpoint " + this.gameObject.name + "  Editor");
+        }
+        else
+        {
+            GUI.Box(new Rect(boundingBoxX, boundingBoxY, boundingBoxWidth, boundingBoxHeight),  this.gameObject.name + "  Editor");
+        }
+       
 
         //Variables for drawing the commands
         int slotNumber = 0;
