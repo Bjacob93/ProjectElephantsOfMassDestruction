@@ -175,7 +175,6 @@ public class EditorList : MonoBehaviour{
     {
         Event e = Event.current;
 
-
         //Draw the bounding box.
         if(this.gameObject.name != "GiraffeBase")
         {
@@ -185,7 +184,6 @@ public class EditorList : MonoBehaviour{
         {
             GUI.Box(new Rect(boundingBoxX, boundingBoxY, boundingBoxWidth, boundingBoxHeight),  this.gameObject.name + "  Editor");
         }
-       
 
         //Variables for drawing the commands
         int slotNumber = 0;
@@ -269,7 +267,6 @@ public class EditorList : MonoBehaviour{
             isDraggingCommand = false;
             draggedCommand = null;
         }
-        
     }
 
     //Check if the mouse button is released (...)
