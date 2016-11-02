@@ -8,6 +8,7 @@ public class BasicCheckpointScript : MonoBehaviour {
      * This class will control the checkpoints. They will read the editorlist pertaining to each checkpoint and give the
      * relevant orders to units in range.
      */
+    PauseScript pause;
     public bool gameIspaused = true;
 
     //Cache destination vectors
@@ -31,10 +32,14 @@ public class BasicCheckpointScript : MonoBehaviour {
     //Cache target waypoint
     Vector3 target;
 
+    public float distance;
+
     void Start () {
         //Find the SequenceManager, and same the name of the checkpoint to a string.
 		sm = GameObject.Find ("UIManager").GetComponent<SequenceManager> ();
 		checkpointName = this.gameObject.name;
+
+        pause = GameObject.Find("Pause").GetComponent<PauseScript>();
 
         //Save the location of this checkpoint to a variable.
         location = gameObject.transform.position;
@@ -52,7 +57,8 @@ public class BasicCheckpointScript : MonoBehaviour {
 
         //Find all player units.
         GameObject[] units = GameObject.FindGameObjectsWithTag("playerUnits");
-        if (gameIspaused) {
+
+        if (pause.gameIsPaused) {
             return;
         }
         //check if the slot is to the left in the editor
@@ -148,7 +154,7 @@ public class BasicCheckpointScript : MonoBehaviour {
         //For each unit that exist belonging to the player, check if it is within control range, and give it a new destination if it is
         foreach (GameObject e in units)
         {
-            float distance = Vector3.Distance(transform.position, e.transform.position);
+            distance = Vector3.Distance(transform.position, e.transform.position);
             if (distance < controlRange)
             {
                 Astar aStar = e.GetComponent<Astar>();
