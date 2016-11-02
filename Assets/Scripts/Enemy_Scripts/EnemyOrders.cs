@@ -14,14 +14,14 @@ public class EnemyOrders : MonoBehaviour {
 	void Start () {
 
         controlRange = 5f;
-        splitIndex = 0;
+        splitIndex = 1;
 	}
 	
 	// Update is called once per frame
 	void Update () {
         GameObject[] units = GameObject.FindGameObjectsWithTag("enemyUnits");
 
-        if (hasMultipleTargets)
+        if (!hasMultipleTargets && targetLocation2 != new Vector3(0,0,0))
         {
             targetLocation1 = targetLocation2;
         }

@@ -18,7 +18,7 @@ public class BasicCheckpointScript : MonoBehaviour {
     //Cache SequenceEditor component.
     EditorList listComponent;
 	SequenceManager sm;
-	string checkpointName;
+	public string checkpointName;
 
     //Range within which the checkpoint will give orders to units.
     public float controlRange = 10f;

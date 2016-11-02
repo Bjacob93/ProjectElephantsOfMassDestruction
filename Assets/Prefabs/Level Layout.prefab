@@ -1329,7 +1329,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f7977716f0f3be5448dfabcc00c8e4ae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  targetLocation1: {x: 0, y: 0, z: 0}
+  targetLocation1: {x: 47, y: 0, z: 47}
   targetLocation2: {x: 0, y: 0, z: 0}
   hasMultipleTargets: 0
   split: 0
@@ -1380,7 +1380,8 @@ MonoBehaviour:
   meleeDistination: {x: 0, y: 0, z: 0}
   rangedDistination: {x: 0, y: 0, z: 0}
   location: {x: 0, y: 0, z: 0}
-  controlRange: 10
+  checkpointName: 
+  controlRange: 100
   shrimp: 1
 --- !u!114 &114000011907951156
 MonoBehaviour:
@@ -1397,7 +1398,8 @@ MonoBehaviour:
   meleeDistination: {x: 0, y: 0, z: 0}
   rangedDistination: {x: 0, y: 0, z: 0}
   location: {x: 0, y: 0, z: 0}
-  controlRange: 10
+  checkpointName: 
+  controlRange: 100
   shrimp: 1
 --- !u!114 &114000013044201706
 MonoBehaviour:
@@ -1414,7 +1416,8 @@ MonoBehaviour:
   meleeDistination: {x: 0, y: 0, z: 0}
   rangedDistination: {x: 0, y: 0, z: 0}
   location: {x: 0, y: 0, z: 0}
-  controlRange: 10
+  checkpointName: 
+  controlRange: 100
   shrimp: 1
 --- !u!114 &114000013183190316
 MonoBehaviour:
