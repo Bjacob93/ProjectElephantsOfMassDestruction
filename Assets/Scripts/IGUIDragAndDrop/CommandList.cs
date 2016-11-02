@@ -51,7 +51,8 @@ public class CommandList : MonoBehaviour {
     void Start(){
         //Reference the database of commands so that we can always find any command we need.
         database = GameObject.FindGameObjectWithTag("CommandDatabase").GetComponent<CommandDatabase>();
-
+        Debug.Log(boxHeight);
+        Debug.Log(boxWidth);
         //Reference the Sequence Manager script.
         sequenceManager = GameObject.Find("UIManager").GetComponent<SequenceManager>();
 
