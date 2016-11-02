@@ -145,11 +145,11 @@ public class EditorList : MonoBehaviour{
         //Show tooltip at the mouse position
         if (showToolTip)
         {
-            float toolTipHeight = toolTip.Length;
+            float toolTipHeight = toolTip.Length / 1.4f;
 
-            if (Event.current.mousePosition.x > Screen.width - (boxWidth - 2))
+            if (Event.current.mousePosition.x > Screen.width - (boxWidth))
             {
-                GUI.Box(new Rect(Event.current.mousePosition.x - (boxWidth - 30), Event.current.mousePosition.y, 200, toolTipHeight), toolTip, commandSkin.GetStyle("tooltipBackground"));
+                GUI.Box(new Rect(Event.current.mousePosition.x - boxWidth, Event.current.mousePosition.y, 200, toolTipHeight), toolTip, commandSkin.GetStyle("tooltipBackground"));
             }
             else
             {
