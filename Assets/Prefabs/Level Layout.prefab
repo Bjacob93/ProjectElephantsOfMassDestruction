@@ -42,7 +42,7 @@ GameObject:
   - 95: {fileID: 95000010979820070}
   - 64: {fileID: 64000013032308336}
   m_Layer: 9
-  m_Name: mountain 1
+  m_Name: SmallMountain
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -80,7 +80,7 @@ GameObject:
   - 95: {fileID: 95000011624360840}
   - 64: {fileID: 64000010301926258}
   m_Layer: 9
-  m_Name: mountain 1 (1)
+  m_Name: MediumSmallMountian
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -136,7 +136,7 @@ GameObject:
   - 95: {fileID: 95000010108502372}
   - 64: {fileID: 64000010164305600}
   m_Layer: 9
-  m_Name: mountain 1
+  m_Name: MediumMountian
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1363,7 +1363,7 @@ MonoBehaviour:
   restartTimer: 0
   amountOfEnemySpawned: 0
   maxEnemySpawn: 1
-  enemyUnits: {fileID: 1000011053526964, guid: afde2324dfd96bb47bda104f702e4560, type: 2}
+  enemyUnits: {fileID: 1000012383555620, guid: f1ed21ec493873c47957c32c17df24f5, type: 2}
 --- !u!114 &114000011590997980
 MonoBehaviour:
   m_ObjectHideFlags: 1

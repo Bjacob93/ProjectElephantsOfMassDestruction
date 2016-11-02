@@ -105,7 +105,7 @@ GameObject:
   - 4: {fileID: 4000010518435896}
   - 114: {fileID: 114000010139256964}
   m_Layer: 0
-  m_Name: AstarPathAI
+  m_Name: AstarPathAI(Original)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

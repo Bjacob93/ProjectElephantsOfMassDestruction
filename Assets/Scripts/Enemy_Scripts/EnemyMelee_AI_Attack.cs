@@ -3,6 +3,8 @@ using System.Collections;
 
 public class EnemyMelee_AI_Attack : MonoBehaviour {
 
+    public Animator anim;
+
 	public float meleeCoolDown = 0.5f; //Attack cooldown
 	float meleeCoolDownLeft = 0f;
 	int attackDamage = 20; // Damage of each attack
@@ -18,6 +20,8 @@ public class EnemyMelee_AI_Attack : MonoBehaviour {
 
     void Start()
     {
+        anim = GetComponent<Animator>();
+
         //Find and store te AstarEnemy script
         aStarEnemy = this.GetComponent<AstarEnemy>();
     }
@@ -41,6 +45,11 @@ public class EnemyMelee_AI_Attack : MonoBehaviour {
                 //Check if we need to run the attack script since we reached the targeted cooldown
                 if (meleeCoolDownLeft <= 0)
                 {
+
+                    if (!this.anim.GetCurrentAnimatorStateInfo(0).IsName("ATTACK"))
+                    {
+                        anim.Play("ATTACK", -1, 0f);
+                    }  
                     meleeCoolDownLeft = meleeCoolDown;
                     //Create a random value between 0 and 1 if it is lower than 0.9 it hits, making the hit chance 90%
                     if (randV < hitChance)

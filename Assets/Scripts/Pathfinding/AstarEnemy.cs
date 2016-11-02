@@ -38,6 +38,7 @@ public class AstarEnemy : MonoBehaviour
     //Cache variable that limits calls to pathfinding to once every second.
     bool pathCompleted = false;
 
+    public Animator ElephantRunAnim;
 
     //Cache variables for enemies
     public GameObject nearestEnemy = null;
@@ -60,6 +61,8 @@ public class AstarEnemy : MonoBehaviour
         seeker.StartPath(transform.position, targetPosition, OnPathComplete);
         unitManager = GameObject.Find("UnitManager");
         uArray = unitManager.GetComponent<UnitArrays>();
+
+        ElephantRunAnim = GetComponent<Animator>();
     }
 
     /** Method to print out errors in the log if we get any. If we don't, it will set first waypoint 
@@ -197,6 +200,11 @@ public class AstarEnemy : MonoBehaviour
         {
             currentWaypoint++;
         }
+
+        if (!this.ElephantRunAnim.GetCurrentAnimatorStateInfo(0).IsName("RUN"))
+        {
+            ElephantRunAnim.Play("RUN", -1, 0f);
+        }
     }
 
     void Update()
@@ -221,7 +229,7 @@ public class AstarEnemy : MonoBehaviour
         }
 
         if (isInMeleeRange)
-        {
+        {      
             return;
         }
         else
@@ -245,5 +253,6 @@ public class AstarEnemy : MonoBehaviour
 
         //Move the unit
         Move(direction, path);
+
     }
 }
