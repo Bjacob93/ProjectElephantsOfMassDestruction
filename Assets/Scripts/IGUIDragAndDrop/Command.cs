@@ -13,6 +13,8 @@ public class Command {
     public bool availableAtCheckpoint;
     public bool availableAtBase;
 
+    public bool isVariable;
+
     public Vector3 locationOfTarget;
 
     public int variableForEveryX;
@@ -24,7 +26,7 @@ public class Command {
     }
 
     //Constructor for specific commands
-	public Command (string name, string id, string desc, bool reqVar, bool atCheck, bool atBase, Vector3 location, int varFoE)
+	public Command (string name, string id, string desc, bool reqVar, bool atCheck, bool atBase, Vector3 location, int varFoE, bool isVar)
     {
         commandName = name;
         commandId = id;
@@ -34,5 +36,6 @@ public class Command {
         availableAtCheckpoint = atCheck;
         locationOfTarget = location;
         variableForEveryX = varFoE;
+        isVariable = isVar;
     }
 }

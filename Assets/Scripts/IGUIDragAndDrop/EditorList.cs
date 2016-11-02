@@ -162,12 +162,6 @@ public class EditorList : MonoBehaviour{
                 showToolTip = false;
             }
         }
-
-        //DragonDrop
-        if (isDraggingCommand)
-        {
-            GUI.Box(new Rect(Event.current.mousePosition.x + 13, Event.current.mousePosition.y, 200, 40), "<color=#000000>" + draggedCommand.commandName + "</color>", commandSkin.GetStyle("CommandBackAvailable"));
-        }
     }
 
     //Method that draws the editor window
@@ -204,7 +198,15 @@ public class EditorList : MonoBehaviour{
                 //Draw any empty slots
                 if (thisCommand.commandName == "")
                 {
-                    GUI.Box(slotRect, "");
+                    if(x == 0)
+                    {
+                        GUI.Box(slotRect, "", commandSkin.GetStyle("EmptySlot"));
+                    }
+                    else
+                    {
+                        GUI.Box(slotRect, "", commandSkin.GetStyle("EmptyVariable"));
+                    }
+
                     CheckReleased(slotNumber);
 
                 //Draw any filled slots
@@ -212,11 +214,29 @@ public class EditorList : MonoBehaviour{
                 {
                     if(x == 1 && slots[slotNumber - 1].commandName == "")
                     {
-                        GUI.Box(slotRect, "<color=#000000>" + thisCommand.commandName + "</color>", commandSkin.GetStyle("CommandBackWrong"));
+                        if (thisCommand.isVariable)
+                        {
+                            GUI.Box(slotRect, "<color=#000000>" + thisCommand.commandName + "</color>", commandSkin.GetStyle("VariableBackWrong"));
+
+                        }
+                        else
+                        {
+                            GUI.Box(slotRect, "<color=#000000>" + thisCommand.commandName + "</color>", commandSkin.GetStyle("CommandBackWrong"));
+
+                        }
                     }
                     else
                     {
-                        GUI.Box(slotRect, "<color=#000000>" + thisCommand.commandName + "</color>", commandSkin.GetStyle("CommandBackAvailable"));
+                        if (thisCommand.isVariable)
+                        {
+                            GUI.Box(slotRect, "<color=#000000>" + thisCommand.commandName + "</color>", commandSkin.GetStyle("VariableBackAvailable"));
+
+                        }
+                        else
+                        {
+                            GUI.Box(slotRect, "<color=#000000>" + thisCommand.commandName + "</color>", commandSkin.GetStyle("CommandBackAvailable"));
+
+                        }
                     }
 
                     //Check if the mouse is over the slot
