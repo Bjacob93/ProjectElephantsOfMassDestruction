@@ -9,7 +9,6 @@ public class BasicCheckpointScript : MonoBehaviour {
      * relevant orders to units in range.
      */
     PauseScript pause;
-    public bool gameIspaused = true;
 
     //Cache destination vectors
     public Vector3 meleeDistination;

@@ -105,7 +105,7 @@ GameObject:
   - 4: {fileID: 4000010518435896}
   - 114: {fileID: 114000010139256964}
   m_Layer: 0
-  m_Name: AstarPathAI
+  m_Name: AstarPathAI(Original)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -406,6 +406,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 40150215fbb21624084497c46333ecb7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gameIsPaused: 1
 --- !u!114 &114000010891339284
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -514,6 +515,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 40150215fbb21624084497c46333ecb7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gameIsPaused: 1
 --- !u!114 &114000013132918246
 MonoBehaviour:
   m_ObjectHideFlags: 1

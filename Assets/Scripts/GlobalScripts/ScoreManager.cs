@@ -65,4 +65,9 @@ public class ScoreManager : MonoBehaviour {
 	public void GameOver(){
 		anim.SetTrigger ("GameOver");
 	}
+
+    public void Victory()
+    {
+        anim.SetTrigger("VictoryAnimation");
+    }
 }
