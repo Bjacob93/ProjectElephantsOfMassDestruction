@@ -17,6 +17,7 @@ public class EnemyMelee_AI_Attack : MonoBehaviour {
 
     float randV;        // float for a random value
     float hitChance;   //float for the units hitChance
+    float eachMissIncreaseChance;
 
     void Start()
     {
@@ -24,6 +25,8 @@ public class EnemyMelee_AI_Attack : MonoBehaviour {
 
         //Find and store te AstarEnemy script
         aStarEnemy = this.GetComponent<AstarEnemy>();
+
+        eachMissIncreaseChance = 0;
     }
 	
 	void Update () {
@@ -52,12 +55,17 @@ public class EnemyMelee_AI_Attack : MonoBehaviour {
                     }  
                     meleeCoolDownLeft = meleeCoolDown;
                     //Create a random value between 0 and 1 if it is lower than 0.9 it hits, making the hit chance 90%
-                    if (randV < hitChance)
+                    if (randV < hitChance + eachMissIncreaseChance)
                     {
                         //Run the TakenDamage from AlliedMelee_AI_Health script to reduce the nearesPlayer health.
                         nearestPlayer.GetComponent<AlliedMelee_AI_Health>().TakeDamage(attackDamage);
+                        eachMissIncreaseChance = 0;
                     }
-                    
+                    else
+                    {
+                        eachMissIncreaseChance += 5;
+                    }
+
                 }
             }
         }

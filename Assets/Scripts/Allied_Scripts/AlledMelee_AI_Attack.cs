@@ -14,6 +14,7 @@ public class AlledMelee_AI_Attack : MonoBehaviour {
 
     float randV; // float for a random value
     float hitChance;    //float for the units hitChance
+    float eachMissIncreaseChance;
 
     Astar aStar;
 
@@ -22,6 +23,8 @@ public class AlledMelee_AI_Attack : MonoBehaviour {
 		anim = GetComponent<Animator>();
 
         aStar = this.GetComponent<Astar>();
+
+        eachMissIncreaseChance = 0;
     }
 	
 	void Update () {
@@ -48,13 +51,18 @@ public class AlledMelee_AI_Attack : MonoBehaviour {
 						anim.Play("ATTACK", -1, 0f);
 					}  
                     meleeCoolDownLeft = meleeCoolDown;
-
+                
                     //find check if the attack connects/hits, atm there are 90% for hit
-                    if(randV < hitChance)
+                    if(randV < hitChance + eachMissIncreaseChance)
                     {
                         //Run the TakenDamage from AlliedMelee_AI_Health script to reduce the nearesPlayer health.
                         nearestPlayer.GetComponent<EnemyMelee_AI_Health>().TakeDamage(attackDamage);
-                    } 
+                        eachMissIncreaseChance = 0;
+                    }
+                    else
+                    {
+                        eachMissIncreaseChance += 5;
+                    }
                 }
             }
         }
