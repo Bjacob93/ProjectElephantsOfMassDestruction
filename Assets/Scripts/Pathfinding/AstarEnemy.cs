@@ -3,7 +3,6 @@ using Pathfinding;
 
 public class AstarEnemy : MonoBehaviour
 {
-
     //Cache target coordinates, seeker, controller and path.
     public Vector3 targetPosition;
     Seeker seeker;
@@ -38,6 +37,7 @@ public class AstarEnemy : MonoBehaviour
     //Cache variable that limits calls to pathfinding to once every second.
     bool pathCompleted = false;
 
+    //variables for aniations
     public Animator ElephantRunAnim;
 
     //Cache variables for enemies
