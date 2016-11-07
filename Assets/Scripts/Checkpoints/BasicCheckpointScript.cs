@@ -33,7 +33,13 @@ public class BasicCheckpointScript : MonoBehaviour {
 
     public float distance;
 
+    //Cache the object which holds the variable for DnD or Text edit mode.
+    mainMenuVariables varKeeper;
+
     void Start () {
+        //Reference to the correct mainMenuVariables script.
+        varKeeper = GameObject.Find("KeeperOfVariables").GetComponent<mainMenuVariables>();
+
         //Find the SequenceManager, and same the name of the checkpoint to a string.
 		sm = GameObject.Find ("UIManager").GetComponent<SequenceManager> ();
 		checkpointName = this.gameObject.name;
@@ -43,13 +49,13 @@ public class BasicCheckpointScript : MonoBehaviour {
         //Save the location of this checkpoint to a variable.
         location = gameObject.transform.position;
 
-        //Create an EditorList component attached to this game object and add it to the list in SequenceManager.
-        listComponent = gameObject.AddComponent<EditorList>();
-        listComponent.listID = checkpointName;
-        listComponent.belongsToCheckpoint = true;
-        sm.editorlistGO.Add(listComponent);
-
-        
+        if (varKeeper.useDragonDrop){
+            //Create an EditorList component attached to this game object and add it to the list in SequenceManager.
+            listComponent = gameObject.AddComponent<EditorList>();
+            listComponent.listID = checkpointName;
+            listComponent.belongsToCheckpoint = true;
+            sm.editorlistGO.Add(listComponent);
+        }
     }
 	
 	void Update () {
@@ -60,6 +66,12 @@ public class BasicCheckpointScript : MonoBehaviour {
         if (pause.gameIsPaused) {
             return;
         }
+
+        if (!varKeeper.useDragonDrop)
+        {
+            return;
+        }
+
         //check if the slot is to the left in the editor
         for (int i = 0; i < listComponent.slots.Count; i++)
         {

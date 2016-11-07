@@ -86,7 +86,7 @@ public class EditorList : MonoBehaviour{
         //Get the dimensions of the command window from the CommandList script.
         commandBoundRect = GameObject.FindGameObjectWithTag("CommandList").GetComponent<CommandList>().boundingRect;
 
-        //Calculate the total number of slots.
+        //Calculate the total number of slots.  
         totalSlots = slotsCol * slotsRow;
 
         //Calculate the dimensions of the bounding box.

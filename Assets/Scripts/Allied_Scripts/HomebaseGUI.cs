@@ -40,9 +40,15 @@ public class HomebaseGUI : MonoBehaviour {
     public int shrimp = 1;
     int fish;
 
+    //Cache the object which holds the variable for DnD or Text edit mode.
+    mainMenuVariables varKeeper;
+
     void Start () {
-		//Find and cache unit manager script
-		unitManager = GameObject.Find("UnitManager");
+        //Reference to the correct mainMenuVariables script.
+        varKeeper = GameObject.Find("KeeperOfVariables").GetComponent<mainMenuVariables>();
+
+        //Find and cache unit manager script
+        unitManager = GameObject.Find("UnitManager");
 		unitPrices = unitManager.GetComponent<UnitPrices>();
 
 		//Find and cache the score manager
@@ -56,11 +62,14 @@ public class HomebaseGUI : MonoBehaviour {
 		// Find and Save the position of this gameObjects location for future reference.
 		location = gameObject.transform.position;
 
-        //Add the sequenceEditor component to the list in SequenceManager.
-        listComponent = gameObject.AddComponent<EditorList>();
-        listComponent.listID = baseName;
-        listComponent.belongsToCheckpoint = false;
-        sequenceManager.editorlistGO.Add(listComponent);
+        if (varKeeper.useDragonDrop)
+        {
+            //Add the sequenceEditor component to the list in SequenceManager.
+            listComponent = gameObject.AddComponent<EditorList>();
+            listComponent.listID = baseName;
+            listComponent.belongsToCheckpoint = false;
+            sequenceManager.editorlistGO.Add(listComponent);
+        }
 
         //bool to pause and unpause the script
         gameIsPaused = true;
@@ -77,6 +86,10 @@ public class HomebaseGUI : MonoBehaviour {
             return;
         }
 
+        if (!varKeeper.useDragonDrop)
+        {
+            return;
+        }
 		//check if the slot is to the left in the editor
 		for (int i = 0; i < listComponent.slots.Count; i++) {
 			//check to see if the slot is empty
