@@ -35,7 +35,7 @@ public class CommandDatabase : MonoBehaviour {
         //scan for variables and automatically add them instead of doing it manually
         foreach (GameObject c in checkpoints)
         {
-            commandDatabase.Add(new Command("checkpoint " + c.name, "var" + c.name, "This targets the location of checkpoint " + c.name, false, true, true, c.transform.position,0, true));
+            commandDatabase.Add(new Command(c.name, "var" + c.name, "This targets the location of checkpoint " + c.name, false, true, true, c.transform.position,0, true));
         }
 
 		commandDatabase.Add (new Command ("Homebase", "varPlayerBase", "This targets the location of the players base. ", false, true, true, homebase.transform.position,0, true));   
