@@ -1,0 +1,199 @@
+fileFormatVersion: 2
+guid: 0d8b2f6cebcf6074caa02f4b5b218d0c
+timeCreated: 1478515647
+licenseType: Free
+ModelImporter:
+  serializedVersion: 19
+  fileIDToRecycleName:
+    100000: Character2_Head
+    100002: Character2_Hips
+    100004: Character2_LeftArm
+    100006: Character2_LeftFoot
+    100008: Character2_LeftForeArm
+    100010: Character2_LeftHand
+    100012: Character2_LeftHandIndex1
+    100014: Character2_LeftHandIndex2
+    100016: Character2_LeftHandIndex3
+    100018: Character2_LeftHandIndex4
+    100020: Character2_LeftHandMiddle1
+    100022: Character2_LeftHandMiddle2
+    100024: Character2_LeftHandMiddle3
+    100026: Character2_LeftHandMiddle4
+    100028: Character2_LeftHandRing1
+    100030: Character2_LeftHandRing2
+    100032: Character2_LeftHandRing3
+    100034: Character2_LeftHandRing4
+    100036: Character2_LeftLeg
+    100038: Character2_LeftShoulder
+    100040: Character2_LeftToeBase
+    100042: Character2_LeftUpLeg
+    100044: Character2_Neck
+    100046: Character2_RightArm
+    100048: Character2_RightFoot
+    100050: Character2_RightForeArm
+    100052: Character2_RightHand
+    100054: Character2_RightHandIndex1
+    100056: Character2_RightHandIndex2
+    100058: Character2_RightHandIndex3
+    100060: Character2_RightHandIndex4
+    100062: Character2_RightHandMiddle1
+    100064: Character2_RightHandMiddle2
+    100066: Character2_RightHandMiddle3
+    100068: Character2_RightHandMiddle4
+    100070: Character2_RightHandRing1
+    100072: Character2_RightHandRing2
+    100074: Character2_RightHandRing3
+    100076: Character2_RightHandRing4
+    100078: Character2_RightLeg
+    100080: Character2_RightShoulder
+    100082: Character2_RightToeBase
+    100084: Character2_RightUpLeg
+    100086: Character2_Spine
+    100088: Character2_Spine1
+    100090: Character2_Spine2
+    100092: //RootNode
+    100094: joint10
+    100096: joint11
+    100098: joint12
+    100100: joint13
+    100102: joint14
+    100104: joint15
+    100106: joint16
+    100108: joint17
+    100110: joint18
+    100112: joint19
+    100114: joint20
+    100116: joint21
+    100118: joint22
+    100120: joint23
+    100122: joint5
+    100124: joint9
+    400000: Character2_Head
+    400002: Character2_Hips
+    400004: Character2_LeftArm
+    400006: Character2_LeftFoot
+    400008: Character2_LeftForeArm
+    400010: Character2_LeftHand
+    400012: Character2_LeftHandIndex1
+    400014: Character2_LeftHandIndex2
+    400016: Character2_LeftHandIndex3
+    400018: Character2_LeftHandIndex4
+    400020: Character2_LeftHandMiddle1
+    400022: Character2_LeftHandMiddle2
+    400024: Character2_LeftHandMiddle3
+    400026: Character2_LeftHandMiddle4
+    400028: Character2_LeftHandRing1
+    400030: Character2_LeftHandRing2
+    400032: Character2_LeftHandRing3
+    400034: Character2_LeftHandRing4
+    400036: Character2_LeftLeg
+    400038: Character2_LeftShoulder
+    400040: Character2_LeftToeBase
+    400042: Character2_LeftUpLeg
+    400044: Character2_Neck
+    400046: Character2_RightArm
+    400048: Character2_RightFoot
+    400050: Character2_RightForeArm
+    400052: Character2_RightHand
+    400054: Character2_RightHandIndex1
+    400056: Character2_RightHandIndex2
+    400058: Character2_RightHandIndex3
+    400060: Character2_RightHandIndex4
+    400062: Character2_RightHandMiddle1
+    400064: Character2_RightHandMiddle2
+    400066: Character2_RightHandMiddle3
+    400068: Character2_RightHandMiddle4
+    400070: Character2_RightHandRing1
+    400072: Character2_RightHandRing2
+    400074: Character2_RightHandRing3
+    400076: Character2_RightHandRing4
+    400078: Character2_RightLeg
+    400080: Character2_RightShoulder
+    400082: Character2_RightToeBase
+    400084: Character2_RightUpLeg
+    400086: Character2_Spine
+    400088: Character2_Spine1
+    400090: Character2_Spine2
+    400092: //RootNode
+    400094: joint10
+    400096: joint11
+    400098: joint12
+    400100: joint13
+    400102: joint14
+    400104: joint15
+    400106: joint16
+    400108: joint17
+    400110: joint18
+    400112: joint19
+    400114: joint20
+    400116: joint21
+    400118: joint22
+    400120: joint23
+    400122: joint5
+    400124: joint9
+    7400000: mixamo.com
+    9500000: //RootNode
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
