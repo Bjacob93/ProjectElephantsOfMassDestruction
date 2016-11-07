@@ -52,6 +52,8 @@ public class textCommandList : MonoBehaviour
         //Reference the database of commands so that we can always find any command we need.
         database = GameObject.FindGameObjectWithTag("CommandDatabase").GetComponent<CommandDatabase>();
 
+        Debug.Log(database.commandDatabase.Count);
+
         //Reference the Sequence Manager script.
         sequenceManager = GameObject.Find("UIManager").GetComponent<SequenceManager>();
 
@@ -73,6 +75,7 @@ public class textCommandList : MonoBehaviour
         for (int i = 0; i < database.commandDatabase.Count; i++)
         {
             availableCommands[i] = database.commandDatabase[i];
+            Debug.Log(availableCommands[i].commandName);
         }
 
         //Make the "slots" list contain the same elements as the "available" list.
@@ -102,20 +105,6 @@ public class textCommandList : MonoBehaviour
         //Draw the command list.
         if (drawCommandList)
         {
-            ////Go through all instances of EditorList.
-            //for (int i = 0; i < sequenceManager.editorlistGO.Count; i++)
-            //{
-            //    //If one of them is currently open in the UI, make that the reference point for sequenceEditor.
-            //    if (sequenceManager.editorlistGO[i].drawEditorWindow)
-            //    {
-            //        sequenceEditor = sequenceManager.editorlistGO[i];
-            //        break;
-            //    }
-            //    if (!sequenceManager.editorlistGO[i].drawEditorWindow && i == sequenceManager.editorlistGO.Count - 1)
-            //    {
-            //        sequenceEditor = null;
-            //    }
-            //}
             DrawCommandList();
         }
 
@@ -132,7 +121,6 @@ public class textCommandList : MonoBehaviour
             {
                 GUI.Box(new Rect(Event.current.mousePosition.x + 13, Event.current.mousePosition.y, 200, toolTipHeight), toolTip, commandSkin.GetStyle("tooltipBackground"));
             }
-
 
             //If the tooltip string is blank, stop drawing the tooltip.
             if (toolTip == "")
@@ -158,6 +146,7 @@ public class textCommandList : MonoBehaviour
         //For-loop draws the commands.
         for (int y = 0; y < numberOfSlots; y++)
         {
+
             //Define the Rect for the current slot.
             slotRect = new Rect(boxStartingPosX, previousRectY + y * boxOffSetY, boxWidth, boxHeight);
 
