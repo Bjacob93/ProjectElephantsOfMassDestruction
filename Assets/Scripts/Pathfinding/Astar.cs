@@ -37,6 +37,7 @@ public class Astar : MonoBehaviour {
     //Cache variable that limits calls to pathfinding to once every second.
     bool pathCompleted = false;
 
+	public Animator GiraffeRunAnim;
 
 	//Cache variables for enemies
 	public GameObject nearestEnemy = null;
@@ -58,6 +59,8 @@ public class Astar : MonoBehaviour {
 		seeker.StartPath (transform.position, targetPosition, OnPathComplete);
         unitManager = GameObject.Find("UnitManager");
         uArray = unitManager.GetComponent<UnitArrays>();
+
+		GiraffeRunAnim = GetComponent<Animator>();
     }
 
 	/** Method to print out errors in the log if we get any. If we don't, it will set first waypoint 
@@ -178,6 +181,10 @@ public class Astar : MonoBehaviour {
 		if (Vector3.Distance (transform.position, path.vectorPath[currentWaypoint]) < maxWaypointDistance) {
 			currentWaypoint++;
 		}
+		if (!this.GiraffeRunAnim.GetCurrentAnimatorStateInfo(0).IsName("RUN"))
+		{
+			GiraffeRunAnim.Play("RUN", -1, 0f);
+		}
 	}
 
 	void Update () {
@@ -210,6 +217,10 @@ public class Astar : MonoBehaviour {
                 receivedDefenceOrder = false;
                 isDefending = true;
             }
+			if (!this.GiraffeRunAnim.GetCurrentAnimatorStateInfo(0).IsName("ATTACK") && !this.GiraffeRunAnim.GetCurrentAnimatorStateInfo(0).IsName("IDLE"))
+			{ 
+				GiraffeRunAnim.Play("IDLE", -1, 0f);
+			}
 			return;
 		}
 	

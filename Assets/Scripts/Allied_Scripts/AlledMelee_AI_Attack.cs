@@ -3,6 +3,8 @@ using System.Collections;
 
 public class AlledMelee_AI_Attack : MonoBehaviour {
 
+	public Animator anim;
+
 	public float meleeCoolDown = 0.5f; // attack cooldown
 	float meleeCoolDownLeft = 0f;
 	int attackDamage = 20; // damage of each attack
@@ -12,12 +14,17 @@ public class AlledMelee_AI_Attack : MonoBehaviour {
 
     float randV; // float for a random value
     float hitChance;    //float for the units hitChance
+    float eachMissIncreaseChance;
 
     Astar aStar;
 
     void Start ()
     {
+		anim = GetComponent<Animator>();
+
         aStar = this.GetComponent<Astar>();
+
+        eachMissIncreaseChance = 0;
     }
 	
 	void Update () {
@@ -39,14 +46,23 @@ public class AlledMelee_AI_Attack : MonoBehaviour {
                 //Check if we need to run the attack script since we reached the targeted cooldown
                 if (meleeCoolDownLeft <= 0)
                 {
+					if (!this.anim.GetCurrentAnimatorStateInfo(0).IsName("ATTACK"))
+					{
+						anim.Play("ATTACK", -1, 0f);
+					}  
                     meleeCoolDownLeft = meleeCoolDown;
-
+                
                     //find check if the attack connects/hits, atm there are 90% for hit
-                    if(randV < hitChance)
+                    if(randV < hitChance + eachMissIncreaseChance)
                     {
                         //Run the TakenDamage from AlliedMelee_AI_Health script to reduce the nearesPlayer health.
                         nearestPlayer.GetComponent<EnemyMelee_AI_Health>().TakeDamage(attackDamage);
-                    } 
+                        eachMissIncreaseChance = 0;
+                    }
+                    else
+                    {
+                        eachMissIncreaseChance += 5;
+                    }
                 }
             }
         }
