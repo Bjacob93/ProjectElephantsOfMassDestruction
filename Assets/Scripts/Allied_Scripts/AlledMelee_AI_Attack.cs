@@ -3,6 +3,8 @@ using System.Collections;
 
 public class AlledMelee_AI_Attack : MonoBehaviour {
 
+	public Animator anim;
+
 	public float meleeCoolDown = 0.5f; // attack cooldown
 	float meleeCoolDownLeft = 0f;
 	int attackDamage = 20; // damage of each attack
@@ -17,6 +19,8 @@ public class AlledMelee_AI_Attack : MonoBehaviour {
 
     void Start ()
     {
+		anim = GetComponent<Animator>();
+
         aStar = this.GetComponent<Astar>();
     }
 	
@@ -39,6 +43,10 @@ public class AlledMelee_AI_Attack : MonoBehaviour {
                 //Check if we need to run the attack script since we reached the targeted cooldown
                 if (meleeCoolDownLeft <= 0)
                 {
+					if (!this.anim.GetCurrentAnimatorStateInfo(0).IsName("ATTACK"))
+					{
+						anim.Play("ATTACK", -1, 0f);
+					}  
                     meleeCoolDownLeft = meleeCoolDown;
 
                     //find check if the attack connects/hits, atm there are 90% for hit
