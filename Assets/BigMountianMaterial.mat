@@ -81,7 +81,7 @@ Material:
       second: 1
     - first:
         name: _DiffuseThreshold
-      second: 0.1
+      second: -0.015
     - first:
         name: _DstBlend
       second: 0
