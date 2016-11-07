@@ -52,8 +52,6 @@ public class textCommandList : MonoBehaviour
         //Reference the database of commands so that we can always find any command we need.
         database = GameObject.FindGameObjectWithTag("CommandDatabase").GetComponent<CommandDatabase>();
 
-        Debug.Log(database.commandDatabase.Count);
-
         //Reference the Sequence Manager script.
         sequenceManager = GameObject.Find("UIManager").GetComponent<SequenceManager>();
 
@@ -75,7 +73,6 @@ public class textCommandList : MonoBehaviour
         for (int i = 0; i < database.commandDatabase.Count; i++)
         {
             availableCommands[i] = database.commandDatabase[i];
-            Debug.Log(availableCommands[i].commandName);
         }
 
         //Make the "slots" list contain the same elements as the "available" list.
