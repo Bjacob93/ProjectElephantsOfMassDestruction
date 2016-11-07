@@ -39,6 +39,7 @@ public class AstarEnemy : MonoBehaviour
 
     //variables for aniations
     public Animator ElephantRunAnim;
+    bool unitIsRunning;
 
     //Cache variables for enemies
     public GameObject nearestEnemy = null;
@@ -243,7 +244,13 @@ public class AstarEnemy : MonoBehaviour
             {
                 receivedDefenceOrder = false;
                 isDefending = true;
+
             }
+            if (!this.ElephantRunAnim.GetCurrentAnimatorStateInfo(0).IsName("ATTACK") && !this.ElephantRunAnim.GetCurrentAnimatorStateInfo(0).IsName("IDLE"))
+            { 
+                ElephantRunAnim.Play("IDLE", -1, 0f);
+            }
+
             return;
         }
 
