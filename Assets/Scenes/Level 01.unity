@@ -372,6 +372,10 @@ Prefab:
       propertyPath: m_Name
       value: AstarPathAI
       objectReference: {fileID: 0}
+    - target: {fileID: 4000014249248306, guid: f1ed21ec493873c47957c32c17df24f5, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: -1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: f1ed21ec493873c47957c32c17df24f5, type: 2}
   m_IsPrefabParent: 0
