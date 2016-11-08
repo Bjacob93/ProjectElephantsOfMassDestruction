@@ -11,7 +11,7 @@ public class SequenceManager : MonoBehaviour {
 
 
     //Cache variables
-    GameObject UImanager;
-    GameObject[] checkpoints;
 	public List<EditorList> editorlistGO = new List<EditorList>();
+
+    public List<textEditor> editorListText = new List<textEditor>();
 }

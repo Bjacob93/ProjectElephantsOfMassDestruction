@@ -1811,6 +1811,10 @@ Prefab:
       propertyPath: maxEnemySpawn
       value: 6
       objectReference: {fileID: 0}
+    - target: {fileID: 4000012052357306, guid: 74683726fe313ed41bf14492be6d1c27, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: -3.199
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 74683726fe313ed41bf14492be6d1c27, type: 2}
   m_IsPrefabParent: 0
