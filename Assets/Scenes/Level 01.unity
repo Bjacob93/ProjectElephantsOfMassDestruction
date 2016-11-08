@@ -37,7 +37,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44692492, g: 0.4967869, b: 0.57508546, a: 1}
+  m_IndirectSpecularColor: {r: 0.44692534, g: 0.49678725, b: 0.5750856, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -156,6 +156,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 67831981}
   - 114: {fileID: 67831982}
+  - 114: {fileID: 67831983}
   m_Layer: 0
   m_Name: UIManager
   m_TagString: UIManager
@@ -175,8 +176,8 @@ Transform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children:
   - {fileID: 2071492074}
-  - {fileID: 1721909815}
-  - {fileID: 1243863649}
+  - {fileID: 1811034454}
+  - {fileID: 952874261}
   m_Father: {fileID: 0}
   m_RootOrder: 7
 --- !u!114 &67831982
@@ -191,6 +192,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   editorlistGO: []
+--- !u!114 &67831983
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 67831980}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7956b35885aa1e44fbf2428c2e9101d4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &192671597
 GameObject:
   m_ObjectHideFlags: 0
@@ -1197,6 +1209,64 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 909739012}
+--- !u!1 &952874260
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 952874261}
+  m_Layer: 0
+  m_Name: TextEditing
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &952874261
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 952874260}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_Children:
+  - {fileID: 2138000927}
+  - {fileID: 1040468790}
+  m_Father: {fileID: 67831981}
+  m_RootOrder: 2
+--- !u!1 &1040468789
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 1040468790}
+  m_Layer: 0
+  m_Name: textEditorList
+  m_TagString: EditorList
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1040468790
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1040468789}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_Children: []
+  m_Father: {fileID: 952874261}
+  m_RootOrder: 1
 --- !u!1 &1219179214
 GameObject:
   m_ObjectHideFlags: 0
@@ -1341,7 +1411,7 @@ GameObject:
   - 4: {fileID: 1243863649}
   - 114: {fileID: 1243863650}
   m_Layer: 0
-  m_Name: EditorList
+  m_Name: DndEditorList
   m_TagString: EditorList
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1358,8 +1428,8 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
-  m_Father: {fileID: 67831981}
-  m_RootOrder: 2
+  m_Father: {fileID: 1811034454}
+  m_RootOrder: 1
 --- !u!114 &1243863650
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1909,7 +1979,7 @@ GameObject:
   - 4: {fileID: 1721909815}
   - 114: {fileID: 1721909817}
   m_Layer: 0
-  m_Name: CommandList
+  m_Name: DndCommandList
   m_TagString: CommandList
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1926,8 +1996,8 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
-  m_Father: {fileID: 67831981}
-  m_RootOrder: 1
+  m_Father: {fileID: 1811034454}
+  m_RootOrder: 0
 --- !u!114 &1721909817
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1951,6 +2021,36 @@ MonoBehaviour:
     width: 0
     height: 0
   commandSkin: {fileID: 11400000, guid: af1d55f012321ba4fb142ce096bc0ec4, type: 2}
+--- !u!1 &1811034453
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 1811034454}
+  m_Layer: 0
+  m_Name: Dragondrop
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1811034454
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1811034453}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_Children:
+  - {fileID: 1721909815}
+  - {fileID: 1243863649}
+  m_Father: {fileID: 67831981}
+  m_RootOrder: 1
 --- !u!20 &1831536907 stripped
 Camera:
   m_PrefabParentObject: {fileID: 20000012884806692, guid: 9ea4f18199eca014faad2940ee5e1b63,
@@ -2187,3 +2287,55 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   commandDatabase: []
+--- !u!1 &2138000926
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 2138000927}
+  - 114: {fileID: 2138000928}
+  m_Layer: 0
+  m_Name: textCommandList
+  m_TagString: CommandList
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2138000927
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2138000926}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_Children: []
+  m_Father: {fileID: 952874261}
+  m_RootOrder: 0
+--- !u!114 &2138000928
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2138000926}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7bddb6a071784cf41b197676331c60ad, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  availableCommands: []
+  slots: []
+  database: {fileID: 0}
+  sequenceManager: {fileID: 0}
+  sequenceEditor: {fileID: 0}
+  boundingRect:
+    serializedVersion: 2
+    x: 0
+    y: 0
+    width: 0
+    height: 0
+  commandSkin: {fileID: 11400000, guid: af1d55f012321ba4fb142ce096bc0ec4, type: 2}
