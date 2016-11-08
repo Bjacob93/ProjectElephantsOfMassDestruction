@@ -25,6 +25,7 @@ public class HomebaseGUI : MonoBehaviour {
     SequenceManager sequenceManager;
     string baseName;
     EditorList listComponent;
+    textEditor textListComponent;
 
     //The base's location
     public Vector3 location;
@@ -69,6 +70,12 @@ public class HomebaseGUI : MonoBehaviour {
             listComponent.listID = baseName;
             listComponent.belongsToCheckpoint = false;
             sequenceManager.editorlistGO.Add(listComponent);
+        }else
+        {
+            textListComponent = gameObject.AddComponent<textEditor>();
+            textListComponent.listID = baseName;
+            textListComponent.belongsToCheckpoint = false;
+            sequenceManager.editorListText.Add(textListComponent);
         }
 
         //bool to pause and unpause the script

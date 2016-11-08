@@ -7,7 +7,7 @@ Material:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_Name: Elephant texture
-  m_Shader: {fileID: 4800000, guid: 8596e3af0e6409243856149d9d5b2f40, type: 3}
+  m_Shader: {fileID: 4800000, guid: e00576fa61fb19f42aa7ad3c32be6406, type: 3}
   m_ShaderKeywords: _EMISSION
   m_LightmapFlags: 1
   m_CustomRenderQueue: -1
@@ -95,6 +95,9 @@ Material:
         name: _GlossyReflections
       second: 1
     - first:
+        name: _LightSourceRadius
+      second: 8.31
+    - first:
         name: _Metallic
       second: 0
     - first:
@@ -119,6 +122,9 @@ Material:
         name: _SpecularHighlights
       second: 1
     - first:
+        name: _SphereRadius
+      second: 0.04
+    - first:
         name: _SrcBlend
       second: 1
     - first:
@@ -130,13 +136,19 @@ Material:
     m_Colors:
     - first:
         name: _Color
-      second: {r: 1, g: 1, b: 1, a: 1}
+      second: {r: 0.9705882, g: 0, b: 0, a: 1}
     - first:
         name: _EmissionColor
       second: {r: 0, g: 0, b: 0, a: 1}
     - first:
+        name: _ShadowColor
+      second: {r: 0.09803922, g: 0.09803922, b: 0.09803922, a: 1}
+    - first:
         name: _SpecColor
       second: {r: 1, g: 1, b: 1, a: 1}
+    - first:
+        name: _SpherePosition
+      second: {r: -10.24, g: -2.31, b: 4.77, a: -23.44}
     - first:
         name: _UnlitColor
       second: {r: 0.5, g: 0.5, b: 0.5, a: 1}

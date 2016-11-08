@@ -5,7 +5,7 @@ public class AlliedMelee_AI_Health : MonoBehaviour {
 
 	public int startingHealth = 100;
 	public int alliedArmour = 10;
-	public int currentHealth;
+	public float currentHealth;
 	public int moneyValue = 5;
 	public int cost = 10;
     GameObject unitManager;
@@ -40,7 +40,7 @@ public class AlliedMelee_AI_Health : MonoBehaviour {
 
 	}
 
-	public void TakeDamage (int damageTaken)
+	public void TakeDamage (float damageTaken)
 	{
 		if (Died) 
 		{

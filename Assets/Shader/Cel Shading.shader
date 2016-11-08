@@ -117,4 +117,5 @@ Shader "Toon Shadingz" {
 	}
 
 	}
+	    Fallback "VertexLit"
 	}

@@ -5,9 +5,9 @@ public class EnemyMelee_AI_Attack : MonoBehaviour {
 
     public Animator anim;
 
-	public float meleeCoolDown = 0.5f; //Attack cooldown
+	public float meleeCoolDown = 1.11f; //Attack cooldown
 	float meleeCoolDownLeft = 0f;
-	int attackDamage = 20; // Damage of each attack
+	float attackDamage; // Damage of each attack
 
 	public GameObject nearestPlayer; //Cache gameobject
 	public float MeleeRange = 3f;  // Melee range used to check if we can attack the enemy
@@ -31,6 +31,8 @@ public class EnemyMelee_AI_Attack : MonoBehaviour {
 	
 	void Update () {
 
+        attackDamage = Random.Range(10f, 20f);
+        
         hitChance = 0.9f; // hit chance increase this to increase the hit chance eg 0.95 would be 95% hit chance instead of 90%
         randV = Random.value; // calculate a random value used to determine if we hit the target
 
