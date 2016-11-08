@@ -10,6 +10,8 @@ public class EnemyMelee_AI_Health : MonoBehaviour {
     GameObject unitManager;
     UnitArrays Uarray;
 
+    public GameObject enemyUnits;
+
     GameObject playerBase;
     bool unitAdded = false;
 
@@ -76,5 +78,6 @@ public class EnemyMelee_AI_Health : MonoBehaviour {
     {
         Die();
         GameObject.FindObjectOfType<ScoreManager>().LoseLife(1);
+        Instantiate(enemyUnits, new Vector3(-45, 1, -45), Quaternion.Euler(0, 0, 0));
     }
 }
