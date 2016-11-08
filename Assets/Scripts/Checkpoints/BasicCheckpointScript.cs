@@ -17,6 +17,7 @@ public class BasicCheckpointScript : MonoBehaviour {
 
     //Cache SequenceEditor component.
     EditorList listComponent;
+    textEditor textListComponent;
 	SequenceManager sm;
 	public string checkpointName;
 
@@ -55,6 +56,13 @@ public class BasicCheckpointScript : MonoBehaviour {
             listComponent.listID = checkpointName;
             listComponent.belongsToCheckpoint = true;
             sm.editorlistGO.Add(listComponent);
+        }
+        else
+        {
+            textListComponent = gameObject.AddComponent<textEditor>();
+            textListComponent.listID = baseName;
+            textListComponent.belongsToCheckpoint = false;
+            sm.editorListText.Add(textListComponent);
         }
     }
 	
