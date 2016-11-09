@@ -43,6 +43,9 @@ public class textEditor : MonoBehaviour
     float comButtonHeight;
     Rect  comButton;
 
+    //GUI appearance
+    public GUISkin commandSkin;
+
     void Start()
     {
         //Define dimensions of the textWindow.
@@ -65,6 +68,9 @@ public class textEditor : MonoBehaviour
         comButtonWidth = Screen.width / 8;
         comButtonHeight = Screen.height / 24;
         comButton = new Rect(comButtonStartX, comButtonStartY, comButtonWidth, comButtonHeight);
+
+        //Load the skin
+        commandSkin = Resources.Load("Graphix/commandSkin") as GUISkin;
     }
     
     void Update()
@@ -78,11 +84,13 @@ public class textEditor : MonoBehaviour
 
     void OnGUI()
     {
+        GUI.skin = commandSkin;
+
         if (drawSequenceEditor)
         {
             //Draw the bounding box and the text window.
             GUI.Box(boundingBox, "Script Editor - " + this.gameObject.name);
-            textAreaString = GUI.TextArea(new Rect(textBoxStartX, textBoxStartY, textBoxWidth, textBoxHeight), textAreaString, charLimit);
+            textAreaString = GUI.TextArea(new Rect(textBoxStartX, textBoxStartY, textBoxWidth, textBoxHeight), textAreaString, charLimit, commandSkin.GetStyle("transparentTest"));
 
             //Check if the Compile button is pressed.
             if (GUI.Button(comButton, "Compile Code"))
