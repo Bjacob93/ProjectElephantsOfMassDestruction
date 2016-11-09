@@ -16,7 +16,7 @@ public class textEditor : MonoBehaviour
     List<KeyValuePair<int, string>> errorList = new List<KeyValuePair<int, string>>();
 
     //List that holds the viable commands.
-    public List<string> listOfCommands = new List<string>();
+    public List<Command> listOfCommands = new List<Command>();
 
     //Variables that determines whether or not the list belongs to a chechpoint, and which object the list belongs to.
     public bool belongsToCheckpoint;
@@ -46,6 +46,9 @@ public class textEditor : MonoBehaviour
     //GUI appearance
     public GUISkin commandSkin;
 
+    //Cache the command database;
+    CommandDatabase database;
+
     void Start()
     {
         //Define dimensions of the textWindow.
@@ -71,6 +74,9 @@ public class textEditor : MonoBehaviour
 
         //Load the skin
         commandSkin = Resources.Load("Graphix/commandSkin") as GUISkin;
+
+        //Reference the command database
+        database = GameObject.Find("CommandDatabase").GetComponent<CommandDatabase>();
     }
     
     void Update()
@@ -90,7 +96,7 @@ public class textEditor : MonoBehaviour
         {
             //Draw the bounding box and the text window.
             GUI.Box(boundingBox, "Script Editor - " + this.gameObject.name);
-            textAreaString = GUI.TextArea(new Rect(textBoxStartX, textBoxStartY, textBoxWidth, textBoxHeight), textAreaString, charLimit, commandSkin.GetStyle("transparentTest"));
+            textAreaString = GUI.TextArea(new Rect(textBoxStartX, textBoxStartY, textBoxWidth, textBoxHeight), textAreaString, charLimit);
 
             //Check if the Compile button is pressed.
             if (GUI.Button(comButton, "Compile Code"))
@@ -143,7 +149,7 @@ public class textEditor : MonoBehaviour
             }        
             //Go through the elements again, now that all empties are gone.    
             for (int i = 0; i < elementsInCode.Count; i++)
-            {                
+            {
                 //a switch-case which reads the command.
                 switch (elementsInCode[i])
                 {
@@ -151,18 +157,41 @@ public class textEditor : MonoBehaviour
                     case "splitAt":
                         if (i + 1 < elementsInCode.Count)
                         {
+                            for(int d = 0; d < database.commandDatabase.Count; d++)
+                            {
+                                if (database.commandDatabase[d].commandId == "FoE")
+                                {
+                                    listOfCommands.Add(database.commandDatabase[d]);
+                                    break;
+                                }
+                            }
+
                             //Add the command with the correct variable to the list of commands, OR output error.
                             if (elementsInCode[i + 1] == "2")
                             {
-                                listOfCommands.Add("Split");
-                                listOfCommands.Add("Every other");
-                                i += 1;
+                                for (int d = 0; d < database.commandDatabase.Count; d++)
+                                {
+                                    if (database.commandDatabase[d].commandName == "Every other")
+                                    {
+                                        listOfCommands.Add(database.commandDatabase[d]);
+                                        i += 1;
+                                        break;
+                                    }
+                                }
+
                             }
                             else if (elementsInCode[i + 1] == "3")
                             {
-                                listOfCommands.Add("Split");
-                                listOfCommands.Add("Every Third");
-                                i += 1;
+                                for (int d = 0; d < database.commandDatabase.Count; d++)
+                                {
+                                    if (database.commandDatabase[d].commandName == "Every third")
+                                    {
+                                        listOfCommands.Add(database.commandDatabase[d]);
+                                        i += 1;
+                                        break;
+                                    }
+                                }
+
                             }
                             else
                             {
@@ -179,9 +208,17 @@ public class textEditor : MonoBehaviour
                     case "attack":
                         if (i + 1 < elementsInCode.Count)
                         {
+                            for (int d = 0; d < database.commandDatabase.Count; d++)
+                            {
+                                if (database.commandDatabase[d].commandName == "Attack")
+                                {
+                                    listOfCommands.Add(database.commandDatabase[d]);
+                                    break;
+                                }
+                            }
+
                             //Call the function to check if the checkpoint variable is viable.
-                            ValidCheckpoint(elementsInCode[i + 1], "Attack", j);
-                            i += 1;
+                            ValidCheckpoint(elementsInCode[i + 1], j);
                         }
                         else
                         {
@@ -193,8 +230,15 @@ public class textEditor : MonoBehaviour
                     case "defend":
                         if (i + 1 < elementsInCode.Count)
                         {
-                            ValidCheckpoint(elementsInCode[i + 1], "Defend", j);
-                            i += 1;
+                            for (int d = 0; d < database.commandDatabase.Count; d++)
+                            {
+                                if (database.commandDatabase[d].commandName == "Defend")
+                                {
+                                    listOfCommands.Add(database.commandDatabase[d]);
+                                    break;
+                                }
+                            }
+                            ValidCheckpoint(elementsInCode[i + 1], j);
                         }
                         else
                         {
@@ -204,19 +248,84 @@ public class textEditor : MonoBehaviour
 
                     //Produce command.
                     case "produce":
-                        listOfCommands.Add("Produce");
+                        if (i + 1 < elementsInCode.Count)
+
+                            Debug.Log("Handling produce");
+
+                        {
+                            for (int d = 0; d < database.commandDatabase.Count; d++)
+                            {
+                                if (database.commandDatabase[d].commandName == "Produce")
+                                {
+                                    listOfCommands.Add(database.commandDatabase[d]);
+                                    break;
+                                }
+                            }
+                        }
                         break;
 
                     //Move command.
                     case "moveTo":
                         if (i + 1 < elementsInCode.Count)
                         {
-                            ValidCheckpoint(elementsInCode[i + 1], "Move", j);
-                            i += 1;
+                            for (int d = 0; d < database.commandDatabase.Count; d++)
+                            {
+                                if (database.commandDatabase[d].commandName == "Move")
+                                {
+                                    listOfCommands.Add(database.commandDatabase[d]);
+                                    break;
+                                }
+                            }
+                            ValidCheckpoint(elementsInCode[i + 1], j);
                         }
                         else
                         {
                             errorList.Add(new KeyValuePair<int, string>(j, "No argument in " + elementsInCode[i]));
+                        }
+                        break;
+                    
+                    //Next four are variables for checkpoints and homebase.
+                    case "A":
+                        for (int d = 0; d < database.commandDatabase.Count; d++)
+                        {
+                            if (database.commandDatabase[d].commandName == "A")
+                            {
+                                listOfCommands.Add(database.commandDatabase[d]);
+                                break;
+                            }
+                        }
+                        break;
+
+                    case "B":
+                        for (int d = 0; d < database.commandDatabase.Count; d++)
+                        {
+                            if (database.commandDatabase[d].commandName == "B")
+                            {
+                                listOfCommands.Add(database.commandDatabase[d]);
+                                break;
+                            }
+                        }
+                        break;
+
+                    case "C":
+                        for (int d = 0; d < database.commandDatabase.Count; d++)
+                        {
+                            if (database.commandDatabase[d].commandName == "C")
+                            {
+                                listOfCommands.Add(database.commandDatabase[d]);
+                                break;
+                            }
+                        }
+                        break;
+
+                    case "Homebase":
+                        for (int d = 0; d < database.commandDatabase.Count; d++)
+                        {
+                            if (database.commandDatabase[d].commandName == "GiraffeBase")
+                            {
+                                listOfCommands.Add(database.commandDatabase[d]);
+                                break;
+                            }
                         }
                         break;
 
@@ -225,11 +334,11 @@ public class textEditor : MonoBehaviour
                         break;
                 }
             }
-        }        
+        }
     }    
 
     //Function that checks the availability of checkpoints.
-    void ValidCheckpoint(string check, string command, int line)
+    void ValidCheckpoint(string check, int line)
     {
         //A list of all the checkpoints in the level.
         string[] checkpoints = new[] { "Homebase", "A", "B", "C" };
@@ -239,12 +348,9 @@ public class textEditor : MonoBehaviour
         {
             if (check == s)
             {
-                listOfCommands.Add(command);   
-                listOfCommands.Add(s);
                 return;
             }
         }
         errorList.Add(new KeyValuePair<int, string>(line, "No eligible checkpoint"));
-        return;
     }
 }
