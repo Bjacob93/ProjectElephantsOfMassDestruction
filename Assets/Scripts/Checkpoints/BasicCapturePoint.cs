@@ -1,11 +1,14 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.UI;
 
 public class BasicCapturePoint : MonoBehaviour {
 
     UnitArrays uArray;
     GameObject unitManager;
+    public Image elephantCapture;
+    public Image giraffeCapture;
 
     public GameObject closestEnemy = null;
     public bool enemyHasCapturePoint = false;
@@ -13,6 +16,8 @@ public class BasicCapturePoint : MonoBehaviour {
     List<GameObject> closeEnemies = new List<GameObject>();
 
     float CaptureTime = 50f;
+    float maxCaptureTimer;
+    float avCaptureTimer;
     public  float CaptureTimer;
     float upperMidCaptureTime;
     float lowerMidCaptureTime;
@@ -27,10 +32,9 @@ public class BasicCapturePoint : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
-
+        maxCaptureTimer = CaptureTime;
+        avCaptureTimer = maxCaptureTimer / 2;
         CaptureTimer = CaptureTime / 2;
-        upperMidCaptureTime = (CaptureTime / 2) + (CaptureTime / 4);
-        lowerMidCaptureTime = (CaptureTime / 2) + (CaptureTime / 4);
 
         unitManager = GameObject.Find("UnitManager");
         uArray = unitManager.GetComponent<UnitArrays>();
@@ -101,9 +105,9 @@ public class BasicCapturePoint : MonoBehaviour {
                 if (enemyHasCapturePoint || (!enemyHasCapturePoint && !playerHasCapturePoint))
                 {
                     CaptureTimer += Time.deltaTime * closePlayers.Count;
-                    if (CaptureTimer >= CaptureTime)
+                    if (CaptureTimer >= maxCaptureTimer)
                     {
-                        CaptureTimer = CaptureTime;
+                        CaptureTimer = maxCaptureTimer;
                         playerHasCapturePoint = true;
                         enemyHasCapturePoint = false;
                         neutralCapturePoint = false;
@@ -127,11 +131,30 @@ public class BasicCapturePoint : MonoBehaviour {
             modIndex++;
         }
 
-        if((CaptureTime > lowerMidCaptureTime && CaptureTime < upperMidCaptureTime))
+        if((CaptureTimer == CaptureTime / 2))
         {
             playerHasCapturePoint = false;
             enemyHasCapturePoint = false;
             neutralCapturePoint = true;
+        }
+        if(neutralCapturePoint == true && closeEnemies.Count <= 0 && closePlayers.Count <= 0)
+        {
+            if(CaptureTimer < avCaptureTimer)
+            {
+                CaptureTimer += Time.deltaTime;
+            }else if(CaptureTimer > avCaptureTimer)
+            {
+                CaptureTimer -= Time.deltaTime;
+            }
+        }
+
+        if(CaptureTimer > CaptureTime / 2)
+        {
+            giraffeCapture.fillAmount = (CaptureTimer / avCaptureTimer) - avCaptureTimer;
+        }
+        else if(CaptureTimer < CaptureTime / 2)
+        {
+            elephantCapture.fillAmount = CaptureTimer / avCaptureTimer;
         }
 	}
 }
