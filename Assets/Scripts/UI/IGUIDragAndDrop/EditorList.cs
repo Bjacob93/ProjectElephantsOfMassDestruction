@@ -35,14 +35,7 @@ public class EditorList : MonoBehaviour{
     //Cache the command list window.
     Rect commandBoundRect;
 
-    //Cache the Sequence editor window, and its dimensions.
-    Rect  boundingRect;
-    float boundingBoxHeight;
-    float boundingBoxWidth;
-    float boundingBoxX;
-    float boundingBoxY;
-
-    //Varibles that hold the dimensions of the drawn commands
+    //Cache the dimensions of the slots.
     Rect slotRect;
     float boxHeight;
     float boxWidth;
@@ -50,6 +43,13 @@ public class EditorList : MonoBehaviour{
     float boxStartingPosY;
     float boxOffsetX;
     float boxOffsetY;
+
+    //Cache the dimensions of the bounding box.
+    Rect  boundingRect;
+    float boundingBoxHeight;
+    float boundingBoxWidth;
+    float boundingBoxX;
+    float boundingBoxY;
 
     //Drag and Drop
     public bool isDraggingCommand;
@@ -65,6 +65,20 @@ public class EditorList : MonoBehaviour{
 
     void Start()
     {
+        //Define dimensions of the slots.
+        boxStartingPosX = Screen.width / 6;
+        boxStartingPosY = Screen.height / 4;
+        boxWidth = Screen.width / 8 - (Screen.height / 24) / 10;
+        boxHeight = Screen.height / 24 - (Screen.height / 24) / 10;
+        boxOffsetY = Screen.height / 24;
+        boxOffsetX = Screen.width / 8;
+
+        //Define dimensions of the bounding box.
+        boundingBoxHeight = 6 * (boxHeight + ((Screen.height / 24) / 10)) + Screen.width / 35;
+        boundingBoxWidth = 2 * boxWidth + Screen.width / 40;
+        boundingBoxX = boxStartingPosX - Screen.width / 80;
+        boundingBoxY = boxStartingPosY - Screen.width / 70 - 5;
+
         commandSkin = Resources.Load("Graphix/commandSkin") as GUISkin;
 
         //Define the variables
@@ -76,12 +90,7 @@ public class EditorList : MonoBehaviour{
         slotsRow = 6;
         slotsCol = 2;
 
-        boxHeight = Screen.height / 24 - (Screen.height / 24) / 10;
-        boxWidth = Screen.width / 8 - (Screen.height / 24) / 10;
-        boxStartingPosX = Screen.width / 6;
-        boxStartingPosY = Screen.height / 4;
-        boxOffsetY = Screen.height / 24;
-        boxOffsetX = Screen.width / 8;
+        
 
         //Get the dimensions of the command window from the CommandList script.
         commandBoundRect = GameObject.FindGameObjectWithTag("CommandList").GetComponent<CommandList>().boundingRect;
@@ -89,11 +98,7 @@ public class EditorList : MonoBehaviour{
         //Calculate the total number of slots.  
         totalSlots = slotsCol * slotsRow;
 
-        //Calculate the dimensions of the bounding box.
-        boundingBoxHeight = 6 * (boxHeight + ((Screen.height / 24) / 10)) + Screen.width / 35;
-        boundingBoxWidth = 2 * boxWidth + Screen.width / 40;
-        boundingBoxX = boxStartingPosX - Screen.width / 80;
-        boundingBoxY = boxStartingPosY - Screen.width / 70 - 5;
+       
 
         //Define the bounding box.
         boundingRect = new Rect(boundingBoxX, boundingBoxY, boundingBoxWidth, boundingBoxHeight);
