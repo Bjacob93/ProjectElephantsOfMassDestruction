@@ -221,12 +221,12 @@ public class EditorList : MonoBehaviour{
                     {
                         if (thisCommand.isVariable)
                         {
-							GUI.Box(slotRect, "<color=#FFFFFF>" + thisCommand.commandName + "</color>", commandSkin.GetStyle("variableError"));
+                            GUI.Box(slotRect, "<color=#000000>" + thisCommand.commandName + "</color>", commandSkin.GetStyle("variableError"));
 
                         }
                         else
                         {
-							GUI.Box(slotRect, "<color=#FFFFFF>" + thisCommand.commandName + "</color>", commandSkin.GetStyle("commandError"));
+                            GUI.Box(slotRect, "<color=#000000>" + thisCommand.commandName + "</color>", commandSkin.GetStyle("commandError"));
 
                         }
                     }
@@ -234,12 +234,12 @@ public class EditorList : MonoBehaviour{
                     {
                         if (thisCommand.isVariable)
                         {
-							GUI.Box(slotRect, "<color=#FFFFFF>" + thisCommand.commandName + "</color>", commandSkin.GetStyle("variableAvailable"));
+                            GUI.Box(slotRect, "<color=#000000>" + thisCommand.commandName + "</color>", commandSkin.GetStyle("variableAvailable"));
 
                         }
                         else
                         {
-							GUI.Box(slotRect, "<color=#FFFFFF>" + thisCommand.commandName + "</color>", commandSkin.GetStyle("commandAvailable"));
+                            GUI.Box(slotRect, "<color=#000000>" + thisCommand.commandName + "</color>", commandSkin.GetStyle("commandAvailable"));
 
                         }
                     }
