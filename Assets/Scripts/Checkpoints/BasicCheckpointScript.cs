@@ -60,7 +60,7 @@ public class BasicCheckpointScript : MonoBehaviour {
         else
         {
             textListComponent = gameObject.AddComponent<textEditor>();
-            textListComponent.listID = baseName;
+            textListComponent.listID = checkpointName;
             textListComponent.belongsToCheckpoint = false;
             sm.editorListText.Add(textListComponent);
         }
