@@ -6,13 +6,12 @@ Material:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: Castletexture
-  m_Shader: {fileID: 46, guid: 0000000000000000f000000000000000, type: 0}
-  m_ShaderKeywords: _ALPHAPREMULTIPLY_ON
-  m_LightmapFlags: 5
-  m_CustomRenderQueue: 3000
-  stringTagMap:
-    RenderType: Transparent
+  m_Name: Castle Texture
+  m_Shader: {fileID: 4800000, guid: e00576fa61fb19f42aa7ad3c32be6406, type: 3}
+  m_ShaderKeywords: _EMISSION
+  m_LightmapFlags: 1
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
   m_SavedProperties:
     serializedVersion: 2
     m_TexEnvs:
@@ -49,11 +48,7 @@ Material:
     - first:
         name: _MainTex
       second:
-<<<<<<< HEAD
         m_Texture: {fileID: 2800000, guid: 7df6b1e432451774d80b83147745d751, type: 3}
-=======
-        m_Texture: {fileID: 2800000, guid: af53e089bc001f741a0973828ef14424, type: 3}
->>>>>>> 0f6e1989459a45fa548fcf03c14121f50da116c8
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - first:
@@ -85,8 +80,11 @@ Material:
         name: _DetailNormalMapScale
       second: 1
     - first:
+        name: _DiffuseThreshold
+      second: -0.29
+    - first:
         name: _DstBlend
-      second: 10
+      second: 0
     - first:
         name: _GlossMapScale
       second: 1
@@ -101,13 +99,19 @@ Material:
       second: 0
     - first:
         name: _Mode
-      second: 3
+      second: 0
     - first:
         name: _OcclusionStrength
       second: 1
     - first:
+        name: _OutlineThickness
+      second: 0.161
+    - first:
         name: _Parallax
       second: 0.02
+    - first:
+        name: _Shininess
+      second: 1
     - first:
         name: _SmoothnessTextureChannel
       second: 0
@@ -122,7 +126,7 @@ Material:
       second: 0
     - first:
         name: _ZWrite
-      second: 0
+      second: 1
     m_Colors:
     - first:
         name: _Color
@@ -130,3 +134,12 @@ Material:
     - first:
         name: _EmissionColor
       second: {r: 0, g: 0, b: 0, a: 1}
+    - first:
+        name: _ShadowColor
+      second: {r: 0.09803922, g: 0.09803922, b: 0.09803922, a: 1}
+    - first:
+        name: _SpecColor
+      second: {r: 1, g: 1, b: 1, a: 1}
+    - first:
+        name: _UnlitColor
+      second: {r: 0.5, g: 0.5, b: 0.5, a: 1}
