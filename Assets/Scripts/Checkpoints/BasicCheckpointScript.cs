@@ -63,7 +63,6 @@ public class BasicCheckpointScript : MonoBehaviour {
             textListComponent.listID = checkpointName;
             textListComponent.belongsToCheckpoint = false;
             sm.editorListText.Add(textListComponent);
-            Debug.Log(sm.editorListText.Count);
         }
     }
 	
@@ -230,7 +229,7 @@ public class BasicCheckpointScript : MonoBehaviour {
             }
         }else
         {
-            for (int i = 0; i < sm.editorlistGO.Count; i++)
+            for (int i = 0; i < sm.editorListText.Count; i++)
             {
                 //If a list has an id equal to the checkpoint name, draw that editor window in the UI.
                 if (sm.editorListText[i].listID == checkpointName)

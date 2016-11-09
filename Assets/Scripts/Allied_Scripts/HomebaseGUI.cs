@@ -76,7 +76,6 @@ public class HomebaseGUI : MonoBehaviour {
             textListComponent.listID = baseName;
             textListComponent.belongsToCheckpoint = false;
             sequenceManager.editorListText.Add(textListComponent);
-            Debug.Log(sequenceManager.editorListText.Count);
         }
 
         //bool to pause and unpause the script
@@ -283,7 +282,7 @@ public class HomebaseGUI : MonoBehaviour {
             }
         }else
         {
-            for (int i = 0; i < sequenceManager.editorlistGO.Count; i++)
+            for (int i = 0; i < sequenceManager.editorListText.Count; i++)
             {
                 //If a list has an id equal to the checkpoint name, draw that editor window in the UI.
                 if (sequenceManager.editorListText[i].listID == baseName)

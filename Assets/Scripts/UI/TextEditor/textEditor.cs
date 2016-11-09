@@ -7,18 +7,56 @@ public class textEditor : MonoBehaviour
 {
 
     int charLimit = 250;
-    private string textAreaString = "moveTo (A)\nsplitAt (2)";
+    private string textAreaString = "";
     public bool drawSequenceEditor = false;
     List<KeyValuePair<int, string>> errorList = new List<KeyValuePair<int, string>>();
     List<string> listOfCommands = new List<string>();
     public bool belongsToCheckpoint;
     public string listID;
+
+    //Cache dimensions of the textwindow
+    float textBoxStartX;
+    float textBoxStartY;
+    float textBoxWidth;
+    float textBoxHeight;
+
+    //Cache dimensions of the boundingbox
+    float boundingBoxStartX;
+    float boundingBoxStartY;
+    float boundingBoxWidth;
+    float boundingBoxHeight;
+
+    void Start()
+    {
+        //Define dimensions of the textWindow
+        textBoxStartX = Screen.width / 6;
+        textBoxStartY = Screen.height / 4;
+        textBoxWidth  = Screen.width / 4;
+        textBoxHeight = Screen.height / 24 * 6;
+
+        //Define dimensions of the bounding box
+        boundingBoxStartX = textBoxStartX - Screen.width / 80;
+        boundingBoxStartY = textBoxStartY - Screen.height / 70 - 5;
+        boundingBoxWidth  = textBoxWidth + Screen.width / 40;
+        boundingBoxHeight = textBoxHeight + Screen.height / 35;
+    }
+
     
+    void Update()
+    {
+        //Check if the hotkey "e" for opening the Sequence Editor is pressed, and change the state of the window if so.
+        if (Input.GetButtonDown("SequenceEditor"))
+        {
+            drawSequenceEditor = false;
+        }
+    }
+
     void OnGUI()
     {
         if (drawSequenceEditor)
         {
-            textAreaString = GUI.TextArea(new Rect(300, 25, 450, 375), textAreaString, charLimit);
+
+            textAreaString = GUI.TextArea(new Rect(textBoxStartX, textBoxStartY, textBoxWidth, textBoxHeight), textAreaString, charLimit);
             if (GUI.Button(new Rect(Screen.width - 300, Screen.height - 100, 250, 50), "Compile Code"))
             {
                 CompileCode();
@@ -32,6 +70,7 @@ public class textEditor : MonoBehaviour
             }
         }
     }    
+
     void CompileCode()
     {
         errorList.Clear();
@@ -122,6 +161,7 @@ public class textEditor : MonoBehaviour
             }
         }        
     }    
+
     void ValidCheckpoint(string check, string command, int line)
     {
         string[] checkpoints = new[] { "Homebase", "A", "B", "C" };

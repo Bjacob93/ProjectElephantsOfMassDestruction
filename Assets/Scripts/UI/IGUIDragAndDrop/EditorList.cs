@@ -172,11 +172,11 @@ public class EditorList : MonoBehaviour{
         //Draw the bounding box.
         if(this.gameObject.name != "GiraffeBase")
         {
-            GUI.Box(new Rect(boundingBoxX, boundingBoxY, boundingBoxWidth, boundingBoxHeight), "Checkpoint " + this.gameObject.name + "  Editor");
+            GUI.Box(boundingRect, "Checkpoint " + this.gameObject.name + "  Editor");
         }
         else
         {
-            GUI.Box(new Rect(boundingBoxX, boundingBoxY, boundingBoxWidth, boundingBoxHeight),  this.gameObject.name + "  Editor");
+            GUI.Box(boundingRect,  this.gameObject.name + "  Editor");
         }
 
         //Variables for drawing the commands
