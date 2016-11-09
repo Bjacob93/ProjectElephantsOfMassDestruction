@@ -200,11 +200,11 @@ public class EditorList : MonoBehaviour{
                 {
                     if(x == 0)
                     {
-                        GUI.Box(slotRect, "", commandSkin.GetStyle("EmptySlot"));
+                        GUI.Box(slotRect, "", commandSkin.GetStyle("commandEmpty"));
                     }
                     else
                     {
-                        GUI.Box(slotRect, "", commandSkin.GetStyle("EmptyVariable"));
+                        GUI.Box(slotRect, "", commandSkin.GetStyle("variableEmpty"));
                     }
 
                     CheckReleased(slotNumber);
