@@ -76,6 +76,7 @@ public class HomebaseGUI : MonoBehaviour {
             textListComponent.listID = baseName;
             textListComponent.belongsToCheckpoint = false;
             sequenceManager.editorListText.Add(textListComponent);
+            Debug.Log(sequenceManager.editorListText.Count);
         }
 
         //bool to pause and unpause the script
@@ -265,20 +266,36 @@ public class HomebaseGUI : MonoBehaviour {
     void OnMouseDown()
     {
         //If the mouse is clicked on the object, go through the list of SequenceEditors.
-
-        for (int i = 0; i < sequenceManager.editorlistGO.Count; i++)
+        if (varKeeper.useDragonDrop)
         {
-            //If a list has an id equal to the checkpoint name, draw that editor window in the UI.
-            if (sequenceManager.editorlistGO[i].listID == baseName)
+            for (int i = 0; i < sequenceManager.editorlistGO.Count; i++)
             {
-                sequenceManager.editorlistGO[i].drawEditorWindow = true;
+                //If a list has an id equal to the checkpoint name, draw that editor window in the UI.
+                if (sequenceManager.editorlistGO[i].listID == baseName)
+                {
+                    sequenceManager.editorlistGO[i].drawEditorWindow = true;
+                }
+                //Every list which id is different from the checkpoint name should not be drawn.
+                else
+                {
+                    sequenceManager.editorlistGO[i].drawEditorWindow = false;
+                }
             }
-            //Every list which id is different from the checkpoint name should not be drawn.
-            else
+        }else
+        {
+            for (int i = 0; i < sequenceManager.editorlistGO.Count; i++)
             {
-                sequenceManager.editorlistGO[i].drawEditorWindow = false;
+                //If a list has an id equal to the checkpoint name, draw that editor window in the UI.
+                if (sequenceManager.editorListText[i].listID == baseName)
+                {
+                    sequenceManager.editorListText[i].drawSequenceEditor = true;
+                }
+                //Every list which id is different from the checkpoint name should not be drawn.
+                else
+                {
+                    sequenceManager.editorListText[i].drawSequenceEditor = false;
+                }
             }
         }
     }
-
 }

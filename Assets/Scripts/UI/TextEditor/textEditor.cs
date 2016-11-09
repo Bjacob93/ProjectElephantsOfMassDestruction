@@ -8,7 +8,7 @@ public class textEditor : MonoBehaviour
 
     int charLimit = 250;
     private string textAreaString = "moveTo (A)\nsplitAt (2)";
-    private bool drawSequenceEditor = false;
+    public bool drawSequenceEditor = false;
     List<KeyValuePair<int, string>> errorList = new List<KeyValuePair<int, string>>();
     List<string> listOfCommands = new List<string>();
     public bool belongsToCheckpoint;

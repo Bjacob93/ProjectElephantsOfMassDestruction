@@ -63,6 +63,7 @@ public class BasicCheckpointScript : MonoBehaviour {
             textListComponent.listID = checkpointName;
             textListComponent.belongsToCheckpoint = false;
             sm.editorListText.Add(textListComponent);
+            Debug.Log(sm.editorListText.Count);
         }
     }
 	
@@ -212,18 +213,35 @@ public class BasicCheckpointScript : MonoBehaviour {
 
 	void OnMouseDown(){
         //If the mouse is clicked on the object, go through the list of SequenceEditors.
-
-        for(int i = 0; i < sm.editorlistGO.Count; i++)
+        if (varKeeper.useDragonDrop)
         {
-            //If a list has an id equal to the checkpoint name, draw that editor window in the UI.
-            if (sm.editorlistGO[i].listID == checkpointName)
+            for (int i = 0; i < sm.editorlistGO.Count; i++)
             {
-                sm.editorlistGO[i].drawEditorWindow = true;
+                //If a list has an id equal to the checkpoint name, draw that editor window in the UI.
+                if (sm.editorlistGO[i].listID == checkpointName)
+                {
+                    sm.editorlistGO[i].drawEditorWindow = true;
+                }
+                //Every list which id is different from the checkpoint name should not be drawn.
+                else
+                {
+                    sm.editorlistGO[i].drawEditorWindow = false;
+                }
             }
-            //Every list which id is different from the checkpoint name should not be drawn.
-            else
+        }else
+        {
+            for (int i = 0; i < sm.editorlistGO.Count; i++)
             {
-                sm.editorlistGO[i].drawEditorWindow = false;
+                //If a list has an id equal to the checkpoint name, draw that editor window in the UI.
+                if (sm.editorListText[i].listID == checkpointName)
+                {
+                    sm.editorListText[i].drawSequenceEditor = true;
+                }
+                //Every list which id is different from the checkpoint name should not be drawn.
+                else
+                {
+                    sm.editorListText[i].drawSequenceEditor = false;
+                }
             }
         }
 	}
