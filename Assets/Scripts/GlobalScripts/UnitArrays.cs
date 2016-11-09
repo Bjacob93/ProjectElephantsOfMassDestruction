@@ -3,7 +3,7 @@ using System.Collections;
 
 public class UnitArrays : MonoBehaviour {
 
-    GameObject[] allies = new GameObject[50];
+    public GameObject[] allies = new GameObject[50];
     public GameObject[] enemies = new GameObject[50];
 	
     public void add(GameObject unit, string s)
