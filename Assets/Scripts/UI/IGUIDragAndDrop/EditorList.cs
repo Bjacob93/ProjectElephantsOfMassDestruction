@@ -60,7 +60,7 @@ public class EditorList : MonoBehaviour{
     private bool showToolTip;
     private string toolTip;
 
-    //GUI apperance
+    //GUI appearance
     public GUISkin commandSkin;
 
     void Start()
