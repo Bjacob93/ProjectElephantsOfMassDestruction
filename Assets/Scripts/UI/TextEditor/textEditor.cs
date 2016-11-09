@@ -16,7 +16,7 @@ public class textEditor : MonoBehaviour
     List<KeyValuePair<int, string>> errorList = new List<KeyValuePair<int, string>>();
 
     //List that holds the viable commands.
-    List<string> listOfCommands = new List<string>();
+    public List<string> listOfCommands = new List<string>();
 
     //Variables that determines whether or not the list belongs to a chechpoint, and which object the list belongs to.
     public bool belongsToCheckpoint;

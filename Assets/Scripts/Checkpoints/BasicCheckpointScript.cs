@@ -77,9 +77,17 @@ public class BasicCheckpointScript : MonoBehaviour {
 
         if (!varKeeper.useDragonDrop)
         {
-            return;
+            commandTextEditor(units);
         }
+        else
+        {
+            gatherCommands(units);
+        }
+        
+    }
 
+    void gatherCommands(GameObject[] units)
+    {
         //check if the slot is to the left in the editor
         for (int i = 0; i < listComponent.slots.Count; i++)
         {
@@ -96,12 +104,12 @@ public class BasicCheckpointScript : MonoBehaviour {
                     shrimp++;
                     forEveryRan = false;
                 }
-                command(i, id, units, fish);
+                commandDragonDrop(i, id, units, fish);
             }
         }
     }
 
-    void command(int i, string id, GameObject[] units, int fisk)
+    void commandDragonDrop(int i, string id, GameObject[] units, int fisk)
     {
         //determine the corrent ation based in the commandId
         switch (id)
@@ -112,11 +120,11 @@ public class BasicCheckpointScript : MonoBehaviour {
                     id = listComponent.slots[i].commandId;
                     if (shrimp % fish != 0)
                     {
-                        command(i + 2, id, units, fish);
+                        commandDragonDrop(i + 2, id, units, fish);
                     }
                     else
                     {
-                        command(i + 3, id, units, fish);
+                        commandDragonDrop(i + 3, id, units, fish);
                     }
                 }
                 break;
@@ -146,6 +154,18 @@ public class BasicCheckpointScript : MonoBehaviour {
                 break;
         }
 
+    }
+
+    void commandTextEditor(GameObject[] units)
+    {
+        for (int i = 0; i < textListComponent.listOfCommands.Count; i++)
+        {
+            string id = textListComponent.listOfCommands[i];
+            switch ()
+            {
+
+            }
+        }
     }
 
     void Move(GameObject[] units, Vector3 targetLocation)
