@@ -16,10 +16,11 @@ public class CommandList : MonoBehaviour {
     //Bool handles whether or not to draw the window in the UI.
 	private bool drawCommandList = false;
 
-    //Cache the database, SequenceManger and Editolist scripts.
+    //Cache the database, SequenceManger and Editolist scripts, as well as the LevelManager.
     public CommandDatabase database;
     public SequenceManager sequenceManager;
     public EditorList sequenceEditor;
+    levelManager lvlManager;
 
 	//The number of slots in the window
 	int numberOfSlots = 12;
@@ -53,6 +54,9 @@ public class CommandList : MonoBehaviour {
         //Reference the Sequence Manager script.
         sequenceManager = GameObject.Find("UIManager").GetComponent<SequenceManager>();
 
+        //Reference the levelManager.
+        lvlManager = GameObject.Find("LevelManager").GetComponent<levelManager>();
+
         //Calculate the bounding box dimensions and define the resulting Rect.
         boundingBoxHeight = numberOfSlots * (boxHeight + ((Screen.height / 24) / 10)) + (Screen.width/35);
 		boundingBoxWidth = boxWidth + (Screen.width / 40);
@@ -69,7 +73,10 @@ public class CommandList : MonoBehaviour {
 		//Add all available commands to the list.
         for (int i = 0; i < database.commandDatabase.Count; i++)
         {
-            availableCommands[i] = database.commandDatabase[i];
+            if(database.commandDatabase[i].lvlAvailability <= lvlManager.getCurrentLevel())
+            {
+                availableCommands[i] = database.commandDatabase[i];
+            }
         }
 
         //Make the "slots" list contain the same elements as the "available" list.
