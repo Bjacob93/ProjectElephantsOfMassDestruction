@@ -13,7 +13,7 @@ public class CapturePointUI : MonoBehaviour {
     float maxPoints = 100;
 	// Update is called once per frame
 	void Update () {
-        captureimage.fillAmount = (capPoints / 50) - 50;
+        capPoints += Time.deltaTime;
         captureimage.fillAmount = capPoints / 50;
 	}
 }
