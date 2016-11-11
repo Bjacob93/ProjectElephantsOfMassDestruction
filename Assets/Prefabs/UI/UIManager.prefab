@@ -260,8 +260,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb3cea58171790342a804685d97c2394, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  drawSequenceEditor: 0
+  listOfCommands: []
   belongsToCheckpoint: 0
   listID: 
+  commandSkin: {fileID: 0}
 --- !u!114 &114000011121546224
 MonoBehaviour:
   m_ObjectHideFlags: 1
