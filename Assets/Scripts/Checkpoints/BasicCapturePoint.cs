@@ -9,6 +9,8 @@ public class BasicCapturePoint : MonoBehaviour {
     GameObject unitManager;
     public Image elephantCapture;
     public Image giraffeCapture;
+    public Image NeutralCapture;
+    GameObject captureTimeGO;
 
     public GameObject closestEnemy = null;
     public bool enemyHasCapturePoint = false;
@@ -18,12 +20,12 @@ public class BasicCapturePoint : MonoBehaviour {
     float CaptureTime = 50f;
     float maxCaptureTimer;
     float avCaptureTimer;
-    public  float CaptureTimer;
+    public float CaptureTimer;
     float upperMidCaptureTime;
     float lowerMidCaptureTime;
-    float distanceNeededToCapture = 5;
+    public float distanceNeededToCapture = 10;
     public bool neutralCapturePoint = true;
-    int modIndex = 1;
+    public int modIndex = 1;
 
     public GameObject closestPlayer = null;
     public bool playerHasCapturePoint = false;
@@ -42,27 +44,18 @@ public class BasicCapturePoint : MonoBehaviour {
 
     void EnemyCapturePoint()
     {
-        closestEnemy = uArray.scan(this.gameObject, "Ally");
+        closestEnemy = uArray.scan(this.gameObject, "Enemy");
 
         if (closestEnemy != null)
         {
             enemyDistanceToCapturePoint = Vector3.Distance(transform.position, closestEnemy.transform.position);
-
             if (enemyDistanceToCapturePoint <= distanceNeededToCapture)
             {
-                for (int i = 0; i < uArray.enemies.Length; i++)
+                if (!closeEnemies.Contains(closestEnemy))
                 {
-                    if(closeEnemies[i] == null)
-                    {
-                        closeEnemies.Add(closestEnemy);
-                        break;
-                    }
-                    enemyDistanceToCapturePoint = Vector3.Distance(this.gameObject.transform.position, closeEnemies[i].transform.position);
-                    if(playerDistanceToCapturePoint > distanceNeededToCapture)
-                    {
-                        closeEnemies.Remove(closestEnemy);
-                    }
+                    closeEnemies.Add(closestEnemy);
                 }
+
                 if (playerHasCapturePoint || (!playerHasCapturePoint && !enemyHasCapturePoint))
                 {
                     CaptureTimer -= Time.deltaTime * closeEnemies.Count;
@@ -74,34 +67,35 @@ public class BasicCapturePoint : MonoBehaviour {
                         neutralCapturePoint = false;
                     }
                 }
+            }  
+        }
+        for (int i = 0; i < closeEnemies.Count; i++)
+        {
+            if (enemyDistanceToCapturePoint > distanceNeededToCapture)
+            {
+                closeEnemies.RemoveAt(i);
+            }
+            else if (closeEnemies[i] == null)
+            {
+                closeEnemies.RemoveAt(i);
             }
         }
     }
 
     void PlayerCapturePoint()
     {
-        closestPlayer = uArray.scan(this.gameObject, "Enemy");
+        closestPlayer = uArray.scan(this.gameObject, "Ally");
 
         if (closestPlayer != null)
         {
-            playerDistanceToCapturePoint = Vector3.Distance(transform.position, closestPlayer.transform.position);
-
+            playerDistanceToCapturePoint = Vector3.Distance(transform.position, closestPlayer.transform.position);    
             if (playerDistanceToCapturePoint <= distanceNeededToCapture)
             {
-                for (int i = 0; i < uArray.allies.Length; i++)
+                if (!closePlayers.Contains(closestPlayer))
                 {
-                    if(closePlayers[i] == null)
-                    {
-                        closePlayers.Add(closestPlayer);
-                        break;
-                    }
-                        playerDistanceToCapturePoint = Vector3.Distance(this.gameObject.transform.position, closePlayers[i].transform.position);
-                        if(playerDistanceToCapturePoint > distanceNeededToCapture)
-                        {
-                            closePlayers.Remove(closestPlayer);
-                        }
-                    }
-
+                    closePlayers.Add(closestPlayer);
+                }
+               
                 if (enemyHasCapturePoint || (!enemyHasCapturePoint && !playerHasCapturePoint))
                 {
                     CaptureTimer += Time.deltaTime * closePlayers.Count;
@@ -115,31 +109,35 @@ public class BasicCapturePoint : MonoBehaviour {
                 }
             }
         }
+        for (int i = 0; i < closePlayers.Count; i++)
+        {
+            if (playerDistanceToCapturePoint > distanceNeededToCapture)
+            {
+                closePlayers.RemoveAt(i);
+            }
+            else if (closePlayers[i] == null)
+            {
+                closePlayers.RemoveAt(i);
+            }
+        }
     }
 
 	// Update is called once per frame
 	void Update ()
     {
-        if (modIndex % 2 == 0)
-        {
-            PlayerCapturePoint();
-            modIndex++;
-        }
-        else
-        {
-            EnemyCapturePoint();
-            modIndex++;
-        }
+        PlayerCapturePoint();
+        EnemyCapturePoint();
 
-        if((CaptureTimer == CaptureTime / 2))
+        if(CaptureTimer == avCaptureTimer)
         {
             playerHasCapturePoint = false;
             enemyHasCapturePoint = false;
             neutralCapturePoint = true;
         }
+
         if(neutralCapturePoint == true && closeEnemies.Count <= 0 && closePlayers.Count <= 0)
         {
-            if(CaptureTimer < avCaptureTimer)
+            if (CaptureTimer < avCaptureTimer)
             {
                 CaptureTimer += Time.deltaTime;
             }else if(CaptureTimer > avCaptureTimer)
@@ -147,14 +145,13 @@ public class BasicCapturePoint : MonoBehaviour {
                 CaptureTimer -= Time.deltaTime;
             }
         }
-
-        if(CaptureTimer > CaptureTime / 2)
+        if (CaptureTimer > avCaptureTimer)
         {
-            giraffeCapture.fillAmount = (CaptureTimer / avCaptureTimer) - avCaptureTimer;
+            giraffeCapture.fillAmount = (CaptureTimer-avCaptureTimer) / avCaptureTimer;
         }
-        else if(CaptureTimer < CaptureTime / 2)
+        else if(CaptureTimer < avCaptureTimer)
         {
-            elephantCapture.fillAmount = CaptureTimer / avCaptureTimer;
+            elephantCapture.fillAmount = (avCaptureTimer - CaptureTimer) / avCaptureTimer;
         }
 	}
 }
