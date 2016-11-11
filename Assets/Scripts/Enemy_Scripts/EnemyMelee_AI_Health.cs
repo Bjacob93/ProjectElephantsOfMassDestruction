@@ -76,8 +76,7 @@ public class EnemyMelee_AI_Health : MonoBehaviour {
 
     void AtPlayerBase()
     {
-        Die();
-        GameObject.FindObjectOfType<ScoreManager>().LoseLife(1);
-        Instantiate(enemyUnits, new Vector3(-45, 1, -45), Quaternion.Euler(0, 0, 0));
+        this.gameObject.transform.position = new Vector3(-45, 1, -45);
+        GameObject.FindObjectOfType<ScoreManager>().LoseLife(1);   
     }
 }

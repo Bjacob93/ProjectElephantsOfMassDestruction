@@ -37,6 +37,9 @@ public class BasicCheckpointScript : MonoBehaviour {
     //Cache the object which holds the variable for DnD or Text edit mode.
     mainMenuVariables varKeeper;
 
+    //Cache list of all the checkpoints and bases in the level.
+    List<GameObject> locations;
+
     void Start () {
         //Reference to the correct mainMenuVariables script.
         varKeeper = GameObject.Find("KeeperOfVariables").GetComponent<mainMenuVariables>();
@@ -77,46 +80,53 @@ public class BasicCheckpointScript : MonoBehaviour {
 
         if (!varKeeper.useDragonDrop)
         {
-            return;
+            gatherTextCommands(units);
         }
+        else
+        {
+            gatherCommands(units);
+        }
+    }
 
+    void gatherCommands(GameObject[] units)
+    {
         //check if the slot is to the left in the editor
         for (int i = 0; i < listComponent.slots.Count; i++)
         {
             //check to see if the slot is empty
             if (i % 2 == 0 && listComponent.slots[i].commandName != "")
             {
-                //crate a sring to keep track of the slots commandId
+                //crate a sting to keep track of the slots commandId
                 string id = listComponent.slots[i].commandId;
                 fish = listComponent.slots[i + 1].variableForEveryX;
 
 
-                if (forEveryRan == true)
+                if (forEveryRan)
                 {
                     shrimp++;
                     forEveryRan = false;
                 }
-                command(i, id, units, fish);
+                commandDragonDrop(i, id, units, fish);
             }
         }
     }
 
-    void command(int i, string id, GameObject[] units, int fisk)
+    void commandDragonDrop(int i, string id, GameObject[] units, int fisk)
     {
         //determine the corrent ation based in the commandId
         switch (id)
         {
             case "FoE":
-                if (forEveryRan == false)
+                if (!forEveryRan)
                 {
                     id = listComponent.slots[i].commandId;
                     if (shrimp % fish != 0)
                     {
-                        command(i + 2, id, units, fish);
+                        commandDragonDrop(i + 2, id, units, fish);
                     }
                     else
                     {
-                        command(i + 3, id, units, fish);
+                        commandDragonDrop(i + 3, id, units, fish);
                     }
                 }
                 break;
@@ -146,6 +156,74 @@ public class BasicCheckpointScript : MonoBehaviour {
                 break;
         }
 
+    }
+    
+    void gatherTextCommands(GameObject[] units)
+    {
+        //check if the slot is to the left in the editor
+        for (int i = 0; i < textListComponent.listOfCommands.Count; i++)
+        {
+            //crate a sting to keep track of the slots commandId
+            string id = textListComponent.listOfCommands[i].commandId;
+
+            if(textListComponent.listOfCommands.Count > i + 1)
+            {
+                fish = textListComponent.listOfCommands[i + 1].variableForEveryX;
+            }
+
+            if (forEveryRan)
+            {
+                shrimp++;
+                forEveryRan = false;
+            }
+            commandTextEditor(i, id, units, fish);
+        }
+    }
+
+    void commandTextEditor(int i, string id, GameObject[] units, int fisk)
+    {
+        //determine the corrent ation based in the commandId
+        switch (id)
+        {
+            case "FoE":
+                if (!forEveryRan)
+                {
+                    id = textListComponent.listOfCommands[i].commandId;
+                    if (shrimp % fish != 0)
+                    {
+                        commandTextEditor(i + 2, id, units, fish);
+                    }
+                    else
+                    {
+                        commandTextEditor(i + 3, id, units, fish);
+                    }
+                }
+                break;
+
+
+            case "A01":
+                //if attack command is initiated set target to the slot var to the left of the attack command
+                target = textListComponent.listOfCommands[i + 1].locationOfTarget;
+                // run the attack command
+                Attack(units, target);
+                break;
+
+            case "M01":
+                target = textListComponent.listOfCommands[i + 1].locationOfTarget;
+                //run the move command
+                Move(units, target);
+                break;
+
+            case "D01":
+                target = textListComponent.listOfCommands[i + 1].locationOfTarget;
+                //run the defend command
+                Defend(units, target);
+                break;
+
+            default:
+
+                break;
+        }
     }
 
     void Move(GameObject[] units, Vector3 targetLocation)
