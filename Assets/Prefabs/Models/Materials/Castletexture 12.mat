@@ -6,10 +6,10 @@ Material:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: Field Texture
-  m_Shader: {fileID: 4800000, guid: 8596e3af0e6409243856149d9d5b2f40, type: 3}
-  m_ShaderKeywords: _EMISSION
-  m_LightmapFlags: 1
+  m_Name: Castletexture 12
+  m_Shader: {fileID: 4800000, guid: e00576fa61fb19f42aa7ad3c32be6406, type: 3}
+  m_ShaderKeywords: _ALPHAPREMULTIPLY_ON
+  m_LightmapFlags: 5
   m_CustomRenderQueue: -1
   stringTagMap: {}
   m_SavedProperties:
@@ -48,8 +48,8 @@ Material:
     - first:
         name: _MainTex
       second:
-        m_Texture: {fileID: 2800000, guid: 96552fe576bf8b04a9edc0e98562fcff, type: 3}
-        m_Scale: {x: -1, y: -1}
+        m_Texture: {fileID: 2800000, guid: 84850497c281c6b4784c97bfcf51c7d8, type: 3}
+        m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - first:
         name: _MetallicGlossMap
@@ -69,12 +69,6 @@ Material:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
-    - first:
-        name: _SpecGlossMap
-      second:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
     m_Floats:
     - first:
         name: _BumpScale
@@ -87,10 +81,10 @@ Material:
       second: 1
     - first:
         name: _DiffuseThreshold
-      second: -0.151
+      second: -0.08
     - first:
         name: _DstBlend
-      second: 0
+      second: 10
     - first:
         name: _GlossMapScale
       second: 1
@@ -105,13 +99,13 @@ Material:
       second: 0
     - first:
         name: _Mode
-      second: 0
+      second: 3
     - first:
         name: _OcclusionStrength
       second: 1
     - first:
         name: _OutlineThickness
-      second: 0.012
+      second: 0.293
     - first:
         name: _Parallax
       second: 0.02
@@ -132,7 +126,7 @@ Material:
       second: 0
     - first:
         name: _ZWrite
-      second: 1
+      second: 0
     m_Colors:
     - first:
         name: _Color
@@ -142,7 +136,7 @@ Material:
       second: {r: 0, g: 0, b: 0, a: 1}
     - first:
         name: _ShadowColor
-      second: {r: 0, g: 0, b: 0, a: 1}
+      second: {r: 0.09803922, g: 0.09803922, b: 0.09803922, a: 1}
     - first:
         name: _SpecColor
       second: {r: 1, g: 1, b: 1, a: 1}
