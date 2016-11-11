@@ -1388,9 +1388,9 @@ MonoBehaviour:
       m_TextColor: {r: 0, g: 0, b: 0, a: 1}
     m_Border:
       m_Left: 2
-      m_Right: 11
+      m_Right: 15
       m_Top: 2
-      m_Bottom: 16
+      m_Bottom: 2
     m_Margin:
       m_Left: 0
       m_Right: 0
@@ -1454,9 +1454,9 @@ MonoBehaviour:
       m_TextColor: {r: 0, g: 0, b: 0, a: 1}
     m_Border:
       m_Left: 2
-      m_Right: 11
+      m_Right: 15
       m_Top: 2
-      m_Bottom: 16
+      m_Bottom: 2
     m_Margin:
       m_Left: 0
       m_Right: 0
@@ -1520,9 +1520,9 @@ MonoBehaviour:
       m_TextColor: {r: 0, g: 0, b: 0, a: 1}
     m_Border:
       m_Left: 2
-      m_Right: 11
+      m_Right: 15
       m_Top: 2
-      m_Bottom: 16
+      m_Bottom: 2
     m_Margin:
       m_Left: 0
       m_Right: 0
@@ -1586,9 +1586,9 @@ MonoBehaviour:
       m_TextColor: {r: 0, g: 0, b: 0, a: 1}
     m_Border:
       m_Left: 2
-      m_Right: 11
+      m_Right: 15
       m_Top: 2
-      m_Bottom: 16
+      m_Bottom: 2
     m_Margin:
       m_Left: 0
       m_Right: 0
@@ -1717,9 +1717,9 @@ MonoBehaviour:
       m_ScaledBackgrounds: []
       m_TextColor: {r: 0, g: 0, b: 0, a: 1}
     m_Border:
-      m_Left: 11
+      m_Left: 15
       m_Right: 2
-      m_Top: 16
+      m_Top: 2
       m_Bottom: 2
     m_Margin:
       m_Left: 0
@@ -1783,9 +1783,9 @@ MonoBehaviour:
       m_ScaledBackgrounds: []
       m_TextColor: {r: 0, g: 0, b: 0, a: 1}
     m_Border:
-      m_Left: 11
+      m_Left: 15
       m_Right: 2
-      m_Top: 16
+      m_Top: 2
       m_Bottom: 2
     m_Margin:
       m_Left: 0
@@ -1849,9 +1849,9 @@ MonoBehaviour:
       m_ScaledBackgrounds: []
       m_TextColor: {r: 0, g: 0, b: 0, a: 1}
     m_Border:
-      m_Left: 11
+      m_Left: 15
       m_Right: 2
-      m_Top: 16
+      m_Top: 2
       m_Bottom: 2
     m_Margin:
       m_Left: 0
@@ -1915,9 +1915,9 @@ MonoBehaviour:
       m_ScaledBackgrounds: []
       m_TextColor: {r: 0, g: 0, b: 0, a: 1}
     m_Border:
-      m_Left: 11
+      m_Left: 15
       m_Right: 2
-      m_Top: 16
+      m_Top: 2
       m_Bottom: 2
     m_Margin:
       m_Left: 0
