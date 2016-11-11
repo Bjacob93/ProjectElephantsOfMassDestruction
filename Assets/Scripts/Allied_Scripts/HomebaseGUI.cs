@@ -257,7 +257,7 @@ public class HomebaseGUI : MonoBehaviour {
 			scoreManager.money -= unitPrices.alliedMeleeCost;
 
 			//initiate unit at the targeted location - 5 in x and - 5 in z, as long as the base is placed in (+,+) coordinates, the units will spawn in the mape.
-			Instantiate(playerUnits, targetLocation + new Vector3(-5,0,-5), Quaternion.Euler(0, 0, 0));
+			Instantiate(playerUnits, targetLocation + new Vector3(-6,0,-6 ), Quaternion.Euler(0, 0, 0));
 
 		}
 	}
