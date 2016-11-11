@@ -54,7 +54,6 @@ public class BasicCapturePoint : MonoBehaviour {
                 if (!closeEnemies.Contains(closestEnemy))
                 {
                     closeEnemies.Add(closestEnemy);
-                    Debug.Log(closeEnemies.Count);
                 }
 
                 if (playerHasCapturePoint || (!playerHasCapturePoint && !enemyHasCapturePoint))
@@ -68,13 +67,17 @@ public class BasicCapturePoint : MonoBehaviour {
                         neutralCapturePoint = false;
                     }
                 }
-            }
-            for (int i = 0; i < closeEnemies.Count; i++)
+            }  
+        }
+        for (int i = 0; i < closeEnemies.Count; i++)
+        {
+            if (enemyDistanceToCapturePoint > distanceNeededToCapture)
             {
-                if (enemyDistanceToCapturePoint > distanceNeededToCapture)
-                {
-                    closeEnemies.RemoveAt(i);
-                }
+                closeEnemies.RemoveAt(i);
+            }
+            else if (closeEnemies[i] == null)
+            {
+                closeEnemies.RemoveAt(i);
             }
         }
     }
@@ -96,7 +99,6 @@ public class BasicCapturePoint : MonoBehaviour {
                 if (enemyHasCapturePoint || (!enemyHasCapturePoint && !playerHasCapturePoint))
                 {
                     CaptureTimer += Time.deltaTime * closePlayers.Count;
-                    Debug.Log(CaptureTimer);
                     if (CaptureTimer >= maxCaptureTimer)
                     {
                         CaptureTimer = maxCaptureTimer;
@@ -106,12 +108,16 @@ public class BasicCapturePoint : MonoBehaviour {
                     }
                 }
             }
-            for (int i = 0; i < closePlayers.Count; i++)
+        }
+        for (int i = 0; i < closePlayers.Count; i++)
+        {
+            if (playerDistanceToCapturePoint > distanceNeededToCapture)
             {
-                if (playerDistanceToCapturePoint > distanceNeededToCapture)
-                {
-                    closePlayers.RemoveAt(i);
-                }
+                closePlayers.RemoveAt(i);
+            }
+            else if (closePlayers[i] == null)
+            {
+                closePlayers.RemoveAt(i);
             }
         }
     }
@@ -131,7 +137,7 @@ public class BasicCapturePoint : MonoBehaviour {
 
         if(neutralCapturePoint == true && closeEnemies.Count <= 0 && closePlayers.Count <= 0)
         {
-            if(CaptureTimer < avCaptureTimer)
+            if (CaptureTimer < avCaptureTimer)
             {
                 CaptureTimer += Time.deltaTime;
             }else if(CaptureTimer > avCaptureTimer)
@@ -139,8 +145,9 @@ public class BasicCapturePoint : MonoBehaviour {
                 CaptureTimer -= Time.deltaTime;
             }
         }
-
-        if(CaptureTimer > avCaptureTimer)
+        Debug.Log(closeEnemies.Count + "  enemies ");
+        Debug.Log(closePlayers.Count + "  players ");
+        if (CaptureTimer > avCaptureTimer)
         {
             giraffeCapture.fillAmount = (CaptureTimer-avCaptureTimer) / avCaptureTimer;
         }
