@@ -4,7 +4,7 @@ using System.Collections;
 public class AlliedMelee_AI_Health : MonoBehaviour {
 
 	public int startingHealth = 100;
-	public int alliedArmour = 10;
+	public int alliedArmour = 0;
 	public float currentHealth;
 	public int moneyValue = 5;
 	public int cost = 10;
@@ -47,7 +47,7 @@ public class AlliedMelee_AI_Health : MonoBehaviour {
 			return;
 		}
 		//reduce the alliedHealth
-		currentHealth -= damageTaken;
+		currentHealth -= (damageTaken - alliedArmour);
 
 		if (currentHealth <= 0) {
 			Die ();

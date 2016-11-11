@@ -4,7 +4,7 @@ using System.Collections;
 public class EnemyMelee_AI_Health : MonoBehaviour {
 
 	public int startingHealth = 100;
-	public int alliedArmour = 10;
+	public int enemyArmour = 0;
 	public float currentHealth;
 	public int moneyValue = 5;
     GameObject unitManager;
@@ -57,7 +57,7 @@ public class EnemyMelee_AI_Health : MonoBehaviour {
 			return;
 		}
 		//reduce the alliedHealth
-		currentHealth -= damageTaken;
+		currentHealth -= (damageTaken - enemyArmour);
 
 		if (currentHealth <= 0) {
 			Die ();
