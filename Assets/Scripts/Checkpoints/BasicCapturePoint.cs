@@ -145,8 +145,6 @@ public class BasicCapturePoint : MonoBehaviour {
                 CaptureTimer -= Time.deltaTime;
             }
         }
-        Debug.Log(closeEnemies.Count + "  enemies ");
-        Debug.Log(closePlayers.Count + "  players ");
         if (CaptureTimer > avCaptureTimer)
         {
             giraffeCapture.fillAmount = (CaptureTimer-avCaptureTimer) / avCaptureTimer;
