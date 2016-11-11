@@ -3,14 +3,13 @@ using System.Collections;
 
 public class levelManager : MonoBehaviour {
 
-    int currentLevel;
+    public int currentLevel;
 
 	// Use this for initialization
 	void Start () {
-        currentLevel = 1;
 	}
 	
-	int getCurrentLevel()
+	public int getCurrentLevel()
     {
         return currentLevel;
     }
