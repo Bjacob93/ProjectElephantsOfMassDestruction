@@ -1,6 +1,11 @@
 fileFormatVersion: 2
+<<<<<<< HEAD:Assets/Prefabs/Models/Castlev4.fbx.meta
 guid: 5b980c5c2d99e364194b605283283b41
 timeCreated: 1478701844
+=======
+guid: b9cfe698d9b6efa47b5e012646dd66f4
+timeCreated: 1478702835
+>>>>>>> 5840bda8d62cf435851e31b1dfe9d96f8f7203e1:Assets/Prefabs/Models/Castlev4.fbx.meta
 licenseType: Free
 ModelImporter:
   serializedVersion: 19
