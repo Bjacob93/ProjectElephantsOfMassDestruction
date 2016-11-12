@@ -4,6 +4,8 @@ using UnityEngine.SceneManagement;
 
 public class LoadSceneOnClick : MonoBehaviour {
 
+	static int selected = 0;
+
     mainMenuVariables varKeeper;
 
     void Start()
@@ -11,9 +13,16 @@ public class LoadSceneOnClick : MonoBehaviour {
         varKeeper = GameObject.Find("KeeperOfVariables").GetComponent<mainMenuVariables>();
     }
 
+	public void StageSelected(int Stage){
+		selected = Stage;
+	}
+		
 	public void LoadByIndex(int sceneIndex) {
-        SceneManager.LoadScene(sceneIndex);
+		sceneIndex = selected;
+		SceneManager.LoadScene(sceneIndex);
+
     }
+
     public void dnd()
     {
         varKeeper.useDragonDrop = true;
