@@ -547,7 +547,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 63993659}
   m_LocalRotation: {x: -0, y: -0.3728855, z: -0, w: 0.9278774}
-  m_LocalPosition: {x: 58.6, y: 0.4, z: -4.8}
+  m_LocalPosition: {x: 60, y: 0.4, z: -5}
   m_LocalScale: {x: 35.436665, y: 35.436657, z: 35.436657}
   m_LocalEulerAnglesHint: {x: 0, y: -43.741, z: 0}
   m_Children:
@@ -2668,7 +2668,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 575014544}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -97.9, y: 1, z: 3.6}
+  m_LocalPosition: {x: -93.8, y: 1, z: 3.8}
   m_LocalScale: {x: 4, y: 2, z: 4}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
@@ -2686,10 +2686,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f7977716f0f3be5448dfabcc00c8e4ae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  targetLocation1: {x: 30, y: 0, z: -35}
-  targetLocation2: {x: -40, y: 0, z: -10}
+  targetLocation1: {x: 8, y: 0, z: 40}
+  targetLocation2: {x: 5, y: 0, z: -40}
   hasMultipleTargets: 1
-  split: 3
+  split: 2
 --- !u!114 &575014547
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2705,7 +2705,7 @@ MonoBehaviour:
   restartDelay: 5
   restartTimer: 0
   amountOfEnemySpawned: 0
-  maxEnemySpawn: 6
+  maxEnemySpawn: 20
   enemyUnits: {fileID: 1000011621710164, guid: 67917ec56833846428930e641a3cd7f1, type: 2}
 --- !u!23 &575014548
 MeshRenderer:
@@ -2746,7 +2746,7 @@ BoxCollider:
   m_GameObject: {fileID: 575014544}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
@@ -6416,7 +6416,7 @@ SkinnedMeshRenderer:
   m_RootBone: {fileID: 0}
   m_AABB:
     m_Center: {x: 0, y: 0, z: 0}
-    m_Extent: {x: 4.9999976, y: 0.000000070496675, z: 5}
+    m_Extent: {x: 5.0000024, y: 0.000000070496675, z: 5}
   m_DirtyAABB: 0
 --- !u!1 &1281611002
 GameObject:
@@ -7095,8 +7095,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1456075709}
-        m_MethodName: LoadByIndex
-        m_Mode: 3
+        m_MethodName: loadMainMenu
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -7782,7 +7782,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1641084900}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 8.81, y: 0, z: 40.69}
+  m_LocalPosition: {x: 8, y: 0, z: 40}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children:
@@ -7802,7 +7802,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f7977716f0f3be5448dfabcc00c8e4ae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  targetLocation1: {x: 47, y: 0, z: 47}
+  targetLocation1: {x: 60, y: 0, z: -5}
   targetLocation2: {x: 0, y: 0, z: 0}
   hasMultipleTargets: 0
   split: 0
@@ -10368,7 +10368,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2044333066}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 4.74, y: 0, z: -39.96}
+  m_LocalPosition: {x: 5, y: 0, z: -40}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children:
@@ -10388,7 +10388,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f7977716f0f3be5448dfabcc00c8e4ae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  targetLocation1: {x: 47, y: 0, z: 47}
+  targetLocation1: {x: 60, y: 0, z: -5}
   targetLocation2: {x: 0, y: 0, z: 0}
   hasMultipleTargets: 0
   split: 0
