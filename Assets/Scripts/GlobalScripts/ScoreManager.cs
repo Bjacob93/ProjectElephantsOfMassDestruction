@@ -2,6 +2,7 @@
 using System.Collections;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using System.Collections.Generic;
 
 public class ScoreManager : MonoBehaviour {
 	Animator anim;  
@@ -15,8 +16,12 @@ public class ScoreManager : MonoBehaviour {
 	public Text moneyText;
 	public Text livesText;
 
-	// Use this for initialization
-	public void LoseLife (int l = 1) {
+    public GameObject[] capturePoint; //cache all capturePoints
+    List<BasicCapturePoint> basicCapturePointScripts = new List<BasicCapturePoint>(); // cache and prepare a lise for the scripts from capturePoint
+    public bool playerHasAllCheckPoints = false; // bool used to check if the player got all capture points
+
+    // Use this for initialization
+    public void LoseLife (int l = 1) {
 		//lives -= l;
 		if (lives <= 0) {
 			GameOver ();
@@ -49,15 +54,41 @@ public class ScoreManager : MonoBehaviour {
 		}
 	}
 
+    //function to check if a player owns the different capturePoints
+    void checkCapturePointsForOwnership()
+    {
+        for (int i = 0; i < basicCapturePointScripts.Count; i++)
+        {
+            if(basicCapturePointScripts[i].playerHasCapturePoint != true)
+            {
+                playerHasAllCheckPoints = false;
+                break; // if the player does not have all capturePoints stop the loop
+            }
+            if(i == basicCapturePointScripts.Count - 1)
+            {
+                playerHasAllCheckPoints = true;
+                //if the player got all capturePoints set the bool to true.
+
+            }
+        }
+    }
+
 	// Update is called once per frame
 	void Update () {
-		moneyText.text = "Money: $" + money.ToString ();
+        checkCapturePointsForOwnership();
+
+        moneyText.text = "Money: $" + money.ToString ();
 		livesText.text = "Lives " + lives.ToString ();
 		timeupdate ();
 	}
 	void Start(){
-        LoseLife();
-	}
+        capturePoint = GameObject.FindGameObjectsWithTag("CapturePoint");
+        foreach(GameObject c in capturePoint)
+        {
+            basicCapturePointScripts.Add(c.GetComponent<BasicCapturePoint>());
+        }
+    }
+
 	public void LoadByIndex(int sceneIndex) {
 		SceneManager.LoadScene(sceneIndex);
 	}
