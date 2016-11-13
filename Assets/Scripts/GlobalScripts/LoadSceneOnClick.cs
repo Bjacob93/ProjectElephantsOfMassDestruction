@@ -22,6 +22,11 @@ public class LoadSceneOnClick : MonoBehaviour {
 			SceneManager.LoadScene(sceneIndex);
     }
 
+    public void loadMainMenu()
+    {
+        SceneManager.LoadScene("mainMenu");
+    }
+
     public void dnd()
     {
         varKeeper.useDragonDrop = true;
