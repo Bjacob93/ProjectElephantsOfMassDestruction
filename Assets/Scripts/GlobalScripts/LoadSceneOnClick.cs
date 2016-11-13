@@ -20,7 +20,11 @@ public class LoadSceneOnClick : MonoBehaviour {
 	public void LoadByIndex(int sceneIndex) {
 		sceneIndex = selected;
 		SceneManager.LoadScene(sceneIndex);
+    }
 
+    public void loadMainMenu()
+    {
+        SceneManager.LoadScene("mainMenu");
     }
 
     public void dnd()
