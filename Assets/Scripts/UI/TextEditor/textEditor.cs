@@ -321,7 +321,7 @@ public class textEditor : MonoBehaviour
                     case "Homebase":
                         for (int d = 0; d < database.commandDatabase.Count; d++)
                         {
-                            if (database.commandDatabase[d].commandName == "GiraffeBase")
+                            if (database.commandDatabase[d].commandName == "Homebase")
                             {
                                 listOfCommands.Add(database.commandDatabase[d]);
                                 break;
