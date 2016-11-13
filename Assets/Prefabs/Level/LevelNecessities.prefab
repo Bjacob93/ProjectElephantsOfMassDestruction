@@ -902,6 +902,7 @@ GameObject:
   - 4: {fileID: 4000010394671418}
   - 95: {fileID: 95000014078377434}
   - 114: {fileID: 114000013046811168}
+  - 114: {fileID: 114000012407182596}
   m_Layer: 0
   m_Name: ScoreManager
   m_TagString: ScoreManager
@@ -10375,6 +10376,31 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8d37ccf2ab75fe24c9d817437f5bbf41, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &114000012407182596
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000010842031890}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a62aa439af1421843820341e21abeb4a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  boundingRect:
+    serializedVersion: 2
+    x: 0
+    y: 0
+    width: 0
+    height: 0
+  commandSkin: {fileID: 11400000, guid: af1d55f012321ba4fb142ce096bc0ec4, type: 2}
+  objective1: Kill all enemies
+  objective2: Hold all Capture points
+  objective3: Defend your base agains enemy attacks
+  objectives:
+  - 
+  - 
+  - 
 --- !u!114 &114000012444817782
 MonoBehaviour:
   m_ObjectHideFlags: 1
