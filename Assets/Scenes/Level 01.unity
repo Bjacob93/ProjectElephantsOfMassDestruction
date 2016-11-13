@@ -11486,7 +11486,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f7977716f0f3be5448dfabcc00c8e4ae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  targetLocation1: {x: 47, y: 0, z: 47}
+  targetLocation1: {x: -58.9, y: 0, z: 0.3}
   targetLocation2: {x: 0, y: 0, z: 0}
   hasMultipleTargets: 0
   split: 0
@@ -15116,10 +15116,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f7977716f0f3be5448dfabcc00c8e4ae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  targetLocation1: {x: 30, y: 0, z: -35}
-  targetLocation2: {x: -40, y: 0, z: -10}
-  hasMultipleTargets: 1
-  split: 3
+  targetLocation1: {x: 20.9, y: 0, z: -1.5}
+  targetLocation2: {x: 0, y: 0, z: 0}
+  hasMultipleTargets: 0
+  split: 0
 --- !u!114 &1392156514
 MonoBehaviour:
   m_ObjectHideFlags: 0
