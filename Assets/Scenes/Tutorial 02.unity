@@ -3080,6 +3080,8 @@ MonoBehaviour:
   money: 100
   moneyText: {fileID: 1993096858}
   livesText: {fileID: 551578490}
+  capturePoint: []
+  playerHasAllCheckPoints: 0
 --- !u!95 &655060170
 Animator:
   serializedVersion: 3
@@ -10467,7 +10469,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ace3dfc9007418345a5e9580e282c288, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentLevel: 0
+  currentLevel: 2
 --- !u!4 &2064768144 stripped
 Transform:
   m_PrefabParentObject: {fileID: 400000, guid: 94589dd9ca56d244bba7e5bd6ee7e48d, type: 3}
