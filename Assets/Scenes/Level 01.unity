@@ -15117,8 +15117,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   targetLocation1: {x: 20.9, y: 0, z: -1.5}
-  targetLocation2: {x: 0, y: 0, z: 0}
-  hasMultipleTargets: 0
+  targetLocation2: {x: 20.9, y: 0, z: -1.5}
+  hasMultipleTargets: 1
   split: 0
 --- !u!114 &1392156514
 MonoBehaviour:
@@ -15132,10 +15132,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ba825138797164547a4219720f659476, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  restartDelay: 5
+  restartDelay: 7
   restartTimer: 0
   amountOfEnemySpawned: 0
-  maxEnemySpawn: 20
+  maxEnemySpawn: 10
   enemyUnits: {fileID: 1000011621710164, guid: 67917ec56833846428930e641a3cd7f1, type: 2}
 --- !u!23 &1392156515
 MeshRenderer:
@@ -24875,7 +24875,7 @@ MonoBehaviour:
   playerUnits: {fileID: 1000012675579912, guid: 67917ec56833846428930e641a3cd7f1,
     type: 2}
   controlRange: 10
-  location: {x: 0, y: 180, z: 0}
+  location: {x: 0, y: 0, z: 0}
   gameIsPaused: 0
   shrimp: 1
 --- !u!65 &2139294628
