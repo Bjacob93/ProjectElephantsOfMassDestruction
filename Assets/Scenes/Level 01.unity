@@ -129,10 +129,28 @@ Prefab:
       propertyPath: m_RootOrder
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 1000013893996396, guid: 988dfd8890f2a9b40b07f82c0db6cf56, type: 2}
-      propertyPath: m_TagString
-      value: CapturePoint
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 988dfd8890f2a9b40b07f82c0db6cf56, type: 2}
   m_IsPrefabParent: 0
+--- !u!1 &2147050651 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1000010842031890, guid: 988dfd8890f2a9b40b07f82c0db6cf56,
+    type: 2}
+  m_PrefabInternal: {fileID: 476563215}
+--- !u!114 &2147050653
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2147050651}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a62aa439af1421843820341e21abeb4a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  boundingRect:
+    serializedVersion: 2
+    x: 0
+    y: 0
+    width: 0
+    height: 0
