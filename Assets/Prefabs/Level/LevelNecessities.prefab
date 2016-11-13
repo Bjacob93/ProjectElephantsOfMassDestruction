@@ -3637,7 +3637,7 @@ GameObject:
   - 114: {fileID: 114000010972279466}
   m_Layer: 5
   m_Name: CaptureTimers
-  m_TagString: Untagged
+  m_TagString: CapturePoint
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -10698,6 +10698,8 @@ MonoBehaviour:
   money: 100
   moneyText: {fileID: 114000012046849700}
   livesText: {fileID: 114000012026340068}
+  capturePoint: []
+  playerHasAllCheckPoints: 0
 --- !u!114 &114000013062569432
 MonoBehaviour:
   m_ObjectHideFlags: 1
