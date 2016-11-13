@@ -15,20 +15,33 @@ public class ObjectivesWindow : MonoBehaviour {
 
     float boxStartingPosX = (Screen.width - (Screen.width / 7)) - (Screen.width / 80);
     float boxStartingPosY = Screen.height / 4;
-
+    float objectiveOffSet;
     int numOfObjectives;
+
+    public GUISkin commandSkin;
+
+    public string objective1 = "Kill all enemies";
+    public string objective2 = "Hold all Capture points";
+    public string objective3 = "Defend your base agains enemy attacks";
+    public string[] objectives = new string[3]; //{ objetive1, objective2, objective3;
 
     // Use this for initialization
     void Start()
     {
         numOfObjectives = 3;
+        objectives[0] = objective1;
+        objectives[1] = objective2;
+        objectives[2] = objective3;
 
+        
         //Calculate the bounding box dimensions and define the resulting Rect.
         boundingBoxHeight = 100 + 5;
         boundingBoxWidth = 100;
         boundingBoxX = (boxStartingPosX  / 80) + 5;
         boundingBoxY = (boxStartingPosY  / 70) + 5;
         boundingRect = new Rect(boundingBoxX, boundingBoxY, boundingBoxWidth, boundingBoxHeight);
+
+       
     }
 
     // Update is called once per frame
@@ -46,12 +59,14 @@ public class ObjectivesWindow : MonoBehaviour {
 
     void OnGUI()
     {
-        if(drawHelpWindow == true)
+        GUI.skin = commandSkin;
+
+        if (drawHelpWindow == true)
         {
-            GUI.Box(new Rect(boundingBoxX, boundingBoxY, boundingBoxWidth, numOfObjectives * boundingBoxHeight), "Objectives");
-            for (int i = 1; i < numOfObjectives + 1; i++)
+            for (int i = 0; i < numOfObjectives; i++)
             {
-                GUI.Box(new Rect(50, i * 40, 50, 35), "Kill all enemies");
+                objectiveOffSet = objectives[i].Length;
+                GUI.Box(new Rect(boundingBoxX, (i * 40) + (objectiveOffSet + 5), 80, (objectiveOffSet*2)+5), objectives[i], commandSkin.GetStyle("tooltipBackground"));
             }
 
         }
@@ -61,9 +76,5 @@ public class ObjectivesWindow : MonoBehaviour {
         }
 
 
-    }
-
-    void HelpText()
-    {
     }
 }
