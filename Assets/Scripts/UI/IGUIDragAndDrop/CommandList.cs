@@ -39,6 +39,7 @@ public class CommandList : MonoBehaviour {
 	float boxStartingPosY = Screen.height / 4;
 	float boxOffSetY = Screen.height / 24;
 	Rect slotRect;
+    Level1TutorialText tutorialtext;
 
 	//Tooltip.
 	private bool showToolTip;
@@ -48,11 +49,13 @@ public class CommandList : MonoBehaviour {
     public GUISkin commandSkin;
 
     void Start(){
+
         //Reference the database of commands so that we can always find any command we need.
         database = GameObject.FindGameObjectWithTag("CommandDatabase").GetComponent<CommandDatabase>();
 
         //Reference the Sequence Manager script.
         sequenceManager = GameObject.Find("UIManager").GetComponent<SequenceManager>();
+        tutorialtext = GameObject.Find("ScoreManager").GetComponent<Level1TutorialText>();
 
         //Reference the levelManager.
         lvlManager = GameObject.Find("LevelManager").GetComponent<levelManager>();
@@ -90,6 +93,10 @@ public class CommandList : MonoBehaviour {
         //Open or close the Command List.
 		if(Input.GetButtonDown("Commandlist")){	
 			drawCommandList = !drawCommandList;
+            if(tutorialtext.qHasBeenPressed == false)
+            {
+                tutorialtext.qHasBeenPressed = true;
+            } 
 		}
 	}
 
