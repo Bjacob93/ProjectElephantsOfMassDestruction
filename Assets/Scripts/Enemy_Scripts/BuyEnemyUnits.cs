@@ -68,7 +68,7 @@ public class BuyEnemyUnits : MonoBehaviour
                     {
                         break;
                     }
-                    else if (i == listOfEnemyUnits.enemies.Length - 1)
+                    else if (i == listOfEnemyUnits.enemies.Length - 1 && sm.playerHasAllCheckPoints == true)
                     {
                         sm.Victory();
                         timeupdate();
