@@ -531,7 +531,7 @@ GameObject:
   - 224: {fileID: 56341745}
   - 222: {fileID: 56341747}
   - 114: {fileID: 56341746}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Elephant CaptureTimer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -626,7 +626,7 @@ Transform:
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 2020532533}
-  m_RootOrder: 8
+  m_RootOrder: 7
 --- !u!114 &87134310
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -811,7 +811,7 @@ Transform:
   m_Children:
   - {fileID: 1436852522}
   m_Father: {fileID: 2020532533}
-  m_RootOrder: 5
+  m_RootOrder: 4
 --- !u!114 &119101298
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1389,7 +1389,7 @@ GameObject:
   - 4: {fileID: 168290672}
   - 33: {fileID: 168290674}
   - 23: {fileID: 168290673}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: pSphere1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1459,7 +1459,7 @@ GameObject:
   - 4: {fileID: 170664858}
   - 33: {fileID: 170664860}
   - 23: {fileID: 170664859}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: pSphere1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1529,7 +1529,7 @@ GameObject:
   - 4: {fileID: 171105888}
   - 33: {fileID: 171105890}
   - 23: {fileID: 171105889}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: pSphere1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1588,6 +1588,105 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 171105887}
   m_Mesh: {fileID: 4300006, guid: 2778d5466db8ddb42bd2524a8c9ad766, type: 3}
+--- !u!1001 &191279760
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4000011552841532, guid: 988dfd8890f2a9b40b07f82c0db6cf56, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000011552841532, guid: 988dfd8890f2a9b40b07f82c0db6cf56, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000011552841532, guid: 988dfd8890f2a9b40b07f82c0db6cf56, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000011552841532, guid: 988dfd8890f2a9b40b07f82c0db6cf56, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000011552841532, guid: 988dfd8890f2a9b40b07f82c0db6cf56, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000011552841532, guid: 988dfd8890f2a9b40b07f82c0db6cf56, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000011552841532, guid: 988dfd8890f2a9b40b07f82c0db6cf56, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000011552841532, guid: 988dfd8890f2a9b40b07f82c0db6cf56, type: 2}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1000010139107638, guid: 988dfd8890f2a9b40b07f82c0db6cf56, type: 2}
+      propertyPath: m_Name
+      value: LevelNecessities (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1000010110407974, guid: 988dfd8890f2a9b40b07f82c0db6cf56, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000012009979102, guid: 988dfd8890f2a9b40b07f82c0db6cf56, type: 2}
+      propertyPath: m_RootOrder
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000011732442764, guid: 988dfd8890f2a9b40b07f82c0db6cf56, type: 2}
+      propertyPath: m_RootOrder
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000010756765686, guid: 988dfd8890f2a9b40b07f82c0db6cf56, type: 2}
+      propertyPath: m_RootOrder
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000010394671418, guid: 988dfd8890f2a9b40b07f82c0db6cf56, type: 2}
+      propertyPath: m_RootOrder
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000011098329054, guid: 988dfd8890f2a9b40b07f82c0db6cf56, type: 2}
+      propertyPath: m_RootOrder
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 114000010567215978, guid: 988dfd8890f2a9b40b07f82c0db6cf56,
+        type: 2}
+      propertyPath: astarData.dataString
+      value: UEsDBBQAAAgIAAAIIezXcQ2v8AEAAEIEAAALACQAZ3JhcGgwLmpzb24KACAAAAAAAAEAGAAAgD7V3rGdAQCAPtXesZ0BAIA+1d6xnQGFU8tu2zAQ/BVD57aQlcaNekvt2C2QNkacoue1tLIWpkiBj/oR5N+7pOhIUQ49iZgZDmcfek7AtFjYR7Ckkq+T6YdJQkY1aDUVt3InkMGUQSepUrq5K3c4V8YahpcgDDKllfW3JUPPk+QYL5zi9+y/kxc+FSgt6v+pnCwENC2WGzpjL87Si5xPQShViVHjUxdKCDIxRmJPrSeSObTGcREsKAm4rBDA62ukXW293/DyQ1UZtDGUhtOCNHenc02+KVt7pwbMvkv2F4Tz71xPs5CpM/35js+uZ4GvtGq+Xx6ehpJsTcX+EU4FGDto6hBevE3u5AHEHrYC/9Qof6mVVk6WTD5p5686g9liYPVa3LzGYt/rurAj0LXvBzTtB/QSyj/OBTVbj3z6PABuj2SinKGNUGEGubdBzdP6wTWETTHRnFGf67fBJ9gNVyoSS9LGMhVNwVl1T3K/0lQO1Rd8QcbeU0Ndc/2K+Aq3ymmvTu5C331DnJ0rLTHAse4WJQh7WvO7drwHI27w8ohZQmHVZUyRu/xEoysB7vVpOqLW6vA68J2j8u0+JTdpmmezmwzzq+0sr64+TqcZ5BlD2wrSKv+ShH0jyblArDvjWA6PRfaFS94t7+ibOllpaMOKlxoOKzo3atAikpXaFBpRPvQOL/8AUEsDBBQAAAgIAAAIIew1sAq+NAAAADcAAAASACQAZ3JhcGgwX2VkaXRvci5qc29uCgAgAAAAAAABABgAAIA+1d6xnQEAgD7V3rGdAQCAPtXesZ0Bq1bKyU/OTk1RslIIKSpN1VFQKs7IL3etKClKBAq5JeYUg8QKMsvyS4B8JefUvJLUIqVaAFBLAwQUAAAICAAACCHsB/cKnmsAAAB3AAAACQAkAG1ldGEuanNvbgoAIAAAAAAAAQAYAACAPtXesZ0BAIA+1d6xnQEAgD7V3rGdAatWKkstKs7Mz1OyUjDWs9Az01FQSi9KLMgoBgoYgjilmSkgdrSShYGBpZGZhVGqpXGSmWWasa6hoVGipRFQKCkt0SDN0lwpFqi+pLIg1S8xNxWiJyCxJCMtMy8lMy9dz70oM8UdZLRSbC0AUEsBAi0AFAAACAgAAAgh7NdxDa/wAQAAQgQAAAsAJAAAAAAAAAAAAAAAAAAAAGdyYXBoMC5qc29uCgAgAAAAAAABABgAAIA+1d6xnQEAgD7V3rGdAQCAPtXesZ0BUEsBAi0AFAAACAgAAAgh7DWwCr40AAAANwAAABIAJAAAAAAAAAAAAAAAPQIAAGdyYXBoMF9lZGl0b3IuanNvbgoAIAAAAAAAAQAYAACAPtXesZ0BAIA+1d6xnQEAgD7V3rGdAVBLAQItABQAAAgIAAAIIewH9wqeawAAAHcAAAAJACQAAAAAAAAAAAAAAMUCAABtZXRhLmpzb24KACAAAAAAAAEAGAAAgD7V3rGdAQCAPtXesZ0BAIA+1d6xnQFQSwUGAAAAAAMAAwAcAQAAewMAAAAA
+      objectReference: {fileID: 0}
+    - target: {fileID: 114000010567215978, guid: 988dfd8890f2a9b40b07f82c0db6cf56,
+        type: 2}
+      propertyPath: lastUniqueAreaIndex
+      value: 220
+      objectReference: {fileID: 0}
+    - target: {fileID: 114000012655396794, guid: 988dfd8890f2a9b40b07f82c0db6cf56,
+        type: 2}
+      propertyPath: zMin
+      value: -74
+      objectReference: {fileID: 0}
+    - target: {fileID: 114000012655396794, guid: 988dfd8890f2a9b40b07f82c0db6cf56,
+        type: 2}
+      propertyPath: zMax
+      value: 64
+      objectReference: {fileID: 0}
+    - target: {fileID: 1000013893996396, guid: 988dfd8890f2a9b40b07f82c0db6cf56, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114000010567215978, guid: 988dfd8890f2a9b40b07f82c0db6cf56,
+        type: 2}
+      propertyPath: astarData.file_cachedStartup
+      value: 
+      objectReference: {fileID: 4900000, guid: 528bead89b5fbe048923a2adc801884e, type: 3}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: 988dfd8890f2a9b40b07f82c0db6cf56, type: 2}
+  m_IsPrefabParent: 0
 --- !u!1 &192403454
 GameObject:
   m_ObjectHideFlags: 0
@@ -2040,7 +2139,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 282334898}
-  m_Layer: 9
+  m_Layer: 0
   m_Name: transform9
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2070,7 +2169,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 284985925}
-  m_Layer: 9
+  m_Layer: 0
   m_Name: polySurface1 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2434,7 +2533,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 306010393}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: CheckPointFlag
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2680,7 +2779,7 @@ GameObject:
   - 4: {fileID: 323592238}
   - 33: {fileID: 323592240}
   - 23: {fileID: 323592239}
-  m_Layer: 9
+  m_Layer: 0
   m_Name: polySurface9
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3174,7 +3273,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 434342153}
-  m_Layer: 9
+  m_Layer: 0
   m_Name: Gate_and_chains1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3419,7 +3518,7 @@ GameObject:
   - 4: {fileID: 492173889}
   - 33: {fileID: 492173891}
   - 23: {fileID: 492173890}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: pCylinder1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3689,7 +3788,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 552550892}
-  m_Layer: 9
+  m_Layer: 0
   m_Name: polySurface12
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4054,7 +4153,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 589597135}
-  m_Layer: 9
+  m_Layer: 0
   m_Name: transform12
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4117,7 +4216,7 @@ GameObject:
   - 4: {fileID: 606626606}
   - 33: {fileID: 606626608}
   - 23: {fileID: 606626607}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: pCube1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4215,7 +4314,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 608446202}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: CheckPointFlag
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4563,7 +4662,7 @@ GameObject:
   - 4: {fileID: 658804751}
   - 95: {fileID: 658804753}
   - 65: {fileID: 658804752}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: CheckpointFlag
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4706,7 +4805,7 @@ GameObject:
   - 4: {fileID: 667789180}
   - 33: {fileID: 667789182}
   - 23: {fileID: 667789181}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: pCube1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4778,7 +4877,7 @@ GameObject:
   - 114: {fileID: 668956151}
   - 114: {fileID: 668956150}
   - 114: {fileID: 668956149}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: CaptureTimers
   m_TagString: CapturePoint
   m_Icon: {fileID: 0}
@@ -4900,7 +4999,7 @@ GameObject:
   - 224: {fileID: 678928394}
   - 222: {fileID: 678928396}
   - 114: {fileID: 678928395}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Giraffe CaptureTimer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5033,7 +5132,7 @@ GameObject:
   - 224: {fileID: 730819903}
   - 222: {fileID: 730819905}
   - 114: {fileID: 730819904}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Neutral CaptureTimer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5105,7 +5204,7 @@ GameObject:
   - 4: {fileID: 743241448}
   - 95: {fileID: 743241450}
   - 65: {fileID: 743241449}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: CheckpointFlag
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5174,7 +5273,7 @@ GameObject:
   - 224: {fileID: 755967592}
   - 222: {fileID: 755967594}
   - 114: {fileID: 755967593}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Elephant CaptureTimer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5742,7 +5841,7 @@ GameObject:
   - 224: {fileID: 807770803}
   - 222: {fileID: 807770805}
   - 114: {fileID: 807770804}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Giraffe CaptureTimer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5846,7 +5945,7 @@ GameObject:
   - 224: {fileID: 828627327}
   - 222: {fileID: 828627329}
   - 114: {fileID: 828627328}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Giraffe CaptureTimer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6046,7 +6145,7 @@ GameObject:
   - 33: {fileID: 871829437}
   - 23: {fileID: 871829436}
   - 136: {fileID: 871829435}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: pCylinder2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6159,7 +6258,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 897756339}
-  m_Layer: 9
+  m_Layer: 0
   m_Name: polySurface11 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6190,7 +6289,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 901957569}
-  m_Layer: 9
+  m_Layer: 0
   m_Name: polySurface5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6223,7 +6322,7 @@ GameObject:
   - 4: {fileID: 906073198}
   - 137: {fileID: 906073200}
   - 183: {fileID: 906073199}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Flag
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6625,7 +6724,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 922477191}
-  m_Layer: 9
+  m_Layer: 0
   m_Name: transform1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6655,7 +6754,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 935664374}
-  m_Layer: 9
+  m_Layer: 0
   m_Name: polySurface10
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6768,7 +6867,7 @@ GameObject:
   - 4: {fileID: 949540756}
   - 95: {fileID: 949540758}
   - 65: {fileID: 949540757}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: CheckpointFlag
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7051,7 +7150,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 1023456694}
-  m_Layer: 9
+  m_Layer: 0
   m_Name: transform11
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7091,7 +7190,7 @@ GameObject:
   - 4: {fileID: 1046414480}
   - 33: {fileID: 1046414482}
   - 23: {fileID: 1046414481}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: pCube1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7264,7 +7363,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 1051382073}
-  m_Layer: 9
+  m_Layer: 0
   m_Name: polySurface7
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7419,7 +7518,7 @@ GameObject:
   - 4: {fileID: 1058982629}
   - 137: {fileID: 1058982631}
   - 183: {fileID: 1058982630}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Flag
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7903,7 +8002,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 1075576537}
-  m_Layer: 9
+  m_Layer: 0
   m_Name: transform6
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8124,7 +8223,7 @@ GameObject:
   - 114: {fileID: 1098340583}
   - 114: {fileID: 1098340582}
   - 114: {fileID: 1098340581}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: CaptureTimers
   m_TagString: CapturePoint
   m_Icon: {fileID: 0}
@@ -8715,7 +8814,7 @@ Transform:
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
   m_Children: []
   m_Father: {fileID: 2020532533}
-  m_RootOrder: 6
+  m_RootOrder: 5
 --- !u!108 &1168620472
 Light:
   m_ObjectHideFlags: 0
@@ -8851,7 +8950,7 @@ GameObject:
   - 4: {fileID: 1180169624}
   - 137: {fileID: 1180169626}
   - 183: {fileID: 1180169625}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Flag
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9341,7 +9440,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 1192936448}
-  m_Layer: 9
+  m_Layer: 0
   m_Name: transform3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9373,7 +9472,7 @@ GameObject:
   - 4: {fileID: 1197324991}
   - 33: {fileID: 1197324993}
   - 23: {fileID: 1197324992}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: pCylinder1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9441,7 +9540,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 1201088541}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: CheckPointFlag
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9698,7 +9797,7 @@ GameObject:
   - 224: {fileID: 1222735511}
   - 222: {fileID: 1222735513}
   - 114: {fileID: 1222735512}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Elephant CaptureTimer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9770,7 +9869,7 @@ GameObject:
   - 4: {fileID: 1240032643}
   - 33: {fileID: 1240032645}
   - 23: {fileID: 1240032644}
-  m_Layer: 9
+  m_Layer: 0
   m_Name: polySurface12_MeshPart0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9838,7 +9937,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 1246886799}
-  m_Layer: 9
+  m_Layer: 0
   m_Name: polySurface2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9869,7 +9968,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 1247129020}
-  m_Layer: 9
+  m_Layer: 0
   m_Name: transform2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9934,7 +10033,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 1277736901}
-  m_Layer: 9
+  m_Layer: 0
   m_Name: transform8
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10082,7 +10181,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 1285409040}
-  m_Layer: 9
+  m_Layer: 0
   m_Name: polySurface6
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10198,7 +10297,7 @@ Transform:
   - {fileID: 1311661654}
   - {fileID: 288551664}
   m_Father: {fileID: 2020532533}
-  m_RootOrder: 7
+  m_RootOrder: 6
 --- !u!114 &1299385733
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10517,6 +10616,11 @@ MonoBehaviour:
   currentHealth: 0
   moneyValue: 8
   enemyUnits: {fileID: 0}
+--- !u!4 &1318902976 stripped
+Transform:
+  m_PrefabParentObject: {fileID: 4000011552841532, guid: 988dfd8890f2a9b40b07f82c0db6cf56,
+    type: 2}
+  m_PrefabInternal: {fileID: 191279760}
 --- !u!1 &1333443297
 GameObject:
   m_ObjectHideFlags: 0
@@ -10589,7 +10693,7 @@ GameObject:
   - 4: {fileID: 1350093082}
   - 33: {fileID: 1350093084}
   - 23: {fileID: 1350093083}
-  m_Layer: 9
+  m_Layer: 0
   m_Name: polySurface12_MeshPart1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11019,7 +11123,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 1392082491}
-  m_Layer: 9
+  m_Layer: 0
   m_Name: polySurface1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11085,7 +11189,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 1406828122}
-  m_Layer: 9
+  m_Layer: 0
   m_Name: polySurface3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11233,8 +11337,8 @@ Transform:
   - {fileID: 1577377705}
   - {fileID: 2001560015}
   - {fileID: 1605449746}
-  m_Father: {fileID: 2020532533}
-  m_RootOrder: 4
+  m_Father: {fileID: 1318902976}
+  m_RootOrder: 5
 --- !u!1 &1436852521
 GameObject:
   m_ObjectHideFlags: 0
@@ -11380,7 +11484,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 1440220343}
-  m_Layer: 9
+  m_Layer: 0
   m_Name: polySurface8
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11582,7 +11686,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 1462134804}
-  m_Layer: 9
+  m_Layer: 0
   m_Name: polySurface11
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11880,7 +11984,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 1500879652}
-  m_Layer: 9
+  m_Layer: 0
   m_Name: transform4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -12131,7 +12235,7 @@ GameObject:
   - 33: {fileID: 1554750517}
   - 65: {fileID: 1554750516}
   - 114: {fileID: 1554750515}
-  m_Layer: 9
+  m_Layer: 0
   m_Name: GiraffeBase
   m_TagString: PlayerBase
   m_Icon: {fileID: 0}
@@ -12515,7 +12619,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 1569320537}
-  m_Layer: 9
+  m_Layer: 0
   m_Name: transform5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -12576,7 +12680,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 1577377705}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Checkpoints
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -12791,7 +12895,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 1610736358}
-  m_Layer: 9
+  m_Layer: 0
   m_Name: transform13
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -12852,7 +12956,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 1659667046}
-  m_Layer: 9
+  m_Layer: 0
   m_Name: polySurface4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -13044,7 +13148,7 @@ GameObject:
   - 224: {fileID: 1706004101}
   - 222: {fileID: 1706004103}
   - 114: {fileID: 1706004102}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Neutral CaptureTimer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -13267,7 +13371,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 1751999677}
-  m_Layer: 9
+  m_Layer: 0
   m_Name: transform10
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -13567,7 +13671,7 @@ GameObject:
   - 114: {fileID: 1785698485}
   - 114: {fileID: 1785698484}
   - 114: {fileID: 1785698483}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: CaptureTimers
   m_TagString: CapturePoint
   m_Icon: {fileID: 0}
@@ -13687,7 +13791,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 1787984744}
-  m_Layer: 9
+  m_Layer: 0
   m_Name: polySurface9 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14307,7 +14411,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 1837102592}
-  m_Layer: 9
+  m_Layer: 0
   m_Name: transform14
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14339,7 +14443,7 @@ GameObject:
   - 4: {fileID: 1839779223}
   - 33: {fileID: 1839779225}
   - 23: {fileID: 1839779224}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: pCylinder1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14639,7 +14743,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 1887783759}
-  m_Layer: 9
+  m_Layer: 0
   m_Name: transform7
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14837,7 +14941,7 @@ GameObject:
   - 224: {fileID: 1940775127}
   - 222: {fileID: 1940775129}
   - 114: {fileID: 1940775128}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Neutral CaptureTimer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14971,7 +15075,7 @@ GameObject:
   - 33: {fileID: 1957623857}
   - 23: {fileID: 1957623856}
   - 136: {fileID: 1957623855}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: pCylinder2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -15524,7 +15628,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &2020532533
 Transform:
   m_ObjectHideFlags: 0
@@ -15541,7 +15645,6 @@ Transform:
   - {fileID: 491689201}
   - {fileID: 1666011447}
   - {fileID: 1803914367}
-  - {fileID: 1418930755}
   - {fileID: 119101297}
   - {fileID: 1168620471}
   - {fileID: 1299385732}
@@ -15622,7 +15725,7 @@ GameObject:
   - 33: {fileID: 2054133205}
   - 23: {fileID: 2054133204}
   - 136: {fileID: 2054133203}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: pCylinder2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
