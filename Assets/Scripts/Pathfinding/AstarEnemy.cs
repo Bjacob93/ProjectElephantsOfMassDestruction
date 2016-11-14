@@ -52,6 +52,8 @@ public class AstarEnemy : MonoBehaviour
     public float maxWaypointDistance = 3f;
     private int currentWaypoint;
 
+    EnemyMelee_AI_Attack attackScript;
+
     void Start()
     {
         //Reference the seeker and controller component.
@@ -64,6 +66,8 @@ public class AstarEnemy : MonoBehaviour
 
         //Reference the animator.
         ElephantRunAnim = GetComponent<Animator>();
+
+        attackScript = this.gameObject.GetComponent<EnemyMelee_AI_Attack>();
     }
 
     /** Method to print out errors in the log if we get any. If we don't, it will set first waypoint 
@@ -230,7 +234,8 @@ public class AstarEnemy : MonoBehaviour
         }
 
         if (isInMeleeRange)
-        {      
+        {
+            attackScript.enemiesAttack(previousEnemy);
             return;
         }
         else
