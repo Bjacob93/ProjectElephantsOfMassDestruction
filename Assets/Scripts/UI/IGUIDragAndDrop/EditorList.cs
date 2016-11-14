@@ -100,7 +100,7 @@ public class EditorList : MonoBehaviour{
         //Calculate the total number of slots.  
         totalSlots = slotsCol * slotsRow;
 
-        tutorialtext = GameObject.Find("ScoreManager").GetComponent<Level1TutorialText>();
+        tutorialtext = GameObject.Find("UIManager").GetComponent<Level1TutorialText>();
 
         //Define the bounding box.
         boundingRect = new Rect(boundingBoxX, boundingBoxY, boundingBoxWidth, boundingBoxHeight);
