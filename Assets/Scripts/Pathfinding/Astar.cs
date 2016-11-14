@@ -51,6 +51,8 @@ public class Astar : MonoBehaviour {
     public float maxWaypointDistance = 3f;
 	private int currentWaypoint;
 
+    AlledMelee_AI_Attack attackScript;
+
 	void Start () {
 		//Reference the seeker and controller component.
 		seeker = GetComponent<Seeker> ();
@@ -62,6 +64,8 @@ public class Astar : MonoBehaviour {
 
         //Reference the animator.
 		GiraffeRunAnim = GetComponent<Animator>();
+
+        attackScript = this.gameObject.GetComponent<AlledMelee_AI_Attack>();
     }
 
 	/** Method to print out errors in the log if we get any. If we don't, it will set first waypoint 
@@ -179,8 +183,7 @@ public class Astar : MonoBehaviour {
 			currentWaypoint++;
 		}
 
-
-        if (Vector3.Distance(transform.position, path.vectorPath[currentWaypoint]) > Vector3.Distance(transform.position, path.vectorPath[currentWaypoint + 1]))
+        if (path != null && Vector3.Distance(transform.position, path.vectorPath[currentWaypoint]) > Vector3.Distance(transform.position, path.vectorPath[currentWaypoint + 1]))
         {
             currentWaypoint++;
         }
@@ -210,6 +213,7 @@ public class Astar : MonoBehaviour {
 		}
 
 		if (isInMeleeRange) {
+            attackScript.alliesAttack(previousEnemy);
 			return;
 		} else {
 		
