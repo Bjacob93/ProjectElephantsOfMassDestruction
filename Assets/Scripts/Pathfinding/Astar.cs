@@ -37,6 +37,7 @@ public class Astar : MonoBehaviour {
     //Cache variable that limits calls to pathfinding to once every second.
     bool pathCompleted = false;
 
+    //Cache the animator.
 	public Animator GiraffeRunAnim;
 
 	//Cache variables for enemies
@@ -55,11 +56,11 @@ public class Astar : MonoBehaviour {
 		seeker = GetComponent<Seeker> ();
 		controller = GetComponent<CharacterController> ();
 
-		//Call the pathfinding method in 
-		seeker.StartPath (transform.position, targetPosition, OnPathComplete);
+        //Reference the unitManager and array.
         unitManager = GameObject.Find("UnitManager");
         uArray = unitManager.GetComponent<UnitArrays>();
 
+        //Reference the animator.
 		GiraffeRunAnim = GetComponent<Animator>();
     }
 
