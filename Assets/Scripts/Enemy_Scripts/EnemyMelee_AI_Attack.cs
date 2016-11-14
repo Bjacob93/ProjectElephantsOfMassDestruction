@@ -46,26 +46,29 @@ public class EnemyMelee_AI_Attack : MonoBehaviour {
             //Update the hit cooldown
             meleeCoolDownLeft -= Time.deltaTime;
             //Check if we need to run the attack script since we reached the targeted cooldown
-            if (meleeCoolDownLeft <= 0)
+            if (meleeCoolDownLeft <= 0.5f)
             {
 
                 if (!this.anim.GetCurrentAnimatorStateInfo(0).IsName("ATTACK"))
                 {
                     anim.Play("ATTACK", -1, 0f);
                 }
-                meleeCoolDownLeft = meleeCoolDown;
-                //Create a random value between 0 and 1 if it is lower than 0.9 it hits, making the hit chance 90%
-                if (randV < hitChance + eachMissIncreaseChance)
+                if(meleeCoolDownLeft <= 0)
                 {
-                    //Run the TakenDamage from AlliedMelee_AI_Health script to reduce the nearesPlayer health.
-                    nearestPlayer.GetComponent<AlliedMelee_AI_Health>().TakeDamage(attackDamage);
-                    eachMissIncreaseChance = 0;
-                }
-                else
-                {
-                    eachMissIncreaseChance += 5;
-                }
-
+                    //Create a random value between 0 and 1 if it is lower than 0.9 it hits, making the hit chance 90%
+                    if (randV < hitChance + eachMissIncreaseChance)
+                    {
+                        //Run the TakenDamage from AlliedMelee_AI_Health script to reduce the nearesPlayer health.
+                        nearestPlayer.GetComponent<AlliedMelee_AI_Health>().TakeDamage(attackDamage);
+                        eachMissIncreaseChance = 0;
+                        meleeCoolDownLeft = meleeCoolDown;
+                    }
+                    else
+                    {
+                        eachMissIncreaseChance += 5;
+                        meleeCoolDownLeft = meleeCoolDown;
+                    }
+                }  
             }
         }
     }
