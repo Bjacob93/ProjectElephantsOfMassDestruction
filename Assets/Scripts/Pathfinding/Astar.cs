@@ -175,9 +175,18 @@ public class Astar : MonoBehaviour {
 		controller.SimpleMove (dir);
 
 		//If it has reached it's current waypoint.
-		if (Vector3.Distance (transform.position, path.vectorPath[currentWaypoint]) < maxWaypointDistance) {
+		if (Vector3.Distance (transform.position, path.vectorPath[currentWaypoint]) < maxWaypointDistance && path.vectorPath[currentWaypoint + 1] != null) {
 			currentWaypoint++;
 		}
+
+        if (currentWaypoint + 1 != path.maxLength)
+        {
+            if (Vector3.Distance(transform.position, path.vectorPath[currentWaypoint]) > Vector3.Distance(transform.position, path.vectorPath[currentWaypoint + 1]))
+            {
+                currentWaypoint++;
+            }
+        }
+
 		if (!this.GiraffeRunAnim.GetCurrentAnimatorStateInfo(0).IsName("RUN"))
 		{
 			GiraffeRunAnim.Play("RUN", -1, 0f);
