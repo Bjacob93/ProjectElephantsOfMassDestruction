@@ -49,6 +49,10 @@ public class textEditor : MonoBehaviour
     //Cache the command database;
     CommandDatabase database;
 
+    //Cache the tutorial handler for level 1, and the level manager.
+    Level1TutorialText tutorial;
+    levelManager lvlManager;
+
     void Start()
     {
         //Define dimensions of the textWindow.
@@ -72,11 +76,18 @@ public class textEditor : MonoBehaviour
         comButtonHeight = Screen.height / 24;
         comButton = new Rect(comButtonStartX, comButtonStartY, comButtonWidth, comButtonHeight);
 
-        //Load the skin
+        //Load the skin.
         commandSkin = Resources.Load("Graphix/commandSkin") as GUISkin;
 
-        //Reference the command database
+        //Reference the command database.
         database = GameObject.Find("CommandDatabase").GetComponent<CommandDatabase>();
+
+        //Reference the level manager and tutorial.
+        lvlManager = GameObject.Find("LevelManager").GetComponent<levelManager>();
+        if (lvlManager.currentLevel == 1)
+        {
+            tutorial = GameObject.Find("UIManager").GetComponent<Level1TutorialText>();
+        }
     }
     
     void Update()
@@ -213,6 +224,11 @@ public class textEditor : MonoBehaviour
                                 if (database.commandDatabase[d].commandName == "Attack")
                                 {
                                     listOfCommands.Add(database.commandDatabase[d]);
+                                    if (lvlManager.currentLevel == 1)
+                                    {
+                                        tutorial.enterAttackOrder = true;
+
+                                    }
                                     break;
                                 }
                             }
@@ -258,6 +274,11 @@ public class textEditor : MonoBehaviour
                                 if (database.commandDatabase[d].commandName == "Produce")
                                 {
                                     listOfCommands.Add(database.commandDatabase[d]);
+                                    if (lvlManager.currentLevel == 1)
+                                    {
+                                        tutorial.enterProduceOrder = true;
+
+                                    }
                                     break;
                                 }
                             }
@@ -291,6 +312,11 @@ public class textEditor : MonoBehaviour
                             if (database.commandDatabase[d].commandName == "A")
                             {
                                 listOfCommands.Add(database.commandDatabase[d]);
+
+                                if (lvlManager.currentLevel == 1 && elementsInCode[i - 1] == "attack")
+                                {
+                                    tutorial.enterAttackTarget = true;
+                                }
                                 break;
                             }
                         }
@@ -302,6 +328,10 @@ public class textEditor : MonoBehaviour
                             if (database.commandDatabase[d].commandName == "B")
                             {
                                 listOfCommands.Add(database.commandDatabase[d]);
+                                if (lvlManager.currentLevel == 1 && elementsInCode[i - 1] == "attack")
+                                {
+                                    tutorial.enterAttackTarget = true;
+                                }
                                 break;
                             }
                         }
@@ -313,6 +343,10 @@ public class textEditor : MonoBehaviour
                             if (database.commandDatabase[d].commandName == "C")
                             {
                                 listOfCommands.Add(database.commandDatabase[d]);
+                                if (lvlManager.currentLevel == 1 && elementsInCode[i - 1] == "attack")
+                                {
+                                    tutorial.enterAttackTarget = true;
+                                }
                                 break;
                             }
                         }
@@ -324,6 +358,10 @@ public class textEditor : MonoBehaviour
                             if (database.commandDatabase[d].commandName == "Homebase")
                             {
                                 listOfCommands.Add(database.commandDatabase[d]);
+                                if (lvlManager.currentLevel == 1 && elementsInCode[i - 1] == "attack")
+                                {
+                                    tutorial.enterAttackTarget = true;
+                                }
                                 break;
                             }
                         }

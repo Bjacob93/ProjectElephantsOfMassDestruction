@@ -4,8 +4,10 @@ using System.Collections;
 public class EnemyOrders : MonoBehaviour {
 
     float controlRange;
-    public Vector3 targetLocation1;
-    public Vector3 targetLocation2;
+
+    public GameObject targetOne;
+    public GameObject targetTwo;
+
     public bool hasMultipleTargets;
     public int split;
     int splitIndex;
@@ -21,9 +23,9 @@ public class EnemyOrders : MonoBehaviour {
 	void Update () {
         GameObject[] units = GameObject.FindGameObjectsWithTag("enemyUnits");
 
-        if (!hasMultipleTargets && targetLocation2 != new Vector3(0,0,0))
+        if (!hasMultipleTargets && targetTwo != null)
         {
-            targetLocation1 = targetLocation2;
+            targetOne = targetTwo;
         }
 
         foreach (GameObject e in units)
@@ -38,13 +40,13 @@ public class EnemyOrders : MonoBehaviour {
                     {
                         if (splitIndex % split == 0)
                         {
-                            aStarEnemy.targetPosition = targetLocation1;
+                            aStarEnemy.targetPosition = targetOne.transform.position;
                             aStarEnemy.receivedNewDestination = true;
                             aStarEnemy.commanderID = gameObject.name;
                         }
                         else
                         {
-                            aStarEnemy.targetPosition = targetLocation2;
+                            aStarEnemy.targetPosition = targetTwo.transform.position;
                             aStarEnemy.receivedNewDestination = true;
                             aStarEnemy.commanderID = gameObject.name;
                         }
@@ -52,7 +54,7 @@ public class EnemyOrders : MonoBehaviour {
                     }
                     else
                     {
-                        aStarEnemy.targetPosition = targetLocation1;
+                        aStarEnemy.targetPosition = targetOne.transform.position;
                         aStarEnemy.receivedNewDestination = true;
                         aStarEnemy.commanderID = gameObject.name;
                     }
