@@ -22201,7 +22201,7 @@ MonoBehaviour:
     y: 0
     width: 0
     height: 0
-  commandSkin: {fileID: 0}
+  commandSkin: {fileID: 11400000, guid: af1d55f012321ba4fb142ce096bc0ec4, type: 2}
   objective1: Kill all enemies
   objective2: Hold all Capture points
   objective3: Defend your base agains enemy attacks
