@@ -5000,6 +5000,7 @@ MonoBehaviour:
   currentHealth: 0
   moneyValue: 8
   enemyUnits: {fileID: 0}
+  enemySpawn: {fileID: 0}
 --- !u!114 &114000013391528026
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -5015,7 +5016,7 @@ MonoBehaviour:
   commanderID: 
   speed: 100
   meleeRange: 3
-  engagementRange: 10
+  engagementRange: 15
   direction: {x: 0, y: 0, z: 0}
   receivedDefenceOrder: 0
   receivedNewDestination: 0
@@ -5132,7 +5133,7 @@ MonoBehaviour:
   commanderID: 
   speed: 100
   meleeRange: 3
-  engagementRange: 10
+  engagementRange: 15
   direction: {x: 0, y: 0, z: 0}
   receivedDefenceOrder: 0
   receivedNewDestination: 0

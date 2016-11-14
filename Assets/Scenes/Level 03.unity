@@ -37,7 +37,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44692558, g: 0.49678743, b: 0.57508624, a: 1}
+  m_IndirectSpecularColor: {r: 0.44692534, g: 0.49678725, b: 0.5750856, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -416,8 +416,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f7977716f0f3be5448dfabcc00c8e4ae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  targetLocation1: {x: 47, y: 0, z: 47}
-  targetLocation2: {x: 0, y: 0, z: 0}
+  targetOne: {fileID: 0}
+  targetTwo: {fileID: 0}
   hasMultipleTargets: 0
   split: 0
 --- !u!65 &50982903
@@ -2840,8 +2840,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f7977716f0f3be5448dfabcc00c8e4ae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  targetLocation1: {x: -40, y: 0, z: 40}
-  targetLocation2: {x: 0, y: 0, z: 0}
+  targetOne: {fileID: 0}
+  targetTwo: {fileID: 0}
   hasMultipleTargets: 0
   split: 0
 --- !u!65 &364346759
@@ -4658,8 +4658,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f7977716f0f3be5448dfabcc00c8e4ae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  targetLocation1: {x: -46, y: 0, z: -42}
-  targetLocation2: {x: -58.3, y: 0, z: 40}
+  targetOne: {fileID: 0}
+  targetTwo: {fileID: 0}
   hasMultipleTargets: 1
   split: 2
 --- !u!114 &695198820
@@ -4916,7 +4916,7 @@ Transform:
   - {fileID: 437009529}
   - {fileID: 174325725}
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 0
 --- !u!20 &749549055
 Camera:
   m_ObjectHideFlags: 0
@@ -6244,7 +6244,7 @@ GameObject:
   - 114: {fileID: 1062915145}
   m_Layer: 5
   m_Name: CaptureTimers (1)
-  m_TagString: Untagged
+  m_TagString: CapturePoint
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6286,7 +6286,8 @@ MonoBehaviour:
   elephantCapture: {fileID: 877225464}
   giraffeCapture: {fileID: 1891661750}
   NeutralCapture: {fileID: 1534071457}
-  CaptureTimer: 50
+  avCaptureTimer: 0
+  capturePoints: 0
   distanceNeededToCapture: 10
   neutralCapturePoint: 1
   modIndex: 1
@@ -7098,7 +7099,8 @@ MonoBehaviour:
   elephantCapture: {fileID: 535273334}
   giraffeCapture: {fileID: 633877957}
   NeutralCapture: {fileID: 267034970}
-  CaptureTimer: 50
+  avCaptureTimer: 0
+  capturePoints: 0
   distanceNeededToCapture: 10
   neutralCapturePoint: 1
   modIndex: 1
@@ -9087,69 +9089,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1547951719}
   m_RootOrder: 0
---- !u!1 &1522607683
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
-  m_Component:
-  - 4: {fileID: 1522607685}
-  - 108: {fileID: 1522607684}
-  m_Layer: 0
-  m_Name: Directional Light
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!108 &1522607684
-Light:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1522607683}
-  m_Enabled: 1
-  serializedVersion: 7
-  m_Type: 1
-  m_Color: {r: 1, g: 0.95686275, b: 0.8392157, a: 1}
-  m_Intensity: 1
-  m_Range: 10
-  m_SpotAngle: 30
-  m_CookieSize: 10
-  m_Shadows:
-    m_Type: 2
-    m_Resolution: -1
-    m_CustomResolution: -1
-    m_Strength: 1
-    m_Bias: 0.05
-    m_NormalBias: 0.4
-    m_NearPlane: 0.2
-  m_Cookie: {fileID: 0}
-  m_DrawHalo: 0
-  m_Flare: {fileID: 0}
-  m_RenderMode: 0
-  m_CullingMask:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_Lightmapping: 4
-  m_AreaSize: {x: 1, y: 1}
-  m_BounceIntensity: 1
-  m_ShadowRadius: 0
-  m_ShadowAngle: 0
---- !u!4 &1522607685
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1522607683}
-  m_LocalRotation: {x: 0.40821788, y: -0.23456968, z: 0.10938163, w: 0.8754261}
-  m_LocalPosition: {x: 0, y: 3, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 0
 --- !u!1 &1534071455
 GameObject:
   m_ObjectHideFlags: 0
@@ -10903,6 +10842,7 @@ MonoBehaviour:
   moneyText: {fileID: 310765822}
   livesText: {fileID: 1451101469}
   capturePoint: []
+  basicCapturePointScripts: []
   playerHasAllCheckPoints: 0
 --- !u!95 &1758211572
 Animator:
@@ -14370,8 +14310,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f7977716f0f3be5448dfabcc00c8e4ae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  targetLocation1: {x: 47, y: 0, z: 47}
-  targetLocation2: {x: 0, y: 0, z: 0}
+  targetOne: {fileID: 0}
+  targetTwo: {fileID: 0}
   hasMultipleTargets: 0
   split: 0
 --- !u!65 &2085242034

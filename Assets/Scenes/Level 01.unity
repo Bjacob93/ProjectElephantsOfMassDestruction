@@ -1436,7 +1436,7 @@ GameObject:
   - 4: {fileID: 114762612}
   - 137: {fileID: 114762614}
   - 183: {fileID: 114762613}
-  m_Layer: 9
+  m_Layer: 0
   m_Name: Flag
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2254,7 +2254,7 @@ GameObject:
   - 4: {fileID: 141074902}
   - 33: {fileID: 141074904}
   - 23: {fileID: 141074903}
-  m_Layer: 9
+  m_Layer: 0
   m_Name: pCube1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2655,7 +2655,7 @@ GameObject:
   - 4: {fileID: 171782683}
   - 95: {fileID: 171782685}
   - 65: {fileID: 171782684}
-  m_Layer: 9
+  m_Layer: 0
   m_Name: CheckpointFlag
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2690,7 +2690,7 @@ BoxCollider:
   m_GameObject: {fileID: 171782682}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Size: {x: 22, y: 45, z: 22}
   m_Center: {x: 0, y: 22, z: 0}
@@ -3775,9 +3775,9 @@ GameObject:
   - 114: {fileID: 286938685}
   - 114: {fileID: 286938684}
   - 114: {fileID: 286938683}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: CaptureTimers
-  m_TagString: Untagged
+  m_TagString: CapturePoint
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6317,7 +6317,7 @@ GameObject:
   - 33: {fileID: 565554041}
   - 23: {fileID: 565554040}
   - 136: {fileID: 565554039}
-  m_Layer: 9
+  m_Layer: 0
   m_Name: Flagstang
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6333,7 +6333,7 @@ CapsuleCollider:
   m_GameObject: {fileID: 565554038}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   m_Radius: 1
   m_Height: 2
   m_Direction: 1
@@ -8150,7 +8150,7 @@ GameObject:
   - 224: {fileID: 751515493}
   - 222: {fileID: 751515495}
   - 114: {fileID: 751515494}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Giraffe CaptureTimer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11072,7 +11072,7 @@ GameObject:
   - 23: {fileID: 1011904114}
   - 95: {fileID: 1011904113}
   - 64: {fileID: 1011904112}
-  m_Layer: 9
+  m_Layer: 0
   m_Name: CheckpointFlag
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -13533,7 +13533,7 @@ GameObject:
   - 4: {fileID: 1252976717}
   - 33: {fileID: 1252976719}
   - 23: {fileID: 1252976718}
-  m_Layer: 9
+  m_Layer: 0
   m_Name: pCylinder1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -15155,7 +15155,7 @@ GameObject:
   - 4: {fileID: 1375790129}
   - 33: {fileID: 1375790131}
   - 23: {fileID: 1375790130}
-  m_Layer: 9
+  m_Layer: 0
   m_Name: pSphere1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -20563,7 +20563,7 @@ GameObject:
   - 114: {fileID: 1912276540}
   - 65: {fileID: 1912276539}
   - 114: {fileID: 1912276538}
-  m_Layer: 9
+  m_Layer: 0
   m_Name: A
   m_TagString: Checkpoint
   m_Icon: {fileID: 0}
@@ -20613,8 +20613,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 5, y: 10, z: 5}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 5, y: 1, z: 5}
+  m_Center: {x: 0, y: 5, z: 0}
 --- !u!114 &1912276540
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -21230,7 +21230,7 @@ GameObject:
   - 224: {fileID: 1969067730}
   - 222: {fileID: 1969067732}
   - 114: {fileID: 1969067731}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Neutral CaptureTimer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -22453,7 +22453,7 @@ GameObject:
   - 224: {fileID: 2034199832}
   - 222: {fileID: 2034199834}
   - 114: {fileID: 2034199833}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Elephant CaptureTimer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -23422,7 +23422,7 @@ GameObject:
   - 4: {fileID: 2134393903}
   - 33: {fileID: 2134393905}
   - 23: {fileID: 2134393904}
-  m_Layer: 9
+  m_Layer: 0
   m_Name: CheckPointFlag
   m_TagString: Untagged
   m_Icon: {fileID: 0}
