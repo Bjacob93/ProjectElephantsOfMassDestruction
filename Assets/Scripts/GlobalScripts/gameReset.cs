@@ -14,6 +14,9 @@ public class gameReset : MonoBehaviour {
     GameObject scoreManagerGO;
 	ScoreManager scoreManagerScript;
 
+    GameObject CapturePointGO;
+    BasicCapturePoint basicCapturePoint;
+
 	GameObject buyEnemyUnitsGO;
 	BuyEnemyUnits buyEnemyUnitsScript;
 
@@ -55,6 +58,15 @@ public class gameReset : MonoBehaviour {
 		scoreManagerScript.money = 100;
 
 		buyEnemyUnitsScript.restartTimer = 0;
+        buyEnemyUnitsScript.amountOfEnemySpawned = 0;
+
+        for(int i = 0; i < scoreManagerScript.basicCapturePointScripts.Count; i++)
+        {
+            scoreManagerScript.basicCapturePointScripts[i].capturePoints = scoreManagerScript.basicCapturePointScripts[i].avCaptureTimer;
+            scoreManagerScript.basicCapturePointScripts[i].enemyHasCapturePoint = false;
+            scoreManagerScript.basicCapturePointScripts[i].playerHasCapturePoint = false;
+            scoreManagerScript.basicCapturePointScripts[i].neutralCapturePoint = true;
+        }
 
         homeBaseGUI.shrimp = 1;
         basicCheckpointScript.shrimp = 1;

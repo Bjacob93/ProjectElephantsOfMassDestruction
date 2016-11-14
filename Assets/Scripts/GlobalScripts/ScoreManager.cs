@@ -17,12 +17,12 @@ public class ScoreManager : MonoBehaviour {
 	public Text livesText;
 
     public GameObject[] capturePoint; //cache all capturePoints
-    List<BasicCapturePoint> basicCapturePointScripts = new List<BasicCapturePoint>(); // cache and prepare a lise for the scripts from capturePoint
+    public List<BasicCapturePoint> basicCapturePointScripts = new List<BasicCapturePoint>(); // cache and prepare a lise for the scripts from capturePoint
     public bool playerHasAllCheckPoints = false; // bool used to check if the player got all capture points
 
     // Use this for initialization
     public void LoseLife (int l = 1) {
-		//lives -= l;
+		lives -= l;
 		if (lives <= 0) {
 			GameOver ();
 			timeupdate ();

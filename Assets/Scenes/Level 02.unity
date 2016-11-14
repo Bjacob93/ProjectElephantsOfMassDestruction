@@ -3209,6 +3209,7 @@ MonoBehaviour:
   moneyText: {fileID: 1993096858}
   livesText: {fileID: 551578490}
   capturePoint: []
+  basicCapturePointScripts: []
   playerHasAllCheckPoints: 0
 --- !u!95 &655060170
 Animator:
@@ -6090,7 +6091,7 @@ GameObject:
   - 114: {fileID: 1190333982}
   m_Layer: 5
   m_Name: CaptureTimer
-  m_TagString: Untagged
+  m_TagString: CapturePoint
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6132,7 +6133,8 @@ MonoBehaviour:
   elephantCapture: {fileID: 603639121}
   giraffeCapture: {fileID: 1868621224}
   NeutralCapture: {fileID: 767827815}
-  CaptureTimer: 50
+  avCaptureTimer: 0
+  capturePoints: 0
   distanceNeededToCapture: 10
   neutralCapturePoint: 1
   modIndex: 1
@@ -9079,7 +9081,7 @@ GameObject:
   - 114: {fileID: 1740169646}
   m_Layer: 5
   m_Name: CaptureTimer
-  m_TagString: Untagged
+  m_TagString: CapturePoint
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -9121,7 +9123,8 @@ MonoBehaviour:
   elephantCapture: {fileID: 79786010}
   giraffeCapture: {fileID: 455723868}
   NeutralCapture: {fileID: 807714370}
-  CaptureTimer: 50
+  avCaptureTimer: 0
+  capturePoints: 0
   distanceNeededToCapture: 10
   neutralCapturePoint: 1
   modIndex: 1

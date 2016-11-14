@@ -33,6 +33,8 @@ public class EnemyMelee_AI_Health : MonoBehaviour {
 
         scoreManager = GameObject.FindObjectOfType<ScoreManager>();
 
+        enemySpawn = GameObject.FindGameObjectWithTag("EnemyBase");
+
     }
 	
 	void Update () {
