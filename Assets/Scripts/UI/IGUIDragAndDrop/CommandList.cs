@@ -45,20 +45,33 @@ public class CommandList : MonoBehaviour {
 	private bool showToolTip;
 	private string toolTip;
 
+    //Animator
+    private string buttonState = "hide";
+    float speed;
+    private bool animState = true;
+    //button for animation
+    float buttonW;
+    float buttonH;
+    float buttonX;
+    float buttonXMax;
+    float buttonY;
+
     //GUI appearence.
     public GUISkin commandSkin;
 
     void Start(){
-
         //Reference the database of commands so that we can always find any command we need.
         database = GameObject.FindGameObjectWithTag("CommandDatabase").GetComponent<CommandDatabase>();
 
         //Reference the Sequence Manager script.
         sequenceManager = GameObject.Find("UIManager").GetComponent<SequenceManager>();
-        tutorialtext = GameObject.Find("UIManager").GetComponent<Level1TutorialText>();
 
         //Reference the levelManager.
         lvlManager = GameObject.Find("LevelManager").GetComponent<levelManager>();
+        if(lvlManager.currentLevel == 1)
+        {
+            tutorialtext = GameObject.Find("UIManager").GetComponent<Level1TutorialText>();
+        }
 
         //Calculate the bounding box dimensions and define the resulting Rect.
         boundingBoxHeight = numberOfSlots * (boxHeight + ((Screen.height / 24) / 10)) + (Screen.width/35);
@@ -86,17 +99,49 @@ public class CommandList : MonoBehaviour {
 		for (int j = 0; j < availableCommands.Count; j++) {
 			slots [j] = availableCommands [j];
 		}
+        //Animation button
+        speed = Time.deltaTime * 600;
+        buttonH = 30;
+        buttonW = 60;
+        buttonX = boundingBoxX - buttonW;
+        buttonXMax = buttonX;
+        buttonY = boundingBoxY - (buttonH * 0.5f) + (boundingBoxHeight * 0.5f);
     }
 
 	void Update(){
+        if (!animState && buttonX >= buttonXMax + 20)
+        {
+            if (lvlManager.currentLevel == 1)
+            {
+                if (tutorialtext.qHasBeenPressed == false)
+                {
+                    tutorialtext.qHasBeenPressed = true;
+                }
+            }
+            if (buttonX < buttonXMax)
+            {
+                buttonX = buttonXMax;
+            }
+            buttonState = "hide";
+            buttonX -= speed;
+            boundingBoxX -= speed;
+            boxStartingPosX -= speed;
+        }
+        else if (animState && buttonX <= Screen.width - buttonW - 20)
+        {
+            if (buttonX > Screen.width - buttonW)
+            {
+                buttonX = Screen.width - buttonW;
+            }
+            buttonState = "show";
+            buttonX += speed;
+            boxStartingPosX += speed;
+            boundingBoxX += speed;
+        }
 
         //Open or close the Command List.
-		if(Input.GetButtonDown("Commandlist")){	
-			drawCommandList = !drawCommandList;
-            if(tutorialtext.qHasBeenPressed == false)
-            {
-                tutorialtext.qHasBeenPressed = true;
-            } 
+        if (Input.GetButtonDown("Commandlist")){
+            animState = !animState;
 		}
 	}
 
@@ -107,25 +152,27 @@ public class CommandList : MonoBehaviour {
 
         //Set the current tooltip string to be blank.
 		toolTip = "";
+        //draw toggle button
+        if (GUI.Button(new Rect(buttonX, buttonY, buttonW, buttonH), buttonState) || drawCommandList)
+        {
+            animState = !animState;
+        }
 
-        //Draw the command list.
-		if(drawCommandList){
-            //Go through all instances of EditorList.
-            for(int i = 0; i < sequenceManager.editorlistGO.Count; i++)
+        //Go through all instances of EditorList.
+        for (int i = 0; i < sequenceManager.editorlistGO.Count; i++)
+        {
+            //If one of them is currently open in the UI, make that the reference point for sequenceEditor.
+            if (sequenceManager.editorlistGO[i].drawEditorWindow)
             {
-                //If one of them is currently open in the UI, make that the reference point for sequenceEditor.
-                if (sequenceManager.editorlistGO[i].drawEditorWindow)
-                {
-                    sequenceEditor = sequenceManager.editorlistGO[i];
-                    break;
-                }
-                if(!sequenceManager.editorlistGO[i].drawEditorWindow && i == sequenceManager.editorlistGO.Count - 1)
-                {
-                    sequenceEditor = null;
-                }
+                sequenceEditor = sequenceManager.editorlistGO[i];
+                break;
             }
-            DrawCommandList ();
-		}
+            if (!sequenceManager.editorlistGO[i].drawEditorWindow && i == sequenceManager.editorlistGO.Count - 1)
+            {
+                sequenceEditor = null;
+            }
+        }
+        DrawCommandList();
 
         //Show the tooltip at the mouse position.
 		if (showToolTip) {

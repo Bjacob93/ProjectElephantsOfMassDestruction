@@ -59,6 +59,8 @@ namespace Pathfinding {
 		/** Holds the (perhaps post processed) path as a Vector3 list */
 		public List<Vector3> vectorPath;
 
+        public int maxLength;
+
 		/** The max number of milliseconds per iteration (frame, in case of non-multithreading) */
 		protected float maxFrameTime;
 
@@ -554,6 +556,8 @@ namespace Pathfinding {
 					break;
 				}
 			}
+
+            maxLength = count;
 
 			// Ensure capacities for lists
 			AstarProfiler.StartProfile("Check List Capacities");
