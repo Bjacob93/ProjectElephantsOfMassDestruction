@@ -15118,7 +15118,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   targetLocation1: {x: 20.9, y: 0, z: -1.5}
   targetLocation2: {x: 20.9, y: 0, z: -1.5}
-  hasMultipleTargets: 1
+  hasMultipleTargets: 0
   split: 0
 --- !u!114 &1392156514
 MonoBehaviour:
