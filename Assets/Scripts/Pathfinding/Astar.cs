@@ -176,10 +176,11 @@ public class Astar : MonoBehaviour {
 	void Move(Vector3 direction, Path path){
 		//Set's the direction of movement to a vector form current position to next waypoint, then calls the SimpleMove command in the CharacterController.
 		Vector3 dir = direction * speed * Time.deltaTime;
-		controller.SimpleMove (dir);
+        controller.SimpleMove(dir);
 
-		//If it has reached it's current waypoint.
-		if (Vector3.Distance (transform.position, path.vectorPath[currentWaypoint]) < maxWaypointDistance) {
+
+        //If it has reached it's current waypoint.
+        if (Vector3.Distance (transform.position, path.vectorPath[currentWaypoint]) < maxWaypointDistance) {
 			currentWaypoint++;
 		}
 
@@ -188,7 +189,7 @@ public class Astar : MonoBehaviour {
             currentWaypoint++;
         }
 
-		if (!this.GiraffeRunAnim.GetCurrentAnimatorStateInfo(0).IsName("RUN"))
+        if (!this.GiraffeRunAnim.GetCurrentAnimatorStateInfo(0).IsName("RUN"))
 		{
 			GiraffeRunAnim.Play("RUN", -1, 0f);
 		}

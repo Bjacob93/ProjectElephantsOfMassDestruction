@@ -206,6 +206,11 @@ public class AstarEnemy : MonoBehaviour
             currentWaypoint++;
         }
 
+        if (path != null && Vector3.Distance(transform.position, path.vectorPath[currentWaypoint]) > Vector3.Distance(transform.position, path.vectorPath[currentWaypoint + 1]))
+        {
+            currentWaypoint++;
+        }
+
         if (!this.ElephantRunAnim.GetCurrentAnimatorStateInfo(0).IsName("RUN"))
         {
             ElephantRunAnim.Play("RUN", -1, 0f);
