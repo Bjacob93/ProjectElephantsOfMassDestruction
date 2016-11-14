@@ -19,6 +19,7 @@ TagManager:
   - ResetButton
   - PlayButton
   - Checkpoint
+  - CapturePoint
   layers:
   - Default
   - TransparentFX

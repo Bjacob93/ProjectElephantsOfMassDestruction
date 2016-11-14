@@ -10,13 +10,11 @@ public class mainMenuVariables : MonoBehaviour {
         DontDestroyOnLoad(transform.gameObject);
     }
 
-	// Use this for initialization
-	void Start () {
-	
+	public void setTrue(){
+		useDragonDrop = true; 
 	}
-	
-	// Update is called once per frame
-	void Update () {
-	
-	}
+
+	public void setFalse(){
+		useDragonDrop = false;
+		}
 }

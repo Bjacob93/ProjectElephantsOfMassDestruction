@@ -51,7 +51,7 @@ public class BuyEnemyUnits : MonoBehaviour
         {
             if (amountOfEnemySpawned < maxEnemySpawn)
             {
-                Instantiate(enemyUnits, new Vector3(-45, 1, -45), Quaternion.Euler(0, 0, 0));
+                Instantiate(enemyUnits, this.transform.position, Quaternion.Euler(0, 0, 0));
                 restartTimer = 0;
                 amountOfEnemySpawned++;
             }
@@ -68,7 +68,7 @@ public class BuyEnemyUnits : MonoBehaviour
                     {
                         break;
                     }
-                    else if (i == listOfEnemyUnits.enemies.Length - 1)
+                    else if (i == listOfEnemyUnits.enemies.Length - 1 && sm.playerHasAllCheckPoints == true)
                     {
                         sm.Victory();
                         timeupdate();
