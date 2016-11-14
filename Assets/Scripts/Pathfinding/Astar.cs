@@ -35,7 +35,7 @@ public class Astar : MonoBehaviour {
     public bool receivedNewDestination = false;
 
     //Cache variable that limits calls to pathfinding to once every second.
-    bool pathCompleted = false;
+    bool pathCompleted = true;
 
     //Cache the animator.
 	public Animator GiraffeRunAnim;
