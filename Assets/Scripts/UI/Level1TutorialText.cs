@@ -8,7 +8,6 @@ public class Level1TutorialText : MonoBehaviour {
     public bool enterProduceOrder = false;
     public bool enterAttackOrder = false;
     public bool enterAttackTarget = false;
-    public bool additionalInformation = false;
     public bool pressPlay = false;
     bool drawStartInfo;
 
@@ -18,15 +17,31 @@ public class Level1TutorialText : MonoBehaviour {
     float TutorialBoxWidth;
     Rect TutorialBox;
 
-    public string TutorialPage1, 
-                  TutorialPage2,  
-                  TutorialPage3,    
-                  TutorialPage4,    
-                  TutorialPage5, 
-                  TutorialPage6,
-                  TutorialPage7;
+    string  TutorialPage1,
+            TutorialPage2,
+            TutorialPage3,
+            TutorialPage4,
+            TutorialPage5,
+            TutorialPage6;
+
+    string  dndTutorialPage1 = "dndPage1 pres q",
+            dndTutorialPage2 = "press on flag or castle",
+            dndTutorialPage3 = "use produce order",
+            dndTutorialPage4 = "use attack order",
+            dndTutorialPage5 = "give attack order a location",
+            dndTutorialPage6 = "press play";
+
+    string  textTutorialPage1 = "",
+            textTutorialPage2 = "",
+            textTutorialPage3 = "",
+            textTutorialPage4 = "",
+            textTutorialPage5 = "",
+            textTutorialPage6 = "";
 
     public GUISkin commandSkin;
+
+    levelManager lvlManager;
+    mainMenuVariables varKeeper;
 
     // Use this for initialization
     void Start()
@@ -37,6 +52,28 @@ public class Level1TutorialText : MonoBehaviour {
         TutorialBoxWidth = Screen.width / 3;
         drawStartInfo = true;
         TutorialBox = new Rect(ToturialBoxStartPosX, ToturialBoxStartPosY, TutorialBoxWidth, TutorialBoxHeight);
+
+        lvlManager = GameObject.Find("LevelManager").GetComponent<levelManager>();
+        varKeeper = GameObject.Find("KeeperOfVariables").GetComponent<mainMenuVariables>();
+
+        if (varKeeper.useDragonDrop == true) // check if it is the drag and drop or text game mode, then fill the tutorial text correctly.
+        {
+            TutorialPage1 = dndTutorialPage1;
+            TutorialPage2 = dndTutorialPage2;
+            TutorialPage3 = dndTutorialPage3;
+            TutorialPage4 = dndTutorialPage4;
+            TutorialPage5 = dndTutorialPage5;
+            TutorialPage6 = dndTutorialPage6;
+        }
+        else
+        {
+            TutorialPage1 = textTutorialPage1;
+            TutorialPage2 = textTutorialPage2;
+            TutorialPage3 = textTutorialPage3;
+            TutorialPage4 = textTutorialPage4;
+            TutorialPage5 = textTutorialPage5;
+            TutorialPage6 = textTutorialPage6;
+        }
     }
 	
 	// Update is called once per frame
@@ -46,43 +83,38 @@ public class Level1TutorialText : MonoBehaviour {
     void OnGUI()
     {
         GUI.skin = commandSkin;
-        if (drawStartInfo) { 
-        if (qHasBeenPressed == false && editorHasBeenOpened == false && enterProduceOrder == false && enterAttackOrder == false && enterAttackTarget == false && additionalInformation == false && pressPlay == false)
+        if (drawStartInfo && lvlManager.currentLevel == 1) { 
+        if (qHasBeenPressed == false && editorHasBeenOpened == false && enterProduceOrder == false && enterAttackOrder == false && enterAttackTarget == false && pressPlay == false)
         {
             GUI.Box(new Rect(TutorialBox), TutorialPage1, commandSkin.GetStyle("tooltipBackground"));
         }
 
-        if(qHasBeenPressed == true && editorHasBeenOpened == false && enterProduceOrder == false && enterAttackOrder == false && enterAttackTarget == false && additionalInformation == false && pressPlay == false)
+        if(qHasBeenPressed == true && editorHasBeenOpened == false && enterProduceOrder == false && enterAttackOrder == false && enterAttackTarget == false && pressPlay == false)
         {
             GUI.Box(new Rect(TutorialBox), TutorialPage2, commandSkin.GetStyle("tooltipBackground"));
         }
 
-        if(qHasBeenPressed == true && editorHasBeenOpened == true && enterProduceOrder == false && enterAttackOrder == false && enterAttackTarget == false && additionalInformation == false && pressPlay == false)
+        if(qHasBeenPressed == true && editorHasBeenOpened == true && enterProduceOrder == false && enterAttackOrder == false && enterAttackTarget == false && pressPlay == false)
         {
             GUI.Box(new Rect(TutorialBox), TutorialPage3, commandSkin.GetStyle("tooltipBackground"));
         }
 
-        if (qHasBeenPressed == true && editorHasBeenOpened == true && enterProduceOrder == true && enterAttackOrder == false && enterAttackTarget == false && additionalInformation == false && pressPlay == false)
+        if (qHasBeenPressed == true && editorHasBeenOpened == true && enterProduceOrder == true && enterAttackOrder == false && enterAttackTarget == false && pressPlay == false)
         {
             GUI.Box(new Rect(TutorialBox), TutorialPage4, commandSkin.GetStyle("tooltipBackground"));
         }
 
-        if (qHasBeenPressed == true && editorHasBeenOpened == true && enterProduceOrder == true && enterAttackOrder == true && enterAttackTarget == false && additionalInformation == false && pressPlay == false)
+        if (qHasBeenPressed == true && editorHasBeenOpened == true && enterProduceOrder == true && enterAttackOrder == true && enterAttackTarget == false && pressPlay == false)
         {
             GUI.Box(new Rect(TutorialBox), TutorialPage5, commandSkin.GetStyle("tooltipBackground"));
         }
 
-        if (qHasBeenPressed == true && editorHasBeenOpened == true && enterProduceOrder == true && enterAttackOrder == true && enterAttackTarget == true && additionalInformation == false && pressPlay == false)
+        if (qHasBeenPressed == true && editorHasBeenOpened == true && enterProduceOrder == true && enterAttackOrder == true && enterAttackTarget == true && pressPlay == false)
         {
             GUI.Box(new Rect(TutorialBox), TutorialPage6, commandSkin.GetStyle("tooltipBackground"));
         }
 
-        if (qHasBeenPressed == true && editorHasBeenOpened == true && enterProduceOrder == true && enterAttackOrder == true && enterAttackTarget == true && additionalInformation == true && pressPlay == false)
-        {
-            GUI.Box(new Rect(TutorialBox), TutorialPage7, commandSkin.GetStyle("tooltipBackground"));
-        }
-
-        if (qHasBeenPressed == true && editorHasBeenOpened == true && enterProduceOrder == true && enterAttackOrder == true && enterAttackTarget == true && additionalInformation == true && pressPlay == true)
+        if (qHasBeenPressed == true && editorHasBeenOpened == true && enterProduceOrder == true && enterAttackOrder == true && enterAttackTarget == true &&pressPlay == true)
         {
                 drawStartInfo = false;
         }

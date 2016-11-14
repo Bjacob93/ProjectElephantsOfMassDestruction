@@ -35,8 +35,9 @@ public class Astar : MonoBehaviour {
     public bool receivedNewDestination = false;
 
     //Cache variable that limits calls to pathfinding to once every second.
-    bool pathCompleted = false;
+    bool pathCompleted = true;
 
+    //Cache the animator.
 	public Animator GiraffeRunAnim;
 
 	//Cache variables for enemies
@@ -55,11 +56,11 @@ public class Astar : MonoBehaviour {
 		seeker = GetComponent<Seeker> ();
 		controller = GetComponent<CharacterController> ();
 
-		//Call the pathfinding method in 
-		seeker.StartPath (transform.position, targetPosition, OnPathComplete);
+        //Reference the unitManager and array.
         unitManager = GameObject.Find("UnitManager");
         uArray = unitManager.GetComponent<UnitArrays>();
 
+        //Reference the animator.
 		GiraffeRunAnim = GetComponent<Animator>();
     }
 
@@ -84,12 +85,9 @@ public class Astar : MonoBehaviour {
             if (isDefending)
             {
                 distanceFromTarget = Vector3.Distance(nearestEnemy.transform.position, targetPosition);
-
             }
         }
-
         PathToEnemy();
-
 	}
 
 	//Method for pathing to the nearest enemy.
@@ -105,7 +103,6 @@ public class Astar : MonoBehaviour {
                     goToWaypoint = false;
                     movingToWaypoint = false;
                 }
-				
 			}
 		} else if (nearestEnemy != null && distanceToEnemy <= engagementRange && previousEnemy != nearestEnemy) {
 			hasPathToEnemy = false;

@@ -55,7 +55,7 @@ public class CommandList : MonoBehaviour {
 
         //Reference the Sequence Manager script.
         sequenceManager = GameObject.Find("UIManager").GetComponent<SequenceManager>();
-        tutorialtext = GameObject.Find("ScoreManager").GetComponent<Level1TutorialText>();
+        tutorialtext = GameObject.Find("UIManager").GetComponent<Level1TutorialText>();
 
         //Reference the levelManager.
         lvlManager = GameObject.Find("LevelManager").GetComponent<levelManager>();
