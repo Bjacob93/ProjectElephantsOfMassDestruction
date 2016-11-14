@@ -17,16 +17,31 @@ public class Level1TutorialText : MonoBehaviour {
     float TutorialBoxWidth;
     Rect TutorialBox;
 
-    public string TutorialPage1,
-                  TutorialPage2,
-                  TutorialPage3,
-                  TutorialPage4,
-                  TutorialPage5,
-                  TutorialPage6;
+    string  TutorialPage1,
+            TutorialPage2,
+            TutorialPage3,
+            TutorialPage4,
+            TutorialPage5,
+            TutorialPage6;
+
+    string  dndTutorialPage1 = "",
+            dndTutorialPage2 = "",
+            dndTutorialPage3 = "",
+            dndTutorialPage4 = "",
+            dndTutorialPage5 = "",
+            dndTutorialPage6 = "";
+
+    string  textTutorialPage1 = "",
+            textTutorialPage2 = "",
+            textTutorialPage3 = "",
+            textTutorialPage4 = "",
+            textTutorialPage5 = "",
+            textTutorialPage6 = "";
 
     public GUISkin commandSkin;
 
     levelManager lvlManager;
+    mainMenuVariables keeperOfVar;
 
     // Use this for initialization
     void Start()
@@ -39,6 +54,26 @@ public class Level1TutorialText : MonoBehaviour {
         TutorialBox = new Rect(ToturialBoxStartPosX, ToturialBoxStartPosY, TutorialBoxWidth, TutorialBoxHeight);
 
         lvlManager = GameObject.Find("LevelManager").GetComponent<levelManager>();
+        keeperOfVar = GameObject.Find("keepOfVariables").GetComponent<mainMenuVariables>();
+
+        if(keeperOfVar.useDragonDrop == true) // check if it is the drag and drop or text game mode, then fill the tutorial text correctly.
+        {
+            TutorialPage1 = dndTutorialPage1;
+            TutorialPage2 = dndTutorialPage2;
+            TutorialPage3 = dndTutorialPage3;
+            TutorialPage4 = dndTutorialPage4;
+            TutorialPage5 = dndTutorialPage5;
+            TutorialPage6 = dndTutorialPage6;
+        }
+        else
+        {
+            TutorialPage1 = textTutorialPage1;
+            TutorialPage2 = textTutorialPage2;
+            TutorialPage3 = textTutorialPage3;
+            TutorialPage4 = textTutorialPage4;
+            TutorialPage5 = textTutorialPage5;
+            TutorialPage6 = textTutorialPage6;
+        }
     }
 	
 	// Update is called once per frame
