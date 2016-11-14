@@ -14,6 +14,9 @@ public class gameReset : MonoBehaviour {
     GameObject scoreManagerGO;
 	ScoreManager scoreManagerScript;
 
+    GameObject CapturePointGO;
+    BasicCapturePoint basicCapturePoint;
+
 	GameObject buyEnemyUnitsGO;
 	BuyEnemyUnits buyEnemyUnitsScript;
 
@@ -40,6 +43,9 @@ public class gameReset : MonoBehaviour {
 		unitManager = GameObject.Find("UnitManager");
 		Uarray = unitManager.GetComponent<UnitArrays>();
 
+        CapturePointGO = GameObject.Find("CaptureTimers");
+        basicCapturePoint = CapturePointGO.GetComponent<BasicCapturePoint>();
+
         reset = GameObject.FindGameObjectWithTag("ResetButton");
         reset.SetActive(false);
 
@@ -55,6 +61,12 @@ public class gameReset : MonoBehaviour {
 		scoreManagerScript.money = 100;
 
 		buyEnemyUnitsScript.restartTimer = 0;
+        buyEnemyUnitsScript.amountOfEnemySpawned = 0;
+
+        basicCapturePoint.enemyHasCapturePoint = false;
+        basicCapturePoint.playerHasCapturePoint = false;
+        basicCapturePoint.neutralCapturePoint = true;
+        basicCapturePoint.capturePoints = basicCapturePoint.avCaptureTimer;
 
         homeBaseGUI.shrimp = 1;
         basicCheckpointScript.shrimp = 1;
