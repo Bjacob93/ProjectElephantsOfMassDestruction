@@ -105,6 +105,11 @@ public class textEditor : MonoBehaviour
 
         if (drawSequenceEditor)
         {
+            if (!tutorial.editorHasBeenOpened)
+            {
+                tutorial.editorHasBeenOpened = true;
+            }
+
             //Draw the bounding box and the text window.
             GUI.Box(boundingBox, "Script Editor - " + this.gameObject.name);
             textAreaString = GUI.TextArea(new Rect(textBoxStartX, textBoxStartY, textBoxWidth, textBoxHeight), textAreaString, charLimit);

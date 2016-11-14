@@ -1684,6 +1684,10 @@ Prefab:
       propertyPath: astarData.file_cachedStartup
       value: 
       objectReference: {fileID: 4900000, guid: 528bead89b5fbe048923a2adc801884e, type: 3}
+    - target: {fileID: 1000010369390576, guid: 988dfd8890f2a9b40b07f82c0db6cf56, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 988dfd8890f2a9b40b07f82c0db6cf56, type: 2}
   m_IsPrefabParent: 0
@@ -6971,8 +6975,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f7977716f0f3be5448dfabcc00c8e4ae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  targetLocation1: {x: 47, y: 0, z: 47}
-  targetLocation2: {x: 0, y: 0, z: 0}
+  targetOne: {fileID: 0}
+  targetTwo: {fileID: 0}
   hasMultipleTargets: 0
   split: 0
 --- !u!65 &970126007
@@ -9750,8 +9754,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f7977716f0f3be5448dfabcc00c8e4ae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  targetLocation1: {x: -40, y: 0, z: 40}
-  targetLocation2: {x: 0, y: 0, z: 0}
+  targetOne: {fileID: 0}
+  targetTwo: {fileID: 0}
   hasMultipleTargets: 0
   split: 0
 --- !u!65 &1213986493
@@ -12399,8 +12403,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f7977716f0f3be5448dfabcc00c8e4ae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  targetLocation1: {x: 30, y: 0, z: -35}
-  targetLocation2: {x: -40, y: 0, z: -10}
+  targetOne: {fileID: 0}
+  targetTwo: {fileID: 0}
   hasMultipleTargets: 1
   split: 3
 --- !u!114 &1564733577
@@ -15225,8 +15229,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f7977716f0f3be5448dfabcc00c8e4ae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  targetLocation1: {x: 47, y: 0, z: 47}
-  targetLocation2: {x: 0, y: 0, z: 0}
+  targetOne: {fileID: 0}
+  targetTwo: {fileID: 0}
   hasMultipleTargets: 0
   split: 0
 --- !u!65 &1973570903
