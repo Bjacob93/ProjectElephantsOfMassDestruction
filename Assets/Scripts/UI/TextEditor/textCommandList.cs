@@ -48,6 +48,8 @@ public class textCommandList : MonoBehaviour
     //GUI appearence.
     public GUISkin commandSkin;
 
+    Level1TutorialText tutorial;
+
     void Start()
     {
         //Reference the database of commands so that we can always find any command we need.
@@ -65,6 +67,11 @@ public class textCommandList : MonoBehaviour
         boundingBoxX = boxStartingPosX - (Screen.width / 80);
         boundingBoxY = (boxStartingPosY - (Screen.width / 70)) - 5;
         boundingRect = new Rect(boundingBoxX, boundingBoxY, boundingBoxWidth, boundingBoxHeight);
+
+        if (lvlManager.currentLevel == 1)
+        {
+            tutorial = GameObject.Find("UIManager").GetComponent<Level1TutorialText>();
+        }
 
         //Fill the lists with empty commands.
         for (int i = 0; i < numberOfSlots; i++)
@@ -95,6 +102,11 @@ public class textCommandList : MonoBehaviour
         if (Input.GetButtonDown("Commandlist"))
         {
             drawCommandList = !drawCommandList;
+
+            if (lvlManager.currentLevel == 1 && !tutorial.qHasBeenPressed)
+            {
+                tutorial.qHasBeenPressed = true;
+            }
         }
     }
 

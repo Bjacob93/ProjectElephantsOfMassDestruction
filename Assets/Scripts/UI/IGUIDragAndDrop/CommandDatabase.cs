@@ -20,7 +20,7 @@ public class CommandDatabase : MonoBehaviour {
 		commandDatabase.Add (new Command ("Move", "M01", "<color=#FFFFF>" + "Move to target location and ignore enemies on the way" + "</color>", true, true, true, new Vector3(),0, false, 10));
 
         //production orders
-		commandDatabase.Add (new Command ("Produce", "P01", "<color=#FFFFF>" +"Produce a unit at base" + "</color>", false, false, true, new Vector3(),0, false, 1));
+		commandDatabase.Add (new Command ("Produce Unit", "P01", "<color=#FFFFF>" +"Produce a unit at base" + "</color>", false, false, true, new Vector3(),0, false, 1));
 
         //For every order
 		commandDatabase.Add(new Command("Split ", "FoE", "<color=#FFFFF>" +"The next line will run for every x amout of times for a unit, eg if the next line is attack checkpoint A and the one after it is B the units will switch between the two as the target they are going to " + "</color>", true, true, true, new Vector3(),0, false, 2));
@@ -38,6 +38,6 @@ public class CommandDatabase : MonoBehaviour {
 			commandDatabase.Add(new Command(c.name, "var" + c.name, "<color=#FFFFF>" +"This targets the location of checkpoint " + c.name +"</color>", false, true, true, c.transform.position,0, true, 1));
         }
 
-		commandDatabase.Add (new Command ("Homebase", "varPlayerBase", "<color=#FFFFF>" + "This targets the location of the players base. "+"</color>", false, true, true, homebase.transform.position,0, true, 1));   
+		//commandDatabase.Add (new Command ("Homebase", "varPlayerBase", "<color=#FFFFF>" + "This targets the location of the players base. "+"</color>", false, true, true, homebase.transform.position,0, true, 1));   
     }
 }

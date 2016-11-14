@@ -100,7 +100,7 @@ public class EditorList : MonoBehaviour{
         //Calculate the total number of slots.  
         totalSlots = slotsCol * slotsRow;
 
-        tutorialtext = GameObject.Find("ScoreManager").GetComponent<Level1TutorialText>();
+        tutorialtext = GameObject.Find("UIManager").GetComponent<Level1TutorialText>();
 
         //Define the bounding box.
         boundingRect = new Rect(boundingBoxX, boundingBoxY, boundingBoxWidth, boundingBoxHeight);
@@ -207,6 +207,18 @@ public class EditorList : MonoBehaviour{
                 //Update the slot position
                 slotRect = new Rect(boxStartingPosX + x * boxOffsetX, boxStartingPosY + y * boxOffsetY, boxWidth, boxHeight);
 
+                if(thisCommand.commandId == "P01")
+                {
+                    tutorialtext.enterProduceOrder = true;
+                }
+                if (thisCommand.commandId == "A01")
+                {
+                    tutorialtext.enterAttackOrder = true;
+                }
+                if (thisCommand.commandId == "varA")
+                {
+                    tutorialtext.enterAttackTarget = true;
+                }
                 //Draw any empty slots
                 if (thisCommand.commandName == "")
                 {
@@ -310,20 +322,6 @@ public class EditorList : MonoBehaviour{
         if (slotRect.Contains(e.mousePosition) && e.type == EventType.MouseUp && isDraggingCommand)
         {
             enteredCommands[slotNumber] = draggedCommand;
-            
-            if(draggedCommand.commandId == "A01")
-            {
-                tutorialtext.enterAttackOrder = true;
-            }
-            if(draggedCommand.commandId == "varA")
-            {
-                tutorialtext.enterAttackTarget = true;
-            }
-            if(draggedCommand.commandId == "P01")
-            {
-                tutorialtext.enterProduceOrder = true;
-            }
-
             draggedCommand = null;
             isDraggingCommand = false;
         }

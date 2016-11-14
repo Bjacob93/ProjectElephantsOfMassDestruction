@@ -11,9 +11,12 @@ public class EnemyMelee_AI_Health : MonoBehaviour {
     UnitArrays Uarray;
 
     public GameObject enemyUnits;
+    public GameObject enemySpawn;
 
     GameObject playerBase;
     bool unitAdded = false;
+
+    ScoreManager scoreManager;
 
     bool Died;
 
@@ -27,6 +30,8 @@ public class EnemyMelee_AI_Health : MonoBehaviour {
 
         playerBase = GameObject.FindGameObjectWithTag("PlayerBase");
         //Uarray.add(this.gameObject, "enemyUnit");
+
+        scoreManager = GameObject.FindObjectOfType<ScoreManager>();
 
     }
 	
@@ -68,7 +73,7 @@ public class EnemyMelee_AI_Health : MonoBehaviour {
 	{
 		//enemy is dead
 		Died = true;
-		GameObject.FindObjectOfType<ScoreManager> ().money += moneyValue;
+        scoreManager.money += moneyValue;
 
         Uarray.remove(this.gameObject, "enemyUnit");
 		Destroy (this.gameObject);
@@ -76,7 +81,7 @@ public class EnemyMelee_AI_Health : MonoBehaviour {
 
     void AtPlayerBase()
     {
-        this.gameObject.transform.position = new Vector3(-45, 1, -45);
-        GameObject.FindObjectOfType<ScoreManager>().LoseLife(1);   
+        this.gameObject.transform.position = enemySpawn.transform.position;
+        scoreManager.LoseLife(1);
     }
 }
