@@ -85,12 +85,9 @@ public class Astar : MonoBehaviour {
             if (isDefending)
             {
                 distanceFromTarget = Vector3.Distance(nearestEnemy.transform.position, targetPosition);
-
             }
         }
-
         PathToEnemy();
-
 	}
 
 	//Method for pathing to the nearest enemy.
@@ -106,7 +103,6 @@ public class Astar : MonoBehaviour {
                     goToWaypoint = false;
                     movingToWaypoint = false;
                 }
-				
 			}
 		} else if (nearestEnemy != null && distanceToEnemy <= engagementRange && previousEnemy != nearestEnemy) {
 			hasPathToEnemy = false;
