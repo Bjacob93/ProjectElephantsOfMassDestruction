@@ -43,13 +43,14 @@ public class EnemyOrders : MonoBehaviour {
                             aStarEnemy.targetPosition = targetOne.transform.position;
                             aStarEnemy.receivedNewDestination = true;
                             aStarEnemy.commanderID = gameObject.name;
-                        }
-                        else
-                        {
-                            aStarEnemy.targetPosition = targetTwo.transform.position;
-                            aStarEnemy.receivedNewDestination = true;
-                            aStarEnemy.commanderID = gameObject.name;
-                        }
+						}        
+						else
+						{
+							aStarEnemy.targetPosition = targetTwo.transform.position;
+							aStarEnemy.receivedNewDestination = true;
+							aStarEnemy.commanderID = gameObject.name;
+						}
+		
                         splitIndex++;
                     }
                     else
