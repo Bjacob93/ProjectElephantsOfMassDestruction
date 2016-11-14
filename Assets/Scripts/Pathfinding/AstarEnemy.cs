@@ -37,7 +37,7 @@ public class AstarEnemy : MonoBehaviour
     //Cache variable that limits calls to pathfinding to once every second.
     bool pathCompleted = false;
 
-    //variables for aniations
+    //variables for animations
     public Animator ElephantRunAnim;
     bool unitIsRunning;
 
@@ -58,11 +58,11 @@ public class AstarEnemy : MonoBehaviour
         seeker = GetComponent<Seeker>();
         controller = GetComponent<CharacterController>();
 
-        //Call the pathfinding method in 
-        seeker.StartPath(transform.position, targetPosition, OnPathComplete);
+        //Reference unit manager and array.
         unitManager = GameObject.Find("UnitManager");
         uArray = unitManager.GetComponent<UnitArrays>();
 
+        //Reference the animator.
         ElephantRunAnim = GetComponent<Animator>();
     }
 
