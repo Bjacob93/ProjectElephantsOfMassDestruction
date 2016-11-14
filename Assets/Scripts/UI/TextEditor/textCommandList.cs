@@ -50,6 +50,17 @@ public class textCommandList : MonoBehaviour
 
     Level1TutorialText tutorial;
 
+    //Animator
+    private string buttonState = "hide";
+    private float speed;
+    private bool animState = true;
+    //button for animation
+    private float buttonW;
+    private float buttonH;
+    private float buttonX;
+    private float buttonXMax;
+    private float buttonY;
+
     void Start()
     {
         //Reference the database of commands so that we can always find any command we need.
@@ -94,19 +105,47 @@ public class textCommandList : MonoBehaviour
         {
             slots[j] = availableCommands[j];
         }
+        //Animation button
+        speed = Time.deltaTime * 600;
+        buttonH = 30;
+        buttonW = 60;
+        buttonX = boundingBoxX - buttonW;
+        buttonXMax = buttonX;
+        buttonY = boundingBoxY - (buttonH * 0.5f) + (boundingBoxHeight * 0.5f);
     }
 
     void Update()
     {
-        //Open or close the Command List.
-        if (Input.GetButtonDown("Commandlist"))
+        if (!animState && buttonX >= buttonXMax + 20)
         {
-            drawCommandList = !drawCommandList;
-
             if (lvlManager.currentLevel == 1 && !tutorial.qHasBeenPressed)
             {
                 tutorial.qHasBeenPressed = true;
             }
+            if (buttonX < buttonXMax)
+            {
+                buttonX = buttonXMax;
+            }
+            buttonState = "hide";
+            buttonX -= speed;
+            boundingBoxX -= speed;
+            boxStartingPosX -= speed;
+        }
+        else if (animState && buttonX <= Screen.width - buttonW - 20)
+        {
+            if (buttonX > Screen.width - buttonW)
+            {
+                buttonX = Screen.width - buttonW;
+            }
+            buttonState = "show";
+            buttonX += speed;
+            boxStartingPosX += speed;
+            boundingBoxX += speed;
+        }
+        //Open or close the Command List.
+        if (Input.GetButtonDown("Commandlist"))
+        {
+            animState = !animState;
         }
     }
 
@@ -117,13 +156,12 @@ public class textCommandList : MonoBehaviour
 
         //Set the current tooltip string to be blank.
         toolTip = "";
-
-        //Draw the command list.
-        if (drawCommandList)
+        //draw toggle button
+        if (GUI.Button(new Rect(buttonX, buttonY, buttonW, buttonH), buttonState) || drawCommandList)
         {
-            DrawCommandList();
+            animState = !animState;
         }
-
+        DrawCommandList();        
         //Show the tooltip at the mouse position.
         if (showToolTip)
         {
