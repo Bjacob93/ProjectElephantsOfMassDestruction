@@ -129,6 +129,49 @@ Prefab:
       propertyPath: m_RootOrder
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 114000011890067436, guid: 988dfd8890f2a9b40b07f82c0db6cf56,
+        type: 2}
+      propertyPath: TutorialPage1
+      value: here is how the game works - press q
+      objectReference: {fileID: 0}
+    - target: {fileID: 114000011890067436, guid: 988dfd8890f2a9b40b07f82c0db6cf56,
+        type: 2}
+      propertyPath: TutorialPage2
+      value: this is the command list ... press the castle or flag to open the editor
+        and continue
+      objectReference: {fileID: 0}
+    - target: {fileID: 114000011890067436, guid: 988dfd8890f2a9b40b07f82c0db6cf56,
+        type: 2}
+      propertyPath: TutorialPage3
+      value: this is the editor ... place Produce in the upper left to .. and continue
+      objectReference: {fileID: 0}
+    - target: {fileID: 114000011890067436, guid: 988dfd8890f2a9b40b07f82c0db6cf56,
+        type: 2}
+      propertyPath: TutorialPage4
+      value: the produce order does ... now in the next line place an attack order
+        to continue ...
+      objectReference: {fileID: 0}
+    - target: {fileID: 114000011890067436, guid: 988dfd8890f2a9b40b07f82c0db6cf56,
+        type: 2}
+      propertyPath: TutorialPage5
+      value: the attack order does ... place a target location so it knows where to
+        go and continue
+      objectReference: {fileID: 0}
+    - target: {fileID: 114000011890067436, guid: 988dfd8890f2a9b40b07f82c0db6cf56,
+        type: 2}
+      propertyPath: TutorialPage6
+      value: press play to begin
+      objectReference: {fileID: 0}
+    - target: {fileID: 114000011890067436, guid: 988dfd8890f2a9b40b07f82c0db6cf56,
+        type: 2}
+      propertyPath: TutorialPage7
+      value: pres play
+      objectReference: {fileID: 0}
+    - target: {fileID: 114000011890067436, guid: 988dfd8890f2a9b40b07f82c0db6cf56,
+        type: 2}
+      propertyPath: enterAttackTarget
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 988dfd8890f2a9b40b07f82c0db6cf56, type: 2}
   m_IsPrefabParent: 0
