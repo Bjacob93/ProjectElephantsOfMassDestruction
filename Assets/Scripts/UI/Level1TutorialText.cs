@@ -24,12 +24,12 @@ public class Level1TutorialText : MonoBehaviour {
             TutorialPage5,
             TutorialPage6;
 
-    string  dndTutorialPage1 = "",
-            dndTutorialPage2 = "",
-            dndTutorialPage3 = "",
-            dndTutorialPage4 = "",
-            dndTutorialPage5 = "",
-            dndTutorialPage6 = "";
+    string  dndTutorialPage1 = "dndPage1 pres q",
+            dndTutorialPage2 = "press on flag or castle",
+            dndTutorialPage3 = "use produce order",
+            dndTutorialPage4 = "use attack order",
+            dndTutorialPage5 = "give attack order a location",
+            dndTutorialPage6 = "press play";
 
     string  textTutorialPage1 = "",
             textTutorialPage2 = "",
@@ -41,7 +41,7 @@ public class Level1TutorialText : MonoBehaviour {
     public GUISkin commandSkin;
 
     levelManager lvlManager;
-    mainMenuVariables keeperOfVar;
+    mainMenuVariables varKeeper;
 
     // Use this for initialization
     void Start()
@@ -54,9 +54,9 @@ public class Level1TutorialText : MonoBehaviour {
         TutorialBox = new Rect(ToturialBoxStartPosX, ToturialBoxStartPosY, TutorialBoxWidth, TutorialBoxHeight);
 
         lvlManager = GameObject.Find("LevelManager").GetComponent<levelManager>();
-        keeperOfVar = GameObject.Find("keepOfVariables").GetComponent<mainMenuVariables>();
+        varKeeper = GameObject.Find("KeeperOfVariables").GetComponent<mainMenuVariables>();
 
-        if(keeperOfVar.useDragonDrop == true) // check if it is the drag and drop or text game mode, then fill the tutorial text correctly.
+        if (varKeeper.useDragonDrop == true) // check if it is the drag and drop or text game mode, then fill the tutorial text correctly.
         {
             TutorialPage1 = dndTutorialPage1;
             TutorialPage2 = dndTutorialPage2;
