@@ -63,8 +63,9 @@ public class EditorList : MonoBehaviour{
     //GUI appearance
     public GUISkin commandSkin;
 
+    levelManager lvlManager;
     Level1TutorialText tutorialtext;
-
+    
     void Start()
     {
         //Define dimensions of the slots.
@@ -100,7 +101,9 @@ public class EditorList : MonoBehaviour{
         //Calculate the total number of slots.  
         totalSlots = slotsCol * slotsRow;
 
-        tutorialtext = GameObject.Find("UIManager").GetComponent<Level1TutorialText>();
+        lvlManager = GameObject.Find("LevelManager").GetComponent<levelManager>();
+        if (lvlManager.currentLevel == 1)
+            tutorialtext = GameObject.Find("UIManager").GetComponent<Level1TutorialText>();
 
         //Define the bounding box.
         boundingRect = new Rect(boundingBoxX, boundingBoxY, boundingBoxWidth, boundingBoxHeight);
@@ -207,7 +210,8 @@ public class EditorList : MonoBehaviour{
                 //Update the slot position
                 slotRect = new Rect(boxStartingPosX + x * boxOffsetX, boxStartingPosY + y * boxOffsetY, boxWidth, boxHeight);
 
-                if(thisCommand.commandId == "P01")
+                if (lvlManager.currentLevel == 1) { 
+                    if (thisCommand.commandId == "P01")
                 {
                     tutorialtext.enterProduceOrder = true;
                 }
@@ -218,6 +222,7 @@ public class EditorList : MonoBehaviour{
                 if (thisCommand.commandId == "varA")
                 {
                     tutorialtext.enterAttackTarget = true;
+                }
                 }
                 //Draw any empty slots
                 if (thisCommand.commandName == "")
