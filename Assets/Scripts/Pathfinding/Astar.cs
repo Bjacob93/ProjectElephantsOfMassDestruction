@@ -192,10 +192,17 @@ public class Astar : MonoBehaviour {
 			currentWaypoint++;
 		}
 
-        if (path != null && Vector3.Distance(transform.position, path.vectorPath[currentWaypoint]) > Vector3.Distance(transform.position, path.vectorPath[currentWaypoint + 1]))
+        try
         {
-            currentWaypoint++;
+            while (path != null && Vector3.Distance(transform.position, path.vectorPath[currentWaypoint]) > Vector3.Distance(transform.position, path.vectorPath[currentWaypoint + 1]))
+            {
+                currentWaypoint++;
+            }
+        }catch (System.ArgumentOutOfRangeException)
+        {
+            path = null;
         }
+        
 
         if (!this.GiraffeRunAnim.GetCurrentAnimatorStateInfo(0).IsName("RUN"))
 		{

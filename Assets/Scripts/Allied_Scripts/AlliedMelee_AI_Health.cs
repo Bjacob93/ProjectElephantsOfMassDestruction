@@ -61,6 +61,6 @@ public class AlliedMelee_AI_Health : MonoBehaviour {
 		//enemy is dead
 		Died = true;
         Uarray.remove(this.gameObject, "playerUnit");
-        Destroy (this.gameObject);
+        DestroyImmediate(this.gameObject);
 	}
 }
