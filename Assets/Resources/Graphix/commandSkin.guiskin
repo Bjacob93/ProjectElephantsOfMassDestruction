@@ -2015,7 +2015,7 @@ MonoBehaviour:
     m_StretchHeight: 0
   - m_Name: tutorialBoundingBoxBackground
     m_Normal:
-      m_Background: {fileID: 2800000, guid: 36cc57af88dbf904a96dea9777d25ae5, type: 3}
+      m_Background: {fileID: 2800000, guid: d6903adb7650f744380c06b335b879d1, type: 3}
       m_ScaledBackgrounds: []
       m_TextColor: {r: 0, g: 0, b: 0, a: 1}
     m_Hover:
@@ -2057,10 +2057,10 @@ MonoBehaviour:
       m_Top: 0
       m_Bottom: 0
     m_Padding:
-      m_Left: 0
-      m_Right: 0
-      m_Top: 0
-      m_Bottom: 0
+      m_Left: 60
+      m_Right: 60
+      m_Top: 20
+      m_Bottom: 30
     m_Overflow:
       m_Left: 0
       m_Right: 0
