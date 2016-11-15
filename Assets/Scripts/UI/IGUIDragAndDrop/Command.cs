@@ -6,6 +6,7 @@ public class Command {
 
     //Variables for all commands
     public string commandName;
+    public string commandNameText;
 	public string commandId;
     public string commandDescDnD;
     public string commandDescText;
@@ -27,12 +28,14 @@ public class Command {
     public Command()
     {
         commandName = "";
+        commandNameText = "";
     }
 
     //Constructor for specific commands
-	public Command (string name, string id, string DndDesc, string textDesc, bool reqVar, bool atCheck, bool atBase, Vector3 location, int varFoE, bool isVar, int availability)
+	public Command (string name, string nameText, string id, string DndDesc, string textDesc, bool reqVar, bool atCheck, bool atBase, Vector3 location, int varFoE, bool isVar, int availability)
     {
         commandName = name;
+        commandNameText = nameText;
         commandId = id;
         commandDescDnD = DndDesc;
         commandDescText = textDesc;
