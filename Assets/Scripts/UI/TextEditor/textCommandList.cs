@@ -218,12 +218,12 @@ public class textCommandList : MonoBehaviour
                         {
                             if (thisCommand.isVariable)
                             {
-                                GUI.Box(slotRect, "<color=#000000>" + thisCommand.commandName + "</color>", commandSkin.GetStyle("variableUnavailable"));
+                                GUI.Box(slotRect, "<color=#000000>" + thisCommand.commandNameText + "</color>", commandSkin.GetStyle("variableUnavailable"));
 
                             }
                             else
                             {
-                                GUI.Box(slotRect, "<color=#000000>" + thisCommand.commandName + "</color>", commandSkin.GetStyle("commandUnavailable"));
+                                GUI.Box(slotRect, "<color=#000000>" + thisCommand.commandNameText + "</color>", commandSkin.GetStyle("commandUnavailable"));
 
                             }
                         }
@@ -250,12 +250,12 @@ public class textCommandList : MonoBehaviour
                             {
                                 if (thisCommand.isVariable)
                                 {
-                                    GUI.Box(slotRect, "<color=#000000>" + thisCommand.commandName + "</color>", commandSkin.GetStyle("variableUnavailable"));
+                                    GUI.Box(slotRect, "<color=#000000>" + thisCommand.commandNameText + "</color>", commandSkin.GetStyle("variableUnavailable"));
 
                                 }
                                 else
                                 {
-                                    GUI.Box(slotRect, "<color=#000000>" + thisCommand.commandName + "</color>", commandSkin.GetStyle("commandUnavailable"));
+                                    GUI.Box(slotRect, "<color=#000000>" + thisCommand.commandNameText + "</color>", commandSkin.GetStyle("commandUnavailable"));
 
                                 }
                             }
@@ -263,12 +263,12 @@ public class textCommandList : MonoBehaviour
                             {
                                 if (thisCommand.isVariable)
                                 {
-                                    GUI.Box(slotRect, "<color=#000000>" + thisCommand.commandName + "</color>", commandSkin.GetStyle("variableUnavailable"));
+                                    GUI.Box(slotRect, "<color=#000000>" + thisCommand.commandNameText + "</color>", commandSkin.GetStyle("variableUnavailable"));
 
                                 }
                                 else
                                 {
-                                    GUI.Box(slotRect, "<color=#000000>" + thisCommand.commandName + "</color>", commandSkin.GetStyle("commandUnavailable"));
+                                    GUI.Box(slotRect, "<color=#000000>" + thisCommand.commandNameText + "</color>", commandSkin.GetStyle("commandUnavailable"));
 
                                 }
                             }
@@ -276,12 +276,12 @@ public class textCommandList : MonoBehaviour
                             {
                                 if (thisCommand.isVariable)
                                 {
-                                    GUI.Box(slotRect, "<color=#000000>" + thisCommand.commandName + "</color>", commandSkin.GetStyle("variableAvailable"));
+                                    GUI.Box(slotRect, "<color=#000000>" + thisCommand.commandNameText + "</color>", commandSkin.GetStyle("variableAvailable"));
 
                                 }
                                 else
                                 {
-                                    GUI.Box(slotRect, "<color=#000000>" + thisCommand.commandName + "</color>", commandSkin.GetStyle("commandAvailable"));
+                                    GUI.Box(slotRect, "<color=#000000>" + thisCommand.commandNameText + "</color>", commandSkin.GetStyle("commandAvailable"));
 
                                 }
                             }
@@ -293,12 +293,12 @@ public class textCommandList : MonoBehaviour
                         {
                             if (thisCommand.isVariable)
                             {
-                                GUI.Box(slotRect, "<color=#000000>" + thisCommand.commandName + "</color>", commandSkin.GetStyle("variableUnavailable"));
+                                GUI.Box(slotRect, "<color=#000000>" + thisCommand.commandNameText + "</color>", commandSkin.GetStyle("variableUnavailable"));
 
                             }
                             else
                             {
-                                GUI.Box(slotRect, "<color=#000000>" + thisCommand.commandName + "</color>", commandSkin.GetStyle("commandUnavailable"));
+                                GUI.Box(slotRect, "<color=#000000>" + thisCommand.commandNameText + "</color>", commandSkin.GetStyle("commandUnavailable"));
 
                             }
                         }
@@ -306,12 +306,12 @@ public class textCommandList : MonoBehaviour
                         {
                             if (thisCommand.isVariable)
                             {
-                                GUI.Box(slotRect, "<color=#000000>" + thisCommand.commandName + "</color>", commandSkin.GetStyle("variableAvailable"));
+                                GUI.Box(slotRect, "<color=#000000>" + thisCommand.commandNameText + "</color>", commandSkin.GetStyle("variableAvailable"));
 
                             }
                             else
                             {
-                                GUI.Box(slotRect, "<color=#000000>" + thisCommand.commandName + "</color>", commandSkin.GetStyle("commandAvailable"));
+                                GUI.Box(slotRect, "<color=#000000>" + thisCommand.commandNameText + "</color>", commandSkin.GetStyle("commandAvailable"));
 
                             }
                         }
@@ -321,12 +321,12 @@ public class textCommandList : MonoBehaviour
                 {
                     if (thisCommand.isVariable)
                     {
-                        GUI.Box(slotRect, "<color=#000000>" + thisCommand.commandName + "</color>", commandSkin.GetStyle("variableAvailable"));
+                        GUI.Box(slotRect, "<color=#000000>" + thisCommand.commandNameText + "</color>", commandSkin.GetStyle("variableAvailable"));
 
                     }
                     else
                     {
-                        GUI.Box(slotRect, "<color=#000000>" + thisCommand.commandName + "</color>", commandSkin.GetStyle("commandAvailable"));
+                        GUI.Box(slotRect, "<color=#000000>" + thisCommand.commandNameText + "</color>", commandSkin.GetStyle("commandAvailable"));
 
                     }
                 }
