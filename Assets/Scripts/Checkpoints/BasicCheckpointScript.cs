@@ -279,7 +279,6 @@ public class BasicCheckpointScript : MonoBehaviour {
                 if (checkpointName != aStar.commanderID)
                 {
                     aStar.targetPosition = targetLocation;
-                    aStar.receivedNewDestination = true;
                     aStar.commanderID = checkpointName;
                     aStar.receivedDefenceOrder = true;
                     forEveryRan = true;

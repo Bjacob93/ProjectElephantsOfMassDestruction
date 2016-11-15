@@ -7,7 +7,9 @@ public class Command {
     //Variables for all commands
     public string commandName;
 	public string commandId;
-    public string commandDesc;
+    public string commandDescDnD;
+    public string commandDescText;
+
 
     public bool requiresVariable;
     public bool availableAtCheckpoint;
@@ -28,11 +30,12 @@ public class Command {
     }
 
     //Constructor for specific commands
-	public Command (string name, string id, string desc, bool reqVar, bool atCheck, bool atBase, Vector3 location, int varFoE, bool isVar, int availability)
+	public Command (string name, string id, string DndDesc, string textDesc, bool reqVar, bool atCheck, bool atBase, Vector3 location, int varFoE, bool isVar, int availability)
     {
         commandName = name;
         commandId = id;
-        commandDesc = desc;
+        commandDescDnD = DndDesc;
+        commandDescText = textDesc;
         requiresVariable = reqVar;
         availableAtBase = atBase;
         availableAtCheckpoint = atCheck;
