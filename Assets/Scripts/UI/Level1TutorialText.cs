@@ -35,10 +35,10 @@ public class Level1TutorialText : MonoBehaviour {
                                 "In order to move around the map, you can use your mouse or WASD-buttons on the keyboard. \n  \n" +
                                 "Press Tab-button on the keyboard or the show button on the screen to show the Command list.",
 
-            dndTutorialPage2 = "This is the Command List, here are all of the commands which areavailable in the current level. To read more about the commandshover your curser over each command to read a description. \n You can close the Command list at any time by pressing tab or hide \n \n" +
-                                "Press the castle to open up the sequence editor",
+            dndTutorialPage2 = "This is the Command List, here are all of the commands which are available in the current level. To read more about the commands hover your curser over each command to read a description. \n You can close the Command list at any time by pressing tab or hide \n \n" +
+                                "Click the castle to open up the sequence editor",
 
-            dndTutorialPage3 = "This is the editor here you place the commands from the command list. \n" +
+            dndTutorialPage3 = "This is the Editor here you place the commands from the command list. \n" +
                                 "The editor is used to issue commands to the player giraffes, with the exception of produce which creates giraffes at the homebase. \n You can close the editor window at any time by right clicking. \n \n" +
                                 "Drag a produce order to upper left in the editor to continue",
 
@@ -62,15 +62,25 @@ public class Level1TutorialText : MonoBehaviour {
                                 "In order to move around the map, you can use your mouse or WASD-buttons on the keyboard. \n  \n" +
                                 "Press Tab-button on the keyboard or the show button on the screen to show the Command list.",
 
-            textTutorialPage2 = "This is the Command List, here are all of the commands which areavailable in the current level. To read more about the commandshover your curser over each command to read a description. \n \n" +
-                                "Press the castle to open up the sequence editor",
+            textTutorialPage2 = "This is the Command List, here are all of the commands which are available in the current level. To read more about the commands hover your curser over each command to read a description. \n You can close the Command list at any time by pressing tab or hide \n \n" +
+                                "Click the castle to open up the sequence editor",
 
-            textTutorialPage3 = "",
-            textTutorialPage4 = "",
-            textTutorialPage5 = "",
+            textTutorialPage3 = "This is the Editor here you write commands, only those availabe in the Command List can be written. \n" + 
+                                "The Editor is used to issue orders to the gireffes, with the exception of the produce order, which creates giraffes at the homebase \n \n" +
+                                "write produce order in the Editor to continue",
+
+            textTutorialPage4 = "The produce order creates giraffes at our base, these giraffes recive commands from the homebase and flag Editor \n \n" + 
+                                "Write attack order for checkpoint A one the line below produce to continue.",
+
+            textTutorialPage5 = "The attack order commands your giraffes at the Editor's location to attack a set destination which is placed to the right of the attack order. \n" + 
+                                "The target checkpoint, in this case A, is placed on the map where the A flag is. There can be multiple flags on a map, some of which have a capture point. \n" + 
+                                "The player needs to capture and hold these points in order to win. \n \n" +
+                                "Now give the attack command checkpoint A",
+
             textTutorialPage6 = "",
             textTutorialPage7 = "",
-            textTutorialPage8 = "";
+            textTutorialPage8 = " \n" +
+                                "Press play to begin";
 
     public GUISkin commandSkin;
 
