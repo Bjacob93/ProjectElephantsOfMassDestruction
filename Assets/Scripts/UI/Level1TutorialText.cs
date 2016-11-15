@@ -24,15 +24,35 @@ public class Level1TutorialText : MonoBehaviour {
             TutorialPage5,
             TutorialPage6;
 
-    string  dndTutorialPage1 = "dndPage1 pres q",
-            dndTutorialPage2 = "press on flag or castle",
-            dndTutorialPage3 = "use produce order",
-            dndTutorialPage4 = "use attack order",
-            dndTutorialPage5 = "give attack order a location",
-            dndTutorialPage6 = "press play";
+    string  dndTutorialPage1 = "Lets begin! \n " + 
+                                "The Elephants attacks the homebase and we need to defend it, our goal is to eliminate all of the Elephants and Capture the flag \n " +
+                                "In order to move around the map, you can use your mouse or WASD-buttons on the keyboard. \n  \n" +
+                                "Press Tab-button on the keyboard or the show button on the screen to show the Command list.",
 
-    string  textTutorialPage1 = "",
-            textTutorialPage2 = "",
+            dndTutorialPage2 = "This is the Command List, here are all of the commands which areavailable in the current level. To read more about the commandshover your curser over each command to read a description. \n \n " +
+                                "Press the castle to open up the sequence editor",
+
+            dndTutorialPage3 = "This is the editor here you place the commands from the command list. \n" +
+                                "The editor is used to issue commands to the player giraffes, with the exception of produce which creates giraffes at the homebase. \n \n" +
+                                "Drag a produce order to upper left in the editor to continue",
+
+            dndTutorialPage4 = "The produce order creates giraffes at the player’s base, these giraffes receive the commands from the flag and homebase editors.\n \n" +
+                                "Drag the “Attack” order onto the next line to continue",
+
+            dndTutorialPage5 = "The attack command orders your giraffes at the editor's location to attack a set destination which is placed to the right of the attack order.\n \n " +
+                                "Now give the Attack command the checkpoint A",
+
+            dndTutorialPage6 = "The target checkpoint, in this case A is the place on the map where the “A” flag is placed. There can be multiple flags on a map, some of which have a capture point. The player needs to capture and hold these points in order to win. \n \n" +     
+                                "Press play to begin";
+
+    string  textTutorialPage1 = "Lets begin! \n " +
+                                "The Elephants attacks the homebase and we need to defend it, our goal is to eliminate all of the Elephants and Capture the flag \n " +
+                                "In order to move around the map, you can use your mouse or WASD-buttons on the keyboard. \n  \n" +
+                                "Press Tab-button on the keyboard or the show button on the screen to show the Command list.",
+
+            textTutorialPage2 = "This is the Command List, here are all of the commands which areavailable in the current level. To read more about the commandshover your curser over each command to read a description. \n \n " +
+                                "Press the castle to open up the sequence editor",
+
             textTutorialPage3 = "",
             textTutorialPage4 = "",
             textTutorialPage5 = "",
