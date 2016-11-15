@@ -210,19 +210,26 @@ public class EditorList : MonoBehaviour{
                 //Update the slot position
                 slotRect = new Rect(boxStartingPosX + x * boxOffsetX, boxStartingPosY + y * boxOffsetY, boxWidth, boxHeight);
 
-                if (lvlManager.currentLevel == 1) { 
-                    if (thisCommand.commandId == "P01")
-                {
-                    tutorialtext.enterProduceOrder = true;
-                }
-                if (thisCommand.commandId == "A01")
-                {
-                    tutorialtext.enterAttackOrder = true;
-                }
-                if (thisCommand.commandId == "varA")
-                {
-                    tutorialtext.enterAttackTarget = true;
-                }
+                if (lvlManager.currentLevel == 1) {
+                    if(!belongsToCheckpoint)
+                    {
+                        if (thisCommand.commandId == "P01")
+                        {
+                            tutorialtext.enterProduceOrder = true;
+                        }
+                        if (thisCommand.commandId == "A01")
+                        {
+                            tutorialtext.enterAttackOrder = true;
+                        }
+                        if (thisCommand.commandId == "varA")
+                        {
+                            tutorialtext.enterAttackTarget = true;
+                        }
+                    }
+                else if (thisCommand.commandId == "D01")
+                    {
+                        tutorialtext.defendOrderInserted = true;
+                    }
                 }
                 //Draw any empty slots
                 if (thisCommand.commandName == "")

@@ -19,7 +19,10 @@ public class BasicCheckpointScript : MonoBehaviour {
     EditorList listComponent;
     textEditor textListComponent;
 	SequenceManager sm;
+    Level1TutorialText tutorialtext;
 	public string checkpointName;
+
+    levelManager lvlManager;
 
     //Range within which the checkpoint will give orders to units.
     public float controlRange = 10f;
@@ -46,7 +49,13 @@ public class BasicCheckpointScript : MonoBehaviour {
 
         //Find the SequenceManager, and same the name of the checkpoint to a string.
 		sm = GameObject.Find ("UIManager").GetComponent<SequenceManager> ();
-		checkpointName = this.gameObject.name;
+
+
+        lvlManager = GameObject.Find("LevelManager").GetComponent<levelManager>();
+        if(lvlManager.currentLevel == 1)
+        tutorialtext = GameObject.Find("UIManager").GetComponent<Level1TutorialText>();
+
+        checkpointName = this.gameObject.name;
 
         pause = GameObject.Find("Pause").GetComponent<PauseScript>();
 
@@ -288,6 +297,12 @@ public class BasicCheckpointScript : MonoBehaviour {
     }
 
 	void OnMouseDown(){
+
+        if(lvlManager.currentLevel == 1 && tutorialtext.chechpointEditorOpened == false)
+        {
+            tutorialtext.chechpointEditorOpened = true;
+        }
+
         //If the mouse is clicked on the object, go through the list of SequenceEditors.
         if (varKeeper.useDragonDrop)
         {
