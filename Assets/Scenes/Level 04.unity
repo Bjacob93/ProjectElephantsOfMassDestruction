@@ -372,7 +372,8 @@ MonoBehaviour:
   draggedCommand:
     commandName: 
     commandId: 
-    commandDesc: 
+    commandDescDnD: 
+    commandDescText: 
     requiresVariable: 0
     availableAtCheckpoint: 0
     availableAtBase: 0
@@ -451,6 +452,7 @@ Transform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children:
   - {fileID: 311460104}
+  - {fileID: 1851679386}
   m_Father: {fileID: 435590527}
   m_RootOrder: 0
 --- !u!1 &71563467
@@ -1429,7 +1431,6 @@ Transform:
   - {fileID: 708183217}
   - {fileID: 666911392}
   - {fileID: 558241552}
-  - {fileID: 1851679386}
   m_Father: {fileID: 67043894}
   m_RootOrder: 0
 --- !u!65 &311460105
@@ -4597,12 +4598,12 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 909797373}
   m_LocalRotation: {x: -0.7071068, y: -0, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: 11.245345, y: 37.516045, z: -0.013309053}
-  m_LocalScale: {x: 2.2872298, y: 11.111115, z: 1.3141539}
+  m_LocalPosition: {x: 1.0120811, y: 3.376444, z: -0.0011978149}
+  m_LocalScale: {x: 0.20585069, y: 1, z: 0.118273914}
   m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
   m_Children: []
-  m_Father: {fileID: 1684811274}
-  m_RootOrder: 4
+  m_Father: {fileID: 2126043979}
+  m_RootOrder: 1
 --- !u!183 &909797375
 Cloth:
   m_ObjectHideFlags: 0
@@ -4616,8 +4617,8 @@ Cloth:
   m_UseTethers: 1
   m_UseGravity: 1
   m_Damping: 0
-  m_ExternalAcceleration: {x: 10, y: 5, z: 5}
-  m_RandomAcceleration: {x: 0, y: 0, z: 0}
+  m_ExternalAcceleration: {x: 5, y: 6, z: 3}
+  m_RandomAcceleration: {x: 7, y: 7, z: 6}
   m_WorldVelocityScale: 0.5
   m_WorldAccelerationScale: 1
   m_Friction: 0.5
@@ -4912,7 +4913,7 @@ SkinnedMeshRenderer:
   m_RootBone: {fileID: 0}
   m_AABB:
     m_Center: {x: 0, y: 0, z: 0}
-    m_Extent: {x: 5, y: 0.000000070496675, z: 5}
+    m_Extent: {x: 5.0000005, y: 0.00000007049677, z: 5.0000024}
   m_DirtyAABB: 0
 --- !u!1 &910299680
 GameObject:
@@ -8621,7 +8622,6 @@ Transform:
   - {fileID: 83354704}
   - {fileID: 1592488622}
   - {fileID: 833978234}
-  - {fileID: 909797374}
   m_Father: {fileID: 2126043979}
   m_RootOrder: 0
 --- !u!65 &1684811275
@@ -9813,12 +9813,12 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1851679385}
   m_LocalRotation: {x: -0.7071068, y: -0, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: 11.245345, y: 37.516045, z: -0.013309053}
-  m_LocalScale: {x: 2.2872298, y: 11.111115, z: 1.3141539}
+  m_LocalPosition: {x: 1.0120811, y: 3.376444, z: -0.0011978149}
+  m_LocalScale: {x: 0.20585069, y: 1, z: 0.118273914}
   m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
   m_Children: []
-  m_Father: {fileID: 311460104}
-  m_RootOrder: 4
+  m_Father: {fileID: 67043894}
+  m_RootOrder: 1
 --- !u!183 &1851679387
 Cloth:
   m_ObjectHideFlags: 0
@@ -9832,8 +9832,8 @@ Cloth:
   m_UseTethers: 1
   m_UseGravity: 1
   m_Damping: 0
-  m_ExternalAcceleration: {x: 10, y: 5, z: 5}
-  m_RandomAcceleration: {x: 0, y: 0, z: 0}
+  m_ExternalAcceleration: {x: 5, y: 6, z: 3}
+  m_RandomAcceleration: {x: 7, y: 7, z: 6}
   m_WorldVelocityScale: 0.5
   m_WorldAccelerationScale: 1
   m_Friction: 0.5
@@ -10128,7 +10128,7 @@ SkinnedMeshRenderer:
   m_RootBone: {fileID: 0}
   m_AABB:
     m_Center: {x: 0, y: 0, z: 0}
-    m_Extent: {x: 5, y: 0.000000070496675, z: 5}
+    m_Extent: {x: 5.0000005, y: 0.00000007049677, z: 5.0000024}
   m_DirtyAABB: 0
 --- !u!1 &1856283518
 GameObject:
@@ -11259,6 +11259,7 @@ Transform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children:
   - {fileID: 1684811274}
+  - {fileID: 909797374}
   m_Father: {fileID: 1163300175}
   m_RootOrder: 0
 --- !u!1001 &2126548896
