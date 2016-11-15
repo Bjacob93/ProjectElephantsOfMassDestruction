@@ -440,7 +440,7 @@ public class CommandList : MonoBehaviour {
 
     //Method for returning the text for the tooltip
 	string CreateToolTip(Command command){
-		toolTip = command.commandDesc;
+		toolTip = command.commandDescDnD;
 		return toolTip;
 	}
 }
