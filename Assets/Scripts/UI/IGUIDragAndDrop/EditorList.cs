@@ -238,6 +238,10 @@ public class EditorList : MonoBehaviour{
                     {
                         GUI.Box(slotRect, "", commandSkin.GetStyle("commandEmpty"));
                     }
+                    else if (slots[slotNumber - 1].requiresVariable)
+                    {
+                        GUI.Box(slotRect, "<color=#000000>" + "Insert Variable" + "</color>", commandSkin.GetStyle("variableUnavailable"));
+                    }
                     else
                     {
                         GUI.Box(slotRect, "", commandSkin.GetStyle("variableEmpty"));
@@ -271,7 +275,6 @@ public class EditorList : MonoBehaviour{
                         else
                         {
                             GUI.Box(slotRect, "<color=#000000>" + thisCommand.commandName + "</color>", commandSkin.GetStyle("commandAvailable"));
-
                         }
                     }
 
