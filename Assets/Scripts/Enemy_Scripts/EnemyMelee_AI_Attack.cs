@@ -4,6 +4,7 @@ using System.Collections;
 public class EnemyMelee_AI_Attack : MonoBehaviour {
 
     public Animator anim;
+	public AudioSource Sword;
 
 	public float meleeCoolDown = 1.11f; //Attack cooldown
 	float meleeCoolDownLeft = 0f;
@@ -22,6 +23,7 @@ public class EnemyMelee_AI_Attack : MonoBehaviour {
     void Start()
     {
         anim = GetComponent<Animator>();
+		Sword = GetComponent<AudioSource>();
 
         //Find and store te AstarEnemy script
         aStarEnemy = this.GetComponent<AstarEnemy>();
@@ -52,6 +54,7 @@ public class EnemyMelee_AI_Attack : MonoBehaviour {
                 if (!this.anim.GetCurrentAnimatorStateInfo(0).IsName("ATTACK"))
                 {
                     anim.Play("ATTACK", -1, 0f);
+					Sword.Play ();
                 }
                 if(meleeCoolDownLeft <= 0)
                 {
