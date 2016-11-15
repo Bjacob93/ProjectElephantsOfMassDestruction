@@ -52,6 +52,7 @@ public class Astar : MonoBehaviour {
 	private int currentWaypoint;
 
     AlledMelee_AI_Attack attackScript;
+    AlliedMelee_AI_Health healthScript;
 
 	void Start () {
 		//Reference the seeker and controller component.
@@ -66,6 +67,7 @@ public class Astar : MonoBehaviour {
 		GiraffeRunAnim = GetComponent<Animator>();
 
         attackScript = this.gameObject.GetComponent<AlledMelee_AI_Attack>();
+        healthScript = this.gameObject.GetComponent<AlliedMelee_AI_Health>();
     }
 
 	/** Method to print out errors in the log if we get any. If we don't, it will set first waypoint 
@@ -172,6 +174,12 @@ public class Astar : MonoBehaviour {
 		}
 	}
 
+    //Defend method.
+    void Defend()
+    {
+
+    }
+
 	//Method for moving the unit.
 	void Move(Vector3 direction, Path path){
 		//Set's the direction of movement to a vector form current position to next waypoint, then calls the SimpleMove command in the CharacterController.
@@ -208,24 +216,28 @@ public class Astar : MonoBehaviour {
             PathToNewDestination();
         }
 
-		//If there is no path.
-		if (path == null) {
+        if (receivedDefenceOrder)
+        {
+            healthScript.alliedArmour = 5;
+            isDefending = true;
+            receivedDefenceOrder = false;
+        }
+        if (isDefending)
+        {
+            Defend();
+        }
+
+        //If there is no path.
+        if (path == null) {
 			return;
 		}
 
 		if (isInMeleeRange) {
-            attackScript.alliesAttack(previousEnemy);
+            attackScript.alliesAttack(nearestEnemy);
 			return;
-		} else {
-		
 		}
 		//If the unit has reached it's goal.
 		if (currentWaypoint >= path.vectorPath.Count) {
-            if(receivedDefenceOrder)
-            {
-                receivedDefenceOrder = false;
-                isDefending = true;
-            }
 			if (!this.GiraffeRunAnim.GetCurrentAnimatorStateInfo(0).IsName("ATTACK") && !this.GiraffeRunAnim.GetCurrentAnimatorStateInfo(0).IsName("IDLE"))
 			{ 
 				GiraffeRunAnim.Play("IDLE", -1, 0f);
