@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.UI;
 
 public class Level1TutorialText : MonoBehaviour {
 
@@ -80,7 +81,7 @@ public class Level1TutorialText : MonoBehaviour {
     void Start()
     {
         ToturialBoxStartPosX = (Screen.width / 2) - (Screen.width / 6);
-        ToturialBoxStartPosY = (Screen.height / 2) - (Screen.height / 3);
+        ToturialBoxStartPosY = (Screen.height / 2) + (Screen.height / 6);
         TutorialBoxHeight = Screen.height / 6;
         TutorialBoxWidth = Screen.width / 3;
         drawStartInfo = true;
@@ -121,12 +122,11 @@ public class Level1TutorialText : MonoBehaviour {
     {
         GUI.skin = commandSkin;
         if (drawStartInfo && lvlManager.currentLevel == 1)
-        {
+       { 
             if (qHasBeenPressed == false/* && editorHasBeenOpened == false && enterProduceOrder == false && enterAttackOrder == false && enterAttackTarget == false && pressPlay == false*/)
             {
                 GUI.Box(new Rect(TutorialBox), TutorialPage1, commandSkin.GetStyle("tooltipBackground"));
             }
-
             if (qHasBeenPressed == true && editorHasBeenOpened == false /*&& enterProduceOrder == false && enterAttackOrder == false && enterAttackTarget == false && pressPlay == false*/)
             {
                 GUI.Box(new Rect(TutorialBox), TutorialPage2, commandSkin.GetStyle("tooltipBackground"));
