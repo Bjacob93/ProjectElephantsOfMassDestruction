@@ -5,6 +5,7 @@ public class AlledMelee_AI_Attack : MonoBehaviour
 {
 
     public Animator anim;
+	public AudioSource Sword;
 
     public float meleeCoolDown = 1.11f; // attack cooldown
     float meleeCoolDownLeft = 0f;
@@ -22,6 +23,7 @@ public class AlledMelee_AI_Attack : MonoBehaviour
     void Start()
     {
         anim = GetComponent<Animator>();
+		Sword = GetComponent<AudioSource>();
 
         aStar = this.GetComponent<Astar>();
 
@@ -87,6 +89,7 @@ public class AlledMelee_AI_Attack : MonoBehaviour
                 if (!this.anim.GetCurrentAnimatorStateInfo(0).IsName("ATTACK"))
                 {
                     anim.Play("ATTACK", -1, 0f);
+					Sword.Play ();
                 }
                 if (meleeCoolDownLeft <= 0)
                 {

@@ -84,27 +84,27 @@ public class Level1TutorialText : MonoBehaviour {
     {
         GUI.skin = commandSkin;
         if (drawStartInfo && lvlManager.currentLevel == 1) { 
-        if (qHasBeenPressed == false && editorHasBeenOpened == false && enterProduceOrder == false && enterAttackOrder == false && enterAttackTarget == false && pressPlay == false)
+        if (qHasBeenPressed == false/* && editorHasBeenOpened == false && enterProduceOrder == false && enterAttackOrder == false && enterAttackTarget == false && pressPlay == false*/)
         {
             GUI.Box(new Rect(TutorialBox), TutorialPage1, commandSkin.GetStyle("tooltipBackground"));
         }
 
-        if(qHasBeenPressed == true && editorHasBeenOpened == false && enterProduceOrder == false && enterAttackOrder == false && enterAttackTarget == false && pressPlay == false)
+        if(qHasBeenPressed == true && editorHasBeenOpened == false /*&& enterProduceOrder == false && enterAttackOrder == false && enterAttackTarget == false && pressPlay == false*/)
         {
             GUI.Box(new Rect(TutorialBox), TutorialPage2, commandSkin.GetStyle("tooltipBackground"));
         }
 
-        if(qHasBeenPressed == true && editorHasBeenOpened == true && enterProduceOrder == false && enterAttackOrder == false && enterAttackTarget == false && pressPlay == false)
+        if(qHasBeenPressed == true && editorHasBeenOpened == true && enterProduceOrder == false/* && enterAttackOrder == false && enterAttackTarget == false && pressPlay == false*/)
         {
             GUI.Box(new Rect(TutorialBox), TutorialPage3, commandSkin.GetStyle("tooltipBackground"));
         }
 
-        if (qHasBeenPressed == true && editorHasBeenOpened == true && enterProduceOrder == true && enterAttackOrder == false && enterAttackTarget == false && pressPlay == false)
+        if (qHasBeenPressed == true && editorHasBeenOpened == true && enterProduceOrder == true && enterAttackOrder == false /*&& enterAttackTarget == false && pressPlay == false*/)
         {
             GUI.Box(new Rect(TutorialBox), TutorialPage4, commandSkin.GetStyle("tooltipBackground"));
         }
 
-        if (qHasBeenPressed == true && editorHasBeenOpened == true && enterProduceOrder == true && enterAttackOrder == true && enterAttackTarget == false && pressPlay == false)
+        if (qHasBeenPressed == true && editorHasBeenOpened == true && enterProduceOrder == true && enterAttackOrder == true && enterAttackTarget == false/* && pressPlay == false*/)
         {
             GUI.Box(new Rect(TutorialBox), TutorialPage5, commandSkin.GetStyle("tooltipBackground"));
         }
