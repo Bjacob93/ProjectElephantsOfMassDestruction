@@ -303,11 +303,11 @@ public class EditorList : MonoBehaviour{
         Event e = Event.current;
 
         //Check if the mouse is dragging the current command
-        if (e.button == 0 && e.type == EventType.mouseDrag && !isDraggingCommand)
+        if (slotRect.Contains(e.mousePosition) && e.button == 0 && e.type == EventType.mouseDrag && !isDraggingCommand)
         {
             if(belongsToCheckpoint && enteredCommands[slotNumber].commandId == "P01")
             {
-
+                return;
             }
             else
             {

@@ -14,7 +14,7 @@ public class CommandDatabase : MonoBehaviour {
 		commandDatabase.Add (new Command ("Attack", "attack(X)", "A01", "<color=#FFFFF>" + "Move to a target location while attacking enemies on the way"+ "</color>", "Order units to move to the target location and attack all enemies on their way. Exchange the X with the name of the target chechkpoint.",  true, true, true, new Vector3(), 0, false, 1));
 
 		//defend orders
-		commandDatabase.Add (new Command ("Defend", "defend", "D01", "<color=#FFFFF>" +"Defend the target location"+ "</color>", "Order units to defend this position. Units under this command receive 5 less damage from all enemy attacks.", true, true, true, new Vector3(),0, false, 1));
+		commandDatabase.Add (new Command ("Defend", "defend", "D01", "<color=#FFFFF>" +"Defend the target location"+ "</color>", "Order units to defend this position. Units under this command receive 5 less damage from all enemy attacks.", false, true, true, new Vector3(),0, false, 1));
 
         //move orders
 		commandDatabase.Add (new Command ("Move", "move", "M01", "<color=#FFFFF>" + "Move to target location and ignore enemies on the way" + "</color>", "Order units to move to the target location and ignore all enemies on their way. Exchange the X with the name of the target chechkpoint.", true, true, true, new Vector3(),0, false, 10));
