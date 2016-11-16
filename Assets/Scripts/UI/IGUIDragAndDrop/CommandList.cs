@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.UI;
 
 public class CommandList : MonoBehaviour {
 
@@ -50,17 +51,16 @@ public class CommandList : MonoBehaviour {
     float speed;
     private bool animState = true;
     //button for animation
-    public Texture2D buttonIcon;
     float buttonW;
     float buttonH;
     float buttonX;
     float buttonXMax;
     float buttonY;
-
+    //GUIStyle iconStyle;
     //GUI appearence.
     public GUISkin commandSkin;
 
-    void Start(){
+    void Start() { 
         //Reference the database of commands so that we can always find any command we need.
         database = GameObject.FindGameObjectWithTag("CommandDatabase").GetComponent<CommandDatabase>();
 
@@ -102,11 +102,13 @@ public class CommandList : MonoBehaviour {
 		}
         //Animation button
         speed = Time.deltaTime * 600;
-        buttonH = buttonIcon.height;
-        buttonW = buttonIcon.width;
+        buttonH = 32;
+        buttonW = 32;
         buttonX = boundingBoxX - buttonW;
         buttonXMax = buttonX;
         buttonY = boundingBoxY - (buttonH * 0.5f) + (boundingBoxHeight * 0.5f);
+
+        //iconStyle.normal.background = buttonTexture;
     }
 
 	void Update(){
@@ -123,7 +125,6 @@ public class CommandList : MonoBehaviour {
             {
                 buttonX = buttonXMax;
             }
-            buttonState = "hide";
             buttonX -= speed;
             boundingBoxX -= speed;
             boxStartingPosX -= speed;
@@ -134,7 +135,6 @@ public class CommandList : MonoBehaviour {
             {
                 buttonX = Screen.width - buttonW;
             }
-            buttonState = "show";
             buttonX += speed;
             boxStartingPosX += speed;
             boundingBoxX += speed;
@@ -153,7 +153,7 @@ public class CommandList : MonoBehaviour {
         //Set the current tooltip string to be blank.
 		toolTip = "";
         //draw toggle button
-        if (GUI.Button(new Rect(buttonX, buttonY, buttonW, buttonH), buttonIcon))
+        if (GUI.Button(new Rect(buttonX, buttonY, buttonW, buttonH), "", commandSkin.GetStyle("slideButton")))
         {
             animState = !animState;
         }
