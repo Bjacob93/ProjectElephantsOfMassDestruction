@@ -5673,6 +5673,11 @@ Prefab:
       propertyPath: lives
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 114000011349453906, guid: f4d921ddf9e210b4ba27ac58f3bbcdf6,
+        type: 2}
+      propertyPath: m_Text
+      value: 
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: f4d921ddf9e210b4ba27ac58f3bbcdf6, type: 2}
   m_IsPrefabParent: 0
