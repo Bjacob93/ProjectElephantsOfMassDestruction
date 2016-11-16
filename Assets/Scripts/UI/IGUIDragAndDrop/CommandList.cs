@@ -382,7 +382,7 @@ public class CommandList : MonoBehaviour {
         Event e = Event.current;
 
         //Check if the mouse is dragging the current command.
-        if (e.button == 0 && e.type == EventType.mouseDrag && !sequenceEditor.isDraggingCommand)
+        if (slotRect.Contains(e.mousePosition) && e.button == 0 && e.type == EventType.mouseDrag && !sequenceEditor.isDraggingCommand)
         {
             if(sequenceEditor.belongsToCheckpoint && thisCommand.commandId == "P01")
             {
@@ -415,18 +415,24 @@ public class CommandList : MonoBehaviour {
                     {
                         if (i % 2 == 0)
                         {
-                            sequenceEditor.enteredCommands[i] = sequenceEditor.draggedCommand;
+                            if (!sequenceEditor.draggedCommand.isVariable)
+                            {
+                                sequenceEditor.enteredCommands[i] = sequenceEditor.draggedCommand;
+                            }
+                            else if(sequenceEditor.enteredCommands[i + 1].commandName == "")
+                            {
+                                sequenceEditor.enteredCommands[i + 1] = sequenceEditor.draggedCommand;
+                            }
                         }
                         else
                         {
-                            if (sequenceEditor.enteredCommands[i - 1].commandName == "")
-                            {
-                                sequenceEditor.enteredCommands[i - 1] = sequenceEditor.draggedCommand;
-                            }
-                            else
+                            if (sequenceEditor.draggedCommand.isVariable)
                             {
                                 sequenceEditor.enteredCommands[i] = sequenceEditor.draggedCommand;
-
+                            }
+                            else if(sequenceEditor.enteredCommands[i - 1].commandName == "")
+                            {
+                                sequenceEditor.enteredCommands[i - 1] = sequenceEditor.draggedCommand;
                             }
                         }
                     }
@@ -440,7 +446,7 @@ public class CommandList : MonoBehaviour {
 
     //Method for returning the text for the tooltip
 	string CreateToolTip(Command command){
-		toolTip = command.commandDesc;
+		toolTip = command.commandDescDnD;
 		return toolTip;
 	}
 }

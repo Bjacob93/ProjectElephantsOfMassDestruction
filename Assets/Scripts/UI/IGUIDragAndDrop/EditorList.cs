@@ -210,19 +210,26 @@ public class EditorList : MonoBehaviour{
                 //Update the slot position
                 slotRect = new Rect(boxStartingPosX + x * boxOffsetX, boxStartingPosY + y * boxOffsetY, boxWidth, boxHeight);
 
-                if (lvlManager.currentLevel == 1) { 
-                    if (thisCommand.commandId == "P01")
-                {
-                    tutorialtext.enterProduceOrder = true;
-                }
-                if (thisCommand.commandId == "A01")
-                {
-                    tutorialtext.enterAttackOrder = true;
-                }
-                if (thisCommand.commandId == "varA")
-                {
-                    tutorialtext.enterAttackTarget = true;
-                }
+                if (lvlManager.currentLevel == 1) {
+                    if(!belongsToCheckpoint)
+                    {
+                        if (thisCommand.commandId == "P01")
+                        {
+                            tutorialtext.enterProduceOrder = true;
+                        }
+                        if (thisCommand.commandId == "A01")
+                        {
+                            tutorialtext.enterAttackOrder = true;
+                        }
+                        if (thisCommand.commandId == "varA")
+                        {
+                            tutorialtext.enterAttackTarget = true;
+                        }
+                    }
+                else if (thisCommand.commandId == "D01")
+                    {
+                        tutorialtext.defendOrderInserted = true;
+                    }
                 }
                 //Draw any empty slots
                 if (thisCommand.commandName == "")
@@ -230,6 +237,10 @@ public class EditorList : MonoBehaviour{
                     if(x == 0)
                     {
                         GUI.Box(slotRect, "", commandSkin.GetStyle("commandEmpty"));
+                    }
+                    else if (slots[slotNumber - 1].requiresVariable)
+                    {
+                        GUI.Box(slotRect, "<color=#000000>" + "Insert Variable" + "</color>", commandSkin.GetStyle("variableUnavailable"));
                     }
                     else
                     {
@@ -264,7 +275,6 @@ public class EditorList : MonoBehaviour{
                         else
                         {
                             GUI.Box(slotRect, "<color=#000000>" + thisCommand.commandName + "</color>", commandSkin.GetStyle("commandAvailable"));
-
                         }
                     }
 
@@ -293,11 +303,11 @@ public class EditorList : MonoBehaviour{
         Event e = Event.current;
 
         //Check if the mouse is dragging the current command
-        if (e.button == 0 && e.type == EventType.mouseDrag && !isDraggingCommand)
+        if (slotRect.Contains(e.mousePosition) && e.button == 0 && e.type == EventType.mouseDrag && !isDraggingCommand)
         {
             if(belongsToCheckpoint && enteredCommands[slotNumber].commandId == "P01")
             {
-
+                return;
             }
             else
             {
@@ -341,7 +351,7 @@ public class EditorList : MonoBehaviour{
     //Method for returning the text for the tooltip
     string CreateToolTip(Command command)
     {
-        toolTip = command.commandDesc;
+        toolTip = command.commandDescDnD;
         return toolTip;
     }
 }

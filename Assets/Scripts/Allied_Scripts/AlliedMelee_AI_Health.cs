@@ -46,8 +46,13 @@ public class AlliedMelee_AI_Health : MonoBehaviour {
 		{
 			return;
 		}
-		//reduce the alliedHealth
-		currentHealth -= (damageTaken - alliedArmour);
+        //reduce the alliedHealth
+        float tempDamage = (damageTaken - alliedArmour);
+
+        currentHealth -= tempDamage > 0 ? tempDamage : 0;
+
+  //      if (tempDamage < 0) tempDamage = 0; 
+		//currentHealth -= (tempDamage);
 
 		if (currentHealth <= 0) {
 			Die ();
@@ -56,9 +61,9 @@ public class AlliedMelee_AI_Health : MonoBehaviour {
 
 	void Die()
 	{
-		//enemy is dead
+		//Enemy is dead.
 		Died = true;
         Uarray.remove(this.gameObject, "playerUnit");
-        Destroy (this.gameObject);
+        DestroyImmediate(this.gameObject);
 	}
 }

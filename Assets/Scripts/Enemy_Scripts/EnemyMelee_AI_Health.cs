@@ -78,7 +78,7 @@ public class EnemyMelee_AI_Health : MonoBehaviour {
         scoreManager.money += moneyValue;
 
         Uarray.remove(this.gameObject, "enemyUnit");
-		Destroy (this.gameObject);
+		DestroyImmediate (this.gameObject);
 	}
 
     void AtPlayerBase()
