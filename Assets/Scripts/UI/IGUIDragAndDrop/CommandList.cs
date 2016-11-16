@@ -436,7 +436,15 @@ public class CommandList : MonoBehaviour {
                         {
                             if (sequenceEditor.draggedCommand.isVariable)
                             {
-                                sequenceEditor.enteredCommands[i] = sequenceEditor.draggedCommand;
+                                if(!sequenceEditor.enteredCommands[i - 1].requiresVariable)
+                                {
+
+                                }
+                                else
+                                {
+                                    sequenceEditor.enteredCommands[i] = sequenceEditor.draggedCommand;
+
+                                }
                             }
                             else if(sequenceEditor.enteredCommands[i - 1].commandName == "")
                             {

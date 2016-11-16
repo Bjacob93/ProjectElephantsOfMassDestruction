@@ -246,6 +246,10 @@ public class EditorList : MonoBehaviour{
                     {
                         GUI.Box(slotRect, "<color=#000000>" + "Insert Variable" + "</color>", commandSkin.GetStyle("variableUnavailable"));
                     }
+                    else if(!slots[slotNumber - 1].requiresVariable && slots[slotNumber - 1].commandName != "")
+                    {
+                        GUI.Box(slotRect, "<color=#000000>" + "No Variable Needed" + "</color>", commandSkin.GetStyle("variableAvailable"));
+                    }
                     else
                     {
                         GUI.Box(slotRect, "", commandSkin.GetStyle("variableEmpty"));
