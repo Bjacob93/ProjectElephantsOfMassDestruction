@@ -19789,6 +19789,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   TopRight: {fileID: 0}
   BotLeft: {fileID: 0}
+  Startposision: {fileID: 305485823}
   scrollZone: 20
   scrollSpeed: 3
   cameraSpeed: 3

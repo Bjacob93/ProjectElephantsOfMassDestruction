@@ -4,6 +4,7 @@ using System.Collections;
 public class ThreeDRTSCamera : MonoBehaviour {
 
 	public GameObject TopRight, BotLeft;
+	private GameObject Startposision; 
 
 	public float scrollZone = 10.0f;
 	public float scrollSpeed = 3.0f;
@@ -28,7 +29,8 @@ public class ThreeDRTSCamera : MonoBehaviour {
 	public float panAngleMax = 85;
 
     //Cameras Staring position
-	private Vector3 desiredPosition = new Vector3(0,30,0);
+	private Vector3 desiredPosition;
+	//private Vector3 desiredPosition = new Vector3(0,30,0);
 
     Camera camera;
     Vector3 move;
@@ -36,6 +38,9 @@ public class ThreeDRTSCamera : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
         camera = GetComponent<Camera>();
+		Startposision = GameObject.FindWithTag ("PlayerBase");
+		desiredPosition = new Vector3(Startposision.transform.position.x,30,Startposision.transform.position.z);
+
     }
 
 
