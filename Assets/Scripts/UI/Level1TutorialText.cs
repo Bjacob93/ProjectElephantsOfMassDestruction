@@ -49,7 +49,7 @@ public class Level1TutorialText : MonoBehaviour {
                                 "Now give the Attack command the checkpoint A",
 
             dndTutorialPage6 = "The target checkpoint, in this case A is the place on the map where the “A” flag is placed. There can be multiple flags on a map, some of which have a capture point. The player needs to capture and hold these points in order to win. \n \n" +
-                               "Now close the editor and scroll the camera left until you see a flag on the ground. click it to open its editor.",
+                               "Now close the editor and scroll the camera left until you see a flag on the ground. click it to open its Editor.",
 
             dndTutorialPage7 = "This is the editor window for checkpoint A. Have you noticed that the commands you entered at the castle are not present here? This is because each location on the map has its own editor. \n \n" +
                                 "Drag a defend command into the editor.",
@@ -77,9 +77,13 @@ public class Level1TutorialText : MonoBehaviour {
                                 "The player needs to capture and hold these points in order to win. \n \n" +
                                 "Now give the attack command checkpoint A",
 
-            textTutorialPage6 = "",
-            textTutorialPage7 = "",
-            textTutorialPage8 = " \n" +
+            textTutorialPage6 = "The target checkpoint in this case A is the place on the map where the A flag is placed. There can be multiple flags on a map, some of which have a capture point. As the player you need to capture and hold these points in order to win \n \n" + 
+                                "Now close the editor an scroll the camera left until you see a flag on the ground. Click it to open its Editor",
+
+            textTutorialPage7 = "This is the Editor window for checkpoint A. Have you noticed that the commands you entered at the castle are not present here? This is because each location on the map has its own Editor. \n \n" + 
+                                "write defend in the editor to give your units a small advantage.",
+
+            textTutorialPage8 = "The defend order will order any of your units that gets near the point to defend it. It also gives them a slight bonus to tehir armor. \n Now you are ready to defend against the onsloght of the savafe elephants, forth and be victorious \n \n" +
                                 "Press play to begin";
 
     public GUISkin commandSkin;
