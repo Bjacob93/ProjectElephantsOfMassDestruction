@@ -151,6 +151,16 @@ public class EditorList : MonoBehaviour{
         if (drawEditorWindow)
         {
             DrawEditor();
+            if (tutorialtext.currentTutorialPage == 4 && belongsToCheckpoint == false)
+            {
+                tutorialtext.currentTutorialPage++;
+            }
+            else if(tutorialtext.currentTutorialPage == 10 && belongsToCheckpoint == true)
+            {
+                tutorialtext.currentTutorialPage++;
+            }
+
+
             if (!tutorialtext.editorHasBeenOpened && tutorialtext.commandListOpened && !belongsToCheckpoint)
             {
                 tutorialtext.editorHasBeenOpened = true;
@@ -217,6 +227,19 @@ public class EditorList : MonoBehaviour{
                 if (lvlManager.currentLevel == 1) {
                     if(!belongsToCheckpoint)
                     {
+                        if (tutorialtext.currentTutorialPage == 5)
+                        {
+                            tutorialtext.currentTutorialPage++;
+                        }
+                        else if(tutorialtext.currentTutorialPage == 7)
+                        {
+                            tutorialtext.currentTutorialPage++;
+                        }
+                        else if(tutorialtext.currentTutorialPage == 8)
+                        {
+                            tutorialtext.currentTutorialPage++;
+                        }
+
                         if (thisCommand.commandId == "P01")
                         {
                             tutorialtext.enterProduceOrder = true;
@@ -233,6 +256,10 @@ public class EditorList : MonoBehaviour{
                 else if (thisCommand.commandId == "D01")
                     {
                         tutorialtext.enterDefendOrder = true;
+                    }
+                    if (tutorialtext.currentTutorialPage == 11)
+                    {
+                        tutorialtext.currentTutorialPage++;
                     }
                 }
                 //Draw any empty slots

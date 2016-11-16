@@ -117,12 +117,9 @@ public class CommandList : MonoBehaviour {
 	void Update(){
         if (!animState && buttonX >= buttonXMax + 20)
         {
-            if (lvlManager.currentLevel == 1)
+            if (lvlManager.currentLevel == 1 && tutorialtext.currentTutorialPage == 2)
             {
-                if (tutorialtext.commandListOpened == false)
-                {
-                    tutorialtext.commandListOpened = true;
-                }
+                tutorialtext.currentTutorialPage++;
             }
             if (buttonX < buttonXMax)
             {
