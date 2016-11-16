@@ -88,33 +88,30 @@ public class Astar : MonoBehaviour {
         if (nearestEnemy != null)
         {
             distanceToEnemy = Vector3.Distance(transform.position, nearestEnemy.transform.position);
-            if (isDefending)
-            {
-                distanceFromTarget = Vector3.Distance(nearestEnemy.transform.position, targetPosition);
-            }
+            //if (isDefending)
+            //{  && (!isDefending || (isDefending && distanceFromTarget <= maxDistanceFromTargetAllowed))
+            //    distanceFromTarget = Vector3.Distance(nearestEnemy.transform.position, targetPosition);
+            //}
         }
         PathToEnemy();
 	}
 
 	//Method for pathing to the nearest enemy.
 	void PathToEnemy () {
-		if (nearestEnemy != null && pathCompleted && !hasPathToEnemy && (!isDefending || (isDefending && distanceFromTarget <= maxDistanceFromTargetAllowed))) {
+		if (nearestEnemy != null && pathCompleted) {
 			//Generate new path to nearest enemy, if within engagement range.
 			if (distanceToEnemy <= engagementRange) {
                 if (pathCompleted) {
                     pathCompleted = false;
                     seeker.StartPath(transform.position, nearestEnemy.transform.position, OnPathComplete);
                     previousEnemy = nearestEnemy;
-                    hasPathToEnemy = true;
                     goToWaypoint = false;
                     movingToWaypoint = false;
                 }
 			}
 		} else if (nearestEnemy != null && distanceToEnemy <= engagementRange && previousEnemy != nearestEnemy) {
-			hasPathToEnemy = false;
 			goToWaypoint = false;
-		} else if ((distanceToEnemy >= engagementRange && hasPathToEnemy) || nearestEnemy == null) {
-			hasPathToEnemy = false;
+		} else if ((distanceToEnemy >= engagementRange) || nearestEnemy == null) {
 			goToWaypoint = true;
             previousEnemy = null;
         }
@@ -258,5 +255,7 @@ public class Astar : MonoBehaviour {
 
 		//Move the unit
 		Move (direction, path);
+
+        isInMeleeRange = false;
 	}
 }

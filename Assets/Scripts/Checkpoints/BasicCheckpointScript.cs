@@ -287,7 +287,6 @@ public class BasicCheckpointScript : MonoBehaviour {
                 Astar aStar = e.GetComponent<Astar>();
                 if (checkpointName != aStar.commanderID)
                 {
-                    aStar.targetPosition = targetLocation;
                     aStar.commanderID = checkpointName;
                     aStar.receivedDefenceOrder = true;
                     forEveryRan = true;
