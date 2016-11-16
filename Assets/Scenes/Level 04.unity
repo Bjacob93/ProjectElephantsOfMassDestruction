@@ -7458,7 +7458,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   restartDelay: 5
-  lives: 20
+  lives: 4
   money: 100
   moneyText: {fileID: 127121227}
   livesText: {fileID: 1357437267}

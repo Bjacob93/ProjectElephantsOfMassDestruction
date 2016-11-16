@@ -3283,7 +3283,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   restartDelay: 5
-  lives: 20
+  lives: 4
   money: 100
   moneyText: {fileID: 1993096858}
   livesText: {fileID: 551578490}

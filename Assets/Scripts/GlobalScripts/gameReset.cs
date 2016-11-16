@@ -66,6 +66,8 @@ public class gameReset : MonoBehaviour {
             scoreManagerScript.basicCapturePointScripts[i].enemyHasCapturePoint = false;
             scoreManagerScript.basicCapturePointScripts[i].playerHasCapturePoint = false;
             scoreManagerScript.basicCapturePointScripts[i].neutralCapturePoint = true;
+            scoreManagerScript.basicCapturePointScripts[i].elephantCapture.fillAmount = 0;
+            scoreManagerScript.basicCapturePointScripts[i].giraffeCapture.fillAmount = 0;
         }
 
         homeBaseGUI.shrimp = 1;
