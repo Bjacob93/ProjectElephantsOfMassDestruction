@@ -59,10 +59,6 @@ public class BuyEnemyUnits : MonoBehaviour
 
         if (amountOfEnemySpawned == maxEnemySpawn)
         {
-			if (sm.lives == 0) {
-				sm.GameOver ();
-				timeupdate ();
-			}
             victoryTimer += Time.deltaTime;
             if(victoryTimer >= waitTime)
             {
@@ -74,9 +70,10 @@ public class BuyEnemyUnits : MonoBehaviour
                     }
                     else if (i == listOfEnemyUnits.enemies.Length - 1 && sm.playerHasAllCheckPoints == true)
                     {
-                        sm.Victory();
-                        timeupdate();
-                    }
+
+						sm.Victory();
+						timeupdate ();
+						}
                 }
             }
         }
@@ -84,9 +81,12 @@ public class BuyEnemyUnits : MonoBehaviour
 
     void timeupdate()
     {
+	//	sm.vicoryload ();
+		//SceneManager.LoadSceneAsync("Scenes/mainMenu", LoadSceneMode.Single);
+
         wattTimeTimer += Time.deltaTime;
         if (wattTimeTimer >= waitTime)
-        {
+       {
                 SceneManager.LoadSceneAsync("Scenes/mainMenu", LoadSceneMode.Single);
         }
     }

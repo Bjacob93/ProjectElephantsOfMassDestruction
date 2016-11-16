@@ -10,6 +10,10 @@ public class ScoreManager : MonoBehaviour {
 	//public AudioClip victoryS;
 
 	//AudioSource levelSound;
+	public int currentScene;
+	int mainMenuindex; 
+	public AudioSource VictoryS;
+
 
 	public float restartDelay = 5f;         // Time to wait before restarting the level
 	float restartTimer;                     // Timer to count up to restarting the level
@@ -51,12 +55,17 @@ public class ScoreManager : MonoBehaviour {
 		//levelSound = gameObject.AddComponent<AudioSource> ();
 	}
 	public void timeupdate(){
-		restartTimer += Time.deltaTime;
-			if (restartTimer >= restartDelay) {
+		//restartTimer += Time.deltaTime;
+		//	if (restartTimer >= restartDelay) {
 				// .. then reload the currently loaded level.
-				SceneManager.LoadSceneAsync ("Scenes/mainMenu", LoadSceneMode.Single);
-			}
+		SceneManager.LoadScene(currentScene);
+			//}
 		}
+	public void vicoryload(){
+		if (!VictoryS.isPlaying) {
+			SceneManager.LoadScene (mainMenuindex);
+		}
+	}
 
     //function to check if a player owns the different capturePoints
     void checkCapturePointsForOwnership()
@@ -79,6 +88,8 @@ public class ScoreManager : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
+		mainMenuindex = SceneManager.GetSceneByName ("mainMenu").buildIndex;
+		currentScene = SceneManager.GetActiveScene().buildIndex;
         checkCapturePointsForOwnership();
 
         moneyText.text = "Money: $" + money.ToString ();
@@ -107,6 +118,10 @@ public void GameOver(){
 }
     public void Victory()
     {
+		//VictoryS = gameObject.AddComponent<AudioSource> ();
+		//VictoryS.clip = Resources.Load ("Audio/Victory") as AudioClip;
+		//VictoryS.playOnAwake = true;
 		anim.SetTrigger("VictoryAnimation");
+		//VictoryS.Play ();
 	}
 }

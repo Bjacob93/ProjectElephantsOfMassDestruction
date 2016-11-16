@@ -170,14 +170,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3fd47b9a3a224464096fb7e400ed67ed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  qHasBeenPressed: 0
+  commandListOpened: 0
   editorHasBeenOpened: 0
   enterProduceOrder: 0
   enterAttackOrder: 0
   enterAttackTarget: 0
   chechpointEditorOpened: 0
-  defendOrderInserted: 0
+  enterDefendOrder: 0
   pressPlay: 0
+  requiresNextClickToProgress: 1
   commandSkin: {fileID: 11400000, guid: af1d55f012321ba4fb142ce096bc0ec4, type: 2}
 --- !u!114 &2199395
 MonoBehaviour:

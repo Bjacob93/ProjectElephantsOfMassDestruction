@@ -9,7 +9,7 @@ public class EnemyMelee_AI_Health : MonoBehaviour {
 	public int moneyValue = 5;
     GameObject unitManager;
     UnitArrays Uarray;
-
+	public AudioSource Gameover;
     public GameObject enemyUnits;
     public GameObject enemySpawn;
 
@@ -55,6 +55,10 @@ public class EnemyMelee_AI_Health : MonoBehaviour {
             AtPlayerBase();
         }
 
+		if (!Gameover.isPlaying) {
+			scoreManager.timeupdate ();
+		}
+
 	}
 
 	public void TakeDamage (float damageTaken)
@@ -86,13 +90,11 @@ public class EnemyMelee_AI_Health : MonoBehaviour {
         this.gameObject.transform.position = enemySpawn.transform.position;
         scoreManager.LoseLife(1);
 		if (scoreManager.lives==0) {
-			AudioSource Gameover;
 			Gameover = gameObject.AddComponent<AudioSource> ();
-			Gameover.clip = Resources.Load ("Audio/Victory") as AudioClip;
+			Gameover.clip = Resources.Load ("Audio/GameOver") as AudioClip;
 			Gameover.playOnAwake = true;
 			scoreManager.GameOver ();
 			Gameover.Play ();
-			scoreManager.timeupdate ();
 		}
     }
 }
