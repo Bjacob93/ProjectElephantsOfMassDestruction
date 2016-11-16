@@ -6214,7 +6214,7 @@ MonoBehaviour:
   NeutralCapture: {fileID: 767827815}
   avCaptureTimer: 0
   capturePoints: 0
-  distanceNeededToCapture: 10
+  distanceNeededToCapture: 5
   neutralCapturePoint: 1
   modIndex: 1
   closestEnemy: {fileID: 0}
@@ -9204,7 +9204,7 @@ MonoBehaviour:
   NeutralCapture: {fileID: 807714370}
   avCaptureTimer: 0
   capturePoints: 0
-  distanceNeededToCapture: 10
+  distanceNeededToCapture: 5
   neutralCapturePoint: 1
   modIndex: 1
   closestEnemy: {fileID: 0}

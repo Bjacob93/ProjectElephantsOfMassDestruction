@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: 3c5012c024ebb3d4da4ecd082c075a09
-timeCreated: 1479133536
+timeCreated: 1479290543
 licenseType: Free
 MonoImporter:
   serializedVersion: 2
@@ -8,7 +8,8 @@ MonoImporter:
   - database: {instanceID: 0}
   - sequenceManager: {instanceID: 0}
   - sequenceEditor: {instanceID: 0}
-  - buttonIcon: {fileID: 2800000, guid: 1e7e51ce1082c0544a36cc4386ee26c4, type: 3}
+  - buttonTexture: {fileID: 2800000, guid: 1de1e31f50b0c1b42a0bbe1ab337edb9, type: 3}
+  - buttonIcon: {instanceID: 0}
   - commandSkin: {instanceID: 0}
   executionOrder: 200
   icon: {instanceID: 0}
