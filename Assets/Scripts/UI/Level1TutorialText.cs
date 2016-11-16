@@ -156,7 +156,10 @@ public class Level1TutorialText : MonoBehaviour {
        {
             if (requiresNextClickToProgress)
             {
-                if (GUI.Button(nextButton, "Next"));
+                if (GUI.Button(nextButton, "Next"))
+                {
+
+                }
             }
 
             if (commandListOpened == false/* && editorHasBeenOpened == false && enterProduceOrder == false && enterAttackOrder == false && enterAttackTarget == false && pressPlay == false*/)
