@@ -6,7 +6,7 @@ public class EnemyMelee_AI_Attack : MonoBehaviour {
     public Animator anim;
 	public AudioSource Sword;
 
-	public float meleeCoolDown = 1.11f; //Attack cooldown
+	public float meleeCoolDown = 2.11f; //Attack cooldown
 	float meleeCoolDownLeft = 0f;
 	float attackDamage; // Damage of each attack
 
@@ -48,13 +48,12 @@ public class EnemyMelee_AI_Attack : MonoBehaviour {
             //Update the hit cooldown
             meleeCoolDownLeft -= Time.deltaTime;
             //Check if we need to run the attack script since we reached the targeted cooldown
-            if (meleeCoolDownLeft <= 0.5f)
+            if (meleeCoolDownLeft <= 1f)
             {
 
                 if (!this.anim.GetCurrentAnimatorStateInfo(0).IsName("ATTACK"))
                 {
                     anim.Play("ATTACK", -1, 0f);
-					Sword.Play ();
                 }
                 if(meleeCoolDownLeft <= 0)
                 {
@@ -65,11 +64,15 @@ public class EnemyMelee_AI_Attack : MonoBehaviour {
                         nearestPlayer.GetComponent<AlliedMelee_AI_Health>().TakeDamage(attackDamage);
                         eachMissIncreaseChance = 0;
                         meleeCoolDownLeft = meleeCoolDown;
+                        if(!Sword.isPlaying)
+                        Sword.Play();
                     }
                     else
                     {
                         eachMissIncreaseChance += 5;
                         meleeCoolDownLeft = meleeCoolDown;
+                        if(!Sword.isPlaying)
+                        Sword.Play();
                     }
                 }  
             }
