@@ -119,9 +119,9 @@ public class CommandList : MonoBehaviour {
         {
             if (lvlManager.currentLevel == 1)
             {
-                if (tutorialtext.qHasBeenPressed == false)
+                if (tutorialtext.commandListOpened == false)
                 {
-                    tutorialtext.qHasBeenPressed = true;
+                    tutorialtext.commandListOpened = true;
                 }
             }
             if (buttonX < buttonXMax)

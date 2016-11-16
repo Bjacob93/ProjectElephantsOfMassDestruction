@@ -4,21 +4,32 @@ using UnityEngine.UI;
 
 public class Level1TutorialText : MonoBehaviour {
 
-    public bool qHasBeenPressed = false;
+    public bool commandListOpened = false;
     public bool editorHasBeenOpened = false;
     public bool enterProduceOrder = false;
     public bool enterAttackOrder = false;
     public bool enterAttackTarget = false;
     public bool chechpointEditorOpened = false;
-    public bool defendOrderInserted = false;
+    public bool enterDefendOrder = false;
     public bool pressPlay = false;
     bool drawStartInfo;
 
-    float ToturialBoxStartPosX;
-    float ToturialBoxStartPosY;
-    float TutorialBoxHeight;
-    float TutorialBoxWidth;
-    Rect TutorialBox;
+    public bool requiresNextClickToProgress = true;
+
+    Rect    TutorialBox;
+    float   TutorialBoxStartPosX,
+            TutorialBoxStartPosY,
+            TutorialBoxHeight,
+            TutorialBoxWidth;
+    
+
+    //Cache 'Next' button dimensions
+    Rect    nextButton;
+    float   nextButtonX,
+            nextButtonY,
+            nextButtonHeight,
+            nextButtonWidth;
+    
 
     string  TutorialPage1,
             TutorialPage2,
@@ -94,12 +105,18 @@ public class Level1TutorialText : MonoBehaviour {
     // Use this for initialization
     void Start()
     {
-        ToturialBoxStartPosX = (Screen.width / 2) - (Screen.width / 6);
-        ToturialBoxStartPosY = (Screen.height / 2) + (Screen.height / 6);
+        TutorialBoxStartPosX = (Screen.width / 2) - (Screen.width / 6);
+        TutorialBoxStartPosY = (Screen.height / 2) + (Screen.height / 6);
         TutorialBoxHeight = Screen.height / 4;
         TutorialBoxWidth = Screen.width / 3;
         drawStartInfo = true;
-        TutorialBox = new Rect(ToturialBoxStartPosX, ToturialBoxStartPosY, TutorialBoxWidth, TutorialBoxHeight);
+        TutorialBox = new Rect(TutorialBoxStartPosX, TutorialBoxStartPosY, TutorialBoxWidth, TutorialBoxHeight);
+
+        nextButtonX = TutorialBoxStartPosX + Screen.width / 25;
+        nextButtonY = TutorialBoxStartPosY - Screen.height / 40;
+        nextButtonWidth = 50;
+        nextButtonHeight = 30;
+        nextButton = new Rect(nextButtonX, nextButtonY, nextButtonWidth, nextButtonHeight);
 
         lvlManager = GameObject.Find("LevelManager").GetComponent<levelManager>();
         varKeeper = GameObject.Find("KeeperOfVariables").GetComponent<mainMenuVariables>();
@@ -136,45 +153,50 @@ public class Level1TutorialText : MonoBehaviour {
     {
         GUI.skin = commandSkin;
         if (drawStartInfo && lvlManager.currentLevel == 1)
-       { 
-            if (qHasBeenPressed == false/* && editorHasBeenOpened == false && enterProduceOrder == false && enterAttackOrder == false && enterAttackTarget == false && pressPlay == false*/)
+       {
+            if (requiresNextClickToProgress)
+            {
+                if (GUI.Button(nextButton, "Next"));
+            }
+
+            if (commandListOpened == false/* && editorHasBeenOpened == false && enterProduceOrder == false && enterAttackOrder == false && enterAttackTarget == false && pressPlay == false*/)
             {
                 GUI.Box(new Rect(TutorialBox), TutorialPage1, commandSkin.GetStyle("tutorialBoundingBoxBackground"));
             }
-            if (qHasBeenPressed == true && editorHasBeenOpened == false /*&& enterProduceOrder == false && enterAttackOrder == false && enterAttackTarget == false && pressPlay == false*/)
+            if (commandListOpened == true && editorHasBeenOpened == false /*&& enterProduceOrder == false && enterAttackOrder == false && enterAttackTarget == false && pressPlay == false*/)
             {
                 GUI.Box(new Rect(TutorialBox), TutorialPage2, commandSkin.GetStyle("tutorialBoundingBoxBackground"));
             }
 
-            if (qHasBeenPressed == true && editorHasBeenOpened == true && enterProduceOrder == false/* && enterAttackOrder == false && enterAttackTarget == false && pressPlay == false*/)
+            if (commandListOpened == true && editorHasBeenOpened == true && enterProduceOrder == false/* && enterAttackOrder == false && enterAttackTarget == false && pressPlay == false*/)
             {
                 GUI.Box(new Rect(TutorialBox), TutorialPage3, commandSkin.GetStyle("tutorialBoundingBoxBackground"));
             }
 
-            if (qHasBeenPressed == true && editorHasBeenOpened == true && enterProduceOrder == true && enterAttackOrder == false /*&& enterAttackTarget == false && pressPlay == false*/)
+            if (commandListOpened == true && editorHasBeenOpened == true && enterProduceOrder == true && enterAttackOrder == false /*&& enterAttackTarget == false && pressPlay == false*/)
             {
                 GUI.Box(new Rect(TutorialBox), TutorialPage4, commandSkin.GetStyle("tutorialBoundingBoxBackground"));
             }
 
-            if (qHasBeenPressed == true && editorHasBeenOpened == true && enterProduceOrder == true && enterAttackOrder == true && enterAttackTarget == false/* && pressPlay == false*/)
+            if (commandListOpened == true && editorHasBeenOpened == true && enterProduceOrder == true && enterAttackOrder == true && enterAttackTarget == false/* && pressPlay == false*/)
             {
                 GUI.Box(new Rect(TutorialBox), TutorialPage5, commandSkin.GetStyle("tutorialBoundingBoxBackground"));
             }
 
-            if (qHasBeenPressed == true && editorHasBeenOpened == true && enterProduceOrder == true && enterAttackOrder == true && enterAttackTarget == true && chechpointEditorOpened == false)
+            if (commandListOpened == true && editorHasBeenOpened == true && enterProduceOrder == true && enterAttackOrder == true && enterAttackTarget == true && chechpointEditorOpened == false)
             {
                 GUI.Box(new Rect(TutorialBox), TutorialPage6, commandSkin.GetStyle("tutorialBoundingBoxBackground"));
             }
 
-            if (qHasBeenPressed == true && editorHasBeenOpened == true && enterProduceOrder == true && enterAttackOrder == true && enterAttackTarget == true && chechpointEditorOpened == true && defendOrderInserted == false)
+            if (commandListOpened == true && editorHasBeenOpened == true && enterProduceOrder == true && enterAttackOrder == true && enterAttackTarget == true && chechpointEditorOpened == true && enterDefendOrder == false)
             {
                 GUI.Box(new Rect(TutorialBox), TutorialPage7, commandSkin.GetStyle("tutorialBoundingBoxBackground"));
             }
-            if (qHasBeenPressed == true && editorHasBeenOpened == true && enterProduceOrder == true && enterAttackOrder == true && enterAttackTarget == true && chechpointEditorOpened == true && defendOrderInserted == true && pressPlay == false)
+            if (commandListOpened == true && editorHasBeenOpened == true && enterProduceOrder == true && enterAttackOrder == true && enterAttackTarget == true && chechpointEditorOpened == true && enterDefendOrder == true && pressPlay == false)
             {
                 GUI.Box(new Rect(TutorialBox), TutorialPage8, commandSkin.GetStyle("tutorialBoundingBoxBackground"));
             }
-            if (qHasBeenPressed == true && editorHasBeenOpened == true && enterProduceOrder == true && enterAttackOrder == true && enterAttackTarget == true && chechpointEditorOpened == true && defendOrderInserted == true && pressPlay == true)
+            if (commandListOpened == true && editorHasBeenOpened == true && enterProduceOrder == true && enterAttackOrder == true && enterAttackTarget == true && chechpointEditorOpened == true && enterDefendOrder == true && pressPlay == true)
             {
                 drawStartInfo = false;
             }

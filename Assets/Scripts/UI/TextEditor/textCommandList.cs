@@ -114,9 +114,9 @@ public class textCommandList : MonoBehaviour
     {
         if (!animState && buttonX >= buttonXMax + 20)
         {
-            if (lvlManager.currentLevel == 1 && !tutorial.qHasBeenPressed)
+            if (lvlManager.currentLevel == 1 && !tutorial.commandListOpened)
             {
-                tutorial.qHasBeenPressed = true;
+                tutorial.commandListOpened = true;
             }
             if (buttonX < buttonXMax)
             {
