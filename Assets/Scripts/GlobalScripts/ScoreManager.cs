@@ -9,7 +9,7 @@ public class ScoreManager : MonoBehaviour {
 	//AudioSource levelmusic;
 	//public AudioClip victoryS;
 
-	AudioSource levelSound;
+	//AudioSource levelSound;
 
 	public float restartDelay = 5f;         // Time to wait before restarting the level
 	float restartTimer;                     // Timer to count up to restarting the level
@@ -47,7 +47,7 @@ public class ScoreManager : MonoBehaviour {
 	{
 		// Set up the reference.
 		anim = GetComponent <Animator> ();
-		levelSound = gameObject.AddComponent<AudioSource> ();
+		//levelSound = gameObject.AddComponent<AudioSource> ();
 	}
 	void timeupdate(){
 		restartTimer += Time.deltaTime;
@@ -88,8 +88,8 @@ public class ScoreManager : MonoBehaviour {
 	}
 
 	void Start(){
-		levelSound.clip = Resources.Load("Audio/Level1") as AudioClip;
-		levelSound.Play();
+	//	levelSound.clip = Resources.Load("Audio/Level1") as AudioClip;
+	//	levelSound.Play();
         capturePoint = GameObject.FindGameObjectsWithTag("CapturePoint");
         foreach(GameObject c in capturePoint)
         {
@@ -109,15 +109,6 @@ public class ScoreManager : MonoBehaviour {
 
     public void Victory()
     {
-		levelSound.Stop ();
-		levelSound.clip =Resources.Load("Audio/Victory") as AudioClip;
-		levelSound.Play ();
-		//levelmusic.Stop ();
-		//victoryS.Play ();
-	//	Debug.Log (victoryS);
-		//AudioClip vv = Resources.Load ("Assets/Audio/Vicory.ogg") as AudioClip;
-		//levelmusic.Play ();
 		anim.SetTrigger("VictoryAnimation");
-
 	}
 }
