@@ -63,6 +63,7 @@ public class EditorList : MonoBehaviour{
     //GUI appearance
     public GUISkin commandSkin;
 
+    PauseScript pauseScript;
     levelManager lvlManager;
     Level1TutorialText tutorialtext;
     
@@ -93,7 +94,7 @@ public class EditorList : MonoBehaviour{
         slotsRow = 6;
         slotsCol = 2;
 
-        
+        pauseScript = GameObject.Find("Pause").GetComponent<PauseScript>();
 
         //Get the dimensions of the command window from the CommandList script.
         commandBoundRect = GameObject.FindGameObjectWithTag("CommandList").GetComponent<CommandList>().boundingRect;
@@ -246,11 +247,14 @@ public class EditorList : MonoBehaviour{
                     {
                         GUI.Box(slotRect, "", commandSkin.GetStyle("variableEmpty"));
                     }
+                    if (pauseScript.gameIsPaused)
+                    {
+                        CheckReleased(slotNumber);
+                    }
 
-                    CheckReleased(slotNumber);
-
-                //Draw any filled slots
-                }else if (thisCommand.commandName != "")
+                    //Draw any filled slots
+                }
+                else if (thisCommand.commandName != "")
                 {
                     if(x == 1 && slots[slotNumber - 1].commandName == "")
                     {
@@ -287,7 +291,10 @@ public class EditorList : MonoBehaviour{
                         toolTip = CreateToolTip(thisCommand);
 
                         //Call the drag and drop method
-                        DragonDrop(slotNumber);
+                        if (pauseScript.gameIsPaused)
+                        {
+                            DragonDrop(slotNumber);
+                        }
                     }
                 }
                 //Increment the current slot.

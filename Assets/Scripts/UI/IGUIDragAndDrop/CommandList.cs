@@ -22,6 +22,7 @@ public class CommandList : MonoBehaviour {
     public SequenceManager sequenceManager;
     public EditorList sequenceEditor;
     levelManager lvlManager;
+    PauseScript pauseScript;
 
 	//The number of slots in the window
 	int numberOfSlots = 12;
@@ -73,6 +74,8 @@ public class CommandList : MonoBehaviour {
         {
             tutorialtext = GameObject.Find("UIManager").GetComponent<Level1TutorialText>();
         }
+
+        pauseScript = GameObject.Find("Pause").GetComponent<PauseScript>();
 
         //Calculate the bounding box dimensions and define the resulting Rect.
         boundingBoxHeight = numberOfSlots * (boxHeight + ((Screen.height / 24) / 10)) + (Screen.width/35);
@@ -364,12 +367,17 @@ public class CommandList : MonoBehaviour {
                     showToolTip = true;
 
                     //Call the function that handles drag and drop.
-                    DragonDrop(slotNumber, thisCommand);
+                    if (pauseScript.gameIsPaused)
+                    {
+                        DragonDrop(slotNumber, thisCommand);
+                    }
                 }
             }
             //Check if dragging is stopped.
-            CheckForRelease(slotNumber);
-
+            if (pauseScript.gameIsPaused)
+            {
+                CheckForRelease(slotNumber);
+            }
             //Increment the slot we're currently handling.
             slotNumber++;                
 		}

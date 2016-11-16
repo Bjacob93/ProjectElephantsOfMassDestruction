@@ -52,6 +52,7 @@ public class textEditor : MonoBehaviour
     //Cache the tutorial handler for level 1, and the level manager.
     Level1TutorialText tutorial;
     levelManager lvlManager;
+    PauseScript pauseScript;
 
     void Start()
     {
@@ -81,6 +82,9 @@ public class textEditor : MonoBehaviour
 
         //Reference the command database.
         database = GameObject.Find("CommandDatabase").GetComponent<CommandDatabase>();
+
+        //Reference the pause script.
+        pauseScript = GameObject.Find("Pause").GetComponent<PauseScript>();
 
         //Reference the level manager and tutorial.
         lvlManager = GameObject.Find("LevelManager").GetComponent<levelManager>();
@@ -112,14 +116,26 @@ public class textEditor : MonoBehaviour
 
             //Draw the bounding box and the text window.
             GUI.Box(boundingBox, "Script Editor - " + this.gameObject.name);
-            textAreaString = GUI.TextArea(new Rect(textBoxStartX, textBoxStartY, textBoxWidth, textBoxHeight), textAreaString, charLimit);
 
-            //Check if the Compile button is pressed.
-            if (GUI.Button(comButton, "Compile Code"))
+            //Make text editble only when the game is paused.
+            if (pauseScript.gameIsPaused)
             {
-                CompileCode();
-
+                textAreaString = GUI.TextArea(new Rect(textBoxStartX, textBoxStartY, textBoxWidth, textBoxHeight), textAreaString, charLimit);
+                
+                //Check if the Compile button is pressed.
+                if (GUI.Button(comButton, "Compile Code"))
+                {
+                    CompileCode();
+                }
             }
+            else
+            {
+                GUI.TextArea(new Rect(textBoxStartX, textBoxStartY, textBoxWidth, textBoxHeight), textAreaString, charLimit);
+            }
+
+            
+
+            
             //Initialise an int that tracks how many errors there are in the code.
             int errorN = 0;
 
