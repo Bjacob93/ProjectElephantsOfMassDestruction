@@ -91,11 +91,11 @@ public class AstarEnemy : MonoBehaviour
         if (nearestEnemy != null)
         {
             distanceToEnemy = Vector3.Distance(transform.position, nearestEnemy.transform.position);
-            if (isDefending)
-            {
-                distanceFromTarget = Vector3.Distance(nearestEnemy.transform.position, targetPosition);
+            //if (isDefending)
+            //{ && (!isDefending || (isDefending && distanceFromTarget <= maxDistanceFromTargetAllowed))
+            //    distanceFromTarget = Vector3.Distance(nearestEnemy.transform.position, targetPosition);
 
-            }
+            //}
         }
 
         PathToEnemy();
@@ -105,7 +105,7 @@ public class AstarEnemy : MonoBehaviour
     //Method for pathing to the nearest enemy.
     void PathToEnemy()
     {
-        if (nearestEnemy != null && pathCompleted && !hasPathToEnemy && (!isDefending || (isDefending && distanceFromTarget <= maxDistanceFromTargetAllowed)))
+        if (nearestEnemy != null && pathCompleted && !hasPathToEnemy)
         {
             //Generate new path to nearest enemy, if within engagement range.
             if (distanceToEnemy <= engagementRange)
@@ -277,5 +277,6 @@ public class AstarEnemy : MonoBehaviour
         //Move the unit
         Move(direction, path);
 
+        isInMeleeRange = false;
     }
 }
