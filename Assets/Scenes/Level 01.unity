@@ -175,6 +175,8 @@ MonoBehaviour:
   enterProduceOrder: 0
   enterAttackOrder: 0
   enterAttackTarget: 0
+  chechpointEditorOpened: 0
+  defendOrderInserted: 0
   pressPlay: 0
   commandSkin: {fileID: 11400000, guid: af1d55f012321ba4fb142ce096bc0ec4, type: 2}
 --- !u!114 &2199395
@@ -1282,7 +1284,7 @@ MonoBehaviour:
   restartDelay: 7
   restartTimer: 0
   amountOfEnemySpawned: 0
-  maxEnemySpawn: 1
+  maxEnemySpawn: 10
   enemyUnits: {fileID: 1000011621710164, guid: 67917ec56833846428930e641a3cd7f1, type: 2}
 --- !u!23 &102070807
 MeshRenderer:
@@ -9246,8 +9248,10 @@ MonoBehaviour:
   isDraggingCommand: 0
   draggedCommand:
     commandName: 
+    commandNameText: 
     commandId: 
-    commandDesc: 
+    commandDescDnD: 
+    commandDescText: 
     requiresVariable: 0
     availableAtCheckpoint: 0
     availableAtBase: 0
