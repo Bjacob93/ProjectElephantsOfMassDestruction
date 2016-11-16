@@ -187,7 +187,7 @@ public class textEditor : MonoBehaviour
                             {
                                 for (int d = 0; d < database.commandDatabase.Count; d++)
                                 {
-                                    if (database.commandDatabase[d].commandName == "Every other")
+                                    if (database.commandDatabase[d].commandId == "FoE2")
                                     {
                                         listOfCommands.Add(database.commandDatabase[d]);
                                         i += 1;
@@ -200,7 +200,7 @@ public class textEditor : MonoBehaviour
                             {
                                 for (int d = 0; d < database.commandDatabase.Count; d++)
                                 {
-                                    if (database.commandDatabase[d].commandName == "Every third")
+                                    if (database.commandDatabase[d].commandId == "FoE3")
                                     {
                                         listOfCommands.Add(database.commandDatabase[d]);
                                         i += 1;
@@ -226,7 +226,7 @@ public class textEditor : MonoBehaviour
                         {
                             for (int d = 0; d < database.commandDatabase.Count; d++)
                             {
-                                if (database.commandDatabase[d].commandName == "Attack")
+                                if (database.commandDatabase[d].commandId == "A01")
                                 {
                                     listOfCommands.Add(database.commandDatabase[d]);
                                     if (lvlManager.currentLevel == 1)
@@ -249,43 +249,29 @@ public class textEditor : MonoBehaviour
                         break;
                     //Defend command.
                     case "defend":
-                        if (i + 1 < elementsInCode.Count)
+                        for (int d = 0; d < database.commandDatabase.Count; d++)
                         {
-                            for (int d = 0; d < database.commandDatabase.Count; d++)
+                            if (database.commandDatabase[d].commandId == "D01")
                             {
-                                if (database.commandDatabase[d].commandName == "Defend")
-                                {
-                                    listOfCommands.Add(database.commandDatabase[d]);
-                                    break;
-                                }
+                                listOfCommands.Add(database.commandDatabase[d]);
+                                break;
                             }
-                            ValidCheckpoint(elementsInCode[i + 1], j);
-                        }
-                        else
-                        {
-                            errorList.Add(new KeyValuePair<int, string>(j, "No argument in " + elementsInCode[i]));
                         }
                         break;
 
                     //Produce command.
                     case "produce":
-                        if (i + 1 < elementsInCode.Count)
 
-                            Debug.Log("Handling produce");
-
+                        for (int d = 0; d < database.commandDatabase.Count; d++)
                         {
-                            for (int d = 0; d < database.commandDatabase.Count; d++)
+                            if (database.commandDatabase[d].commandId == "P01")
                             {
-                                if (database.commandDatabase[d].commandName == "Produce")
+                                listOfCommands.Add(database.commandDatabase[d]);
+                                if (lvlManager.currentLevel == 1)
                                 {
-                                    listOfCommands.Add(database.commandDatabase[d]);
-                                    if (lvlManager.currentLevel == 1)
-                                    {
-                                        tutorial.enterProduceOrder = true;
-
-                                    }
-                                    break;
+                                    tutorial.enterProduceOrder = true;
                                 }
+                                break;
                             }
                         }
                         break;
@@ -296,7 +282,7 @@ public class textEditor : MonoBehaviour
                         {
                             for (int d = 0; d < database.commandDatabase.Count; d++)
                             {
-                                if (database.commandDatabase[d].commandName == "Move")
+                                if (database.commandDatabase[d].commandId == "M01")
                                 {
                                     listOfCommands.Add(database.commandDatabase[d]);
                                     break;
@@ -314,7 +300,7 @@ public class textEditor : MonoBehaviour
                     case "A":
                         for (int d = 0; d < database.commandDatabase.Count; d++)
                         {
-                            if (database.commandDatabase[d].commandName == "A")
+                            if (database.commandDatabase[d].commandId == "varA")
                             {
                                 listOfCommands.Add(database.commandDatabase[d]);
 
@@ -330,7 +316,7 @@ public class textEditor : MonoBehaviour
                     case "B":
                         for (int d = 0; d < database.commandDatabase.Count; d++)
                         {
-                            if (database.commandDatabase[d].commandName == "B")
+                            if (database.commandDatabase[d].commandId == "varB")
                             {
                                 listOfCommands.Add(database.commandDatabase[d]);
                                 if (lvlManager.currentLevel == 1 && elementsInCode[i - 1] == "attack")
@@ -345,22 +331,7 @@ public class textEditor : MonoBehaviour
                     case "C":
                         for (int d = 0; d < database.commandDatabase.Count; d++)
                         {
-                            if (database.commandDatabase[d].commandName == "C")
-                            {
-                                listOfCommands.Add(database.commandDatabase[d]);
-                                if (lvlManager.currentLevel == 1 && elementsInCode[i - 1] == "attack")
-                                {
-                                    tutorial.enterAttackTarget = true;
-                                }
-                                break;
-                            }
-                        }
-                        break;
-
-                    case "Homebase":
-                        for (int d = 0; d < database.commandDatabase.Count; d++)
-                        {
-                            if (database.commandDatabase[d].commandName == "Homebase")
+                            if (database.commandDatabase[d].commandId == "varC")
                             {
                                 listOfCommands.Add(database.commandDatabase[d]);
                                 if (lvlManager.currentLevel == 1 && elementsInCode[i - 1] == "attack")
