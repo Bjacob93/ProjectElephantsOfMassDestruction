@@ -14,7 +14,7 @@ public class Level1TutorialText : MonoBehaviour {
     public bool pressPlay = false;
     bool drawStartInfo;
 
-    int currentTutorialPage = 0;
+    public int currentTutorialPage = 0;
 
     public bool requiresNextClickToProgress = true;
 
@@ -50,40 +50,58 @@ public class Level1TutorialText : MonoBehaviour {
             TutorialPage14,
             TutorialPage15;
 
-    string dndTutorialPage1 =   "Lets begin! \n" +
-                                "The Elephants attacks the homebase and we need to defend it, our goal is to eliminate all of the Elephants and Capture the flag \n" +
-                                "In order to move around the map, you can use your mouse or WASD-buttons on the keyboard. \n  \n" +
-                                "Press Tab-button on the keyboard or the show button on the screen to show the Command list.",
+    string dndTutorialPage1 =   "Welcome!\n" + "The elephants are attacking the castle and we need to defend it!\n" +
+                                "Your goal is to defeat all the elephants and take control of the checkpoint in order to win.\n\n" +
+                                "Click \"Next\" to continue.",
 
-            dndTutorialPage2 = "This is the Command List, here are all of the commands which are available in the current level. To read more about the commands hover your curser over each command to read a description. \n You can close the Command list at any time by pressing tab or hide \n \n" +
-                                "Click the castle to open up the sequence editor",
+            dndTutorialPage2 =  "You can use WASD to move the camera around the map. Take a look around and note the location of the castle and the checkpoint, " + 
+                                "signified by a flag in a circle near the middle of the map." + 
+                                "Click \"Next\" to continue.",
 
-            dndTutorialPage3 = "This is the Editor here you place the commands from the command list. \n" +
-                                "The editor is used to issue commands to the player giraffes, with the exception of produce which creates giraffes at the homebase. \n You can close the editor window at any time by right clicking. \n \n" +
-                                "Drag a produce order to upper left in the editor to continue",
+            dndTutorialPage3 =  "At the top of the screen you can see your current Money and Lives.You lose a live if an elephant makes it to your base. If your lives drops to 0, you lose." +
+                                "We'll talk about money in a moment." +
+                                "Click \"Next\" to continue.",
 
-            dndTutorialPage4 = "The produce order creates giraffes at the player’s base, these giraffes receive the commands from the flag and homebase editors.\n \n" +
-                                "Drag the “Attack” order onto the next line to continue",
+            dndTutorialPage4 =  "You control your units by programming them with commands.Press \"tap\" to open the command list.",
 
-            dndTutorialPage5 = "The attack command orders your giraffes at the editor's location to attack a set destination which is placed to the right of the attack order.\n \n" +
-                                "Now give the Attack command the checkpoint A",
+            dndTutorialPage5 =  "This is the command list.Here you can see all the commands that are available in this level.You can mouse over the commands to read a tooltip, " + 
+                                "that explains what each command does." + 
+                                "You can open and close the command list at any time by pressing tap, or cliking the white arrow lext to the list." + 
+                                "Now, click the castle.",
 
-            dndTutorialPage6 = "The target checkpoint, in this case A is the place on the map where the “A” flag is placed. There can be multiple flags on a map, some of which have a capture point. The player needs to capture and hold these points in order to win. \n \n" +
-                               "Now close the editor and scroll the camera left until you see a flag on the ground. click it to open its Editor.",
+            dndTutorialPage6 =  "This is the editor window.Here you can place commands from your command list, in order to program your units." + 
+                                "You do this by click and dragging a command from the list in the window, and dropping it into a slot in the editor window." + 
+                                "Now, drag a \"Produce Unit\" command into the editor window.",
 
-            dndTutorialPage7 = "This is the editor window for checkpoint A. Have you noticed that the commands you entered at the castle are not present here? This is because each location on the map has its own editor. \n \n" +
-                                "Drag a defend command into the editor.",
-        
-            dndTutorialPage8 = "The Defend command will order any of your units that gets near the point to defend it. It also gives them a slight bonus to their armour. \n" + "Now you are ready to defend against the onslought of the savage elephants, go forth and be victorious  \n \n" +
-                                "Press play to begin",
+            dndTutorialPage7 =  "The \"Produce Unit\" command is your most basic command.It produces giraffes at your base, at the cost of money." +
+                                "You can see how much money you currently have in the top of the screen.It takes 10 monies to produce a unit, " + 
+                                "and you get 8 monies from each elephant your units eliminate." + 
+                                "Click \"Next\" to continue.",
 
-            dndTutorialPage9,
-            dndTutorialPage10,
-            dndTutorialPage11,
-            dndTutorialPage12,
-            dndTutorialPage13,
-            dndTutorialPage14,
-            dndTutorialPage15;
+            dndTutorialPage8 =  "Note that the \"Produce Unit\" command merely produces your units.It does not tell them how to behave.Let us do something about that." + 
+                                "Drag an \"Attack\" command into the next line in the editor.",
+
+            dndTutorialPage9 =  "The \"Attack\" command will order your units to move to a location which you specify.Notice that the editor list is asking for a variable." +
+                                "Variables are also found in your command list.Notice the difference in shape between variables and commands."+ 
+                                "Now, drag the \"A\" variable into to slot next to the \"Attack\" command.",
+
+            dndTutorialPage10 = "Your castle will now produce units, and order them to go to checkpoint A, and attack any enemies they encounter on the way." +
+                                "Now, close the editor window by right clicking.",
+
+            dndTutorialPage11 = "Remember that checkpoint you saw earlier? Find it again, and click it.",
+
+            dndTutorialPage12 = "This is the editor window for this checkpoint. All checkpoints on the map, as well as your castle, have their own editor with their own commands." + 
+                                "This means you can give units different orders depending on where they are on the map." + 
+                                "Now, drag a \"Defend\" order into the checkpoint's editor.",
+
+            dndTutorialPage13 = "The Defend order will order your units to stay near the checkpoint, and defend it from the savage elephants. " + 
+                                "In addition, you units will receive less damage from enemy attacks whenever they are defending." +
+                                "Click \"Next\" to continue.",
+
+            dndTutorialPage14 = "Your should now be ready to defend against the elephant onslaught. Click the \"Play\" button in the top of the screen whenever you're ready." + 
+                                "Be aware, however, that you cannot change your commands once you've clicked play, so make sure everything is in order." + 
+                                "Should your units fail, you can always click \"Restart\" and try again. You will not lose your commands!",
+           dndTutorialPage15;
 
     string  textTutorialPage1 = "Lets begin! \n" +
                                 "The Elephants attacks the homebase and we need to defend it, our goal is to eliminate all of the Elephants and Capture the flag \n" +
@@ -193,12 +211,16 @@ public class Level1TutorialText : MonoBehaviour {
             {
                 case 0:
                     currentTutorialText = TutorialPage1;
+                    requiresNextClickToProgress = true;
                     break;
                 case 1:
                     currentTutorialText = TutorialPage2;
+                    requiresNextClickToProgress = true;
                     break;
                 case 2:
                     currentTutorialText = TutorialPage3;
+                    requiresNextClickToProgress = true;
+
                     break;
                 case 3:
                     currentTutorialText = TutorialPage4;
@@ -211,6 +233,7 @@ public class Level1TutorialText : MonoBehaviour {
                     break;
                 case 6:
                     currentTutorialText = TutorialPage7;
+                    requiresNextClickToProgress = true;
                     break;
                 case 7:
                     currentTutorialText = TutorialPage8;
@@ -226,6 +249,7 @@ public class Level1TutorialText : MonoBehaviour {
                     break;
                 case 11:
                     currentTutorialText = TutorialPage12;
+                    requiresNextClickToProgress = true;
                     break;
                 case 12:
                     currentTutorialText = TutorialPage13;
@@ -252,7 +276,8 @@ public class Level1TutorialText : MonoBehaviour {
             {
                 if (GUI.Button(nextButton, "Next"))
                 {
-
+                    currentTutorialPage++;
+                    requiresNextClickToProgress = false;
                 }
             }
 
