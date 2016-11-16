@@ -14,6 +14,8 @@ public class Level1TutorialText : MonoBehaviour {
     public bool pressPlay = false;
     bool drawStartInfo;
 
+    int currentTutorialPage = 0;
+
     public bool requiresNextClickToProgress = true;
 
     Rect    TutorialBox;
@@ -21,7 +23,8 @@ public class Level1TutorialText : MonoBehaviour {
             TutorialBoxStartPosY,
             TutorialBoxHeight,
             TutorialBoxWidth;
-    
+
+    string currentTutorialText;
 
     //Cache 'Next' button dimensions
     Rect    nextButton;
@@ -39,7 +42,13 @@ public class Level1TutorialText : MonoBehaviour {
             TutorialPage6,
             TutorialPage7,
             TutorialPage8,
-            TutorialPage9;
+            TutorialPage9,
+            TutorialPage10,
+            TutorialPage11,
+            TutorialPage12,
+            TutorialPage13,
+            TutorialPage14,
+            TutorialPage15;
 
     string dndTutorialPage1 =   "Lets begin! \n" +
                                 "The Elephants attacks the homebase and we need to defend it, our goal is to eliminate all of the Elephants and Capture the flag \n" +
@@ -66,7 +75,15 @@ public class Level1TutorialText : MonoBehaviour {
                                 "Drag a defend command into the editor.",
         
             dndTutorialPage8 = "The Defend command will order any of your units that gets near the point to defend it. It also gives them a slight bonus to their armour. \n" + "Now you are ready to defend against the onslought of the savage elephants, go forth and be victorious  \n \n" +
-                                "Press play to begin";
+                                "Press play to begin",
+
+            dndTutorialPage9,
+            dndTutorialPage10,
+            dndTutorialPage11,
+            dndTutorialPage12,
+            dndTutorialPage13,
+            dndTutorialPage14,
+            dndTutorialPage15;
 
     string  textTutorialPage1 = "Lets begin! \n" +
                                 "The Elephants attacks the homebase and we need to defend it, our goal is to eliminate all of the Elephants and Capture the flag \n" +
@@ -95,7 +112,15 @@ public class Level1TutorialText : MonoBehaviour {
                                 "write defend in the editor to give your units a small advantage.",
 
             textTutorialPage8 = "The defend order will order any of your units that gets near the point to defend it. It also gives them a slight bonus to tehir armor. \n Now you are ready to defend against the onsloght of the savafe elephants, forth and be victorious \n \n" +
-                                "Press play to begin";
+                                "Press play to begin",
+
+            textTutorialPage9,
+            textTutorialPage10,
+            textTutorialPage11,
+            textTutorialPage12,
+            textTutorialPage13,
+            textTutorialPage14,
+            textTutorialPage15;
 
     public GUISkin commandSkin;
 
@@ -131,6 +156,13 @@ public class Level1TutorialText : MonoBehaviour {
             TutorialPage6 = dndTutorialPage6;
             TutorialPage7 = dndTutorialPage7;
             TutorialPage8 = dndTutorialPage8;
+            TutorialPage9 = dndTutorialPage9;
+            TutorialPage10 = dndTutorialPage10;
+            TutorialPage11 = dndTutorialPage11;
+            TutorialPage12 = dndTutorialPage12;
+            TutorialPage13 = dndTutorialPage13;
+            TutorialPage14 = dndTutorialPage14;
+            TutorialPage15 = dndTutorialPage15;
         }
         else
         {
@@ -142,12 +174,74 @@ public class Level1TutorialText : MonoBehaviour {
             TutorialPage6 = textTutorialPage6;
             TutorialPage7 = textTutorialPage7;
             TutorialPage8 = textTutorialPage8;
+            TutorialPage9 = textTutorialPage9;
+            TutorialPage10 = textTutorialPage10;
+            TutorialPage11 = textTutorialPage11;
+            TutorialPage12 = textTutorialPage12;
+            TutorialPage13 = textTutorialPage13;
+            TutorialPage14 = textTutorialPage14;
+            TutorialPage15 = textTutorialPage15;
         }
     }
 	
 	// Update is called once per frame
 	void Update () {
-	}
+    // Update is called once per frame
+        if (lvlManager.currentLevel == 1)
+        {
+            switch (currentTutorialPage)
+            {
+                case 0:
+                    currentTutorialText = TutorialPage1;
+                    break;
+                case 1:
+                    currentTutorialText = TutorialPage2;
+                    break;
+                case 2:
+                    currentTutorialText = TutorialPage3;
+                    break;
+                case 3:
+                    currentTutorialText = TutorialPage4;
+                    break;
+                case 4:
+                    currentTutorialText = TutorialPage5;
+                    break;
+                case 5:
+                    currentTutorialText = TutorialPage6;
+                    break;
+                case 6:
+                    currentTutorialText = TutorialPage7;
+                    break;
+                case 7:
+                    currentTutorialText = TutorialPage8;
+                    break;
+                case 8:
+                    currentTutorialText = TutorialPage9;
+                    break;
+                case 9:
+                    currentTutorialText = TutorialPage10;
+                    break;
+                case 10:
+                    currentTutorialText = TutorialPage11;
+                    break;
+                case 11:
+                    currentTutorialText = TutorialPage12;
+                    break;
+                case 12:
+                    currentTutorialText = TutorialPage13;
+                    break;
+                case 13:
+                    currentTutorialText = TutorialPage14;
+                    break;
+                case 14:
+                    drawStartInfo = false;
+                    break;
+                default:
+                    break;
+            }
+        }
+}
+
 
     void OnGUI()
     {
@@ -161,6 +255,8 @@ public class Level1TutorialText : MonoBehaviour {
 
                 }
             }
+
+            //GUI.Box(new Rect(TutorialBox), currentTutorialText, commandSkin.GetStyle("tutorialBoundingBoxBackground"));
 
             if (commandListOpened == false/* && editorHasBeenOpened == false && enterProduceOrder == false && enterAttackOrder == false && enterAttackTarget == false && pressPlay == false*/)
             {
