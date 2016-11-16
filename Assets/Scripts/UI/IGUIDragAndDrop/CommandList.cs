@@ -50,6 +50,7 @@ public class CommandList : MonoBehaviour {
     float speed;
     private bool animState = true;
     //button for animation
+    public Texture2D buttonIcon;
     float buttonW;
     float buttonH;
     float buttonX;
@@ -101,8 +102,8 @@ public class CommandList : MonoBehaviour {
 		}
         //Animation button
         speed = Time.deltaTime * 600;
-        buttonH = 30;
-        buttonW = 60;
+        buttonH = buttonIcon.height;
+        buttonW = buttonIcon.width;
         buttonX = boundingBoxX - buttonW;
         buttonXMax = buttonX;
         buttonY = boundingBoxY - (buttonH * 0.5f) + (boundingBoxHeight * 0.5f);
@@ -144,8 +145,7 @@ public class CommandList : MonoBehaviour {
             animState = !animState;
 		}
 	}
-
-	void OnGUI(){
+    void OnGUI(){
 
         //Set the skin for the boxes.
         GUI.skin = commandSkin;
@@ -153,7 +153,7 @@ public class CommandList : MonoBehaviour {
         //Set the current tooltip string to be blank.
 		toolTip = "";
         //draw toggle button
-        if (GUI.Button(new Rect(buttonX, buttonY, buttonW, buttonH), buttonState) || drawCommandList)
+        if (GUI.Button(new Rect(buttonX, buttonY, buttonW, buttonH), buttonIcon))
         {
             animState = !animState;
         }
