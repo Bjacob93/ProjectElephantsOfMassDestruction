@@ -14,7 +14,7 @@ public class ScoreManager : MonoBehaviour {
 	public float restartDelay = 5f;         // Time to wait before restarting the level
 	float restartTimer;                     // Timer to count up to restarting the level
 
-	public int lives = 20;
+	public int lives;
 	public int money = 100;
 
 	public Text moneyText;
@@ -27,10 +27,10 @@ public class ScoreManager : MonoBehaviour {
     // Use this for initialization
     public void LoseLife (int l = 1) {
 		lives -= l;
-		if (lives <= 0) {
-			GameOver ();
-			timeupdate ();
-		}
+//		if (lives <= 0) {
+//			GameOver ();
+//			timeupdate ();
+//		}
 	}
 
     public int getMoney()
