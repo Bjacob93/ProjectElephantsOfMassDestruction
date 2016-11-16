@@ -136,10 +136,6 @@ public class EditorList : MonoBehaviour{
         if (Input.GetButtonDown("SequenceEditor")) 
         {
             drawEditorWindow = false;
-            if(tutorialtext.editorHasBeenOpened == false)
-            {
-                tutorialtext.editorHasBeenOpened = true;
-            }
         }
     }
 
@@ -155,7 +151,14 @@ public class EditorList : MonoBehaviour{
         if (drawEditorWindow)
         {
             DrawEditor();
-            tutorialtext.editorHasBeenOpened = true;
+            if (!tutorialtext.editorHasBeenOpened && tutorialtext.commandListOpened && !belongsToCheckpoint)
+            {
+                tutorialtext.editorHasBeenOpened = true;
+            }
+            else if(!tutorialtext.chechpointEditorOpened && tutorialtext.enterAttackTarget && belongsToCheckpoint)
+            {
+                tutorialtext.chechpointEditorOpened = true;
+            }
         }
 
         //Show tooltip at the mouse position
@@ -229,7 +232,7 @@ public class EditorList : MonoBehaviour{
                     }
                 else if (thisCommand.commandId == "D01")
                     {
-                        tutorialtext.defendOrderInserted = true;
+                        tutorialtext.enterDefendOrder = true;
                     }
                 }
                 //Draw any empty slots
