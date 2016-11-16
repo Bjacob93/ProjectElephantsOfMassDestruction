@@ -136,6 +136,10 @@ public class EditorList : MonoBehaviour{
         if (Input.GetButtonDown("SequenceEditor")) 
         {
             drawEditorWindow = false;
+            if(tutorialtext.currentTutorialPage == 9 && !belongsToCheckpoint)
+            {
+                tutorialtext.currentTutorialPage++;
+            }
         }
     }
 
@@ -227,37 +231,20 @@ public class EditorList : MonoBehaviour{
                 if (lvlManager.currentLevel == 1) {
                     if(!belongsToCheckpoint)
                     {
-                        if (tutorialtext.currentTutorialPage == 5)
+                        if (tutorialtext.currentTutorialPage == 5 && thisCommand.commandId == "P01")
                         {
                             tutorialtext.currentTutorialPage++;
                         }
-                        else if(tutorialtext.currentTutorialPage == 7)
+                        else if(tutorialtext.currentTutorialPage == 7 && thisCommand.commandId == "A01")
                         {
                             tutorialtext.currentTutorialPage++;
                         }
-                        else if(tutorialtext.currentTutorialPage == 8)
+                        else if(tutorialtext.currentTutorialPage == 8 && thisCommand.commandId == "varA")
                         {
                             tutorialtext.currentTutorialPage++;
-                        }
-
-                        if (thisCommand.commandId == "P01")
-                        {
-                            tutorialtext.enterProduceOrder = true;
-                        }
-                        if (thisCommand.commandId == "A01")
-                        {
-                            tutorialtext.enterAttackOrder = true;
-                        }
-                        if (thisCommand.commandId == "varA")
-                        {
-                            tutorialtext.enterAttackTarget = true;
                         }
                     }
-                else if (thisCommand.commandId == "D01")
-                    {
-                        tutorialtext.enterDefendOrder = true;
-                    }
-                    if (tutorialtext.currentTutorialPage == 11)
+                    else if (tutorialtext.currentTutorialPage == 11 && thisCommand.commandId == "D01")
                     {
                         tutorialtext.currentTutorialPage++;
                     }

@@ -117,7 +117,7 @@ public class CommandList : MonoBehaviour {
 	void Update(){
         if (!animState && buttonX >= buttonXMax + 20)
         {
-            if (lvlManager.currentLevel == 1 && tutorialtext.currentTutorialPage == 2)
+            if (lvlManager.currentLevel == 1 && tutorialtext.currentTutorialPage == 3)
             {
                 tutorialtext.currentTutorialPage++;
             }

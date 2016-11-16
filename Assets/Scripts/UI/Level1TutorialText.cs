@@ -220,7 +220,6 @@ public class Level1TutorialText : MonoBehaviour {
                 case 2:
                     currentTutorialText = TutorialPage3;
                     requiresNextClickToProgress = true;
-
                     break;
                 case 3:
                     currentTutorialText = TutorialPage4;
@@ -281,49 +280,49 @@ public class Level1TutorialText : MonoBehaviour {
                 }
             }
 
-            //GUI.Box(new Rect(TutorialBox), currentTutorialText, commandSkin.GetStyle("tutorialBoundingBoxBackground"));
+            GUI.Box(new Rect(TutorialBox), currentTutorialText, commandSkin.GetStyle("tutorialBoundingBoxBackground"));
 
-            if (commandListOpened == false/* && editorHasBeenOpened == false && enterProduceOrder == false && enterAttackOrder == false && enterAttackTarget == false && pressPlay == false*/)
-            {
-                GUI.Box(new Rect(TutorialBox), TutorialPage1, commandSkin.GetStyle("tutorialBoundingBoxBackground"));
-            }
-            if (commandListOpened == true && editorHasBeenOpened == false /*&& enterProduceOrder == false && enterAttackOrder == false && enterAttackTarget == false && pressPlay == false*/)
-            {
-                GUI.Box(new Rect(TutorialBox), TutorialPage2, commandSkin.GetStyle("tutorialBoundingBoxBackground"));
-            }
+            //if (commandListOpened == false/* && editorHasBeenOpened == false && enterProduceOrder == false && enterAttackOrder == false && enterAttackTarget == false && pressPlay == false*/)
+            //{
+            //    GUI.Box(new Rect(TutorialBox), TutorialPage1, commandSkin.GetStyle("tutorialBoundingBoxBackground"));
+            //}
+            //if (commandListOpened == true && editorHasBeenOpened == false /*&& enterProduceOrder == false && enterAttackOrder == false && enterAttackTarget == false && pressPlay == false*/)
+            //{
+            //    GUI.Box(new Rect(TutorialBox), TutorialPage2, commandSkin.GetStyle("tutorialBoundingBoxBackground"));
+            //}
 
-            if (commandListOpened == true && editorHasBeenOpened == true && enterProduceOrder == false/* && enterAttackOrder == false && enterAttackTarget == false && pressPlay == false*/)
-            {
-                GUI.Box(new Rect(TutorialBox), TutorialPage3, commandSkin.GetStyle("tutorialBoundingBoxBackground"));
-            }
+            //if (commandListOpened == true && editorHasBeenOpened == true && enterProduceOrder == false/* && enterAttackOrder == false && enterAttackTarget == false && pressPlay == false*/)
+            //{
+            //    GUI.Box(new Rect(TutorialBox), TutorialPage3, commandSkin.GetStyle("tutorialBoundingBoxBackground"));
+            //}
 
-            if (commandListOpened == true && editorHasBeenOpened == true && enterProduceOrder == true && enterAttackOrder == false /*&& enterAttackTarget == false && pressPlay == false*/)
-            {
-                GUI.Box(new Rect(TutorialBox), TutorialPage4, commandSkin.GetStyle("tutorialBoundingBoxBackground"));
-            }
+            //if (commandListOpened == true && editorHasBeenOpened == true && enterProduceOrder == true && enterAttackOrder == false /*&& enterAttackTarget == false && pressPlay == false*/)
+            //{
+            //    GUI.Box(new Rect(TutorialBox), TutorialPage4, commandSkin.GetStyle("tutorialBoundingBoxBackground"));
+            //}
 
-            if (commandListOpened == true && editorHasBeenOpened == true && enterProduceOrder == true && enterAttackOrder == true && enterAttackTarget == false/* && pressPlay == false*/)
-            {
-                GUI.Box(new Rect(TutorialBox), TutorialPage5, commandSkin.GetStyle("tutorialBoundingBoxBackground"));
-            }
+            //if (commandListOpened == true && editorHasBeenOpened == true && enterProduceOrder == true && enterAttackOrder == true && enterAttackTarget == false/* && pressPlay == false*/)
+            //{
+            //    GUI.Box(new Rect(TutorialBox), TutorialPage5, commandSkin.GetStyle("tutorialBoundingBoxBackground"));
+            //}
 
-            if (commandListOpened == true && editorHasBeenOpened == true && enterProduceOrder == true && enterAttackOrder == true && enterAttackTarget == true && chechpointEditorOpened == false)
-            {
-                GUI.Box(new Rect(TutorialBox), TutorialPage6, commandSkin.GetStyle("tutorialBoundingBoxBackground"));
-            }
+            //if (commandListOpened == true && editorHasBeenOpened == true && enterProduceOrder == true && enterAttackOrder == true && enterAttackTarget == true && chechpointEditorOpened == false)
+            //{
+            //    GUI.Box(new Rect(TutorialBox), TutorialPage6, commandSkin.GetStyle("tutorialBoundingBoxBackground"));
+            //}
 
-            if (commandListOpened == true && editorHasBeenOpened == true && enterProduceOrder == true && enterAttackOrder == true && enterAttackTarget == true && chechpointEditorOpened == true && enterDefendOrder == false)
-            {
-                GUI.Box(new Rect(TutorialBox), TutorialPage7, commandSkin.GetStyle("tutorialBoundingBoxBackground"));
-            }
-            if (commandListOpened == true && editorHasBeenOpened == true && enterProduceOrder == true && enterAttackOrder == true && enterAttackTarget == true && chechpointEditorOpened == true && enterDefendOrder == true && pressPlay == false)
-            {
-                GUI.Box(new Rect(TutorialBox), TutorialPage8, commandSkin.GetStyle("tutorialBoundingBoxBackground"));
-            }
-            if (commandListOpened == true && editorHasBeenOpened == true && enterProduceOrder == true && enterAttackOrder == true && enterAttackTarget == true && chechpointEditorOpened == true && enterDefendOrder == true && pressPlay == true)
-            {
-                drawStartInfo = false;
-            }
+            //if (commandListOpened == true && editorHasBeenOpened == true && enterProduceOrder == true && enterAttackOrder == true && enterAttackTarget == true && chechpointEditorOpened == true && enterDefendOrder == false)
+            //{
+            //    GUI.Box(new Rect(TutorialBox), TutorialPage7, commandSkin.GetStyle("tutorialBoundingBoxBackground"));
+            //}
+            //if (commandListOpened == true && editorHasBeenOpened == true && enterProduceOrder == true && enterAttackOrder == true && enterAttackTarget == true && chechpointEditorOpened == true && enterDefendOrder == true && pressPlay == false)
+            //{
+            //    GUI.Box(new Rect(TutorialBox), TutorialPage8, commandSkin.GetStyle("tutorialBoundingBoxBackground"));
+            //}
+            //if (commandListOpened == true && editorHasBeenOpened == true && enterProduceOrder == true && enterAttackOrder == true && enterAttackTarget == true && chechpointEditorOpened == true && enterDefendOrder == true && pressPlay == true)
+            //{
+            //    drawStartInfo = false;
+            //}
         }
     }
 }
