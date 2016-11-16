@@ -59,7 +59,10 @@ public class BuyEnemyUnits : MonoBehaviour
 
         if (amountOfEnemySpawned == maxEnemySpawn)
         {
-
+			if (sm.lives == 0) {
+				sm.GameOver ();
+				timeupdate ();
+			}
             victoryTimer += Time.deltaTime;
             if(victoryTimer >= waitTime)
             {
