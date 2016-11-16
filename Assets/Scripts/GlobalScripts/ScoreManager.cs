@@ -16,6 +16,7 @@ public class ScoreManager : MonoBehaviour {
 
 	public int lives;
 	public int money = 100;
+	public int livesR;
 
 	public Text moneyText;
 	public Text livesText;
@@ -49,15 +50,13 @@ public class ScoreManager : MonoBehaviour {
 		anim = GetComponent <Animator> ();
 		//levelSound = gameObject.AddComponent<AudioSource> ();
 	}
-	void timeupdate(){
+	public void timeupdate(){
 		restartTimer += Time.deltaTime;
-		if (lives == 0) {
 			if (restartTimer >= restartDelay) {
 				// .. then reload the currently loaded level.
 				SceneManager.LoadSceneAsync ("Scenes/mainMenu", LoadSceneMode.Single);
 			}
 		}
-	}
 
     //function to check if a player owns the different capturePoints
     void checkCapturePointsForOwnership()
@@ -84,10 +83,11 @@ public class ScoreManager : MonoBehaviour {
 
         moneyText.text = "Money: $" + money.ToString ();
 		livesText.text = "Lives " + lives.ToString ();
-		timeupdate ();
+		//timeupdate ();
 	}
 
 	void Start(){
+		livesR=lives;
 	//	levelSound.clip = Resources.Load("Audio/Level1") as AudioClip;
 	//	levelSound.Play();
         capturePoint = GameObject.FindGameObjectsWithTag("CapturePoint");
@@ -102,11 +102,9 @@ public class ScoreManager : MonoBehaviour {
 		SceneManager.LoadScene(sceneIndex);
 	}
 
-			
-	public void GameOver(){
-		anim.SetTrigger ("GameOver");
-	}
-
+public void GameOver(){
+	anim.SetTrigger ("GameOver");
+}
     public void Victory()
     {
 		anim.SetTrigger("VictoryAnimation");

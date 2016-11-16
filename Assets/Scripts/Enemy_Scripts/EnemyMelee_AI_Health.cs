@@ -85,5 +85,14 @@ public class EnemyMelee_AI_Health : MonoBehaviour {
     {
         this.gameObject.transform.position = enemySpawn.transform.position;
         scoreManager.LoseLife(1);
+		if (scoreManager.lives==0) {
+			AudioSource Gameover;
+			Gameover = gameObject.AddComponent<AudioSource> ();
+			Gameover.clip = Resources.Load ("Audio/Victory") as AudioClip;
+			Gameover.playOnAwake = true;
+			scoreManager.GameOver ();
+			Gameover.Play ();
+			scoreManager.timeupdate ();
+		}
     }
 }
