@@ -1284,7 +1284,7 @@ MonoBehaviour:
   restartDelay: 7
   restartTimer: 0
   amountOfEnemySpawned: 0
-  maxEnemySpawn: 1
+  maxEnemySpawn: 10
   enemyUnits: {fileID: 1000011621710164, guid: 67917ec56833846428930e641a3cd7f1, type: 2}
 --- !u!23 &102070807
 MeshRenderer:
@@ -3657,7 +3657,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: ac7e137965332c84bbb69b7a1db7a152, type: 3}
-  m_PlayOnAwake: 0
+  m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
   Loop: 0
