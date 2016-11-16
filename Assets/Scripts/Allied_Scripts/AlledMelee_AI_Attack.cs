@@ -7,7 +7,7 @@ public class AlledMelee_AI_Attack : MonoBehaviour
     public Animator anim;
 	public AudioSource Sword;
 
-    public float meleeCoolDown = 2.11f; // attack cooldown
+    public float meleeCoolDown = 0.5f; // attack cooldown
     float meleeCoolDownLeft = 0f;
     float attackDamage; // damage of each attack
 
