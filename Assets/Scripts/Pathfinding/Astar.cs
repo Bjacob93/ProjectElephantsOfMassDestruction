@@ -51,6 +51,9 @@ public class Astar : MonoBehaviour {
     public float maxWaypointDistance = 3f;
 	private int currentWaypoint;
 
+    AlledMelee_AI_Attack attackScript;
+    AlliedMelee_AI_Health healthScript;
+
 	void Start () {
 		//Reference the seeker and controller component.
 		seeker = GetComponent<Seeker> ();
@@ -62,6 +65,9 @@ public class Astar : MonoBehaviour {
 
         //Reference the animator.
 		GiraffeRunAnim = GetComponent<Animator>();
+
+        attackScript = this.gameObject.GetComponent<AlledMelee_AI_Attack>();
+        healthScript = this.gameObject.GetComponent<AlliedMelee_AI_Health>();
     }
 
 	/** Method to print out errors in the log if we get any. If we don't, it will set first waypoint 
@@ -168,26 +174,37 @@ public class Astar : MonoBehaviour {
 		}
 	}
 
+    //Defend method.
+    void Defend()
+    {
+
+    }
+
 	//Method for moving the unit.
 	void Move(Vector3 direction, Path path){
 		//Set's the direction of movement to a vector form current position to next waypoint, then calls the SimpleMove command in the CharacterController.
 		Vector3 dir = direction * speed * Time.deltaTime;
-		controller.SimpleMove (dir);
+        controller.SimpleMove(dir);
 
-		//If it has reached it's current waypoint.
-		if (Vector3.Distance (transform.position, path.vectorPath[currentWaypoint]) < maxWaypointDistance && path.vectorPath[currentWaypoint + 1] != null) {
+
+        //If it has reached it's current waypoint.
+        if (Vector3.Distance (transform.position, path.vectorPath[currentWaypoint]) < maxWaypointDistance) {
 			currentWaypoint++;
 		}
 
-        if (currentWaypoint + 1 != path.maxLength)
+        try
         {
-            if (Vector3.Distance(transform.position, path.vectorPath[currentWaypoint]) > Vector3.Distance(transform.position, path.vectorPath[currentWaypoint + 1]))
+            while (path != null && Vector3.Distance(transform.position, path.vectorPath[currentWaypoint]) > Vector3.Distance(transform.position, path.vectorPath[currentWaypoint + 1]))
             {
                 currentWaypoint++;
             }
+        }catch (System.ArgumentOutOfRangeException)
+        {
+            path = null;
         }
+        
 
-		if (!this.GiraffeRunAnim.GetCurrentAnimatorStateInfo(0).IsName("RUN"))
+        if (!this.GiraffeRunAnim.GetCurrentAnimatorStateInfo(0).IsName("RUN"))
 		{
 			GiraffeRunAnim.Play("RUN", -1, 0f);
 		}
@@ -206,23 +223,28 @@ public class Astar : MonoBehaviour {
             PathToNewDestination();
         }
 
-		//If there is no path.
-		if (path == null) {
+        if (receivedDefenceOrder)
+        {
+            healthScript.alliedArmour = 5;
+            isDefending = true;
+            receivedDefenceOrder = false;
+        }
+        if (isDefending)
+        {
+            Defend();
+        }
+
+        //If there is no path.
+        if (path == null) {
 			return;
 		}
 
 		if (isInMeleeRange) {
+            attackScript.alliesAttack(nearestEnemy);
 			return;
-		} else {
-		
 		}
 		//If the unit has reached it's goal.
 		if (currentWaypoint >= path.vectorPath.Count) {
-            if(receivedDefenceOrder)
-            {
-                receivedDefenceOrder = false;
-                isDefending = true;
-            }
 			if (!this.GiraffeRunAnim.GetCurrentAnimatorStateInfo(0).IsName("ATTACK") && !this.GiraffeRunAnim.GetCurrentAnimatorStateInfo(0).IsName("IDLE"))
 			{ 
 				GiraffeRunAnim.Play("IDLE", -1, 0f);
