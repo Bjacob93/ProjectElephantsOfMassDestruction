@@ -1884,8 +1884,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 2, y: 2, z: 2}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 5, y: 1, z: 5}
+  m_Center: {x: 0, y: 5, z: 0}
 --- !u!114 &435590530
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3193,6 +3193,7 @@ MonoBehaviour:
     y: 0
     width: 0
     height: 0
+  buttonIcon: {fileID: 0}
   commandSkin: {fileID: 11400000, guid: af1d55f012321ba4fb142ce096bc0ec4, type: 2}
 --- !u!1 &666911388
 GameObject:
@@ -6030,8 +6031,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 2, y: 2, z: 2}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 5, y: 1, z: 5}
+  m_Center: {x: 0, y: 5, z: 0}
 --- !u!114 &1163300178
 MonoBehaviour:
   m_ObjectHideFlags: 0
