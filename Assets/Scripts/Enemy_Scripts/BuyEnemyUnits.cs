@@ -4,7 +4,6 @@ using UnityEngine.SceneManagement;
 
 public class BuyEnemyUnits : MonoBehaviour
 {
-
     public float restartDelay = 5f;         // Time to wait before restarting the level, the number indicates seconds
     public float restartTimer;              // Timer to count up to restarting the level
 
@@ -34,12 +33,13 @@ public class BuyEnemyUnits : MonoBehaviour
         {
             Debug.Log("Didn't find pause");
         }
-
         sm = GameObject.Find("ScoreManager").GetComponent<ScoreManager>();
+
     }
 
     void Update()
     {
+
         if (pause.gameIsPaused)
         {
             return;
@@ -59,6 +59,7 @@ public class BuyEnemyUnits : MonoBehaviour
 
         if (amountOfEnemySpawned == maxEnemySpawn)
         {
+
             victoryTimer += Time.deltaTime;
             if(victoryTimer >= waitTime)
             {
