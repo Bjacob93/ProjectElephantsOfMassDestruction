@@ -78,11 +78,11 @@ public class CommandList : MonoBehaviour {
         pauseScript = GameObject.Find("Pause").GetComponent<PauseScript>();
 
         //Calculate the bounding box dimensions and define the resulting Rect.
-        boundingBoxHeight = numberOfSlots * (boxHeight + ((Screen.height / 24) / 10)) + (Screen.width/35);
-		boundingBoxWidth = boxWidth + (Screen.width / 40);
-		boundingBoxX = boxStartingPosX - (Screen.width/80);
-		boundingBoxY = (boxStartingPosY - (Screen.width/70)) - 5;
-        boundingRect = new Rect(boundingBoxX, boundingBoxY, boundingBoxWidth, boundingBoxHeight);
+        boundingBoxHeight = numberOfSlots * (boxHeight + ((Screen.height / 24) / 10)) + (Screen.height/10);
+		boundingBoxWidth = boxWidth + (Screen.width / 22);
+		boundingBoxX = boxStartingPosX - (Screen.width/45);
+		boundingBoxY = (boxStartingPosY - (Screen.width/18));
+        
 
         //Fill the lists with empty commands.
 		for (int i = 0; i < numberOfSlots; i++) {
@@ -103,6 +103,7 @@ public class CommandList : MonoBehaviour {
 		for (int j = 0; j < availableCommands.Count; j++) {
 			slots [j] = availableCommands [j];
 		}
+
         //Animation button
         speed = Time.deltaTime * 600;
         buttonH = 32;
@@ -144,7 +145,8 @@ public class CommandList : MonoBehaviour {
         if (Input.GetButtonDown("Commandlist")){
             animState = !animState;
 		}
-	}
+        boundingRect = new Rect(boundingBoxX, boundingBoxY, boundingBoxWidth, boundingBoxHeight);
+    }
     void OnGUI(){
 
         //Set the skin for the boxes.
@@ -217,7 +219,10 @@ public class CommandList : MonoBehaviour {
 		Event e = Event.current;
 
         //Draw the bounding box.
-        GUI.Box (new Rect (boundingBoxX ,boundingBoxY, boundingBoxWidth ,boundingBoxHeight), "Command List");
+        commandSkin.GetStyle("boundingBox").fontSize = Screen.width / 70;
+        commandSkin.GetStyle("boundingBox").fontStyle = FontStyle.Bold;
+        commandSkin.GetStyle("boundingBox").padding.top = Screen.height / 17;
+        GUI.Box (boundingRect, "Command List", commandSkin.GetStyle("boundingBox"));
 
         //Variables for drawing the commands.
         float previousRectY =  boxStartingPosY;
@@ -237,33 +242,33 @@ public class CommandList : MonoBehaviour {
             {
                 if(sequenceEditor != null)
                 {
+                    //if this is a checkpoint
                     if (sequenceEditor.belongsToCheckpoint)
                     {
+                        //...and the command is not available here, draw it as unavailable.
                         if (!thisCommand.availableAtCheckpoint)
                         {
-                            if (thisCommand.isVariable)
-                            {
-                                GUI.Box(slotRect, "<color=#000000>" + thisCommand.commandName + "</color>", commandSkin.GetStyle("variableUnavailable"));
-
-                            }
-                            else
-                            {
-                                GUI.Box(slotRect, "<color=#000000>" + thisCommand.commandName + "</color>", commandSkin.GetStyle("commandUnavailable"));
-
-                            }
+                            GUI.Box(slotRect, "<color=#000000>" + thisCommand.commandName + "</color>", commandSkin.GetStyle("commandUnavailable"));
                         }
+                        //..and the command is available here.
                         else
                         {
-                            bool orderHasBeenEntered = false;
+                            if (!thisCommand.isVariable)
+                            {
+                                GUI.Box(slotRect, "<color=#000000>" + thisCommand.commandName + "</color>", commandSkin.GetStyle("commandAvailable"));
+
+                            }
+                            bool variableNeeded = false;
                             bool forEveryHasBeenUsed = false;
 
+                            //Find out if a command (or specifically a split command) has been entered, which requires a variable.
                             for (int i = 0; i < sequenceEditor.slots.Count; i++)
                             {
                                 if (i % 2 == 0 )
                                 {
-                                    if (sequenceEditor.slots[i].commandId == "A01" || sequenceEditor.slots[i].commandId == "D01" || sequenceEditor.slots[i].commandId == "M01")
+                                    if (sequenceEditor.slots[i].requiresVariable)
                                     {
-                                        orderHasBeenEntered = true;
+                                        variableNeeded = true;
                                     }
                                     else if (sequenceEditor.slots[i].commandId == "FoE")
                                     {
@@ -271,77 +276,117 @@ public class CommandList : MonoBehaviour {
                                     }   
                                 }
                             }
-                            if (!orderHasBeenEntered && (thisCommand.commandId == "varA" || thisCommand.commandId == "varB" || thisCommand.commandId == "varC" || thisCommand.commandId == "varD" || thisCommand.commandId == "varPlayerBase"))
+
+                            //If no commands that require variables has been entered
+                            if (!variableNeeded)
                             {
+                                //..draw all variables as unavailable
                                 if (thisCommand.isVariable)
                                 {
                                     GUI.Box(slotRect, "<color=#000000>" + thisCommand.commandName + "</color>", commandSkin.GetStyle("variableUnavailable"));
 
                                 }
-                                else
-                                {
-                                    GUI.Box(slotRect, "<color=#000000>" + thisCommand.commandName + "</color>", commandSkin.GetStyle("commandUnavailable"));
-
-                                }
                             }
-                            else if(!forEveryHasBeenUsed && (thisCommand.commandId == "FoE2" || thisCommand.commandId == "FoE3"))
+
+                            //If a command requires a variable, but it is not a split command,
+                            else if (!forEveryHasBeenUsed && (thisCommand.commandId == "FoE2" || thisCommand.commandId == "FoE3"))
                             {
+                                //Draw the split variables as unavailable
                                 if (thisCommand.isVariable)
                                 {
                                     GUI.Box(slotRect, "<color=#000000>" + thisCommand.commandName + "</color>", commandSkin.GetStyle("variableUnavailable"));
 
                                 }
-                                else
-                                {
-                                    GUI.Box(slotRect, "<color=#000000>" + thisCommand.commandName + "</color>", commandSkin.GetStyle("commandUnavailable"));
-
-                                }
                             }
+
+                            //If a command requires a variable.
                             else
                             {
+                                //Draw all variables as available
                                 if (thisCommand.isVariable)
                                 {
                                     GUI.Box(slotRect, "<color=#000000>" + thisCommand.commandName + "</color>", commandSkin.GetStyle("variableAvailable"));
 
                                 }
-                                else
+                            }
+                        }
+                    }
+
+                    //Drawing commands for list at homebase.
+                    else
+                    {
+                        //If the command is not available at homebase, draw it as unavailable
+                        if (!thisCommand.availableAtBase)
+                        {
+                            GUI.Box(slotRect, "<color=#000000>" + thisCommand.commandName + "</color>", commandSkin.GetStyle("commandUnavailable"));
+                        }
+                        
+                        //If it is availale:
+                        else
+                        {
+                            //if it is not a variable, draw it as available.
+                            if (!thisCommand.isVariable)
+                            {
+                                GUI.Box(slotRect, "<color=#000000>" + thisCommand.commandName + "</color>", commandSkin.GetStyle("commandAvailable"));
+                            }
+
+                            //Variables for next part.
+                            bool variableNeeded = false;
+                            bool forEveryHasBeenUsed = false;
+
+                            //Find out if a command (or specifically a split command) has been entered, which requires a variable.
+                            for (int i = 0; i < sequenceEditor.slots.Count; i++)
+                            {
+                                if (i % 2 == 0)
                                 {
-                                    GUI.Box(slotRect, "<color=#000000>" + thisCommand.commandName + "</color>", commandSkin.GetStyle("commandAvailable"));
+                                    if (sequenceEditor.slots[i].requiresVariable)
+                                    {
+                                        variableNeeded = true;
+                                    }
+                                    else if (sequenceEditor.slots[i].commandId == "FoE")
+                                    {
+                                        forEveryHasBeenUsed = true;
+                                    }
+                                }
+                            }
+
+                            //If no commands that require variables has been entered
+                            if (!variableNeeded)
+                            {
+                                //..draw all variables as unavailable
+                                if (thisCommand.isVariable)
+                                {
+                                    GUI.Box(slotRect, "<color=#000000>" + thisCommand.commandName + "</color>", commandSkin.GetStyle("variableUnavailable"));
+
+                                }
+                            }
+
+                            //If a command requires a variable, but it is not a split command,
+                            else if (!forEveryHasBeenUsed && (thisCommand.commandId == "FoE2" || thisCommand.commandId == "FoE3"))
+                            {
+                                //Draw the split variables as unavailable
+                                if (thisCommand.isVariable)
+                                {
+                                    GUI.Box(slotRect, "<color=#000000>" + thisCommand.commandName + "</color>", commandSkin.GetStyle("variableUnavailable"));
+
+                                }
+                            }
+
+                            //If a command requires a variable.
+                            else
+                            {
+                                //Draw all variables as available
+                                if (thisCommand.isVariable)
+                                {
+                                    GUI.Box(slotRect, "<color=#000000>" + thisCommand.commandName + "</color>", commandSkin.GetStyle("variableAvailable"));
 
                                 }
                             }
                         }
                     }
-                    else
-                    {
-                        if (!thisCommand.availableAtBase)
-                        {
-                            if (thisCommand.isVariable)
-                            {
-                                GUI.Box(slotRect, "<color=#000000>" + thisCommand.commandName + "</color>", commandSkin.GetStyle("variableUnavailable"));
-
-                            }
-                            else
-                            {
-                                GUI.Box(slotRect, "<color=#000000>" + thisCommand.commandName + "</color>", commandSkin.GetStyle("commandUnavailable"));
-
-                            }
-                        }
-                        else
-                        {
-                            if (thisCommand.isVariable)
-                            {
-                                GUI.Box(slotRect, "<color=#000000>" + thisCommand.commandName + "</color>", commandSkin.GetStyle("variableAvailable"));
-
-                            }
-                            else
-                            {
-                                GUI.Box(slotRect, "<color=#000000>" + thisCommand.commandName + "</color>", commandSkin.GetStyle("commandAvailable"));
-
-                            }
-                        }
-                    }
                 }
+
+                //If no editor window is open, draw everything as available.
                 else
                 {
                     if (thisCommand.isVariable)
@@ -389,7 +434,11 @@ public class CommandList : MonoBehaviour {
         //Check if the mouse is dragging the current command.
         if (slotRect.Contains(e.mousePosition) && e.button == 0 && e.type == EventType.mouseDrag && !sequenceEditor.isDraggingCommand)
         {
-            if(sequenceEditor.belongsToCheckpoint && thisCommand.commandId == "P01")
+            if(sequenceEditor.belongsToCheckpoint && !thisCommand.availableAtCheckpoint)
+            {
+
+            }
+            else if(!sequenceEditor.belongsToCheckpoint && !thisCommand.availableAtBase)
             {
 
             }
