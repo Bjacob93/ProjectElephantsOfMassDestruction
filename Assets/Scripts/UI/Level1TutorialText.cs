@@ -191,7 +191,7 @@ public class Level1TutorialText : MonoBehaviour {
         drawStartInfo = true;
         TutorialBox = new Rect(TutorialBoxStartPosX, TutorialBoxStartPosY, TutorialBoxWidth, TutorialBoxHeight);
 
-        nextButtonX = TutorialBoxStartPosX + Screen.width / 25;
+        nextButtonX = TutorialBoxStartPosX + Screen.width / 4;
         nextButtonY = TutorialBoxStartPosY - Screen.height / 40;
         nextButtonWidth = 50;
         nextButtonHeight = 30;
@@ -344,10 +344,7 @@ public class Level1TutorialText : MonoBehaviour {
     {
         GUI.skin = commandSkin;
         commandSkin.GetStyle("tutorialBoundingBoxBackground").wordWrap = true;
-        commandSkin.GetStyle("tutorialBoundingBoxBackground").padding.top = Screen.height / 28;
-        commandSkin.GetStyle("tutorialBoundingBoxBackground").padding.bottom = Screen.height / 25;
-        commandSkin.GetStyle("tutorialBoundingBoxBackground").padding.left = Screen.width / 20;
-        commandSkin.GetStyle("tutorialBoundingBoxBackground").padding.right = Screen.width / 20;
+
         commandSkin.GetStyle("tutorialBoundingBoxBackground").fontSize = Screen.width / 90;
         commandSkin.GetStyle("tutorialBoundingBoxBackground").fontStyle = FontStyle.Bold;
 
@@ -355,12 +352,20 @@ public class Level1TutorialText : MonoBehaviour {
        {
             if (requiresNextClickToProgress)
             {
-                if (GUI.Button(nextButton, "Next"))
+                commandSkin.GetStyle("tutorialBoundingBoxBackground").padding.top = 0;
+                commandSkin.GetStyle("tutorialBoundingBoxBackground").padding.bottom = 0;
+                commandSkin.GetStyle("tutorialBoundingBoxBackground").padding.left = 0;
+                commandSkin.GetStyle("tutorialBoundingBoxBackground").padding.right = 0;
+                if (GUI.Button(nextButton, "Next", commandSkin.GetStyle("tutorialBoundingBoxBackground")))
                 {
                     currentTutorialPage++;
                     requiresNextClickToProgress = false;
                 }
             }
+            commandSkin.GetStyle("tutorialBoundingBoxBackground").padding.top = Screen.height / 28;
+            commandSkin.GetStyle("tutorialBoundingBoxBackground").padding.bottom = Screen.height / 25;
+            commandSkin.GetStyle("tutorialBoundingBoxBackground").padding.left = Screen.width / 20;
+            commandSkin.GetStyle("tutorialBoundingBoxBackground").padding.right = Screen.width / 20;
             GUI.Box(new Rect(TutorialBox), currentTutorialText, commandSkin.GetStyle("tutorialBoundingBoxBackground"));
         }
     }
