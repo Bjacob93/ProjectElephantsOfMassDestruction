@@ -136,7 +136,7 @@ public class EditorList : MonoBehaviour{
         if (Input.GetButtonDown("SequenceEditor")) 
         {
             drawEditorWindow = false;
-            if(lvlManager.currentLevel == 1 && tutorialtext.currentTutorialPage == 9 && !belongsToCheckpoint)
+            if(lvlManager.currentLevel == 1 && tutorialtext.currentTutorialPage == 13 && !belongsToCheckpoint)
             {
                 tutorialtext.currentTutorialPage++;
             }
@@ -157,11 +157,11 @@ public class EditorList : MonoBehaviour{
             DrawEditor();
             if(lvlManager.currentLevel == 1)
             {
-                if (tutorialtext.currentTutorialPage == 4 && belongsToCheckpoint == false)
+                if (tutorialtext.currentTutorialPage == 5 && belongsToCheckpoint == false)
                 {
                     tutorialtext.currentTutorialPage++;
                 }
-                else if (tutorialtext.currentTutorialPage == 10 && belongsToCheckpoint == true)
+                else if (tutorialtext.currentTutorialPage == 14 && belongsToCheckpoint == true)
                 {
                     tutorialtext.currentTutorialPage++;
                 }
@@ -224,20 +224,20 @@ public class EditorList : MonoBehaviour{
                 if (lvlManager.currentLevel == 1) {
                     if(!belongsToCheckpoint)
                     {
-                        if (tutorialtext.currentTutorialPage == 5 && thisCommand.commandId == "P01")
+                        if (tutorialtext.currentTutorialPage == 7 && thisCommand.commandId == "P01")
                         {
                             tutorialtext.currentTutorialPage++;
                         }
-                        else if(tutorialtext.currentTutorialPage == 7 && thisCommand.commandId == "A01")
+                        else if(tutorialtext.currentTutorialPage == 10 && thisCommand.commandId == "A01")
                         {
                             tutorialtext.currentTutorialPage++;
                         }
-                        else if(tutorialtext.currentTutorialPage == 8 && thisCommand.commandId == "varA")
+                        else if(tutorialtext.currentTutorialPage == 12 && thisCommand.commandId == "varA")
                         {
                             tutorialtext.currentTutorialPage++;
                         }
                     }
-                    else if (tutorialtext.currentTutorialPage == 11 && thisCommand.commandId == "D01")
+                    else if (tutorialtext.currentTutorialPage == 16 && thisCommand.commandId == "D01")
                     {
                         tutorialtext.currentTutorialPage++;
                     }
