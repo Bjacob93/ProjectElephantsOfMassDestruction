@@ -10,7 +10,7 @@ public class BuyEnemyUnits : MonoBehaviour
     public int amountOfEnemySpawned = 0;    // Keep track of the amount of enemies spawn.
     public int maxEnemySpawn = 20;          // Used to set the maximum amount of enemies a level can spawn. 
                                             // This is used to define when the palyer wins eg when there are 0 enemies left the player wins
-
+	public bool victoryCheck = false;
     public GameObject enemyUnits;
 
     UnitArrays listOfEnemyUnits;
@@ -37,6 +37,9 @@ public class BuyEnemyUnits : MonoBehaviour
 
     }
 
+	void victory(){
+		sm.Victory();
+	}
     void Update()
     {
 
@@ -70,9 +73,12 @@ public class BuyEnemyUnits : MonoBehaviour
                     }
                     else if (i == listOfEnemyUnits.enemies.Length - 1 && sm.playerHasAllCheckPoints == true)
                     {
-
-						sm.Victory();
+						if(!victoryCheck){
+							victory ();
+							victoryCheck=true;
+						}
 						timeupdate ();
+
 						}
                 }
             }
@@ -80,16 +86,14 @@ public class BuyEnemyUnits : MonoBehaviour
     }
 
     void timeupdate()
-    {
-	//	sm.vicoryload ();
-		//SceneManager.LoadSceneAsync("Scenes/mainMenu", LoadSceneMode.Single);
-
-        wattTimeTimer += Time.deltaTime;
-        if (wattTimeTimer >= waitTime)
-       {
-                SceneManager.LoadSceneAsync("Scenes/mainMenu", LoadSceneMode.Single);
-        }
-    }
+	{
+		if (!sm.VictoryS.isPlaying) {
+			wattTimeTimer += Time.deltaTime;
+			if (wattTimeTimer >= waitTime) {
+				SceneManager.LoadSceneAsync ("Scenes/mainMenu", LoadSceneMode.Single);
+			}
+		}
+	}
 
     void OnMouseDown()
     {

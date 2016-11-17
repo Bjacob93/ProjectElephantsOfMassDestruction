@@ -8,16 +8,12 @@ public class ScoreManager : MonoBehaviour {
 	Animator anim;  
 	public AudioSource Levelmusic;
 
-	//AudioSource levelmusic;
-	//public AudioClip victoryS;
-
-	//AudioSource levelSound;
 	public int currentScene;
 	int mainMenuindex; 
 	public AudioSource VictoryS;
 
 
-	public float restartDelay = 5f;         // Time to wait before restarting the level
+	public float restartDelay = 1f;         // Time to wait before restarting the level
 	float restartTimer;                     // Timer to count up to restarting the level
 
 	public int lives;
@@ -34,10 +30,6 @@ public class ScoreManager : MonoBehaviour {
     // Use this for initialization
     public void LoseLife (int l = 1) {
 		lives -= l;
-//		if (lives <= 0) {
-//			GameOver ();
-//			timeupdate ();
-//		}
 	}
 
     public int getMoney()
@@ -54,7 +46,6 @@ public class ScoreManager : MonoBehaviour {
 	{
 		// Set up the reference.
 		anim = GetComponent <Animator> ();
-		//levelSound = gameObject.AddComponent<AudioSource> ();
 	}
 	public void timeupdate(){
 		//restartTimer += Time.deltaTime;
@@ -63,11 +54,6 @@ public class ScoreManager : MonoBehaviour {
 		SceneManager.LoadScene(currentScene);
 			//}
 		}
-	public void vicoryload(){
-		if (!VictoryS.isPlaying) {
-			SceneManager.LoadScene (mainMenuindex);
-		}
-	}
 
     //function to check if a player owns the different capturePoints
     void checkCapturePointsForOwnership()
@@ -101,9 +87,8 @@ public class ScoreManager : MonoBehaviour {
 
 	void Start(){
 		livesR=lives;
-	//	levelSound.clip = Resources.Load("Audio/Level1") as AudioClip;
-	//	levelSound.Play();
         capturePoint = GameObject.FindGameObjectsWithTag("CapturePoint");
+
         foreach(GameObject c in capturePoint)
         {
             basicCapturePointScripts.Add(c.GetComponent<BasicCapturePoint>());
@@ -113,6 +98,7 @@ public class ScoreManager : MonoBehaviour {
 		Levelmusic.playOnAwake = true;
 		Levelmusic.loop =true;
 		Levelmusic.Play ();
+		VictoryS = gameObject.AddComponent<AudioSource> ();
 
     }
 
@@ -121,15 +107,17 @@ public class ScoreManager : MonoBehaviour {
 	}
 
 public void GameOver(){
-		Levelmusic.Stop ();
+	Levelmusic.Stop ();
 	anim.SetTrigger ("GameOver");
 }
     public void Victory()
     {
-		//VictoryS = gameObject.AddComponent<AudioSource> ();
-		//VictoryS.clip = Resources.Load ("Audio/Victory") as AudioClip;
-		//VictoryS.playOnAwake = true;
+		Levelmusic.Stop ();
 		anim.SetTrigger("VictoryAnimation");
-		//VictoryS.Play ();
+		Debug.Log ("im here");
+		VictoryS.clip = Resources.Load ("Audio/Victory") as AudioClip;
+		VictoryS.playOnAwake = true;
+		VictoryS.loop =false;
+		VictoryS.Play ();
 	}
 }

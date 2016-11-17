@@ -1286,7 +1286,7 @@ MonoBehaviour:
   restartDelay: 7
   restartTimer: 0
   amountOfEnemySpawned: 0
-  maxEnemySpawn: 10
+  maxEnemySpawn: 1
   enemyUnits: {fileID: 1000011621710164, guid: 67917ec56833846428930e641a3cd7f1, type: 2}
 --- !u!23 &102070807
 MeshRenderer:
@@ -24450,8 +24450,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 2097830713}
-        m_MethodName: LoadByIndex
-        m_Mode: 3
+        m_MethodName: loadMainMenu
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
