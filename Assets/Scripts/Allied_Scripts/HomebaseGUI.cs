@@ -187,8 +187,6 @@ public class HomebaseGUI : MonoBehaviour {
             //crate a sting to keep track of the slots commandId
             string id = textListComponent.listOfCommands[i].commandId;
 
-            Debug.Log("Found command: " + id);
-
             if (textListComponent.listOfCommands.Count > i + 1)
             {
                 fish = textListComponent.listOfCommands[i + 1].variableForEveryX;
@@ -198,9 +196,6 @@ public class HomebaseGUI : MonoBehaviour {
                 shrimp++;
                 forEveryRan = false;
             }
-
-            Debug.Log("Calling commandTextEditor(" + i + ", " + id + ", " + fish);
-
             commandTextEditor(i, id, units, fish);
         }
     }
