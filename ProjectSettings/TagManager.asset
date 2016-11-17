@@ -20,6 +20,7 @@ TagManager:
   - PlayButton
   - Checkpoint
   - CapturePoint
+  - MainMenu
   layers:
   - Default
   - TransparentFX

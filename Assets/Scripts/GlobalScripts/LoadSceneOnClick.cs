@@ -1,16 +1,22 @@
 ﻿using UnityEngine;
 using System.Collections;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class LoadSceneOnClick : MonoBehaviour {
 
 	static int selected = 0;
 
     mainMenuVariables varKeeper;
+	Button Mainmenu;
+	public Sprite MainMenuSprite;
+
 
     void Start()
     {
-        varKeeper = GameObject.Find("KeeperOfVariables").GetComponent<mainMenuVariables>();
+		varKeeper = GameObject.Find("KeeperOfVariables").GetComponent<mainMenuVariables>();
+		Mainmenu = GetComponent<Button>();
+		Mainmenu.image.sprite = MainMenuSprite;
     }
 
 	public void LoadByIndex(int sceneIndex) {
