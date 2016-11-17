@@ -298,7 +298,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0, g: 0, b: 0, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -307,11 +307,11 @@ MonoBehaviour:
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
     m_Font: {fileID: 12800000, guid: 7cb2912222469634ba17a77055919ea8, type: 3}
-    m_FontSize: 32
+    m_FontSize: 132
     m_FontStyle: 0
     m_BestFit: 0
-    m_MinSize: 3
-    m_MaxSize: 40
+    m_MinSize: 1
+    m_MaxSize: 132
     m_Alignment: 4
     m_AlignByGeometry: 0
     m_RichText: 1
@@ -446,7 +446,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0, g: 0, b: 0, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -455,11 +455,11 @@ MonoBehaviour:
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
     m_Font: {fileID: 12800000, guid: 7cb2912222469634ba17a77055919ea8, type: 3}
-    m_FontSize: 32
+    m_FontSize: 161
     m_FontStyle: 0
     m_BestFit: 0
-    m_MinSize: 3
-    m_MaxSize: 40
+    m_MinSize: 1
+    m_MaxSize: 161
     m_Alignment: 4
     m_AlignByGeometry: 0
     m_RichText: 1
@@ -1019,8 +1019,8 @@ GameObject:
   - 224: {fileID: 165243083}
   - 222: {fileID: 165243082}
   - 114: {fileID: 165243081}
-  - 114: {fileID: 165243080}
   - 114: {fileID: 165243079}
+  - 114: {fileID: 165243080}
   m_Layer: 5
   m_Name: Level selection
   m_TagString: Untagged
@@ -2146,8 +2146,8 @@ GameObject:
   m_Component:
   - 224: {fileID: 378433722}
   - 222: {fileID: 378433725}
-  - 114: {fileID: 378433724}
   - 114: {fileID: 378433723}
+  - 114: {fileID: 378433724}
   - 114: {fileID: 378433726}
   m_Layer: 5
   m_Name: HelpPanel
@@ -3625,10 +3625,6 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 756458143}
---- !u!1 &900428851 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 100008, guid: b6a1cf4e3eeaf9a4ca38bf8acb910a6d, type: 2}
-  m_PrefabInternal: {fileID: 1065231181}
 --- !u!224 &900428852 stripped
 RectTransform:
   m_PrefabParentObject: {fileID: 22400008, guid: b6a1cf4e3eeaf9a4ca38bf8acb910a6d,
@@ -4149,7 +4145,7 @@ GameObject:
   - 114: {fileID: 1191619386}
   - 114: {fileID: 1191619385}
   m_Layer: 5
-  m_Name: BackButton
+  m_Name: Back
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4172,7 +4168,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: 480.00006, y: -528.0427}
-  m_SizeDelta: {x: 780.0001, y: 109.65047}
+  m_SizeDelta: {x: 1740, y: 964.4278}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1191619385
 MonoBehaviour:
@@ -4193,8 +4189,8 @@ MonoBehaviour:
     m_SelectOnRight: {fileID: 0}
   m_Transition: 1
   m_Colors:
-    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
-    m_HighlightedColor: {r: 0, g: 0.46323532, b: 0.0031947005, a: 1}
+    m_NormalColor: {r: 0.77205884, g: 0.17030707, b: 0.17030707, a: 1}
+    m_HighlightedColor: {r: 0.17128772, g: 0.75735295, b: 0.15035684, a: 0.247}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
@@ -4209,7 +4205,7 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_DisabledTrigger: Disabled
   m_Interactable: 1
-  m_TargetGraphic: {fileID: 1191619386}
+  m_TargetGraphic: {fileID: 172304966}
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
@@ -4249,7 +4245,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.09558821, g: 1, b: 0.101825476, a: 0}
+  m_Color: {r: 0, g: 0, b: 0, a: 0.234}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -5319,9 +5315,9 @@ GameObject:
   m_Component:
   - 224: {fileID: 1758635695}
   - 222: {fileID: 1758635698}
-  - 114: {fileID: 1758635697}
   - 114: {fileID: 1758635696}
   - 114: {fileID: 1758635699}
+  - 114: {fileID: 1758635697}
   m_Layer: 5
   m_Name: AudioPanel
   m_TagString: Untagged
@@ -5350,8 +5346,8 @@ RectTransform:
   - {fileID: 1191619384}
   m_Father: {fileID: 2067314721}
   m_RootOrder: 2
-  m_AnchorMin: {x: 0.25, y: 0.2}
-  m_AnchorMax: {x: 0.75, y: 0.8}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -5383,25 +5379,24 @@ MonoBehaviour:
   m_GameObject: {fileID: 1758635694}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: -765806418, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
+  m_Script: {fileID: -98529514, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: 6858abb4516aae344881bf286b3aac33, type: 3}
-  m_Type: 1
-  m_PreserveAspect: 0
-  m_FillCenter: 1
-  m_FillMethod: 4
-  m_FillAmount: 1
-  m_FillClockwise: 1
-  m_FillOrigin: 0
+  m_Texture: {fileID: 2800000, guid: 8017ff6e9bef1754fbeef66d4b52cacf, type: 3}
+  m_UVRect:
+    serializedVersion: 2
+    x: 0
+    y: 0
+    width: 1
+    height: 1
 --- !u!222 &1758635698
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -5420,7 +5415,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   eventSystem: {fileID: 1396489475}
-  selectedObject: {fileID: 900428851}
+  selectedObject: {fileID: 1758635694}
 --- !u!1 &1759380120
 GameObject:
   m_ObjectHideFlags: 0
@@ -5700,7 +5695,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0, g: 0, b: 0, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -5709,11 +5704,11 @@ MonoBehaviour:
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
     m_Font: {fileID: 12800000, guid: 7cb2912222469634ba17a77055919ea8, type: 3}
-    m_FontSize: 48
+    m_FontSize: 161
     m_FontStyle: 0
     m_BestFit: 0
-    m_MinSize: 3
-    m_MaxSize: 48
+    m_MinSize: 1
+    m_MaxSize: 161
     m_Alignment: 4
     m_AlignByGeometry: 0
     m_RichText: 1
