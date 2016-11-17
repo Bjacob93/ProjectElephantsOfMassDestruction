@@ -119,7 +119,6 @@ public class textEditor : MonoBehaviour
                 {
                     tutorial.currentTutorialPage++;
                 }
-                Debug.Log("editor " + gameObject.name + "is checkpoint: " + belongsToCheckpoint);
                 if (tutorial.currentTutorialPage == 9 && belongsToCheckpoint)
                 {
                     tutorial.currentTutorialPage++;
