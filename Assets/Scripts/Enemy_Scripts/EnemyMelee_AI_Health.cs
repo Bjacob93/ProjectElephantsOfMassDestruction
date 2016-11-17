@@ -9,7 +9,7 @@ public class EnemyMelee_AI_Health : MonoBehaviour {
 	public int moneyValue = 5;
     GameObject unitManager;
     UnitArrays Uarray;
-
+	public AudioSource Gameover;
     public GameObject enemyUnits;
     public GameObject enemySpawn;
 
@@ -35,6 +35,8 @@ public class EnemyMelee_AI_Health : MonoBehaviour {
 
         enemySpawn = GameObject.FindGameObjectWithTag("EnemyBase");
 
+        Gameover = gameObject.AddComponent<AudioSource>();
+
     }
 	
 	void Update () {
@@ -53,8 +55,7 @@ public class EnemyMelee_AI_Health : MonoBehaviour {
         if (distance < 10)
         {
             AtPlayerBase();
-        }
-
+        }	
 	}
 
 	public void TakeDamage (float damageTaken)
@@ -85,5 +86,17 @@ public class EnemyMelee_AI_Health : MonoBehaviour {
     {
         this.gameObject.transform.position = enemySpawn.transform.position;
         scoreManager.LoseLife(1);
+		if (scoreManager.lives ==0) {		
+			Gameover.clip = Resources.Load ("Audio/GameOver") as AudioClip;
+			Gameover.playOnAwake = true;
+            Gameover.loop = false;
+			scoreManager.GameOver ();
+			Gameover.Play ();
+        }
+        if (!Gameover.isPlaying && scoreManager.lives <= 0)
+        {
+            Uarray.resetGame();
+            scoreManager.timeupdate();
+        }
     }
 }

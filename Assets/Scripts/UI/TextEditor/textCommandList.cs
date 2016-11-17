@@ -13,10 +13,7 @@ public class textCommandList : MonoBehaviour
     //The slots list holds the actual slots.
     public List<Command> availableCommands = new List<Command>();
     public List<Command> slots = new List<Command>();
-
-    //Bool handles whether or not to draw the window in the UI.
-    private bool drawCommandList = false;
-
+    
     //Cache the database, SequenceManger and Editolist scripts, as well as the LevelManager.
     public CommandDatabase database;
     public SequenceManager sequenceManager;
@@ -51,7 +48,6 @@ public class textCommandList : MonoBehaviour
     Level1TutorialText tutorial;
 
     //Animator
-    private string buttonState = "hide";
     private float speed;
     private bool animState = true;
     //button for animation
@@ -107,8 +103,8 @@ public class textCommandList : MonoBehaviour
         }
         //Animation button
         speed = Time.deltaTime * 600;
-        buttonH = 30;
-        buttonW = 60;
+        buttonH = 32;
+        buttonW = 32;
         buttonX = boundingBoxX - buttonW;
         buttonXMax = buttonX;
         buttonY = boundingBoxY - (buttonH * 0.5f) + (boundingBoxHeight * 0.5f);
@@ -118,15 +114,14 @@ public class textCommandList : MonoBehaviour
     {
         if (!animState && buttonX >= buttonXMax + 20)
         {
-            if (lvlManager.currentLevel == 1 && !tutorial.qHasBeenPressed)
+            if (lvlManager.currentLevel == 1 && tutorial.currentTutorialPage == 3)
             {
-                tutorial.qHasBeenPressed = true;
+                tutorial.currentTutorialPage++;
             }
             if (buttonX < buttonXMax)
             {
                 buttonX = buttonXMax;
             }
-            buttonState = "hide";
             buttonX -= speed;
             boundingBoxX -= speed;
             boxStartingPosX -= speed;
@@ -137,7 +132,6 @@ public class textCommandList : MonoBehaviour
             {
                 buttonX = Screen.width - buttonW;
             }
-            buttonState = "show";
             buttonX += speed;
             boxStartingPosX += speed;
             boundingBoxX += speed;
@@ -157,7 +151,7 @@ public class textCommandList : MonoBehaviour
         //Set the current tooltip string to be blank.
         toolTip = "";
         //draw toggle button
-        if (GUI.Button(new Rect(buttonX, buttonY, buttonW, buttonH), buttonState) || drawCommandList)
+        if (GUI.Button(new Rect(buttonX, buttonY, buttonW, buttonH), "", commandSkin.GetStyle("slideButton")))
         {
             animState = !animState;
         }

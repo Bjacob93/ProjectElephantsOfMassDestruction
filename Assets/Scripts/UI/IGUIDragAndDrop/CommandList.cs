@@ -117,12 +117,9 @@ public class CommandList : MonoBehaviour {
 	void Update(){
         if (!animState && buttonX >= buttonXMax + 20)
         {
-            if (lvlManager.currentLevel == 1)
+            if (lvlManager.currentLevel == 1 && tutorialtext.currentTutorialPage == 3)
             {
-                if (tutorialtext.qHasBeenPressed == false)
-                {
-                    tutorialtext.qHasBeenPressed = true;
-                }
+                tutorialtext.currentTutorialPage++;
             }
             if (buttonX < buttonXMax)
             {
@@ -436,7 +433,15 @@ public class CommandList : MonoBehaviour {
                         {
                             if (sequenceEditor.draggedCommand.isVariable)
                             {
-                                sequenceEditor.enteredCommands[i] = sequenceEditor.draggedCommand;
+                                if(!sequenceEditor.enteredCommands[i - 1].requiresVariable)
+                                {
+
+                                }
+                                else
+                                {
+                                    sequenceEditor.enteredCommands[i] = sequenceEditor.draggedCommand;
+
+                                }
                             }
                             else if(sequenceEditor.enteredCommands[i - 1].commandName == "")
                             {

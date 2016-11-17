@@ -3193,7 +3193,6 @@ MonoBehaviour:
     y: 0
     width: 0
     height: 0
-  buttonIcon: {fileID: 0}
   commandSkin: {fileID: 11400000, guid: af1d55f012321ba4fb142ce096bc0ec4, type: 2}
 --- !u!1 &666911388
 GameObject:
@@ -7461,6 +7460,7 @@ MonoBehaviour:
   restartDelay: 5
   lives: 4
   money: 100
+  livesR: 0
   moneyText: {fileID: 127121227}
   livesText: {fileID: 1357437267}
   capturePoint: []

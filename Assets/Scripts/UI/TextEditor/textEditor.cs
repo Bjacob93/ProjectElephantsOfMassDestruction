@@ -100,6 +100,10 @@ public class textEditor : MonoBehaviour
         if (Input.GetButtonDown("SequenceEditor"))
         {
             drawSequenceEditor = false;
+            if (lvlManager.currentLevel == 1 && tutorial.currentTutorialPage == 8 && !belongsToCheckpoint)
+            {
+                tutorial.currentTutorialPage++;
+            }
         }
     }
 
@@ -109,9 +113,16 @@ public class textEditor : MonoBehaviour
 
         if (drawSequenceEditor)
         {
-            if (!tutorial.editorHasBeenOpened)
+            if (lvlManager.currentLevel == 1)
             {
-                tutorial.editorHasBeenOpened = true;
+                if (tutorial.currentTutorialPage == 4 && !belongsToCheckpoint)
+                {
+                    tutorial.currentTutorialPage++;
+                }
+                if (tutorial.currentTutorialPage == 9 && belongsToCheckpoint)
+                {
+                    tutorial.currentTutorialPage++;
+                }
             }
 
             //Draw the bounding box and the text window.
@@ -245,11 +256,6 @@ public class textEditor : MonoBehaviour
                                 if (database.commandDatabase[d].commandId == "A01")
                                 {
                                     listOfCommands.Add(database.commandDatabase[d]);
-                                    if (lvlManager.currentLevel == 1)
-                                    {
-                                        tutorial.enterAttackOrder = true;
-
-                                    }
                                     break;
                                 }
                             }
@@ -270,6 +276,10 @@ public class textEditor : MonoBehaviour
                             if (database.commandDatabase[d].commandId == "D01")
                             {
                                 listOfCommands.Add(database.commandDatabase[d]);
+                                if (lvlManager.currentLevel == 1 && tutorial.currentTutorialPage == 10 && belongsToCheckpoint)
+                                {
+                                    tutorial.currentTutorialPage++;
+                                }
                                 break;
                             }
                         }
@@ -277,19 +287,22 @@ public class textEditor : MonoBehaviour
 
                     //Produce command.
                     case "produce":
-
-                        for (int d = 0; d < database.commandDatabase.Count; d++)
+                        if (!belongsToCheckpoint)
                         {
-                            if (database.commandDatabase[d].commandId == "P01")
+                            for (int d = 0; d < database.commandDatabase.Count; d++)
                             {
-                                listOfCommands.Add(database.commandDatabase[d]);
-                                if (lvlManager.currentLevel == 1)
+                                if (database.commandDatabase[d].commandId == "P01")
                                 {
-                                    tutorial.enterProduceOrder = true;
+                                    listOfCommands.Add(database.commandDatabase[d]);
+                                    if (lvlManager.currentLevel == 1 && tutorial.currentTutorialPage == 5)
+                                    {
+                                        tutorial.currentTutorialPage++;
+                                    }
+                                    break;
                                 }
-                                break;
                             }
                         }
+                        errorList.Add(new KeyValuePair<int, string>(j, "No known command"));
                         break;
 
                     //Move command.
@@ -320,9 +333,9 @@ public class textEditor : MonoBehaviour
                             {
                                 listOfCommands.Add(database.commandDatabase[d]);
 
-                                if (lvlManager.currentLevel == 1 && elementsInCode[i - 1] == "attack")
+                                if (lvlManager.currentLevel == 1 && elementsInCode[i - 1] == "attack" && !belongsToCheckpoint && tutorial.currentTutorialPage == 7)
                                 {
-                                    tutorial.enterAttackTarget = true;
+                                        tutorial.currentTutorialPage++;
                                 }
                                 break;
                             }

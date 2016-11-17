@@ -136,9 +136,9 @@ public class EditorList : MonoBehaviour{
         if (Input.GetButtonDown("SequenceEditor")) 
         {
             drawEditorWindow = false;
-            if(tutorialtext.editorHasBeenOpened == false)
+            if(lvlManager.currentLevel == 1 && tutorialtext.currentTutorialPage == 9 && !belongsToCheckpoint)
             {
-                tutorialtext.editorHasBeenOpened = true;
+                tutorialtext.currentTutorialPage++;
             }
         }
     }
@@ -155,7 +155,17 @@ public class EditorList : MonoBehaviour{
         if (drawEditorWindow)
         {
             DrawEditor();
-            tutorialtext.editorHasBeenOpened = true;
+            if(lvlManager.currentLevel == 1)
+            {
+                if (tutorialtext.currentTutorialPage == 4 && belongsToCheckpoint == false)
+                {
+                    tutorialtext.currentTutorialPage++;
+                }
+                else if (tutorialtext.currentTutorialPage == 10 && belongsToCheckpoint == true)
+                {
+                    tutorialtext.currentTutorialPage++;
+                }
+            }
         }
 
         //Show tooltip at the mouse position
@@ -214,22 +224,22 @@ public class EditorList : MonoBehaviour{
                 if (lvlManager.currentLevel == 1) {
                     if(!belongsToCheckpoint)
                     {
-                        if (thisCommand.commandId == "P01")
+                        if (tutorialtext.currentTutorialPage == 5 && thisCommand.commandId == "P01")
                         {
-                            tutorialtext.enterProduceOrder = true;
+                            tutorialtext.currentTutorialPage++;
                         }
-                        if (thisCommand.commandId == "A01")
+                        else if(tutorialtext.currentTutorialPage == 7 && thisCommand.commandId == "A01")
                         {
-                            tutorialtext.enterAttackOrder = true;
+                            tutorialtext.currentTutorialPage++;
                         }
-                        if (thisCommand.commandId == "varA")
+                        else if(tutorialtext.currentTutorialPage == 8 && thisCommand.commandId == "varA")
                         {
-                            tutorialtext.enterAttackTarget = true;
+                            tutorialtext.currentTutorialPage++;
                         }
                     }
-                else if (thisCommand.commandId == "D01")
+                    else if (tutorialtext.currentTutorialPage == 11 && thisCommand.commandId == "D01")
                     {
-                        tutorialtext.defendOrderInserted = true;
+                        tutorialtext.currentTutorialPage++;
                     }
                 }
                 //Draw any empty slots
@@ -242,6 +252,10 @@ public class EditorList : MonoBehaviour{
                     else if (slots[slotNumber - 1].requiresVariable)
                     {
                         GUI.Box(slotRect, "<color=#000000>" + "Insert Variable" + "</color>", commandSkin.GetStyle("variableUnavailable"));
+                    }
+                    else if(!slots[slotNumber - 1].requiresVariable && slots[slotNumber - 1].commandName != "")
+                    {
+                        GUI.Box(slotRect, "<color=#000000>" + "No Variable Needed" + "</color>", commandSkin.GetStyle("variableAvailable"));
                     }
                     else
                     {
