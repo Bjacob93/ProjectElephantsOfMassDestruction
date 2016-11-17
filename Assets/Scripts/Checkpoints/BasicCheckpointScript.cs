@@ -73,7 +73,7 @@ public class BasicCheckpointScript : MonoBehaviour {
         {
             textListComponent = gameObject.AddComponent<textEditor>();
             textListComponent.listID = checkpointName;
-            textListComponent.belongsToCheckpoint = false;
+            textListComponent.belongsToCheckpoint = true;
             sm.editorListText.Add(textListComponent);
         }
     }
@@ -224,7 +224,7 @@ public class BasicCheckpointScript : MonoBehaviour {
                 break;
 
             case "D01":
-                target = textListComponent.listOfCommands[i + 1].locationOfTarget;
+                target = location;
                 //run the defend command
                 Defend(units, target);
                 break;
@@ -296,12 +296,6 @@ public class BasicCheckpointScript : MonoBehaviour {
     }
 
 	void OnMouseDown(){
-
-        if(lvlManager.currentLevel == 1 && tutorialtext.chechpointEditorOpened == false)
-        {
-            tutorialtext.chechpointEditorOpened = true;
-        }
-
         //If the mouse is clicked on the object, go through the list of SequenceEditors.
         if (varKeeper.useDragonDrop)
         {

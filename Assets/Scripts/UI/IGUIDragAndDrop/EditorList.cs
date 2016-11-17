@@ -136,7 +136,7 @@ public class EditorList : MonoBehaviour{
         if (Input.GetButtonDown("SequenceEditor")) 
         {
             drawEditorWindow = false;
-            if(tutorialtext.currentTutorialPage == 9 && !belongsToCheckpoint)
+            if(lvlManager.currentLevel == 1 && tutorialtext.currentTutorialPage == 9 && !belongsToCheckpoint)
             {
                 tutorialtext.currentTutorialPage++;
             }
@@ -155,23 +155,16 @@ public class EditorList : MonoBehaviour{
         if (drawEditorWindow)
         {
             DrawEditor();
-            if (tutorialtext.currentTutorialPage == 4 && belongsToCheckpoint == false)
+            if(lvlManager.currentLevel == 1)
             {
-                tutorialtext.currentTutorialPage++;
-            }
-            else if(tutorialtext.currentTutorialPage == 10 && belongsToCheckpoint == true)
-            {
-                tutorialtext.currentTutorialPage++;
-            }
-
-
-            if (!tutorialtext.editorHasBeenOpened && tutorialtext.commandListOpened && !belongsToCheckpoint)
-            {
-                tutorialtext.editorHasBeenOpened = true;
-            }
-            else if(!tutorialtext.chechpointEditorOpened && tutorialtext.enterAttackTarget && belongsToCheckpoint)
-            {
-                tutorialtext.chechpointEditorOpened = true;
+                if (tutorialtext.currentTutorialPage == 4 && belongsToCheckpoint == false)
+                {
+                    tutorialtext.currentTutorialPage++;
+                }
+                else if (tutorialtext.currentTutorialPage == 10 && belongsToCheckpoint == true)
+                {
+                    tutorialtext.currentTutorialPage++;
+                }
             }
         }
 
