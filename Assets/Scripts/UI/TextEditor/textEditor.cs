@@ -100,7 +100,7 @@ public class textEditor : MonoBehaviour
         if (Input.GetButtonDown("SequenceEditor"))
         {
             drawSequenceEditor = false;
-            if (lvlManager.currentLevel == 1 && tutorial.currentTutorialPage == 8 && !belongsToCheckpoint)
+            if (lvlManager.currentLevel == 1 && tutorial.currentTutorialPage == 13 && !belongsToCheckpoint)
             {
                 tutorial.currentTutorialPage++;
             }
@@ -115,11 +115,11 @@ public class textEditor : MonoBehaviour
         {
             if (lvlManager.currentLevel == 1)
             {
-                if (tutorial.currentTutorialPage == 4 && !belongsToCheckpoint)
+                if (tutorial.currentTutorialPage == 5 && !belongsToCheckpoint)
                 {
                     tutorial.currentTutorialPage++;
                 }
-                if (tutorial.currentTutorialPage == 9 && belongsToCheckpoint)
+                if (tutorial.currentTutorialPage == 14 && belongsToCheckpoint)
                 {
                     tutorial.currentTutorialPage++;
                 }
@@ -276,7 +276,7 @@ public class textEditor : MonoBehaviour
                             if (database.commandDatabase[d].commandId == "D01")
                             {
                                 listOfCommands.Add(database.commandDatabase[d]);
-                                if (lvlManager.currentLevel == 1 && tutorial.currentTutorialPage == 10 && belongsToCheckpoint)
+                                if (lvlManager.currentLevel == 1 && tutorial.currentTutorialPage == 16 && belongsToCheckpoint)
                                 {
                                     tutorial.currentTutorialPage++;
                                 }
@@ -294,7 +294,7 @@ public class textEditor : MonoBehaviour
                                 if (database.commandDatabase[d].commandId == "P01")
                                 {
                                     listOfCommands.Add(database.commandDatabase[d]);
-                                    if (lvlManager.currentLevel == 1 && tutorial.currentTutorialPage == 5)
+                                    if (lvlManager.currentLevel == 1 && tutorial.currentTutorialPage == 7)
                                     {
                                         tutorial.currentTutorialPage++;
                                     }
@@ -333,7 +333,7 @@ public class textEditor : MonoBehaviour
                             {
                                 listOfCommands.Add(database.commandDatabase[d]);
 
-                                if (lvlManager.currentLevel == 1 && elementsInCode[i - 1] == "attack" && !belongsToCheckpoint && tutorial.currentTutorialPage == 7)
+                                if (lvlManager.currentLevel == 1 && elementsInCode[i - 1] == "attack" && !belongsToCheckpoint && tutorial.currentTutorialPage == 11)
                                 {
                                         tutorial.currentTutorialPage++;
                                 }
