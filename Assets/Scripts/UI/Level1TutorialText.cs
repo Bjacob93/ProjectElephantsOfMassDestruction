@@ -251,11 +251,9 @@ public class Level1TutorialText : MonoBehaviour {
                     break;
                 case 8:
                     currentTutorialText = TutorialPage9;
-                    Debug.Log(currentTutorialPage);
                     break;
                 case 9:
                     currentTutorialText = TutorialPage10;
-                    Debug.Log(currentTutorialPage);
                     break;
                 case 10:
                     currentTutorialText = TutorialPage11;
@@ -273,7 +271,6 @@ public class Level1TutorialText : MonoBehaviour {
                     {
                         requiresNextClickToProgress = true;
                     }
-                    Debug.Log(currentTutorialPage);
                     break;
                 case 13:
                     currentTutorialText = TutorialPage14;
@@ -281,8 +278,6 @@ public class Level1TutorialText : MonoBehaviour {
                     {
                         drawStartInfo = false;
                     }
-                    Debug.Log(currentTutorialPage);
-
                     break;
                 case 14:
                     drawStartInfo = false;
@@ -297,10 +292,10 @@ public class Level1TutorialText : MonoBehaviour {
     {
         GUI.skin = commandSkin;
         commandSkin.GetStyle("tutorialBoundingBoxBackground").wordWrap = true;
-        commandSkin.GetStyle("tutorialBoundingBoxBackground").padding.top = 10;
-        commandSkin.GetStyle("tutorialBoundingBoxBackground").padding.bottom = 30;
-        commandSkin.GetStyle("tutorialBoundingBoxBackground").padding.left = 100;
-        commandSkin.GetStyle("tutorialBoundingBoxBackground").padding.right = 100;
+        commandSkin.GetStyle("tutorialBoundingBoxBackground").padding.top = Screen.height / 30;
+        commandSkin.GetStyle("tutorialBoundingBoxBackground").padding.bottom = Screen.height / 25;
+        commandSkin.GetStyle("tutorialBoundingBoxBackground").padding.left = Screen.width / 20;
+        commandSkin.GetStyle("tutorialBoundingBoxBackground").padding.right = Screen.width / 20;
         commandSkin.GetStyle("tutorialBoundingBoxBackground").fontSize = 15;
 
         if (drawStartInfo && lvlManager.currentLevel == 1)
