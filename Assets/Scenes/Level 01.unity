@@ -1286,7 +1286,8 @@ MonoBehaviour:
   restartDelay: 7
   restartTimer: 0
   amountOfEnemySpawned: 0
-  maxEnemySpawn: 1
+  maxEnemySpawn: 10
+  victoryCheck: 0
   enemyUnits: {fileID: 1000011621710164, guid: 67917ec56833846428930e641a3cd7f1, type: 2}
 --- !u!23 &102070807
 MeshRenderer:
