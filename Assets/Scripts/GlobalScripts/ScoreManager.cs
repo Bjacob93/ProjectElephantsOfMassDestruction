@@ -6,6 +6,8 @@ using System.Collections.Generic;
 
 public class ScoreManager : MonoBehaviour {
 	Animator anim;  
+	public AudioSource Levelmusic;
+
 	//AudioSource levelmusic;
 	//public AudioClip victoryS;
 
@@ -106,6 +108,11 @@ public class ScoreManager : MonoBehaviour {
         {
             basicCapturePointScripts.Add(c.GetComponent<BasicCapturePoint>());
         }
+		Levelmusic = gameObject.AddComponent<AudioSource> ();
+		Levelmusic.clip = Resources.Load ("Audio/level1") as AudioClip;
+		Levelmusic.playOnAwake = true;
+		Levelmusic.loop =true;
+		Levelmusic.Play ();
 
     }
 
@@ -114,6 +121,7 @@ public class ScoreManager : MonoBehaviour {
 	}
 
 public void GameOver(){
+		Levelmusic.Stop ();
 	anim.SetTrigger ("GameOver");
 }
     public void Victory()
