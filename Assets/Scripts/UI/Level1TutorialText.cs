@@ -296,6 +296,13 @@ public class Level1TutorialText : MonoBehaviour {
     void OnGUI()
     {
         GUI.skin = commandSkin;
+        commandSkin.GetStyle("tutorialBoundingBoxBackground").wordWrap = true;
+        commandSkin.GetStyle("tutorialBoundingBoxBackground").padding.top = 10;
+        commandSkin.GetStyle("tutorialBoundingBoxBackground").padding.bottom = 30;
+        commandSkin.GetStyle("tutorialBoundingBoxBackground").padding.left = 100;
+        commandSkin.GetStyle("tutorialBoundingBoxBackground").padding.right = 100;
+        commandSkin.GetStyle("tutorialBoundingBoxBackground").fontSize = 15;
+
         if (drawStartInfo && lvlManager.currentLevel == 1)
        {
             if (requiresNextClickToProgress)
