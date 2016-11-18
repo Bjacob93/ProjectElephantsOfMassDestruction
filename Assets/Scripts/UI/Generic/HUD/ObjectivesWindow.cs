@@ -3,45 +3,51 @@ using System.Collections;
 
 public class ObjectivesWindow : MonoBehaviour {
 
-    bool drawHelpWindow = false;
-    bool drawHelpOpenText = true;
+    //Bool that tracks if the objectives window is expanded or not.
+    bool objectivesWindowExpanded = false;
 
-    //Variables that hold the dimensions of the bounding box of the window.
-    float boundingBoxHeight;
-    float boundingBoxWidth;
-    float boundingBoxX;
-    float boundingBoxY;
-    public Rect boundingRect;
+    //Cache the objectives box.
+    private Rect    ObjectivesBox;
+    private float   boxX,
+                    boxY;
 
-    float boxStartingPosX = (Screen.width - (Screen.width / 7)) - (Screen.width / 80);
-    float boxStartingPosY = Screen.height / 4;
-    float objectiveOffSet;
-    int numOfObjectives;
+    //Cache dimensions of the objectives box when closed.
+    private float   closedWidth,
+                    closedHeight;
 
-    public GUISkin commandSkin;
+    //Cache dimensions of the objectives box when open.
+    private float   openWidth,
+                    openHeight;
 
-    public string objective1 = "Kill all enemies";
-    public string objective2 = "Hold all Capture points";
-    public string objective3 = "Defend your base agains enemy attacks";
-    public string[] objectives = new string[3]; //{ objetive1, objective2, objective3;
+    public GUISkin  commandSkin;
 
-    // Use this for initialization
+    public string   objective1 = "Kill all enemies.",
+                    objective2 = "Hold all Capture points.",
+                    objective3 = "Defend your base agains enemy attacks.";
+
     void Start()
     {
-        numOfObjectives = 3;
-        objectives[0] = objective1;
-        objectives[1] = objective2;
-        objectives[2] = objective3;
+        //Calculate the starting position of the objectives box.
+        boxX = Screen.width / 100;
+        boxY = Screen.height / 100;
 
-        
-        //Calculate the bounding box dimensions and define the resulting Rect.
-        boundingBoxHeight = 100 + 5;
-        boundingBoxWidth = 100;
-        boundingBoxX = (boxStartingPosX  / 80) + 5;
-        boundingBoxY = (boxStartingPosY  / 70) + 5;
-        boundingRect = new Rect(boundingBoxX, boundingBoxY, boundingBoxWidth, boundingBoxHeight);
+        //Calculate the dimensions of the closed box.
+        closedWidth = Screen.width / 6;
+        closedHeight = Screen.height / 8;
 
-       
+        //Calculate the dimentions of the expanded box.
+        openWidth = Screen.width / 6;
+        openHeight = Screen.height / 3;
+
+        ObjectivesBox = new Rect(boxX, boxY, closedWidth, closedHeight);
+
+        commandSkin = Resources.Load("Graphix/commandSkin") as GUISkin;
+
+        commandSkin.GetStyle("ObjectivesBox").fontSize = Screen.width / 80;
+        commandSkin.GetStyle("ObjectivesBox").fontStyle = FontStyle.Bold;
+
+        commandSkin.GetStyle("ObjectivesBox").padding.left = Screen.width / 45;
+        commandSkin.GetStyle("ObjectivesBox").padding.right = Screen.width / 45;
     }
 
     // Update is called once per frame
@@ -49,11 +55,7 @@ public class ObjectivesWindow : MonoBehaviour {
     {
         if (Input.GetButtonDown("DndHelpWindow"))
         {
-            drawHelpWindow = !drawHelpWindow;
-        }
-        if (Input.GetButtonDown("DndHelpWindow"))
-        {
-            drawHelpOpenText = !drawHelpOpenText;
+            objectivesWindowExpanded = !objectivesWindowExpanded;
         }
     }
 
@@ -61,20 +63,22 @@ public class ObjectivesWindow : MonoBehaviour {
     {
         GUI.skin = commandSkin;
 
-        if (drawHelpWindow == true)
+        if (objectivesWindowExpanded)
         {
-            for (int i = 0; i < numOfObjectives; i++)
-            {
-                objectiveOffSet = objectives[i].Length;
-                GUI.Box(new Rect(boundingBoxX, (i * 40) + (objectiveOffSet + 5), 80, (objectiveOffSet*2)+5), objectives[i], commandSkin.GetStyle("tooltipBackground"));
-            }
+            commandSkin.GetStyle("ObjectivesBox").alignment = TextAnchor.UpperCenter;
+            commandSkin.GetStyle("ObjectivesBox").padding.top = Screen.height / 17;
 
+            ObjectivesBox = new Rect(boxX, boxY, openWidth, openHeight);
+            GUI.Box(ObjectivesBox, objective1 + "\n\n" + objective2 + "\n\n" + objective3, commandSkin.GetStyle("ObjectivesBox"));
+            
         }
-        if(drawHelpOpenText == true)
+        else
         {
-            GUI.Box(new Rect(boundingBoxX, boundingBoxY, boundingBoxWidth, boundingBoxHeight / 2), "Press H to \nopen objectives");
+            commandSkin.GetStyle("ObjectivesBox").alignment = TextAnchor.MiddleCenter;
+            commandSkin.GetStyle("ObjectivesBox").padding.top = 0;
+
+            ObjectivesBox = new Rect(boxX, boxY, closedWidth, closedHeight);
+            GUI.Box(ObjectivesBox, "Press H to open objectives", commandSkin.GetStyle("ObjectivesBox"));
         }
-
-
     }
 }

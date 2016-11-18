@@ -85,6 +85,10 @@ public class EditorList : MonoBehaviour{
 
         commandSkin = Resources.Load("Graphix/commandSkin") as GUISkin;
 
+        commandSkin.GetStyle("EditorBoundingBox").fontStyle = FontStyle.Bold;
+        commandSkin.GetStyle("EditorBoundingBox").fontSize = Screen.width / 80;
+        commandSkin.GetStyle("EditorBoundingBox").alignment = TextAnchor.UpperCenter;
+
         //Define the variables
         enteredCommands = new List<Command>();
         slots = new List<Command>();
@@ -198,11 +202,11 @@ public class EditorList : MonoBehaviour{
         //Draw the bounding box.
         if(this.gameObject.name != "GiraffeBase")
         {
-            GUI.Box(boundingRect, "Checkpoint " + this.gameObject.name + "  Editor");
+            GUI.Box(boundingRect, "Checkpoint " + this.gameObject.name + "  Editor", commandSkin.GetStyle("EditorBoundingBox"));
         }
         else
         {
-            GUI.Box(boundingRect,  this.gameObject.name + "  Editor");
+            GUI.Box(boundingRect,  this.gameObject.name + "  Editor", commandSkin.GetStyle("EditorBoundingBox"));
         }
 
         //Variables for drawing the commands
