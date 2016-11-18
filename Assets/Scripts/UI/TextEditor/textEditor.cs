@@ -129,7 +129,7 @@ public class textEditor : MonoBehaviour
             GUI.Box(boundingBox, "Script Editor - " + this.gameObject.name);
 
             //Make text editble only when the game is paused.
-            if (pauseScript.gameIsPaused)
+            if (pauseScript.GetPauseStatus())
             {
                 textAreaString = GUI.TextArea(new Rect(textBoxStartX, textBoxStartY, textBoxWidth, textBoxHeight), textAreaString, charLimit);
                 

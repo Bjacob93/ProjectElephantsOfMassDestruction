@@ -3,8 +3,6 @@ using System.Collections;
 
 public class gameReset : MonoBehaviour {
 
-    GameObject reset;
-
     GameObject homeBaseGO;
     HomebaseGUI homeBaseGUI;
 
@@ -42,16 +40,7 @@ public class gameReset : MonoBehaviour {
 
 		unitManager = GameObject.Find("UnitManager");
 		Uarray = unitManager.GetComponent<UnitArrays>();
-
-        reset = GameObject.FindGameObjectWithTag("ResetButton");
-        reset.SetActive(false);
-
     }
-	
-	// Update is called once per frame
-	void Update () {
-
-	}
 
 	public void GameReset(){
 		scoreManagerScript.lives = scoreManagerScript.livesR;

@@ -57,7 +57,7 @@ public class BasicCheckpointScript : MonoBehaviour {
 
         checkpointName = this.gameObject.name;
 
-        pause = GameObject.Find("Pause").GetComponent<PauseScript>();
+        pause = GameObject.Find("UIButtons").GetComponent<PauseScript>();
 
         //Save the location of this checkpoint to a variable.
         location = gameObject.transform.position;
@@ -83,7 +83,7 @@ public class BasicCheckpointScript : MonoBehaviour {
         //Find all player units.
         GameObject[] units = GameObject.FindGameObjectsWithTag("playerUnits");
 
-        if (pause.gameIsPaused) {
+        if (pause.GetPauseStatus()) {
             return;
         }
 

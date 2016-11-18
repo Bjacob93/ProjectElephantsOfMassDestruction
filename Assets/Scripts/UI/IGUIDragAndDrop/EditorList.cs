@@ -94,7 +94,7 @@ public class EditorList : MonoBehaviour{
         slotsRow = 6;
         slotsCol = 2;
 
-        pauseScript = GameObject.Find("Pause").GetComponent<PauseScript>();
+        pauseScript = GameObject.Find("UIButtons").GetComponent<PauseScript>();
 
         //Get the dimensions of the command window from the CommandList script.
         commandBoundRect = GameObject.FindGameObjectWithTag("CommandList").GetComponent<CommandList>().boundingRect;
@@ -261,7 +261,7 @@ public class EditorList : MonoBehaviour{
                     {
                         GUI.Box(slotRect, "", commandSkin.GetStyle("variableEmpty"));
                     }
-                    if (pauseScript.gameIsPaused)
+                    if (pauseScript.GetPauseStatus())
                     {
                         CheckReleased(slotNumber);
                     }
@@ -305,7 +305,7 @@ public class EditorList : MonoBehaviour{
                         toolTip = CreateToolTip(thisCommand);
 
                         //Call the drag and drop method
-                        if (pauseScript.gameIsPaused)
+                        if (pauseScript.GetPauseStatus())
                         {
                             DragonDrop(slotNumber);
                         }

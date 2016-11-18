@@ -75,7 +75,7 @@ public class CommandList : MonoBehaviour {
             tutorialtext = GameObject.Find("UIManager").GetComponent<Level1TutorialText>();
         }
 
-        pauseScript = GameObject.Find("Pause").GetComponent<PauseScript>();
+        pauseScript = GameObject.Find("UIButtons").GetComponent<PauseScript>();
 
         //Calculate the bounding box dimensions and define the resulting Rect.
         boundingBoxHeight = numberOfSlots * (boxHeight + ((Screen.height / 24) / 10)) + (Screen.height/10);
@@ -409,14 +409,14 @@ public class CommandList : MonoBehaviour {
                     showToolTip = true;
 
                     //Call the function that handles drag and drop.
-                    if (pauseScript.gameIsPaused)
+                    if (pauseScript.GetPauseStatus())
                     {
                         DragonDrop(slotNumber, thisCommand);
                     }
                 }
             }
             //Check if dragging is stopped.
-            if (pauseScript.gameIsPaused)
+            if (pauseScript.GetPauseStatus())
             {
                 CheckForRelease(slotNumber);
             }

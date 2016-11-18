@@ -31,7 +31,7 @@ public class HomebaseGUI : MonoBehaviour {
     public Vector3 location;
 
     //Boolean for checking if the game is paused
-    public bool gameIsPaused;
+    PauseScript pauseScript;
 
     //cache target location
     Vector3 target;
@@ -60,6 +60,9 @@ public class HomebaseGUI : MonoBehaviour {
         sequenceManager = GameObject.Find("UIManager").GetComponent<SequenceManager>();
         baseName = this.gameObject.name;
 
+        //Reference the PauseScript.
+        pauseScript = GameObject.Find("UIButtons").GetComponent<PauseScript>();
+
 		// Find and Save the position of this gameObjects location for future reference.
 		location = gameObject.transform.position;
 
@@ -77,9 +80,6 @@ public class HomebaseGUI : MonoBehaviour {
             textListComponent.belongsToCheckpoint = false;
             sequenceManager.editorListText.Add(textListComponent);
         }
-
-        //bool to pause and unpause the script
-        gameIsPaused = true;
     }
 	
 	// Update is called once per frame
@@ -88,7 +88,7 @@ public class HomebaseGUI : MonoBehaviour {
 		GameObject[] units = GameObject.FindGameObjectsWithTag("playerUnits");
 
 		//if the bool is set to true skip the update and check bool again
-        if (gameIsPaused)
+        if (pauseScript.GetPauseStatus())
         {
             return;
         }
@@ -317,7 +317,7 @@ public class HomebaseGUI : MonoBehaviour {
     void ProduceUnit(Vector3 targetLocation){
 	//Check if the game is paused
 		//if the game is paused skip this command
-		if (gameIsPaused)
+		if (pauseScript.GetPauseStatus())
 		{
 			return;
 		}

@@ -27,7 +27,7 @@ public class BuyEnemyUnits : MonoBehaviour
     {
         listOfEnemyUnits = GameObject.Find("UnitManager").GetComponent<UnitArrays>();
 
-        pause = GameObject.FindGameObjectWithTag("PlayButton").GetComponent<PauseScript>();
+        pause = GameObject.Find("UIButtons").GetComponent<PauseScript>();
 
         if(pause == null)
         {
@@ -43,7 +43,7 @@ public class BuyEnemyUnits : MonoBehaviour
     void Update()
     {
 
-        if (pause.gameIsPaused)
+        if (pause.GetPauseStatus())
         {
             return;
         }
