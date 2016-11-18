@@ -457,51 +457,54 @@ public class CommandList : MonoBehaviour {
         if (sequenceEditor != null)
         {
             //If mouse drag is released outside of the command list (...)
-            if (!slotRect.Contains(e.mousePosition) && e.type == EventType.mouseUp && sequenceEditor.isDraggingCommand)
+            if (sequenceEditor != null)
             {
-                //(...) go through all slots in the Sequence Editor.
-                for (int i = 0; i < sequenceEditor.slotPositions.Count; i++)
+                if (!slotRect.Contains(e.mousePosition) && e.type == EventType.mouseUp && sequenceEditor.isDraggingCommand)
                 {
-                    slotRect = sequenceEditor.slotPositions[i];
-
-                    //If any of them contains the mouse, but the dragged command in that slot.
-                    if (slotRect.Contains(e.mousePosition))
+                    //(...) go through all slots in the Sequence Editor.
+                    for (int i = 0; i < sequenceEditor.slotPositions.Count; i++)
                     {
-                        if (i % 2 == 0)
-                        {
-                            if (!sequenceEditor.draggedCommand.isVariable)
-                            {
-                                sequenceEditor.enteredCommands[i] = sequenceEditor.draggedCommand;
-                            }
-                            else if(sequenceEditor.enteredCommands[i + 1].commandName == "")
-                            {
-                                sequenceEditor.enteredCommands[i + 1] = sequenceEditor.draggedCommand;
-                            }
-                        }
-                        else
-                        {
-                            if (sequenceEditor.draggedCommand.isVariable)
-                            {
-                                if(!sequenceEditor.enteredCommands[i - 1].requiresVariable)
-                                {
+                        slotRect = sequenceEditor.slotPositions[i];
 
-                                }
-                                else
+                        //If any of them contains the mouse, but the dragged command in that slot.
+                        if (slotRect.Contains(e.mousePosition))
+                        {
+                            if (i % 2 == 0)
+                            {
+                                if (!sequenceEditor.draggedCommand.isVariable)
                                 {
                                     sequenceEditor.enteredCommands[i] = sequenceEditor.draggedCommand;
-
+                                }
+                                else if (sequenceEditor.enteredCommands[i + 1].commandName == "")
+                                {
+                                    sequenceEditor.enteredCommands[i + 1] = sequenceEditor.draggedCommand;
                                 }
                             }
-                            else if(sequenceEditor.enteredCommands[i - 1].commandName == "")
+                            else
                             {
-                                sequenceEditor.enteredCommands[i - 1] = sequenceEditor.draggedCommand;
+                                if (sequenceEditor.draggedCommand.isVariable)
+                                {
+                                    if (!sequenceEditor.enteredCommands[i - 1].requiresVariable)
+                                    {
+
+                                    }
+                                    else
+                                    {
+                                        sequenceEditor.enteredCommands[i] = sequenceEditor.draggedCommand;
+
+                                    }
+                                }
+                                else if (sequenceEditor.enteredCommands[i - 1].commandName == "")
+                                {
+                                    sequenceEditor.enteredCommands[i - 1] = sequenceEditor.draggedCommand;
+                                }
                             }
                         }
                     }
+                    //Null the dragged command, and tell the script it is no longer dragging anything.
+                    sequenceEditor.isDraggingCommand = false;
+                    sequenceEditor.draggedCommand = null;
                 }
-                //Null the dragged command, and tell the script it is no longer dragging anything.
-                sequenceEditor.isDraggingCommand = false;
-                sequenceEditor.draggedCommand = null;
             }
         }
     }
