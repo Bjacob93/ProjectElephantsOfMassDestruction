@@ -38,7 +38,7 @@ public class EnemyMelee_AI_Attack : MonoBehaviour {
 
     public void enemiesAttack(GameObject nearestPlayer)
     {
-        attackDamage = Random.Range(15f, 20f);
+        attackDamage = 15f;
 
         hitChance = 0.9f; // hit chance increase this to increase the hit chance eg 0.95 would be 95% hit chance instead of 90%
         randV = Random.value; // calculate a random value used to determine if we hit the target
