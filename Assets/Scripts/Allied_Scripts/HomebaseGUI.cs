@@ -333,7 +333,7 @@ public class HomebaseGUI : MonoBehaviour {
 			if (scoreManager.money < unitPrices.alliedMeleeCost)
 			{
 				//TODO: Make "Not Enough Money" message appear in-game.
-				Debug.Log("Not enought money");
+				//Debug.Log("Not enought money");
 				return;
 			}
 
