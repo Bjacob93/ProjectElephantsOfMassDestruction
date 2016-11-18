@@ -43,8 +43,7 @@ public class gameReset : MonoBehaviour {
     }
 
 	public void GameReset(){
-		scoreManagerScript.lives = scoreManagerScript.livesR;
-		scoreManagerScript.money = 100;
+        scoreManagerScript.ResetLives();
 
 		buyEnemyUnitsScript.restartTimer = 0;
         buyEnemyUnitsScript.amountOfEnemySpawned = 0;

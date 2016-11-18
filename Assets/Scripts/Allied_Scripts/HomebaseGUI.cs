@@ -329,17 +329,6 @@ public class HomebaseGUI : MonoBehaviour {
 			//reset the Cooldown
 			unitSpawnCoolDownLeft = unitSpawnCoolDown;
 
-			//if you do ot have the money to buy/produce a unit give a feedback
-			if (scoreManager.money < unitPrices.alliedMeleeCost)
-			{
-				//TODO: Make "Not Enough Money" message appear in-game.
-				//Debug.Log("Not enought money");
-				return;
-			}
-
-			//remove the unit prie from the score manager to make sure you cannot spawn infinite units
-			scoreManager.money -= unitPrices.alliedMeleeCost;
-
 			//initiate unit at the targeted location - 5 in x and - 5 in z, as long as the base is placed in (+,+) coordinates, the units will spawn in the mape.
 			Instantiate(playerUnits, targetLocation + new Vector3(-6,1,-6 ), Quaternion.Euler(0, 0, 0));
 

@@ -5,55 +5,78 @@ using UnityEngine.SceneManagement;
 using System.Collections.Generic;
 
 public class ScoreManager : MonoBehaviour {
+
+    //Cache the animator;
 	Animator anim;  
-	public AudioSource Levelmusic;
 
-	public int currentScene;
-	int mainMenuindex; 
-	public AudioSource VictoryS;
+    //Cache the audio sources
+	public AudioSource levelMusic;
+    public AudioSource victoryMusic;
 
+    //Cache the index of the current scene.
+    private int currentSceneIndex; 
 
 	public float restartDelay = 1f;         // Time to wait before restarting the level
 	float restartTimer;                     // Timer to count up to restarting the level
 
-	public int lives;
-	public int money = 100;
-	public int livesR;
+	private int livesRemaining;
+    public int livesStart;
 
-	public Text moneyText;
 	public Text livesText;
 
     public GameObject[] capturePoint; //cache all capturePoints
     public List<BasicCapturePoint> basicCapturePointScripts = new List<BasicCapturePoint>(); // cache and prepare a lise for the scripts from capturePoint
-    public bool playerHasAllCheckPoints = false; // bool used to check if the player got all capture points
+    private bool playerHasAllCheckPoints = false; // bool used to check if the player got all capture points
 
-    // Use this for initialization
-    public void LoseLife (int l = 1) {
-		lives -= l;
-	}
-
-    public int getMoney()
+    void Start()
     {
-        return money;
+        //Reference the animator.
+        anim = GetComponent<Animator>();
+
+        //Define the index of the current scene.
+        currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
+
+        victoryMusic = gameObject.AddComponent<AudioSource>();
+
+        capturePoint = GameObject.FindGameObjectsWithTag("CapturePoint");
+
+        livesRemaining = livesStart;
+       
+        foreach (GameObject c in capturePoint)
+        {
+            basicCapturePointScripts.Add(c.GetComponent<BasicCapturePoint>());
+        }
+        levelMusic = gameObject.AddComponent<AudioSource>();
+        levelMusic.clip = Resources.Load("Audio/level1") as AudioClip;
+        levelMusic.playOnAwake = true;
+        levelMusic.loop = true;
+        levelMusic.Play();
+        
     }
 
-	IEnumerator waitandprint(float waitTime){
-		yield return new WaitForSeconds (waitTime);
+    void Update()
+    {
+        checkCapturePointsForOwnership();
+    }
 
+    public int GetLivesRemaining()
+    {
+        return livesRemaining;
+    }
+
+    public void LoseLife (int l = 1) {
+		livesRemaining -= l;
 	}
 
-	void Awake ()
-	{
-		// Set up the reference.
-		anim = GetComponent <Animator> ();
-	}
-	public void timeupdate(){
-		//restartTimer += Time.deltaTime;
-		//	if (restartTimer >= restartDelay) {
-				// .. then reload the currently loaded level.
-		SceneManager.LoadScene(currentScene);
-			//}
-		}
+    public void ResetLives()
+    {
+        livesRemaining = livesStart;
+    }
+    
+    public bool PlayerControlsAllPoints()
+    {
+        return playerHasAllCheckPoints;
+    }
 
     //function to check if a player owns the different capturePoints
     void checkCapturePointsForOwnership()
@@ -74,49 +97,24 @@ public class ScoreManager : MonoBehaviour {
         }
     }
 
-	// Update is called once per frame
-	void Update () {
-		mainMenuindex = SceneManager.GetSceneByName ("mainMenu").buildIndex;
-		currentScene = SceneManager.GetActiveScene().buildIndex;
-        checkCapturePointsForOwnership();
-
-        moneyText.text = "Money: $" + money.ToString ();
-		livesText.text = "Lives " + lives.ToString ();
-		//timeupdate ();
-	}
-
-	void Start(){
-		livesR=lives;
-        capturePoint = GameObject.FindGameObjectsWithTag("CapturePoint");
-
-        foreach(GameObject c in capturePoint)
-        {
-            basicCapturePointScripts.Add(c.GetComponent<BasicCapturePoint>());
-        }
-		Levelmusic = gameObject.AddComponent<AudioSource> ();
-		Levelmusic.clip = Resources.Load ("Audio/level1") as AudioClip;
-		Levelmusic.playOnAwake = true;
-		Levelmusic.loop =true;
-		Levelmusic.Play ();
-		VictoryS = gameObject.AddComponent<AudioSource> ();
-
+    public void GameOver()
+    {
+        levelMusic.Stop ();
+	    anim.SetTrigger ("GameOver");
     }
 
-	public void LoadByIndex(int sceneIndex) {
-		SceneManager.LoadScene(sceneIndex);
-	}
+    public void GameOverReset()
+    {
+        SceneManager.LoadScene(currentSceneIndex);
+    }
 
-public void GameOver(){
-	Levelmusic.Stop ();
-	anim.SetTrigger ("GameOver");
-}
     public void Victory()
     {
-		Levelmusic.Stop ();
+        levelMusic.Stop ();
 		anim.SetTrigger("VictoryAnimation");
-		VictoryS.clip = Resources.Load ("Audio/Victory") as AudioClip;
-		VictoryS.playOnAwake = true;
-		VictoryS.loop =false;
-		VictoryS.Play ();
+        victoryMusic.clip = Resources.Load ("Audio/Victory") as AudioClip;
+        victoryMusic.playOnAwake = true;
+        victoryMusic.loop =false;
+        victoryMusic.Play ();
 	}
 }

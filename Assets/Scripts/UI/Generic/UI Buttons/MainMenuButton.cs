@@ -19,10 +19,11 @@ public class MainMenuButton : MonoBehaviour {
 	void Start () {
 
         //Calculate dimensions.
-        buttonX = Screen.width / 3;
+        buttonWidth = Screen.width / 17;
+        buttonHeight = Screen.width / 15;
+        buttonX = Screen.width /2 - Screen.width / 15 - buttonWidth;
         buttonY = Screen.height / 100;
-        buttonWidth = Screen.width / 21;
-        buttonHeight = Screen.height / 9;
+
         mainMenuButton = new Rect(buttonX, buttonY, buttonWidth, buttonHeight);
 
         //Reference skin.
