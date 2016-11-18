@@ -71,7 +71,7 @@ public class BuyEnemyUnits : MonoBehaviour
                     {
                         break;
                     }
-                    else if (i == listOfEnemyUnits.enemies.Length - 1 && sm.playerHasAllCheckPoints == true)
+                    else if (i == listOfEnemyUnits.enemies.Length - 1 && sm.PlayerControlsAllPoints())
                     {
 						if(!victoryCheck){
 							victory ();
@@ -87,7 +87,7 @@ public class BuyEnemyUnits : MonoBehaviour
 
     void timeupdate()
 	{
-		if (!sm.VictoryS.isPlaying) {
+		if (!sm.victoryMusic.isPlaying) {
 			wattTimeTimer += Time.deltaTime;
 			if (wattTimeTimer >= waitTime) {
 				SceneManager.LoadSceneAsync ("Scenes/mainMenu", LoadSceneMode.Single);
