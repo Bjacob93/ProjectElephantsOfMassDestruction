@@ -193,8 +193,8 @@ public class Level1TutorialText : MonoBehaviour {
 
         nextButtonX = TutorialBoxStartPosX + Screen.width / 4;
         nextButtonY = TutorialBoxStartPosY - Screen.height / 40;
-        nextButtonWidth = Screen.width / 27;
-        nextButtonHeight = Screen.height / 25;
+        nextButtonWidth = Screen.width / 23;
+        nextButtonHeight = Screen.height / 22;
         nextButton = new Rect(nextButtonX, nextButtonY, nextButtonWidth, nextButtonHeight);
 
         lvlManager = GameObject.Find("LevelManager").GetComponent<levelManager>();
@@ -353,7 +353,7 @@ public class Level1TutorialText : MonoBehaviour {
             if (requiresNextClickToProgress)
             {
                 commandSkin.GetStyle("tutorialBoundingBoxBackground").padding.top = 0;
-                commandSkin.GetStyle("tutorialBoundingBoxBackground").padding.bottom = 0;
+                commandSkin.GetStyle("tutorialBoundingBoxBackground").padding.bottom = Screen.height / 200;
                 commandSkin.GetStyle("tutorialBoundingBoxBackground").padding.left = 0;
                 commandSkin.GetStyle("tutorialBoundingBoxBackground").padding.right = 0;
                 if (GUI.Button(nextButton, "Next", commandSkin.GetStyle("tutorialBoundingBoxBackground")))
