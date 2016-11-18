@@ -193,8 +193,8 @@ public class Level1TutorialText : MonoBehaviour {
 
         nextButtonX = TutorialBoxStartPosX + Screen.width / 4;
         nextButtonY = TutorialBoxStartPosY - Screen.height / 40;
-        nextButtonWidth = 50;
-        nextButtonHeight = 30;
+        nextButtonWidth = Screen.width / 27;
+        nextButtonHeight = Screen.height / 25;
         nextButton = new Rect(nextButtonX, nextButtonY, nextButtonWidth, nextButtonHeight);
 
         lvlManager = GameObject.Find("LevelManager").GetComponent<levelManager>();
