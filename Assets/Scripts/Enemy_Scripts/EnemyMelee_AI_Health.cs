@@ -76,7 +76,6 @@ public class EnemyMelee_AI_Health : MonoBehaviour {
 	{
 		//enemy is dead
 		Died = true;
-        scoreManager.money += moneyValue;
 
         Uarray.remove(this.gameObject, "enemyUnit");
 		DestroyImmediate (this.gameObject);
@@ -86,17 +85,17 @@ public class EnemyMelee_AI_Health : MonoBehaviour {
     {
         this.gameObject.transform.position = enemySpawn.transform.position;
         scoreManager.LoseLife(1);
-		if (scoreManager.lives ==0) {		
+		if (scoreManager.GetLivesRemaining() == 0) {		
 			Gameover.clip = Resources.Load ("Audio/GameOver") as AudioClip;
 			Gameover.playOnAwake = true;
             Gameover.loop = false;
 			scoreManager.GameOver ();
 			Gameover.Play ();
         }
-        if (!Gameover.isPlaying && scoreManager.lives <= 0)
+        if (!Gameover.isPlaying && scoreManager.GetLivesRemaining() <= 0)
         {
             Uarray.resetGame();
-            scoreManager.timeupdate();
+            scoreManager.GameOverReset();
         }
     }
 }
