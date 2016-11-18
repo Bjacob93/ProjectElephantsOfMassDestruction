@@ -18,7 +18,7 @@ public class ThreeDRTSCamera : MonoBehaviour {
 	//camera orbit variables
 	public float xMax;
 	public float xMin;
-	public float yMax = 40.0f;
+	public float yMax = 50.0f;
 	public float yMin = 5.0f;
 	public float zMax;
 	public float zMin;
@@ -39,7 +39,7 @@ public class ThreeDRTSCamera : MonoBehaviour {
 	void Start () {
         camera = GetComponent<Camera>();
 		Startposision = GameObject.FindWithTag ("PlayerBase");
-		desiredPosition = new Vector3(Startposision.transform.position.x,30,Startposision.transform.position.z);
+		desiredPosition = new Vector3(Startposision.transform.position.x, yMax, Startposision.transform.position.z);
 
     }
 
