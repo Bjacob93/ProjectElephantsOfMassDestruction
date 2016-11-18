@@ -114,7 +114,6 @@ public void GameOver(){
     {
 		Levelmusic.Stop ();
 		anim.SetTrigger("VictoryAnimation");
-		Debug.Log ("im here");
 		VictoryS.clip = Resources.Load ("Audio/Victory") as AudioClip;
 		VictoryS.playOnAwake = true;
 		VictoryS.loop =false;
