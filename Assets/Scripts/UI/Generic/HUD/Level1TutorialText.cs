@@ -50,7 +50,7 @@ public class Level1TutorialText : MonoBehaviour {
                                  "Your goal is to defeat all the elephants and take control of the checkpoint in order to win.\n\n" +
                                  "Click \"Next\" to continue.",
 
-            dndTutorialPage2   = "You can use \"WASD\"-buttons on your keyboard to move the camera around the map. Take a look around and note the location of the castle and the checkpoint, " +
+            dndTutorialPage2   = "You can use \"W,A,S,D\"-buttons on your keyboard to move the camera around the map. Take a look around and note the location of the castle and the checkpoint, " +
                                  "signified by a flag in a circle near the middle of the map.\n\n" +
                                  "Click \"Next\" to continue.",
 
@@ -69,7 +69,7 @@ public class Level1TutorialText : MonoBehaviour {
             dndTutorialPage7   = "This is the editor window. Here you can place commands from your command list, in order to program your giraffes.\n\n" +
                                  "Click \"Next\" to continue.",
                                  
-            dndTutorialPage8   = "You do this by click and dragging a command from the list in the window, and dropping it into a empty slot in the editor window.\n\n" +
+            dndTutorialPage8   = "You do this by dragging a command from the list in the window, and dropping it into a empty slot in the editor window.\n\n" +
                                  "Now, drag a \"Produce Unit\" command into the editor window.",
 
             dndTutorialPage9   = "The \"Produce Unit\" command is your most basic command. Only available at the castle, it produces giraffes.\n\n" +
@@ -109,7 +109,7 @@ public class Level1TutorialText : MonoBehaviour {
                                  "Your goal is to defeat all the elephants and take control of the checkpoint in order to win.\n\n" +
                                  "Click \"Next\" to continue.",
 
-			textTutorialPage2  = "You can use \"WASD\"-buttons on your keyboard to move the camera around the map. Take a look around and note the location of the castle and the checkpoint, " +
+			textTutorialPage2  = "You can use \"W,A,S,D\"-buttons on your keyboard to move the camera around the map. Take a look around and note the location of the castle and the checkpoint, " +
                                  "signified by a flag in a circle near the middle of the map.\n \n" +
                                  "Click \"Next\" to continue.",
 
