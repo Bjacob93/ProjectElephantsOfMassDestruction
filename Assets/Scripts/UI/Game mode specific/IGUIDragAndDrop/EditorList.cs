@@ -65,7 +65,8 @@ public class EditorList : MonoBehaviour{
 
     PauseScript pauseScript;
     levelManager lvlManager;
-    Level1TutorialText tutorialtext;
+    Level1TutorialText tutorial1text;
+	Level2TutorialText tutorial2text;
     
     void Start()
     {
@@ -108,7 +109,7 @@ public class EditorList : MonoBehaviour{
 
         lvlManager = GameObject.Find("LevelManager").GetComponent<levelManager>();
         if (lvlManager.currentLevel == 1)
-            tutorialtext = GameObject.Find("UIManager").GetComponent<Level1TutorialText>();
+            tutorial1text = GameObject.Find("UIManager").GetComponent<Level1TutorialText>();
 
         //Define the bounding box.
         boundingRect = new Rect(boundingBoxX, boundingBoxY, boundingBoxWidth, boundingBoxHeight);
@@ -140,9 +141,9 @@ public class EditorList : MonoBehaviour{
         if (Input.GetButtonDown("SequenceEditor")) 
         {
             drawEditorWindow = false;
-            if(lvlManager.currentLevel == 1 && tutorialtext.currentTutorialPage == 13 && !belongsToCheckpoint)
+            if(lvlManager.currentLevel == 1 && tutorial1text.currentTutorialPage == 13 && !belongsToCheckpoint)
             {
-                tutorialtext.currentTutorialPage++;
+                tutorial1text.currentTutorialPage++;
             }
         }
     }
@@ -161,13 +162,13 @@ public class EditorList : MonoBehaviour{
             DrawEditor();
             if(lvlManager.currentLevel == 1)
             {
-                if (tutorialtext.currentTutorialPage == 5 && belongsToCheckpoint == false)
+                if (tutorial1text.currentTutorialPage == 5 && belongsToCheckpoint == false)
                 {
-                    tutorialtext.currentTutorialPage++;
+                    tutorial1text.currentTutorialPage++;
                 }
-                else if (tutorialtext.currentTutorialPage == 14 && belongsToCheckpoint == true)
+                else if (tutorial1text.currentTutorialPage == 14 && belongsToCheckpoint == true)
                 {
-                    tutorialtext.currentTutorialPage++;
+                    tutorial1text.currentTutorialPage++;
                 }
             }
         }
@@ -228,24 +229,31 @@ public class EditorList : MonoBehaviour{
                 if (lvlManager.currentLevel == 1) {
                     if(!belongsToCheckpoint)
                     {
-                        if (tutorialtext.currentTutorialPage == 7 && thisCommand.commandId == "P01")
+                        if (tutorial1text.currentTutorialPage == 7 && thisCommand.commandId == "P01")
                         {
-                            tutorialtext.currentTutorialPage++;
+                            tutorial1text.currentTutorialPage++;
                         }
-                        else if(tutorialtext.currentTutorialPage == 10 && thisCommand.commandId == "A01")
+                        else if(tutorial1text.currentTutorialPage == 10 && thisCommand.commandId == "A01")
                         {
-                            tutorialtext.currentTutorialPage++;
+                            tutorial1text.currentTutorialPage++;
                         }
-                        else if(tutorialtext.currentTutorialPage == 12 && thisCommand.commandId == "varA")
+                        else if(tutorial1text.currentTutorialPage == 12 && thisCommand.commandId == "varA")
                         {
-                            tutorialtext.currentTutorialPage++;
+                            tutorial1text.currentTutorialPage++;
                         }
                     }
-                    else if (tutorialtext.currentTutorialPage == 16 && thisCommand.commandId == "D01")
+                    else if (tutorial1text.currentTutorialPage == 16 && thisCommand.commandId == "D01")
                     {
-                        tutorialtext.currentTutorialPage++;
+                        tutorial1text.currentTutorialPage++;
                     }
                 }
+				if (lvlManager.currentLevel == 2) {
+					if (!belongsToCheckpoint) {
+						if (tutorial2text.currentTutorialPage == 2 && thisCommand.commandId == "FoE")
+							tutorial2text.currentTutorialPage++;
+					}
+				
+				}
                 //Draw any empty slots
                 if (thisCommand.commandName == "")
                 {

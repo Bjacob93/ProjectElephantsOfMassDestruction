@@ -54,12 +54,10 @@ public class Level2TutorialText : MonoBehaviour {
             tutorialPage18,
             tutorialPage19;
 
-    string  dndTutorialPage1   = "Great Job! You have made it so far!" +
-                                 "Click \"Next\" to continue.",
+    string  dndTutorialPage1   = "Great Job! You have made it so far!",
 
-            dndTutorialPage2   = "You can use WASD to move the camera around the map. Take a look around and note the location of the castle and the checkpoint, " +
-                                 "signified by a flag in a circle near the middle of the map.\n\n" +
-                                 "Click \"Next\" to continue.",
+            dndTutorialPage2   = "A new command has been added to the Command List  " +
+                                 "Press the \"Tab\" Button to see the new Command",
 
             dndTutorialPage3   = "At the top of the screen you can see your current Money and Lives. You lose a live if an elephant makes it to your base. If your lives drops to 0, you lose." +
                                  "We'll talk about money in a moment.\n\n" +
@@ -258,7 +256,6 @@ public class Level2TutorialText : MonoBehaviour {
                     break;
                 case 1:
                     currentTutorialText = tutorialPage2;
-                    requiresNextClickToProgress = true;
                     break;
                 case 2:
                     currentTutorialText = tutorialPage3;
