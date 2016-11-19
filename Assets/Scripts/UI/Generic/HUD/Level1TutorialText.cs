@@ -4,14 +4,6 @@ using UnityEngine.UI;
 
 public class Level1TutorialText : MonoBehaviour {
 
-    public bool commandListOpened = false;
-    public bool editorHasBeenOpened = false;
-    public bool enterProduceOrder = false;
-    public bool enterAttackOrder = false;
-    public bool enterAttackTarget = false;
-    public bool chechpointEditorOpened = false;
-    public bool enterDefendOrder = false;
-    public bool pressPlay = false;
     bool drawStartInfo;
 
     public int currentTutorialPage = 0;

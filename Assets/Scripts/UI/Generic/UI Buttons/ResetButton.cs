@@ -20,10 +20,10 @@ public class ResetButton : MonoBehaviour {
 
     void Start () {
         //Calculate dimensions.
-        buttonX = 2 * Screen.width / 3;
+        buttonX = Screen.width / 2 + Screen.width / 15;
         buttonY = Screen.height / 100;
-        buttonWidth = Screen.width / 21;
-        buttonHeight = Screen.height / 9;
+        buttonWidth = Screen.width / 15;
+        buttonHeight = Screen.width / 15;
         button = new Rect(buttonX, buttonY, buttonWidth, buttonHeight);
 
         //Reference skin.

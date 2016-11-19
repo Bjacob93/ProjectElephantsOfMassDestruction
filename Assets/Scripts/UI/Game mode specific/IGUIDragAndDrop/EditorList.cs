@@ -78,10 +78,10 @@ public class EditorList : MonoBehaviour{
         boxOffsetX = Screen.width / 8;
 
         //Define dimensions of the bounding box.
-        boundingBoxHeight = 6 * (boxHeight + ((Screen.height / 24) / 10)) + Screen.width / 35;
-        boundingBoxWidth = 2 * boxWidth + Screen.width / 40;
-        boundingBoxX = boxStartingPosX - Screen.width / 80;
-        boundingBoxY = boxStartingPosY - Screen.width / 70 - 5;
+        boundingBoxHeight = 6 * (boxHeight + ((Screen.height / 24) / 10)) + Screen.width / 13;
+        boundingBoxWidth = 2 * boxWidth + Screen.width / 13;
+        boundingBoxX = boxStartingPosX - Screen.width / 28;
+        boundingBoxY = boxStartingPosY - Screen.width / 28;
 
         commandSkin = Resources.Load("Graphix/commandSkin") as GUISkin;
 

@@ -64,10 +64,10 @@ public class textEditor : MonoBehaviour
         textBox = new Rect(textBoxStartX, textBoxStartY, textBoxWidth, textBoxHeight);
 
         //Define dimensions of the bounding box.
-        boundingBoxStartX = textBoxStartX - Screen.width / 80;
-        boundingBoxStartY = textBoxStartY - Screen.width / 70 - 2;
-        boundingBoxWidth = textBoxWidth + Screen.width / 40;
-        boundingBoxHeight = textBoxHeight + Screen.width / 35;
+        boundingBoxWidth = textBoxWidth + Screen.width / 13;
+        boundingBoxHeight = textBoxStartY + Screen.width / 13;
+        boundingBoxStartX = textBoxStartX - Screen.width / 28;
+        boundingBoxStartY = textBoxStartY - Screen.width / 28;
         boundingBox = new Rect(boundingBoxStartX, boundingBoxStartY, boundingBoxWidth, boundingBoxHeight);
 
         //Define dimenstions of the Compile button.
@@ -84,7 +84,7 @@ public class textEditor : MonoBehaviour
         database = GameObject.Find("CommandDatabase").GetComponent<CommandDatabase>();
 
         //Reference the pause script.
-        pauseScript = GameObject.Find("Pause").GetComponent<PauseScript>();
+        pauseScript = GameObject.Find("UIButtons").GetComponent<PauseScript>();
 
         //Reference the level manager and tutorial.
         lvlManager = GameObject.Find("LevelManager").GetComponent<levelManager>();
@@ -92,6 +92,10 @@ public class textEditor : MonoBehaviour
         {
             tutorial = GameObject.Find("UIManager").GetComponent<Level1TutorialText>();
         }
+
+        commandSkin.GetStyle("emptySkin").fontSize = Screen.width / 100;
+        commandSkin.GetStyle("emptySkin").fontStyle = FontStyle.Normal;
+        commandSkin.GetStyle("emptySkin").alignment = TextAnchor.UpperLeft;
     }
     
     void Update()
@@ -110,6 +114,12 @@ public class textEditor : MonoBehaviour
     void OnGUI()
     {
         GUI.skin = commandSkin;
+        GUI.skin.textArea.normal.background = null;
+        GUI.skin.textArea.active.background = null;
+        GUI.skin.textArea.hover.background = null;
+        GUI.skin.textArea.normal.textColor = Color.black;
+        GUI.skin.textArea.active.textColor = Color.black;
+        GUI.skin.textArea.hover.textColor = Color.black;
 
         if (drawSequenceEditor)
         {
@@ -126,12 +136,12 @@ public class textEditor : MonoBehaviour
             }
 
             //Draw the bounding box and the text window.
-            GUI.Box(boundingBox, "Script Editor - " + this.gameObject.name);
+            GUI.Box(boundingBox, "Script Editor - " + this.gameObject.name, commandSkin.GetStyle("EditorBoundingBox"));
 
             //Make text editble only when the game is paused.
             if (pauseScript.GetPauseStatus())
             {
-                textAreaString = GUI.TextArea(new Rect(textBoxStartX, textBoxStartY, textBoxWidth, textBoxHeight), textAreaString, charLimit);
+                textAreaString = GUI.TextArea(textBox, textAreaString, charLimit);
                 
                 //Check if the Compile button is pressed.
                 if (GUI.Button(comButton, "Compile Code"))
@@ -141,7 +151,7 @@ public class textEditor : MonoBehaviour
             }
             else
             {
-                GUI.TextArea(new Rect(textBoxStartX, textBoxStartY, textBoxWidth, textBoxHeight), textAreaString, charLimit);
+                GUI.TextArea(textBox, textAreaString, charLimit);
             }
 
             
@@ -348,10 +358,6 @@ public class textEditor : MonoBehaviour
                             if (database.commandDatabase[d].commandId == "varB")
                             {
                                 listOfCommands.Add(database.commandDatabase[d]);
-                                if (lvlManager.currentLevel == 1 && elementsInCode[i - 1] == "attack")
-                                {
-                                    tutorial.enterAttackTarget = true;
-                                }
                                 break;
                             }
                         }
@@ -363,10 +369,6 @@ public class textEditor : MonoBehaviour
                             if (database.commandDatabase[d].commandId == "varC")
                             {
                                 listOfCommands.Add(database.commandDatabase[d]);
-                                if (lvlManager.currentLevel == 1 && elementsInCode[i - 1] == "attack")
-                                {
-                                    tutorial.enterAttackTarget = true;
-                                }
                                 break;
                             }
                         }
