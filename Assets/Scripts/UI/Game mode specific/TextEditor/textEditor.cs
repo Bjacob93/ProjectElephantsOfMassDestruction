@@ -289,6 +289,7 @@ public class textEditor : MonoBehaviour
                         }
 
                         break;
+
                     //Defend command.
                     case "defend":
                         for (int d = 0; d < database.commandDatabase.Count; d++)
@@ -300,6 +301,7 @@ public class textEditor : MonoBehaviour
                                 {
                                     tutorial1.currentTutorialPage++;
                                 }
+                            }
                         }
                         break;
 
