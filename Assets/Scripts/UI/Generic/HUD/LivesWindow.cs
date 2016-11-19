@@ -62,6 +62,9 @@ public class LivesWindow : MonoBehaviour {
     void OnGUI()
     {
         GUI.skin = boxSkin;
+        GUI.depth = 1;
+
+
 		GUI.Box (Frame, "", boxSkin.GetStyle ("Frame"));
         GUI.Box(livesBox, "" + scoreManager.GetLivesRemaining(), boxSkin.GetStyle("livesBox"));
         GUI.Box(labelRect, "Lives:", boxSkin.GetStyle("livesBoxText"));

@@ -35,6 +35,9 @@ public class MainMenuButton : MonoBehaviour {
         //Set the skin.
         GUI.skin = buttonSkin;
 
+        GUI.depth = 0;
+
+
         //Go to the main menu if button is pressed.
         if (GUI.Button(mainMenuButton, "", buttonSkin.GetStyle("MainMenuButton")))
         {

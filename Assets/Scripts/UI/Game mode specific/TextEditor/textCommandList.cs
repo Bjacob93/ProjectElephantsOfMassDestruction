@@ -69,11 +69,10 @@ public class textCommandList : MonoBehaviour
         lvlManager = GameObject.Find("LevelManager").GetComponent<levelManager>();
 
         //Calculate the bounding box dimensions and define the resulting Rect.
-        boundingBoxHeight = numberOfSlots * (boxHeight + ((Screen.height / 24) / 10)) + (Screen.width / 35);
-        boundingBoxWidth = boxWidth + (Screen.width / 40);
-        boundingBoxX = boxStartingPosX - (Screen.width / 80);
-        boundingBoxY = (boxStartingPosY - (Screen.width / 70)) - 5;
-        boundingRect = new Rect(boundingBoxX, boundingBoxY, boundingBoxWidth, boundingBoxHeight);
+        boundingBoxHeight = numberOfSlots * (boxHeight + ((Screen.height / 24) / 10)) + (Screen.height / 10);
+        boundingBoxWidth = boxWidth + (Screen.width / 22);
+        boundingBoxX = boxStartingPosX - (Screen.width / 45);
+        boundingBoxY = (boxStartingPosY - (Screen.width / 18));
 
         if (lvlManager.currentLevel == 1)
         {
@@ -108,6 +107,7 @@ public class textCommandList : MonoBehaviour
         buttonX = boundingBoxX - buttonW;
         buttonXMax = buttonX;
         buttonY = boundingBoxY - (buttonH * 0.5f) + (boundingBoxHeight * 0.5f);
+
     }
 
     void Update()
@@ -141,6 +141,8 @@ public class textCommandList : MonoBehaviour
         {
             animState = !animState;
         }
+
+        boundingRect = new Rect(boundingBoxX, boundingBoxY, boundingBoxWidth, boundingBoxHeight);
     }
 
     void OnGUI()
@@ -185,7 +187,11 @@ public class textCommandList : MonoBehaviour
         Event e = Event.current;
 
         //Draw the bounding box.
-        GUI.Box(new Rect(boundingBoxX, boundingBoxY, boundingBoxWidth, boundingBoxHeight), "Command List");
+        commandSkin.GetStyle("boundingBox").fontSize = Screen.width / 70;
+        commandSkin.GetStyle("boundingBox").fontStyle = FontStyle.Bold;
+        commandSkin.GetStyle("boundingBox").padding.top = Screen.height / 17;
+
+        GUI.Box(boundingRect, "Command List", commandSkin.GetStyle("boundingBox"));
 
         //Variables for drawing the commands.
         float previousRectY = boxStartingPosY;

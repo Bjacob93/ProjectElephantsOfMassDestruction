@@ -39,6 +39,8 @@ public class PlayButton : MonoBehaviour {
         //Set the skin.
         GUI.skin = buttonSkin;
 
+        GUI.depth = 0;
+
         //Only show the Play button if the game is paused.
         if (pauseScript.GetPauseStatus())
         {

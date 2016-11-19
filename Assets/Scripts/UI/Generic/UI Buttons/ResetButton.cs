@@ -41,6 +41,8 @@ public class ResetButton : MonoBehaviour {
         //Set the skin.
         GUI.skin = buttonSkin;
 
+        GUI.depth = 0;  
+
         //Only show the Reset button if the game is un-paused.
         if (!pauseScript.GetPauseStatus())
         {

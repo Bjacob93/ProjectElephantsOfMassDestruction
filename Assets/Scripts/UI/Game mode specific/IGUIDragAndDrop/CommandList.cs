@@ -153,6 +153,7 @@ public class CommandList : MonoBehaviour {
         if (Input.GetButtonDown("Commandlist")){
             animState = !animState;
 		}
+
         boundingRect = new Rect(boundingBoxX, boundingBoxY, boundingBoxWidth, boundingBoxHeight);
     }
     void OnGUI(){
@@ -230,6 +231,7 @@ public class CommandList : MonoBehaviour {
         commandSkin.GetStyle("boundingBox").fontSize = Screen.width / 70;
         commandSkin.GetStyle("boundingBox").fontStyle = FontStyle.Bold;
         commandSkin.GetStyle("boundingBox").padding.top = Screen.height / 17;
+
         GUI.Box (boundingRect, "Command List", commandSkin.GetStyle("boundingBox"));
 
         //Variables for drawing the commands.
