@@ -5,27 +5,32 @@ public class LivesWindow : MonoBehaviour {
 
     //Cache coordinates and dimensions of UI box.
     private Rect    livesBox,
-                    labelRect;
+                    labelRect,
+					Frame;
     private float   livesBoxX,
                     livesBoxY,
                     livesBoxWidthAndHeight,
                     labelX,
                     labelY,
                     labelWidth,
-                    labelHeigth;
+                    labelHeigth,
+					frameX,
+					frameY,
+					frameWidth,
+					frameHeight;
 
     //Cache the score manager.
     ScoreManager scoreManager;
 
     //Cache the GUI skin.
-    GUISkin boxSkin;
-
+	GUISkin boxSkin;
 	void Start () {
         //Reference the score manager.
         scoreManager = GameObject.Find("ScoreManager").GetComponent<ScoreManager>();
 
         //Reference the skin and set the font size and style.
         boxSkin = Resources.Load("Graphix/hudBoxes") as GUISkin;
+		boxSkin.GetStyle("Frame").padding.top = Screen.width / 100;
         boxSkin.GetStyle("livesBox").fontSize = Screen.width / 30;
         boxSkin.GetStyle("livesBox").fontStyle = FontStyle.Bold;
         boxSkin.GetStyle("livesBox").padding.top = Screen.width / 100;
@@ -45,12 +50,19 @@ public class LivesWindow : MonoBehaviour {
         labelWidth = livesBoxWidthAndHeight;
         labelHeigth = Screen.height / 20;
         labelRect = new Rect(labelX, labelY, labelWidth, labelHeigth);
+		//Frame
+		frameWidth = Screen.width*2/6;
+		frameHeight = Screen.height / 5.3f;
+		frameX = Screen.width / 2 - Screen.width / 6;
+		frameY = 0 - Screen.height / 50;
+		Frame = new Rect(frameX, frameY, frameWidth, frameHeight);
+
     }
 
     void OnGUI()
     {
         GUI.skin = boxSkin;
-
+		GUI.Box (Frame, "", boxSkin.GetStyle ("Frame"));
         GUI.Box(livesBox, "" + scoreManager.GetLivesRemaining(), boxSkin.GetStyle("livesBox"));
         GUI.Box(labelRect, "Lives:", boxSkin.GetStyle("livesBoxText"));
     }
