@@ -84,7 +84,7 @@ public class textEditor : MonoBehaviour
         database = GameObject.Find("CommandDatabase").GetComponent<CommandDatabase>();
 
         //Reference the pause script.
-        pauseScript = GameObject.Find("UIButtons").GetComponent<PauseScript>();
+        pauseScript = GameObject.Find("UIButtons").GetComponent<PauseScript>(); 
 
         //Reference the level manager and tutorial.
         lvlManager = GameObject.Find("LevelManager").GetComponent<levelManager>();
