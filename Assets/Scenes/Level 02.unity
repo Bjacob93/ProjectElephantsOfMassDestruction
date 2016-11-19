@@ -2927,7 +2927,8 @@ Prefab:
       propertyPath: m_RootOrder
       value: 8
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 114000010742627622, guid: 383b009431c3473478d0969805747ce3, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 383b009431c3473478d0969805747ce3, type: 2}
   m_IsPrefabParent: 0
 --- !u!4 &748095741 stripped
@@ -2935,6 +2936,33 @@ Transform:
   m_PrefabParentObject: {fileID: 4000010604361828, guid: 383b009431c3473478d0969805747ce3,
     type: 2}
   m_PrefabInternal: {fileID: 748095740}
+--- !u!1 &748095742 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1000013225885366, guid: 383b009431c3473478d0969805747ce3,
+    type: 2}
+  m_PrefabInternal: {fileID: 748095740}
+--- !u!114 &748095743
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 748095742}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ca2e0f0a45ef0aa44b5196a002decd00, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  commandListOpened: 0
+  editorHasBeenOpened: 0
+  enterProduceOrder: 0
+  enterAttackOrder: 0
+  enterAttackTarget: 0
+  chechpointEditorOpened: 0
+  enterDefendOrder: 0
+  pressPlay: 0
+  currentTutorialPage: 0
+  requiresNextClickToProgress: 1
+  commandSkin: {fileID: 11400000, guid: af1d55f012321ba4fb142ce096bc0ec4, type: 2}
 --- !u!1 &767827813
 GameObject:
   m_ObjectHideFlags: 0
