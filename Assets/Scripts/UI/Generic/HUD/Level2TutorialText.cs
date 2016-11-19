@@ -59,13 +59,15 @@ public class Level2TutorialText : MonoBehaviour {
             dndTutorialPage2   = "A new command has been added to the Command List  " +
                                  "Press the \"Tab\" Button to see the new Command",
 
-            dndTutorialPage3   = "At the top of the screen you can see your current Money and Lives. You lose a live if an elephant makes it to your base. If your lives drops to 0, you lose." +
-                                 "We'll talk about money in a moment.\n\n" +
+            dndTutorialPage3   = "The new command is \"Spilt\"" +
+								 "The spilt command enables you to send you Giraffes to two different locations" +
                                  "Click \"Next\" to continue.",
 
-            dndTutorialPage4   = "You control your units by programming them with commands.\n\n Press \"tap\" to open the command list.",
+			dndTutorialPage4   = "\"Every other\" gives the \"Spilt\" command its function and give the Giraffe its premise to, go to the other locations that is given.\n\n"+
+								 "The location need to be place after the \"Spilt\" command has been added"+
+								 "Click \"Next\" to continue.",
 
-            dndTutorialPage5   = "This is the command list.Here you can see all the commands that are available in this level. You can mouse over the commands to read a tooltip, " +
+            dndTutorialPage5   = "The first location the Giraffe will go to is  command " +
                                  "to learn what each command does.\n\n" +
                                  "Click \"Next\" to continue.",
 
