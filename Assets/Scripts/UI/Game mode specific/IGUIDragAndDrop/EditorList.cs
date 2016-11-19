@@ -111,6 +111,9 @@ public class EditorList : MonoBehaviour{
         if (lvlManager.currentLevel == 1)
             tutorial1text = GameObject.Find("UIManager").GetComponent<Level1TutorialText>();
 
+        if (lvlManager.currentLevel == 2)
+            tutorial2text = GameObject.Find("UIManager").GetComponent <Level2TutorialText>();
+
         //Define the bounding box.
         boundingRect = new Rect(boundingBoxX, boundingBoxY, boundingBoxWidth, boundingBoxHeight);
 
@@ -247,13 +250,17 @@ public class EditorList : MonoBehaviour{
                         tutorial1text.currentTutorialPage++;
                     }
                 }
-				if (lvlManager.currentLevel == 2) {
-					if (!belongsToCheckpoint) {
+				if (lvlManager.currentLevel == 2)
+                {
+					if (!belongsToCheckpoint)
+                    {
 						if (tutorial2text.currentTutorialPage == 2 && thisCommand.commandId == "FoE")
-							tutorial2text.currentTutorialPage++;
-					}
-				
+                        {
+                            tutorial2text.currentTutorialPage++;
+                        }
+                    }
 				}
+
                 //Draw any empty slots
                 if (thisCommand.commandName == "")
                 {
