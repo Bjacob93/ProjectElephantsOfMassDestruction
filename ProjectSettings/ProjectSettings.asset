@@ -524,7 +524,7 @@ PlayerSettings:
   XboxOne::VR::enabledDevices: []
   iOS::VR::enabledDevices: []
   tvOS::VR::enabledDevices: []
-  cloudProjectId: 7d5b430e-bb7e-4f26-96ab-ae6da3af23cb
-  projectName: Testing
-  organizationId: bjacob93
+  cloudProjectId: 
+  projectName: 
+  organizationId: 
   cloudEnabled: 0
