@@ -50,8 +50,7 @@ public class textEditor : MonoBehaviour
     CommandDatabase database;
 
     //Cache the tutorial handler for level 1, and the level manager.
-    Level1TutorialText tutorial1;
-	Level2TutorialText tutorial2;
+    Level1TutorialText tutorial;
     levelManager lvlManager;
     PauseScript pauseScript;
 
@@ -91,12 +90,12 @@ public class textEditor : MonoBehaviour
         lvlManager = GameObject.Find("LevelManager").GetComponent<levelManager>();
         if (lvlManager.currentLevel == 1)
         {
-            tutorial1 = GameObject.Find("UIManager").GetComponent<Level1TutorialText>();
+            tutorial = GameObject.Find("UIManager").GetComponent<Level1TutorialText>();
         }
-		if(lvlManager.currentLevel==2{
-			tutorial2 = GameObject.Find("UIManager").GetComponent<Level2TutorialText>();
 
-		}
+        commandSkin.GetStyle("emptySkin").fontSize = Screen.width / 100;
+        commandSkin.GetStyle("emptySkin").fontStyle = FontStyle.Normal;
+        commandSkin.GetStyle("emptySkin").alignment = TextAnchor.UpperLeft;
     }
     
     void Update()
@@ -105,9 +104,9 @@ public class textEditor : MonoBehaviour
         if (Input.GetButtonDown("SequenceEditor"))
         {
             drawSequenceEditor = false;
-            if (lvlManager.currentLevel == 1 && tutorial1.currentTutorialPage == 13 && !belongsToCheckpoint)
+            if (lvlManager.currentLevel == 1 && tutorial.currentTutorialPage == 13 && !belongsToCheckpoint)
             {
-                tutorial1.currentTutorialPage++;
+                tutorial.currentTutorialPage++;
             }
         }
     }
@@ -126,13 +125,13 @@ public class textEditor : MonoBehaviour
         {
             if (lvlManager.currentLevel == 1)
             {
-                if (tutorial1.currentTutorialPage == 5 && !belongsToCheckpoint)
+                if (tutorial.currentTutorialPage == 5 && !belongsToCheckpoint)
                 {
-                    tutorial1.currentTutorialPage++;
+                    tutorial.currentTutorialPage++;
                 }
-                if (tutorial1.currentTutorialPage == 14 && belongsToCheckpoint)
+                if (tutorial.currentTutorialPage == 14 && belongsToCheckpoint)
                 {
-                    tutorial1.currentTutorialPage++;
+                    tutorial.currentTutorialPage++;
                 }
             }
 
@@ -287,9 +286,9 @@ public class textEditor : MonoBehaviour
                             if (database.commandDatabase[d].commandId == "D01")
                             {
                                 listOfCommands.Add(database.commandDatabase[d]);
-                                if (lvlManager.currentLevel == 1 && tutorial1.currentTutorialPage == 16 && belongsToCheckpoint)
+                                if (lvlManager.currentLevel == 1 && tutorial.currentTutorialPage == 16 && belongsToCheckpoint)
                                 {
-                                    tutorial1.currentTutorialPage++;
+                                    tutorial.currentTutorialPage++;
                                 }
                                 break;
                             }
@@ -305,9 +304,9 @@ public class textEditor : MonoBehaviour
                                 if (database.commandDatabase[d].commandId == "P01")
                                 {
                                     listOfCommands.Add(database.commandDatabase[d]);
-                                    if (lvlManager.currentLevel == 1 && tutorial1.currentTutorialPage == 7)
+                                    if (lvlManager.currentLevel == 1 && tutorial.currentTutorialPage == 7)
                                     {
-                                        tutorial1.currentTutorialPage++;
+                                        tutorial.currentTutorialPage++;
                                     }
                                     break;
                                 }
@@ -344,9 +343,9 @@ public class textEditor : MonoBehaviour
                             {
                                 listOfCommands.Add(database.commandDatabase[d]);
 
-                                if (lvlManager.currentLevel == 1 && elementsInCode[i - 1] == "attack" && !belongsToCheckpoint && tutorial1.currentTutorialPage == 11)
+                                if (lvlManager.currentLevel == 1 && elementsInCode[i - 1] == "attack" && !belongsToCheckpoint && tutorial.currentTutorialPage == 11)
                                 {
-                                        tutorial1.currentTutorialPage++;
+                                        tutorial.currentTutorialPage++;
                                 }
                                 break;
                             }
@@ -359,12 +358,6 @@ public class textEditor : MonoBehaviour
                             if (database.commandDatabase[d].commandId == "varB")
                             {
                                 listOfCommands.Add(database.commandDatabase[d]);
-
-                                if (lvlManager.currentLevel == 1 && elementsInCode[i - 1] == "attack")
-                                {
-                                    tutorial1.enterAttackTarget = true;
-                                }
-
                                 break;
                             }
                         }
@@ -376,12 +369,6 @@ public class textEditor : MonoBehaviour
                             if (database.commandDatabase[d].commandId == "varC")
                             {
                                 listOfCommands.Add(database.commandDatabase[d]);
-
-                                if (lvlManager.currentLevel == 1 && elementsInCode[i - 1] == "attack")
-                                {
-                                    tutorial1.enterAttackTarget = true;
-                                }
-
                                 break;
                             }
                         }
