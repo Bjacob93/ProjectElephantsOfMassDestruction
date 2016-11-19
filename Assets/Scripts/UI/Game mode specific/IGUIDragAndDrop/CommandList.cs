@@ -127,7 +127,7 @@ public class CommandList : MonoBehaviour {
             {
                 tutorial1text.currentTutorialPage++;
             }
-			if (lvlManager.currentLevel == 2 && tutorial2text.currentTutorialPage == 2) {
+			if (lvlManager.currentLevel == 2 && tutorial2text.currentTutorialPage == 1) {
 				tutorial2text.currentTutorialPage++;
 			}
             if (buttonX < buttonXMax)
