@@ -6,6 +6,8 @@ public class HomebaseGUI : MonoBehaviour {
 	//unit prduction management vars
 	public float unitSpawnCoolDown = 5f;
 	float unitSpawnCoolDownLeft = 0f;
+    public int unitCap;
+    public int unitCount;
 
 	//unit which is spawned
 	public GameObject playerUnits;
@@ -324,7 +326,7 @@ public class HomebaseGUI : MonoBehaviour {
 		//count down to the spawner, this is to make sure all the player units arent initiate too quickly
 		unitSpawnCoolDownLeft -= Time.deltaTime;
 		//when the count down reaches 0 proceed to produce a unit
-		if (unitSpawnCoolDownLeft <= 0)
+		if (unitSpawnCoolDownLeft <= 0 && unitCount < unitCap)
 		{
 			//reset the Cooldown
 			unitSpawnCoolDownLeft = unitSpawnCoolDown;
@@ -332,6 +334,7 @@ public class HomebaseGUI : MonoBehaviour {
 			//initiate unit at the targeted location - 5 in x and - 5 in z, as long as the base is placed in (+,+) coordinates, the units will spawn in the mape.
 			Instantiate(playerUnits, targetLocation + new Vector3(-6,1,-6 ), Quaternion.Euler(0, 0, 0));
 
+            unitCount++;
 		}
 	}
 

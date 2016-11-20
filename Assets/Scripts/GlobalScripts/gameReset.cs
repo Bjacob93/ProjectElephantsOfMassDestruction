@@ -3,7 +3,6 @@ using System.Collections;
 
 public class gameReset : MonoBehaviour {
 
-    GameObject homeBaseGO;
     HomebaseGUI homeBaseGUI;
 
     GameObject checkpointGO;
@@ -26,8 +25,7 @@ public class gameReset : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
-        homeBaseGO = GameObject.Find("GiraffeBase");
-        homeBaseGUI = homeBaseGO.GetComponent<HomebaseGUI>();
+        homeBaseGUI = GameObject.Find("GiraffeBase").GetComponent<HomebaseGUI>();
 
         checkpointGO = GameObject.Find("A");
         basicCheckpointScript = checkpointGO.GetComponent<BasicCheckpointScript>();
@@ -59,6 +57,7 @@ public class gameReset : MonoBehaviour {
         }
 
         homeBaseGUI.shrimp = 1;
+        homeBaseGUI.unitCount = 0;
         basicCheckpointScript.shrimp = 1;
 
 		Uarray.resetGame ();

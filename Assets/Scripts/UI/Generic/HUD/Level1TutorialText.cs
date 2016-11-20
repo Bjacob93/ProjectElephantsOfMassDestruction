@@ -50,20 +50,20 @@ public class Level1TutorialText : MonoBehaviour {
                                  "Your goal is to defeat all the elephants and take control of the checkpoint in order to win.\n\n" +
                                  "Click \"Next\" to continue.",
 
-            dndTutorialPage2   = "You can use \"W,A,S,D\"-buttons on your keyboard to move the camera around the map. Take a look around and note the location of the castle and the checkpoint, " +
+            dndTutorialPage2   = "You can use the W,A,S, and D-buttons to move the camera. Take a look around and note the location of the castle, and the checkpoint, " +
                                  "signified by a flag in a circle near the middle of the map.\n\n" +
                                  "Click \"Next\" to continue.",
 
-            dndTutorialPage3   = "At the top of the screen you can see your current Lives. You lose a life if an elephant makes it to your castle. If your lives drops to 0, you lose." +
+            dndTutorialPage3   = "At the top of the screen you can see your current Lives. You lose a life if an elephant makes it to your castle. If your lives drops to 0, you lose.\n\n" +
                                  "Click \"Next\" to continue.",
 
-            dndTutorialPage4   = "You control your giraffes by programming them with commands.\n\n Press \"Tab\" to open the command list.",
+            dndTutorialPage4   = "You control your units, in the shape of giraffes, by programming them with commands.\n\n Press \"Tab\" to open the command list.",
 
             dndTutorialPage5   = "This is the command list. Here you can see all the commands that are available in this level. You can mouse over the commands to read a tooltip, " +
                                  "to learn what each command does.\n\n" +
                                  "Click \"Next\" to continue.",
 
-            dndTutorialPage6   = "You can open and close the command list at any time by pressing \"Tab\", or cliking the white arrow lext to the list.\n\n" +
+            dndTutorialPage6   = "You can open and close the command list at any time by pressing \"Tab\", or cliking the white arrow next to the list.\n\n" +
                                  "Now, click the castle.",
 
             dndTutorialPage7   = "This is the editor window. Here you can place commands from your command list, in order to program your giraffes.\n\n" +
@@ -72,13 +72,13 @@ public class Level1TutorialText : MonoBehaviour {
             dndTutorialPage8   = "You do this by dragging a command from the list in the window, and dropping it into a empty slot in the editor window.\n\n" +
                                  "Now, drag a \"Produce Unit\" command into the editor window.",
 
-            dndTutorialPage9   = "The \"Produce Unit\" command is your most basic command. Only available at the castle, it produces giraffes.\n\n" +
-                                 "Click \"Next\" to continue.",
+            dndTutorialPage9   = "The \"Produce Unit\" command is your most basic command. Only available at the castle, it continuously produces giraffes - up to a cap.\n\n" +
+                                 "Now, try click the \"Play\" button in the top of the screen, and lets see what happens.",
 
-            dndTutorialPage10  = "You will be able to produce 10 giraffes in each level." +
-                                 "Click \"Next\" to continue.",
+            dndTutorialPage10  = "Congratulations, you produced your first giraffe, but what's this? He's not moving. We better do something about that.\n" +
+                                 "Click the\"Reset\" button where the \"Play\" button was, so you can continue programming.",
 
-            dndTutorialPage11  = "Note that the \"Produce Unit\" command merely produces your giraffes. It does not tell them how to behave. Let us do something about that.\n\n" +
+            dndTutorialPage11  = "As you noticed, the produce command does not tell your giraffes how to behave. For that, we need more commands.\n\n" +
                                  "Drag an \"Attack\" command into the next line in the editor.",
 
             dndTutorialPage12  = "The \"Attack\" command will order your giraffes to move to a location which you specify. Notice that the editor list is asking for a variable.\n\n" +
@@ -88,7 +88,7 @@ public class Level1TutorialText : MonoBehaviour {
                                  "Now, drag the \"A\" variable into to slot next to the \"Attack\" command.",
 
             dndTutorialPage14  = "Your castle will now produce giraffes, and order them to go to checkpoint A, and attack any enemies they encounter on the way.\n\n" +
-                                 "Now, close the editor window by right clicking.",
+                                 "Now, close the editor window by right-clicking.",
 
             dndTutorialPage15  = "Remember that checkpoint you saw earlier? Find it again, and click it.",
 
@@ -96,51 +96,51 @@ public class Level1TutorialText : MonoBehaviour {
                                  "Click \"Next\" to continue.",
 
             dndTutorialPage17  = "This means you can give giraffes different orders depending on where they are on the map.\n\n" +
-                                 "Now, drag a \"Defend\" order into the checkpoint's editor.",
+                                 "Now, you'd prefer if your units have a bit of an edge, right? Drag a \"Defend\" order into the checkpoint's editor.",
 
             dndTutorialPage18  = "The Defend order will order your giraffes to stay near the checkpoint, and defend it.\n" +
                                  "In addition, you giraffes will receive less damage from enemy attacks whenever they are defending.\n\n" +
                                  "Click \"Next\" to continue.",
 
-            dndTutorialPage19  = "Your are now ready to defend your castle. Click the \"Play\" button in the top of the screen to begin.\n \n" +
+            dndTutorialPage19  = "Your are now ready to defend your castle. Click \"Play\" again, when you're ready.\n\n" +
                                  "Be aware that you cannot change your commands once you've clicked play, so make sure everything is in order.";
 
     string textTutorialPage1   = "Welcome!\n" + "The elephants are attacking the castle and we need to defend it!\n" +
                                  "Your goal is to defeat all the elephants and take control of the checkpoint in order to win.\n\n" +
                                  "Click \"Next\" to continue.",
 
-			textTutorialPage2  = "You can use \"W,A,S,D\"-buttons on your keyboard to move the camera around the map. Take a look around and note the location of the castle and the checkpoint, " +
-                                 "signified by a flag in a circle near the middle of the map.\n \n" +
+			textTutorialPage2  = "You can use the W,A,S, and D-buttons to move the camera. Take a look around and note the location of the castle, and the checkpoint, " +
+                                 "signified by a flag in a circle near the middle of the map.\n\n" +
                                  "Click \"Next\" to continue.",
 
-            textTutorialPage3  = "At the top of the screen you can see your current Lives. You lose a live if an elephant makes it to your castle. If your lives drops to 0, you lose."+
+            textTutorialPage3  = "At the top of the screen you can see your current Lives. You lose a life if an elephant makes it to your castle. If your lives drops to 0, you lose.\n\n"+
                                  "Click \"Next\" to continue.",
 
-            textTutorialPage4  = "You control your giraffes by programming them with commands.\n \n Press \"Tab\" to open the command list.",
+            textTutorialPage4  = "You control your giraffes by programming them with commands.\n\n Press \"Tab\" to open the command list.",
 
             textTutorialPage5  = "This is the command list. Here you can see all the commands that are available in this level. You can mouse over the commands to read a tooltip, " +
-                                 "to learn what each command does." +
+                                 "to learn what each command does.\n\n" +
                                  "Click \"Next\" to continue",
 
-			textTutorialPage6  = "You can open and close the command list at any time by pressing \"Tab\", or cliking the white arrow lext to the list.\n \n" +
+			textTutorialPage6  = "You can open and close the command list at any time by pressing \"Tab\", or cliking the white arrow lext to the list.\n\n" +
                                  "Now, click the castle.",
 
-            textTutorialPage7  = "This is the editor window. Here you will program your castle and giraffes to do what you want them to." +
+            textTutorialPage7  = "This is the editor window. Here you will program your castle and giraffes to do what you want them to.\n\n" +
                                  "Click \"Next\" to continue",
 
-            textTutorialPage8  = "You do this by writing the commands from the command list, exactly as you read them there, and finish by clicking the \"Compile Code\" button.  \n \n" +
+            textTutorialPage8  = "You do this by writing the commands from the command list, exactly as they are displayed, and finish by clicking the \"Compile Code\" button.  \n \n" +
                                  "Now, enter the \"produce\" command, and click compile.",
 
-            textTutorialPage9  = "The \"produce\" command is your most basic command. Only available at the castle, it produces giraffes. \n" +
-                                 "Click \"Next\" to continue.",
+            textTutorialPage9  = "The \"Produce Unit\" command is your most basic command. Only available at the castle, it continuously produces giraffes - up to a cap.\n\n" +
+                                 "Now, try click the \"Play\" button in the top of the screen, and lets see what happens.",
 
-			textTutorialPage10 = "You will be able to produce 10 giraffes in each level." +
-								 "Click \"Next\" to continue.",
+			textTutorialPage10 = "Congratulations, you produced your first giraffe, but what's this? He's not moving. We better do something about that.\n" +
+                                 "Click the\"Reset\" button where the \"Play\" button was, so you can continue programming.",
 
             textTutorialPage11 = "You can now produce giraffes, but they will not do anything unless you order them to, so let us do that.\n \n" +
                                  "Click \"Next\" to continue.",
 
-            textTutorialPage12 = "Now, enter the \"attack(X)\" command from the command list. You will need to replace the 'X' with the variable 'A', that is also visible in the command list.\n" +
+            textTutorialPage12 = "Enter the \"attack(X)\" command from the command list. You will need to replace the 'X' with the variable 'A', that is also visible in the command list.\n" +
                                  "Remember to click \"Compile Code\".",
 
             textTutorialPage13 = "The \"attack(X)\" command will order your giraffes to move to a target location, specified by a variable within the parentheses, and attack any enemies they encounter.\n" +
@@ -151,17 +151,17 @@ public class Level1TutorialText : MonoBehaviour {
 
             textTutorialPage15 = "Remember that checkpoint you saw earlier? Find it again, and click it.",
 
-            textTutorialPage16 = "This is the editor window for this checkpoint. All checkpoints on the map, as well as your castle, have their own editor with their own commands." +
+            textTutorialPage16 = "This is the editor window for this checkpoint. All checkpoints on the map, as well as your castle, have their own editor with their own commands.\n\n" +
                                  "Click \"Next\" to continue.",
 
-            textTutorialPage17 = "This means you can give giraffes different orders depending on where they are on the map.\n \n" +
-                                 "Now, enter the \"defend\" command, and click the \"Compile Code\" button.",
+            textTutorialPage17 = "This means you can give giraffes different orders depending on where they are on the map.\n\n" +
+                                 "Now, you'd prefer if your units have a bit of an edge, right? Enter the \"defend\" command, and click the \"Compile Code\" button.",
 
             textTutorialPage18 = "The Defend order will order your giraffes to stay near the checkpoint, and defend it.\n" +
                                  "In addition, your giraffes will receive less damage from enemy attacks whenever they are defending.\n \n" +
                                  "Click \"Next\" to continue.",
 
-            textTutorialPage19 = "Your are now ready to defend your castle. Click the \"Play\" button in the top of the screen to begin.\n \n" +
+            textTutorialPage19 = "Your are now ready to defend your castle. Click \"Play\" again, when you're ready.\n\n" +
                                  "Be aware that you cannot change your commands once you've clicked play, so make sure everything is in order.";
 
     public GUISkin commandSkin;
@@ -272,11 +272,9 @@ public class Level1TutorialText : MonoBehaviour {
                     break;
                 case 8:
                     currentTutorialText = tutorialPage9;
-                    requiresNextClickToProgress = true;
                     break;
                 case 9:
                     currentTutorialText = tutorialPage10;
-                    requiresNextClickToProgress = true;
                     break;
                 case 10:
                     currentTutorialText = tutorialPage11;

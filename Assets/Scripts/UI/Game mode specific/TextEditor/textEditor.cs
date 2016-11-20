@@ -125,6 +125,7 @@ public class textEditor : MonoBehaviour
         GUI.skin.textArea.normal.textColor = Color.black;
         GUI.skin.textArea.active.textColor = Color.black;
         GUI.skin.textArea.hover.textColor = Color.black;
+        GUI.skin.textArea.fontStyle = FontStyle.Bold;
 
         if (drawSequenceEditor)
         {

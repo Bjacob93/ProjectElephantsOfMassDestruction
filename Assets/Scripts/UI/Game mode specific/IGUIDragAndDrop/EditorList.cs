@@ -206,7 +206,7 @@ public class EditorList : MonoBehaviour{
         //Draw the bounding box.
         if(this.gameObject.name != "GiraffeBase")
         {
-            GUI.Box(boundingRect, "Checkpoint " + this.gameObject.name + "  Editor", commandSkin.GetStyle("EditorBoundingBox"));
+            GUI.Box(boundingRect, "Checkpoint " + this.gameObject.name + " Editor", commandSkin.GetStyle("EditorBoundingBox"));
         }
         else
         {
