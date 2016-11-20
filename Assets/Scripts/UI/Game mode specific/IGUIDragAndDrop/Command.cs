@@ -29,6 +29,7 @@ public class Command {
     {
         commandName = "";
         commandNameText = "";
+        commandId = "";
     }
 
     //Constructor for specific commands

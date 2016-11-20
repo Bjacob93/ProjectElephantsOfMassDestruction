@@ -8,7 +8,7 @@ public class Level1TutorialText : MonoBehaviour {
 
     public int currentTutorialPage = 0;
 
-    public bool requiresNextClickToProgress = true;
+    public bool requiresNextClickToProgress = false;
 
     Rect    TutorialBox;
     float   TutorialBoxStartPosX,

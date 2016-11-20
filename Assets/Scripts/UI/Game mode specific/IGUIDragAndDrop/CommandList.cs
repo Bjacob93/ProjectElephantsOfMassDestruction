@@ -41,11 +41,11 @@ public class CommandList : MonoBehaviour {
 	float boxStartingPosY = Screen.height / 4;
 	float boxOffSetY = Screen.height / 24;
 	Rect slotRect;
-    Level1TutorialText tutorial1text;
-	Level2TutorialText tutorial2text;
+    Level1TutorialText tutorial1;
+    Level2TutorialText tutorial2;
 
-	//Tooltip.
-	private bool showToolTip;
+    //Tooltip.
+    private bool showToolTip;
 	private string toolTip;
 
     //Animator
@@ -73,11 +73,10 @@ public class CommandList : MonoBehaviour {
         lvlManager = GameObject.Find("LevelManager").GetComponent<levelManager>();
         if(lvlManager.currentLevel == 1)
         {
-			tutorial1text = GameObject.Find("UIManager").GetComponent<Level1TutorialText>();
+            tutorial1 = GameObject.Find("UIManager").GetComponent<Level1TutorialText>();
         }
 		if (lvlManager.currentLevel == 2) {
-			tutorial2text = GameObject.Find("UIManager").GetComponent<Level2TutorialText>();
-
+            tutorial2 = GameObject.Find("UIManager").GetComponent<Level2TutorialText>();
 		}
 
         pauseScript = GameObject.Find("UIButtons").GetComponent<PauseScript>();
@@ -123,12 +122,12 @@ public class CommandList : MonoBehaviour {
 	void Update(){
         if (!animState && buttonX >= buttonXMax + 20)
         {
-			if (lvlManager.currentLevel == 1 && tutorial1text.currentTutorialPage == 3)
+			if (lvlManager.currentLevel == 1 && tutorial1.currentTutorialPage == 3)
             {
-                tutorial1text.currentTutorialPage++;
+                tutorial1.currentTutorialPage++;
             }
-			if (lvlManager.currentLevel == 2 && tutorial2text.currentTutorialPage == 1) {
-				tutorial2text.currentTutorialPage++;
+			if (lvlManager.currentLevel == 2 && tutorial2.currentTutorialPage == 0) {
+                tutorial2.currentTutorialPage++;
 			}
             if (buttonX < buttonXMax)
             {

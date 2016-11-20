@@ -254,7 +254,24 @@ public class EditorList : MonoBehaviour{
                 {
 					if (!belongsToCheckpoint)
                     {
-						if (tutorial2text.currentTutorialPage == 2 && thisCommand.commandId == "FoE")
+						if (thisCommand.commandId == "FoE")
+                        {
+                            if (tutorial2text.currentTutorialPage == 1)
+                            {
+                                tutorial2text.currentTutorialPage++;
+                            }
+
+                            else if (tutorial2text.currentTutorialPage == 5 && slots[slotNumber + 2].commandId != "" && slots[slotNumber + 4].commandId != "" && !pauseScript.GetPauseStatus())
+                            {
+                                tutorial2text.currentTutorialPage++;
+
+                            }
+                        }
+                        if (tutorial2text.currentTutorialPage == 2 && thisCommand.commandId == "FoE2")
+                        {
+                            tutorial2text.currentTutorialPage++;
+                        }
+                        if (tutorial2text.currentTutorialPage == 4 && thisCommand.commandId == "P01" && !pauseScript.GetPauseStatus())
                         {
                             tutorial2text.currentTutorialPage++;
                         }

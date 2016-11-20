@@ -46,6 +46,7 @@ public class textCommandList : MonoBehaviour
     public GUISkin commandSkin;
 
     Level1TutorialText tutorial;
+    Level2TutorialText tutorial2;
 
     //Animator
     private float speed;
@@ -77,6 +78,10 @@ public class textCommandList : MonoBehaviour
         if (lvlManager.currentLevel == 1)
         {
             tutorial = GameObject.Find("UIManager").GetComponent<Level1TutorialText>();
+        }
+        if (lvlManager.currentLevel == 2)
+        {
+            tutorial2 = GameObject.Find("UIManager").GetComponent<Level2TutorialText>();
         }
 
         //Fill the lists with empty commands.
@@ -117,6 +122,10 @@ public class textCommandList : MonoBehaviour
             if (lvlManager.currentLevel == 1 && tutorial.currentTutorialPage == 3)
             {
                 tutorial.currentTutorialPage++;
+            }
+            if (lvlManager.currentLevel == 2 && tutorial2.currentTutorialPage == 0)
+            {
+                tutorial2.currentTutorialPage++;
             }
             if (buttonX < buttonXMax)
             {

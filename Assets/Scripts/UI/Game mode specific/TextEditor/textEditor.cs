@@ -221,7 +221,7 @@ public class textEditor : MonoBehaviour
                                 if (database.commandDatabase[d].commandId == "FoE")
                                 {
                                     listOfCommands.Add(database.commandDatabase[d]);
-								if (lvlManager.currentLevel == 2 && tutorial1.currentTutorialPage == 2 && belongsToCheckpoint)
+								if (lvlManager.currentLevel == 2 && tutorial2.currentTutorialPage == 1 && !belongsToCheckpoint)
 								{
 									tutorial2.currentTutorialPage++;
 								}
@@ -238,6 +238,10 @@ public class textEditor : MonoBehaviour
                                     {
                                         listOfCommands.Add(database.commandDatabase[d]);
                                         i += 1;
+                                        if (lvlManager.currentLevel == 2 && tutorial2.currentTutorialPage == 2 && !belongsToCheckpoint)
+                                        {
+                                            tutorial2.currentTutorialPage++;
+                                        }
                                         break;
                                     }
                                 }
@@ -260,7 +264,6 @@ public class textEditor : MonoBehaviour
                             {
                                 errorList.Add(new KeyValuePair<int, string>(j, "Can't split at " + elementsInCode[i + 1]));
                             }
-
                         }
                         else
                         {
@@ -310,18 +313,25 @@ public class textEditor : MonoBehaviour
                     case "produce":
                         if (!belongsToCheckpoint)
                         {
+                            bool addedProduce = false;
                             for (int d = 0; d < database.commandDatabase.Count; d++)
                             {
                                 if (database.commandDatabase[d].commandId == "P01")
                                 {
                                     listOfCommands.Add(database.commandDatabase[d]);
+                                    addedProduce = true;
                                     if (lvlManager.currentLevel == 1 && tutorial1.currentTutorialPage == 7)
                                     {
                                         tutorial1.currentTutorialPage++;
                                     }
+                                    if(lvlManager.currentLevel == 2)
+                                    {
+                                        tutorial2.produceWasAddedText = true;
+                                    }
                                     break;
                                 }
                             }
+                            if(addedProduce) break;
                         }
                         errorList.Add(new KeyValuePair<int, string>(j, "No known command"));
                         break;

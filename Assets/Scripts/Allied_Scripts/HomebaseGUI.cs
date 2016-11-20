@@ -46,6 +46,9 @@ public class HomebaseGUI : MonoBehaviour {
     //Cache the object which holds the variable for DnD or Text edit mode.
     mainMenuVariables varKeeper;
 
+    Level2TutorialText tutorial2;
+    levelManager lvlManager;
+
     void Start () {
         //Reference to the correct mainMenuVariables script.
         varKeeper = GameObject.Find("KeeperOfVariables").GetComponent<mainMenuVariables>();
@@ -82,6 +85,11 @@ public class HomebaseGUI : MonoBehaviour {
             textListComponent.belongsToCheckpoint = false;
             sequenceManager.editorListText.Add(textListComponent);
         }
+
+        lvlManager = GameObject.Find("LevelManager").GetComponent<levelManager>();
+
+        if (lvlManager.currentLevel == 2)
+            tutorial2 = GameObject.Find("UIManager").GetComponent<Level2TutorialText>();
     }
 	
 	// Update is called once per frame
@@ -211,6 +219,12 @@ public class HomebaseGUI : MonoBehaviour {
                 if (!forEveryRan)
                 {
                     id = textListComponent.listOfCommands[i].commandId;
+
+                    if(textListComponent.listOfCommands.Count >= i + 4 && tutorial2.currentTutorialPage == 5)
+                    {
+                        tutorial2.currentTutorialPage++;
+                    }
+
                     if (shrimp % fish != 0)
                     {
                         commandTextEditor(i + 2, id, units, fish);
