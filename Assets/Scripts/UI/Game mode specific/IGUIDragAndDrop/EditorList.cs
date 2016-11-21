@@ -328,6 +328,10 @@ public class EditorList : MonoBehaviour{
                         {
                             GUI.Box(slotRect, "<color=#000000>" + thisCommand.commandName + "</color>", commandSkin.GetStyle("commandError"));
                         }
+                        else if (thisCommand.isVariable)
+                        {
+                            GUI.Box(slotRect, "<color=#000000>" + thisCommand.commandName + "</color>", commandSkin.GetStyle("variableAvailable"));
+                        }
                         else
                         {
                             GUI.Box(slotRect, "<color=#000000>" + thisCommand.commandName + "</color>", commandSkin.GetStyle("commandAvailable"));
