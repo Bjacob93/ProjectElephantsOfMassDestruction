@@ -55,6 +55,13 @@ public class textEditor : MonoBehaviour
     levelManager lvlManager;
     PauseScript pauseScript;
 
+    //Cache location of error-text labels.
+    float errorX,
+          errorY,
+          errorWidth,
+          errorHeight;
+    Rect  errorRect;
+
     void Start()
     {
         //Define dimensions of the textWindow.
@@ -77,6 +84,12 @@ public class textEditor : MonoBehaviour
         comButtonWidth = Screen.width / 8;
         comButtonHeight = Screen.height / 24;
         comButton = new Rect(comButtonStartX, comButtonStartY, comButtonWidth, comButtonHeight);
+
+        //Defice error text dimensions.
+        errorX = textBoxStartX + textBoxWidth * 0.5f;
+        errorY = textBoxStartY;
+        errorWidth = textBoxWidth * 0.5f;
+        errorHeight = 20;
 
         //Load the skin.
         commandSkin = Resources.Load("Graphix/commandSkin") as GUISkin;
@@ -127,6 +140,11 @@ public class textEditor : MonoBehaviour
         GUI.skin.textArea.hover.textColor = Color.black;
         GUI.skin.textArea.fontStyle = FontStyle.Bold;
 
+        GUI.skin.label.normal.textColor = Color.red;
+        GUI.skin.label.active.textColor = Color.red;
+        GUI.skin.label.hover.textColor = Color.red;
+        GUI.skin.label.fontStyle = FontStyle.Bold;
+
         if (drawSequenceEditor)
         {
             if (lvlManager.currentLevel == 1)
@@ -169,8 +187,9 @@ public class textEditor : MonoBehaviour
             //Go through the errors, and print them on the screen.
             foreach(KeyValuePair<int, string> error in errorList)
             {
+                errorRect = new Rect(errorX, errorY + (errorN * errorHeight), errorWidth, errorHeight);
+                GUI.Label(errorRect, error.Value);
                 errorN++;
-                GUI.Label(new Rect(10, 10 * errorN, 1000, 20), error.Value + " at line " + error.Key.ToString());
             }
         }
     }    
@@ -180,6 +199,8 @@ public class textEditor : MonoBehaviour
         //Clear the lists of errors and commands.
         errorList.Clear();
         listOfCommands.Clear();
+
+        bool commandisOKbutisvariablequestionmark = false;
 
         //Determine which characters break up the code.
         char[] delimiter = new[] { ')', '(', ' '};
@@ -193,6 +214,8 @@ public class textEditor : MonoBehaviour
         //Go through all the lines in the field.
         for (int j = 0; j < linesOfCode.Length; j++)
         {
+            commandisOKbutisvariablequestionmark = false;
+
             //Split the line strings whenever a delimiter character is encountered.
             elementsInCode = linesOfCode[j].Split(delimiter).ToList();
 
@@ -221,7 +244,9 @@ public class textEditor : MonoBehaviour
                                 if (database.commandDatabase[d].commandId == "FoE")
                                 {
                                     listOfCommands.Add(database.commandDatabase[d]);
-								if (lvlManager.currentLevel == 2 && tutorial2.currentTutorialPage == 1 && !belongsToCheckpoint)
+                                    commandisOKbutisvariablequestionmark = true;
+
+                                    if (lvlManager.currentLevel == 2 && tutorial2.currentTutorialPage == 1 && !belongsToCheckpoint)
 								{
 									tutorial2.currentTutorialPage++;
 								}
@@ -280,6 +305,7 @@ public class textEditor : MonoBehaviour
                                 if (database.commandDatabase[d].commandId == "A01")
                                 {
                                     listOfCommands.Add(database.commandDatabase[d]);
+                                    commandisOKbutisvariablequestionmark = true;
                                     break;
                                 }
                             }
@@ -301,6 +327,7 @@ public class textEditor : MonoBehaviour
                             if (database.commandDatabase[d].commandId == "D01")
                             {
                                 listOfCommands.Add(database.commandDatabase[d]);
+
                                 if (lvlManager.currentLevel == 1 && tutorial1.currentTutorialPage == 16 && belongsToCheckpoint)
                                 {
                                     tutorial1.currentTutorialPage++;
@@ -345,6 +372,8 @@ public class textEditor : MonoBehaviour
                                 if (database.commandDatabase[d].commandId == "M01")
                                 {
                                     listOfCommands.Add(database.commandDatabase[d]);
+                                    commandisOKbutisvariablequestionmark = true;
+
                                     break;
                                 }
                             }
@@ -394,9 +423,13 @@ public class textEditor : MonoBehaviour
                             }
                         }
                         break;
-
                     default:
-                        errorList.Add(new KeyValuePair<int, string>(j, "No known command"));
+
+                        if (!commandisOKbutisvariablequestionmark)
+                        {
+                            errorList.Add(new KeyValuePair<int, string>(j, "No known command"));
+
+                        }
                         break;
                 }
             }
@@ -407,7 +440,7 @@ public class textEditor : MonoBehaviour
     void ValidCheckpoint(string check, int line)
     {
         //A list of all the checkpoints in the level.
-        string[] checkpoints = new[] { "Homebase", "A", "B", "C" };
+        string[] checkpoints = new[] {"A", "B", "C" };
 
         //Check if the entered checkpoint matches any of the checkpoints in the level, and add the command to the list if it does.
         foreach (string s in checkpoints)
@@ -417,6 +450,6 @@ public class textEditor : MonoBehaviour
                 return;
             }
         }
-        errorList.Add(new KeyValuePair<int, string>(line, "No eligible checkpoint"));
+        errorList.Add(new KeyValuePair<int, string>(line, "No eligible variable"));
     }
 }
