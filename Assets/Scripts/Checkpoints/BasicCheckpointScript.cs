@@ -155,7 +155,7 @@ public class BasicCheckpointScript : MonoBehaviour {
                 break;
 
             case "D01":
-                target = listComponent.slots[i + 1].locationOfTarget;
+                target = location;
                 //run the defend command
                 Defend(units, target);
                 break;
