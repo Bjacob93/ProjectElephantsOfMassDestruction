@@ -220,9 +220,12 @@ public class HomebaseGUI : MonoBehaviour {
                 {
                     id = textListComponent.listOfCommands[i].commandId;
 
-                    if(textListComponent.listOfCommands.Count >= i + 4 && tutorial2.currentTutorialPage == 5)
+                    if(lvlManager.currentLevel == 2)
                     {
-                        tutorial2.currentTutorialPage++;
+                        if (textListComponent.listOfCommands.Count >= i + 4 && tutorial2.currentTutorialPage == 5)
+                        {
+                            tutorial2.currentTutorialPage++;
+                        }
                     }
 
                     if (shrimp % fish != 0)
