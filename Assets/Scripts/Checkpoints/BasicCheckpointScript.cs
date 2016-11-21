@@ -25,7 +25,7 @@ public class BasicCheckpointScript : MonoBehaviour {
     levelManager lvlManager;
 
     //Range within which the checkpoint will give orders to units.
-    public float controlRange = 10f;
+    public float controlRange = 5f;
 
     //Variables for the ForEvery() function
     bool forEveryRan = false;
