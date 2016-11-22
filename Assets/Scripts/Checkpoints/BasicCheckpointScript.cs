@@ -95,6 +95,13 @@ public class BasicCheckpointScript : MonoBehaviour {
         {
             gatherCommands(units);
         }
+
+        Debug.Log(textListComponent.listOfCommands.Count);
+        for(int i = 0; i < textListComponent.listOfCommands.Count; i++)
+        {
+            Debug.Log(textListComponent.listOfCommands[i].commandId);
+        }
+
     }
 
     void gatherCommands(GameObject[] units)
@@ -129,13 +136,13 @@ public class BasicCheckpointScript : MonoBehaviour {
                 if (!forEveryRan)
                 {
                     id = listComponent.slots[i].commandId;
-                    if (shrimp % fish != 0)
+                    if (shrimp % fisk != 0)
                     {
-                        commandDragonDrop(i + 2, id, units, fish);
+                        commandDragonDrop(i + 2, id, units, fisk);
                     }
                     else
                     {
-                        commandDragonDrop(i + 3, id, units, fish);
+                        commandDragonDrop(i + 4, id, units, fisk);
                     }
                 }
                 break;
@@ -198,13 +205,20 @@ public class BasicCheckpointScript : MonoBehaviour {
                 if (!forEveryRan)
                 {
                     id = textListComponent.listOfCommands[i].commandId;
-                    if (shrimp % fish != 0)
+                    if (shrimp % fisk != 0)
                     {
-                        commandTextEditor(i + 2, id, units, fish);
+                        commandTextEditor(i + 2, id, units, fisk);
                     }
                     else
                     {
-                        commandTextEditor(i + 3, id, units, fish);
+                        if (textListComponent.listOfCommands[i + 2].commandId == "D01")
+                        {
+                            commandTextEditor(i + 3, id, units, fisk);
+                        }
+                        else
+                        {
+                            commandTextEditor(i + 4, id, units, fisk);
+                        }
                     }
                 }
                 break;
@@ -266,12 +280,12 @@ public class BasicCheckpointScript : MonoBehaviour {
                 Astar aStar = e.GetComponent<Astar>();
                 if (checkpointName != aStar.commanderID)
                 {
+                    aStar.receivedNewDestination = true;
                     aStar.targetPosition = targetLocation;
                     aStar.receivedNewDestination = true;
                     aStar.commanderID = checkpointName;
                     forEveryRan = true;
                 }
-                aStar.receivedNewDestination = true;
             }
         }
     }
@@ -287,6 +301,7 @@ public class BasicCheckpointScript : MonoBehaviour {
                 Astar aStar = e.GetComponent<Astar>();
                 if (checkpointName != aStar.commanderID)
                 {
+                    aStar.targetPosition = targetLocation;
                     aStar.commanderID = checkpointName;
                     aStar.receivedDefenceOrder = true;
                     forEveryRan = true;
