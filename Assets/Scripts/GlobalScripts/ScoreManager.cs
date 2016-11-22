@@ -8,7 +8,7 @@ public class ScoreManager : MonoBehaviour {
 
     //Cache the animator;
 	Animator anim;  
-
+	MainMenuButton mainmenupanel;
     //Cache the audio sources
 	public AudioSource levelMusic;
     public AudioSource victoryMusic;
@@ -29,10 +29,11 @@ public class ScoreManager : MonoBehaviour {
     public List<BasicCapturePoint> basicCapturePointScripts = new List<BasicCapturePoint>(); // cache and prepare a lise for the scripts from capturePoint
     private bool playerHasAllCheckPoints = false; // bool used to check if the player got all capture points
 
+	public GameObject UIdisable;
 
-    void Start()
+	void Start()
     {
-		
+		UIdisable = GameObject.Find ("UIManager");
         //Reference the animator.
         anim = GetComponent<Animator>();
 
@@ -61,19 +62,16 @@ public class ScoreManager : MonoBehaviour {
 			levelMusic.clip = Resources.Load("Audio/level5") as AudioClip;
 		}
 
-
-
         foreach (GameObject c in capturePoint)
         {
             basicCapturePointScripts.Add(c.GetComponent<BasicCapturePoint>());
         }
- 
+
         levelMusic.playOnAwake = true;
         levelMusic.loop = true;
         levelMusic.Play();
         
     }
-
     void Update()
     {
         checkCapturePointsForOwnership();
@@ -131,6 +129,7 @@ public class ScoreManager : MonoBehaviour {
     public void Victory()
     {
         levelMusic.Stop ();
+		UIdisable.SetActive (false);
 		anim.SetTrigger("VictoryAnimation");
         victoryMusic.clip = Resources.Load ("Audio/Victory") as AudioClip;
         victoryMusic.playOnAwake = true;

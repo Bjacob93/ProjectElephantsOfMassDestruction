@@ -89,9 +89,10 @@ public class EnemyMelee_AI_Health : MonoBehaviour {
 			Gameover.clip = Resources.Load ("Audio/GameOver") as AudioClip;
 			Gameover.playOnAwake = true;
             Gameover.loop = false;
+			scoreManager.UIdisable.SetActive (false);
 			scoreManager.GameOver ();
 			Gameover.Play ();
-        }
+		}
         if (!Gameover.isPlaying && scoreManager.GetLivesRemaining() <= 0)
         {
             Uarray.resetGame();
