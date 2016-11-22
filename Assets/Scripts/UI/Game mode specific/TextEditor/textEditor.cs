@@ -196,8 +196,6 @@ public class textEditor : MonoBehaviour
         errorList.Clear();
         listOfCommands.Clear();
 
-        bool variableIsValid = false;
-
         //Determine which characters break up the code.
         char[] delimiter = new[] { ')', '(', ' '};
         
@@ -210,8 +208,6 @@ public class textEditor : MonoBehaviour
         //Go through all the lines in the field.
         for (int j = 0; j < linesOfCode.Length; j++)
         {
-            variableIsValid = false;
-
             //Split the line strings whenever a delimiter character is encountered.
             elementsInCode = linesOfCode[j].Split(delimiter).ToList();
 
@@ -243,7 +239,6 @@ public class textEditor : MonoBehaviour
                             if (database.commandDatabase[d].commandId == "FoE")
                             {
                                 listOfCommands.Add(database.commandDatabase[d]);
-                                variableIsValid = true;
 
                                 if (lvlManager.currentLevel == 2 && tutorial2.currentTutorialPage == 1 && !belongsToCheckpoint)
                                 {
@@ -252,16 +247,15 @@ public class textEditor : MonoBehaviour
                                 break;
                             }
                         }
-
+                        i += 1; //now we want to search the next index in the array.
                         //Add the command with the correct variable to the list of commands, OR output error.
-                        if (elementsInCode[i + 1] == "2")
+                        if (elementsInCode[i] == "2")
                         {
                             for (int d = 0; d < database.commandDatabase.Count; d++)
                             {
                                 if (database.commandDatabase[d].commandId == "FoE2")
                                 {
                                     listOfCommands.Add(database.commandDatabase[d]);
-                                    i += 1;
                                     if (lvlManager.currentLevel == 2 && tutorial2.currentTutorialPage == 2 && !belongsToCheckpoint)
                                     {
                                         tutorial2.currentTutorialPage++;
@@ -271,22 +265,20 @@ public class textEditor : MonoBehaviour
                             }
 
                         }
-                        else if (elementsInCode[i + 1] == "3")
+                        else if (elementsInCode[i] == "3")
                         {
                             for (int d = 0; d < database.commandDatabase.Count; d++)
                             {
                                 if (database.commandDatabase[d].commandId == "FoE3")
                                 {
                                     listOfCommands.Add(database.commandDatabase[d]);
-                                    i += 1;
                                     break;
                                 }
                             }
-
                         }
                         else
                         {
-                            errorList.Add(new KeyValuePair<int, string>(j, "Can't split at " + elementsInCode[i + 1]));
+                            errorList.Add(new KeyValuePair<int, string>(j, "Can't split at " + elementsInCode[i]));
                         }                        
                         break;
 
@@ -302,12 +294,12 @@ public class textEditor : MonoBehaviour
                             if (database.commandDatabase[d].commandId == "A01")
                             {
                                 listOfCommands.Add(database.commandDatabase[d]);
-                                variableIsValid = true;
                                 break;
                             }
                         }
+                        i += 1;
                         //Call the function to check if the checkpoint variable is viable.
-                        ValidCheckpoint(elementsInCode[i + 1], j);                        
+                        ValidCheckpoint(elementsInCode[i], j);                        
                         break;
 
                     //Defend command.
@@ -348,9 +340,9 @@ public class textEditor : MonoBehaviour
                                     break;
                                 }
                             }
-                            if(addedProduce) break;
+                            if(addedProduce) break; //break out of nested case
                         }
-                        errorList.Add(new KeyValuePair<int, string>(j, "No known command"));
+                        errorList.Add(new KeyValuePair<int, string>(j, "Produce cannot be used for this building"));
                         break;
                     /*Move command.
                     case "moveTo":
@@ -361,8 +353,6 @@ public class textEditor : MonoBehaviour
                                 if (database.commandDatabase[d].commandId == "M01")
                                 {
                                     listOfCommands.Add(database.commandDatabase[d]);
-                                    variableIsValid = true;
-
                                     break;
                                 }
                             }
@@ -374,12 +364,7 @@ public class textEditor : MonoBehaviour
                         }
                         break;*/
                     default:
-
-                        if (!variableIsValid)
-                        {
-                            errorList.Add(new KeyValuePair<int, string>(j, "No known command"));
-
-                        }
+                        errorList.Add(new KeyValuePair<int, string>(j, "No known command"));
                         break;
                 }
             }
