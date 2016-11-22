@@ -176,11 +176,7 @@ public class textEditor : MonoBehaviour
             else
             {
                 GUI.TextArea(textBox, textAreaString, charLimit);
-            }
-
-            
-
-            
+            }            
             //Initialise an int that tracks how many errors there are in the code.
             int errorN = 0;
 
@@ -356,7 +352,6 @@ public class textEditor : MonoBehaviour
                         }
                         errorList.Add(new KeyValuePair<int, string>(j, "No known command"));
                         break;
-
                     /*Move command.
                     case "moveTo":
                         if (i + 1 < elementsInCode.Count)
