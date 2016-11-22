@@ -90,7 +90,14 @@ public class BuyEnemyUnits : MonoBehaviour
 		if (!sm.victoryMusic.isPlaying) {
 			wattTimeTimer += Time.deltaTime;
 			if (wattTimeTimer >= waitTime) {
-				SceneManager.LoadSceneAsync ("Scenes/mainMenu", LoadSceneMode.Single);
+                if(sm.currentSceneIndex >= 5)
+                {
+                    SceneManager.LoadSceneAsync("mainMenu", LoadSceneMode.Single);
+                }
+                else
+                {
+                    SceneManager.LoadSceneAsync(sm.currentSceneIndex + 1, LoadSceneMode.Single);
+                }	
 			}
 		}
 	}

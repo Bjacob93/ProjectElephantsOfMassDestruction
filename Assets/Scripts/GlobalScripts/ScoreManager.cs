@@ -15,7 +15,7 @@ public class ScoreManager : MonoBehaviour {
 
 	levelManager lvlManager;
     //Cache the index of the current scene.
-    private int currentSceneIndex; 
+    public int currentSceneIndex; 
 
 	public float restartDelay = 1f;         // Time to wait before restarting the level
 	float restartTimer;                     // Timer to count up to restarting the level
