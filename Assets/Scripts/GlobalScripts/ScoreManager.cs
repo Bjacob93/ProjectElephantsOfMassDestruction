@@ -13,6 +13,7 @@ public class ScoreManager : MonoBehaviour {
 	public AudioSource levelMusic;
     public AudioSource victoryMusic;
 
+	levelManager lvlManager;
     //Cache the index of the current scene.
     private int currentSceneIndex; 
 
@@ -28,8 +29,10 @@ public class ScoreManager : MonoBehaviour {
     public List<BasicCapturePoint> basicCapturePointScripts = new List<BasicCapturePoint>(); // cache and prepare a lise for the scripts from capturePoint
     private bool playerHasAllCheckPoints = false; // bool used to check if the player got all capture points
 
+
     void Start()
     {
+		
         //Reference the animator.
         anim = GetComponent<Animator>();
 
@@ -37,17 +40,34 @@ public class ScoreManager : MonoBehaviour {
         currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
 
         victoryMusic = gameObject.AddComponent<AudioSource>();
+		levelMusic = gameObject.AddComponent<AudioSource>();
 
         capturePoint = GameObject.FindGameObjectsWithTag("CapturePoint");
 
         livesRemaining = livesStart;
-       
+		if (currentSceneIndex == 1) {
+			levelMusic.clip = Resources.Load("Audio/level1") as AudioClip;
+		}
+		if (currentSceneIndex == 2) {
+			levelMusic.clip = Resources.Load("Audio/level2") as AudioClip;
+		}		
+		if (currentSceneIndex == 3) {
+			levelMusic.clip = Resources.Load("Audio/level3") as AudioClip;
+		}		
+		if (currentSceneIndex == 4) {
+			levelMusic.clip = Resources.Load("Audio/level4") as AudioClip;
+		}		
+		if (currentSceneIndex == 5) {
+			levelMusic.clip = Resources.Load("Audio/level5") as AudioClip;
+		}
+
+
+
         foreach (GameObject c in capturePoint)
         {
             basicCapturePointScripts.Add(c.GetComponent<BasicCapturePoint>());
         }
-        levelMusic = gameObject.AddComponent<AudioSource>();
-        levelMusic.clip = Resources.Load("Audio/level1") as AudioClip;
+ 
         levelMusic.playOnAwake = true;
         levelMusic.loop = true;
         levelMusic.Play();

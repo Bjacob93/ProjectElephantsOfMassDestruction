@@ -15,9 +15,10 @@ public class PlayButton : MonoBehaviour {
 
     //Cache the PauseScript.
     PauseScript pauseScript;
+	AudioSource coding;
+
 
 	void Start () {
-
         //Calculate dimensions.
         buttonX = Screen.width / 2 + Screen.width / 15;
         buttonY = Screen.height / 100;
@@ -30,8 +31,8 @@ public class PlayButton : MonoBehaviour {
 
         //Reference the pauseScript.
         pauseScript = GameObject.Find("UIButtons").GetComponent<PauseScript>();
-
-
+		coding = gameObject.AddComponent<AudioSource>();
+		coding.clip = Resources.Load("Audio/codingsound") as AudioClip;
     }
 
     void OnGUI()
@@ -45,7 +46,10 @@ public class PlayButton : MonoBehaviour {
         if (pauseScript.GetPauseStatus())
         {
             //If the button is pressed, un-pause the game.
-            if (GUI.Button(button, "", buttonSkin.GetStyle("PlayButton"))) pauseScript.PausePlay();
+			if (GUI.Button (button, "", buttonSkin.GetStyle ("PlayButton"))) {
+				pauseScript.PausePlay ();
+				coding.Play ();
+			}
         }  
     }
 }

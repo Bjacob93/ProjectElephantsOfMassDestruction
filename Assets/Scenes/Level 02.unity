@@ -2104,7 +2104,7 @@ MonoBehaviour:
   restartDelay: 5
   restartTimer: 0
   amountOfEnemySpawned: 0
-  maxEnemySpawn: 20
+  maxEnemySpawn: 10
   victoryCheck: 0
   enemyUnits: {fileID: 1000011621710164, guid: 67917ec56833846428930e641a3cd7f1, type: 2}
 --- !u!23 &575014548
@@ -2956,6 +2956,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentTutorialPage: 0
   requiresNextClickToProgress: 1
+  produceWasAddedText: 0
   commandSkin: {fileID: 11400000, guid: af1d55f012321ba4fb142ce096bc0ec4, type: 2}
 --- !u!1 &767827813
 GameObject:

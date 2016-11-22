@@ -2641,7 +2641,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 622389654}
   m_LocalRotation: {x: -0, y: -0.3728855, z: -0, w: 0.9278774}
-  m_LocalPosition: {x: 55, y: 1, z: 10}
+  m_LocalPosition: {x: 55, y: 0.39, z: 10}
   m_LocalScale: {x: 35.436665, y: 35.436657, z: 35.436657}
   m_LocalEulerAnglesHint: {x: 0, y: -43.741, z: 0}
   m_Children:
@@ -2664,6 +2664,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   unitSpawnCoolDown: 5
+  unitCap: 10
+  unitCount: 0
   playerUnits: {fileID: 1000012675579912, guid: 67917ec56833846428930e641a3cd7f1,
     type: 2}
   controlRange: 10
@@ -4612,7 +4614,7 @@ MonoBehaviour:
   restartDelay: 5
   restartTimer: 0
   amountOfEnemySpawned: 0
-  maxEnemySpawn: 20
+  maxEnemySpawn: 8
   victoryCheck: 0
   enemyUnits: {fileID: 1000011621710164, guid: 67917ec56833846428930e641a3cd7f1, type: 2}
 --- !u!23 &925828570

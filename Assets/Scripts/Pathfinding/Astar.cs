@@ -29,7 +29,7 @@ public class Astar : MonoBehaviour {
     float maxDistanceFromTargetAllowed = 15f;
     float distanceFromTarget;
     public bool receivedDefenceOrder = false;
-    bool isDefending = false;
+    public bool isDefending = false;
 
     //Boolean controlled by checkpoints
     public bool receivedNewDestination = false;
@@ -212,14 +212,6 @@ public class Astar : MonoBehaviour {
 		//Find nearest enemy, and path to it if it exist and is close enough.
 		FindNearestEnemy();
 
-		//If no enemy is near enough, make sure unit is pathing to waypoint.
-		PathToWaypoint();
-
-        //Path to another waypoint, if an update to destination has been received.
-        if (receivedNewDestination) {
-            PathToNewDestination();
-        }
-
         if (receivedDefenceOrder)
         {
             healthScript.alliedArmour = 5;
@@ -229,6 +221,14 @@ public class Astar : MonoBehaviour {
         if (isDefending)
         {
             Defend();
+        }
+
+        //If no enemy is near enough, make sure unit is pathing to waypoint.
+        PathToWaypoint();
+
+        //Path to another waypoint, if an update to destination has been received.
+        if (receivedNewDestination) {
+            PathToNewDestination();
         }
 
         //If there is no path.

@@ -55,6 +55,13 @@ public class textEditor : MonoBehaviour
     levelManager lvlManager;
     PauseScript pauseScript;
 
+    //Cache location of error-text labels.
+    float errorX,
+          errorY,
+          errorWidth,
+          errorHeight;
+    Rect  errorRect;
+
     void Start()
     {
         //Define dimensions of the textWindow.
@@ -77,6 +84,12 @@ public class textEditor : MonoBehaviour
         comButtonWidth = Screen.width / 8;
         comButtonHeight = Screen.height / 24;
         comButton = new Rect(comButtonStartX, comButtonStartY, comButtonWidth, comButtonHeight);
+
+        //Define error text dimensions.
+        errorX = textBoxStartX + textBoxWidth * 0.5f;
+        errorY = textBoxStartY;
+        errorWidth = textBoxWidth * 0.5f;
+        errorHeight = 20;
 
         //Load the skin.
         commandSkin = Resources.Load("Graphix/commandSkin") as GUISkin;
@@ -127,6 +140,11 @@ public class textEditor : MonoBehaviour
         GUI.skin.textArea.hover.textColor = Color.black;
         GUI.skin.textArea.fontStyle = FontStyle.Bold;
 
+        GUI.skin.label.normal.textColor = Color.red;
+        GUI.skin.label.active.textColor = Color.red;
+        GUI.skin.label.hover.textColor = Color.red;
+        GUI.skin.label.fontStyle = FontStyle.Bold;
+
         if (drawSequenceEditor)
         {
             if (lvlManager.currentLevel == 1)
@@ -158,19 +176,16 @@ public class textEditor : MonoBehaviour
             else
             {
                 GUI.TextArea(textBox, textAreaString, charLimit);
-            }
-
-            
-
-            
+            }            
             //Initialise an int that tracks how many errors there are in the code.
             int errorN = 0;
 
             //Go through the errors, and print them on the screen.
             foreach(KeyValuePair<int, string> error in errorList)
             {
+                errorRect = new Rect(errorX, errorY + (error.Key * errorHeight), errorWidth, errorHeight);
+                GUI.Label(errorRect, error.Value);
                 errorN++;
-                GUI.Label(new Rect(10, 10 * errorN, 1000, 20), error.Value + " at line " + error.Key.ToString());
             }
         }
     }    
@@ -214,84 +229,77 @@ public class textEditor : MonoBehaviour
                 {
                     //Split command.
                     case "splitAt":
-                        if (i + 1 < elementsInCode.Count)
+                        if (i + 1 >= elementsInCode.Count)
                         {
-                            for(int d = 0; d < database.commandDatabase.Count; d++)
+                            errorList.Add(new KeyValuePair<int, string>(j, "No argument in " + elementsInCode[i]));
+                            break;
+                        }
+                        for (int d = 0; d < database.commandDatabase.Count; d++)
+                        {
+                            if (database.commandDatabase[d].commandId == "FoE")
                             {
-                                if (database.commandDatabase[d].commandId == "FoE")
+                                listOfCommands.Add(database.commandDatabase[d]);
+
+                                if (lvlManager.currentLevel == 2 && tutorial2.currentTutorialPage == 1 && !belongsToCheckpoint)
+                                {
+                                    tutorial2.currentTutorialPage++;
+                                }
+                                break;
+                            }
+                        }
+                        i += 1; //now we want to search the next index in the array.
+                        //Add the command with the correct variable to the list of commands, OR output error.
+                        if (elementsInCode[i] == "2")
+                        {
+                            for (int d = 0; d < database.commandDatabase.Count; d++)
+                            {
+                                if (database.commandDatabase[d].commandId == "FoE2")
                                 {
                                     listOfCommands.Add(database.commandDatabase[d]);
-								if (lvlManager.currentLevel == 2 && tutorial2.currentTutorialPage == 1 && !belongsToCheckpoint)
-								{
-									tutorial2.currentTutorialPage++;
-								}
+                                    if (lvlManager.currentLevel == 2 && tutorial2.currentTutorialPage == 2 && !belongsToCheckpoint)
+                                    {
+                                        tutorial2.currentTutorialPage++;
+                                    }
                                     break;
                                 }
                             }
 
-                            //Add the command with the correct variable to the list of commands, OR output error.
-                            if (elementsInCode[i + 1] == "2")
+                        }
+                        else if (elementsInCode[i] == "3")
+                        {
+                            for (int d = 0; d < database.commandDatabase.Count; d++)
                             {
-                                for (int d = 0; d < database.commandDatabase.Count; d++)
+                                if (database.commandDatabase[d].commandId == "FoE3")
                                 {
-                                    if (database.commandDatabase[d].commandId == "FoE2")
-                                    {
-                                        listOfCommands.Add(database.commandDatabase[d]);
-                                        i += 1;
-                                        if (lvlManager.currentLevel == 2 && tutorial2.currentTutorialPage == 2 && !belongsToCheckpoint)
-                                        {
-                                            tutorial2.currentTutorialPage++;
-                                        }
-                                        break;
-                                    }
+                                    listOfCommands.Add(database.commandDatabase[d]);
+                                    break;
                                 }
-
-                            }
-                            else if (elementsInCode[i + 1] == "3")
-                            {
-                                for (int d = 0; d < database.commandDatabase.Count; d++)
-                                {
-                                    if (database.commandDatabase[d].commandId == "FoE3")
-                                    {
-                                        listOfCommands.Add(database.commandDatabase[d]);
-                                        i += 1;
-                                        break;
-                                    }
-                                }
-
-                            }
-                            else
-                            {
-                                errorList.Add(new KeyValuePair<int, string>(j, "Can't split at " + elementsInCode[i + 1]));
                             }
                         }
                         else
                         {
-                            errorList.Add(new KeyValuePair<int, string>(j, "No argument in " + elementsInCode[i]));
+                            errorList.Add(new KeyValuePair<int, string>(j, "Can't split at " + elementsInCode[i]));
                         }                        
                         break;
 
                     //Attack command.
                     case "attack":
-                        if (i + 1 < elementsInCode.Count)
-                        {
-                            for (int d = 0; d < database.commandDatabase.Count; d++)
-                            {
-                                if (database.commandDatabase[d].commandId == "A01")
-                                {
-                                    listOfCommands.Add(database.commandDatabase[d]);
-                                    break;
-                                }
-                            }
-
-                            //Call the function to check if the checkpoint variable is viable.
-                            ValidCheckpoint(elementsInCode[i + 1], j);
-                        }
-                        else
+                        if (i + 1 >= elementsInCode.Count)
                         {
                             errorList.Add(new KeyValuePair<int, string>(j, "No argument in " + elementsInCode[i]));
+                            break;
                         }
-
+                        for (int d = 0; d < database.commandDatabase.Count; d++)
+                        {
+                            if (database.commandDatabase[d].commandId == "A01")
+                            {
+                                listOfCommands.Add(database.commandDatabase[d]);
+                                break;
+                            }
+                        }
+                        i += 1;
+                        //Call the function to check if the checkpoint variable is viable.
+                        ValidCheckpoint(elementsInCode[i], j);                        
                         break;
 
                     //Defend command.
@@ -301,6 +309,8 @@ public class textEditor : MonoBehaviour
                             if (database.commandDatabase[d].commandId == "D01")
                             {
                                 listOfCommands.Add(database.commandDatabase[d]);
+                                listOfCommands.Add(new Command());
+
                                 if (lvlManager.currentLevel == 1 && tutorial1.currentTutorialPage == 16 && belongsToCheckpoint)
                                 {
                                     tutorial1.currentTutorialPage++;
@@ -331,12 +341,11 @@ public class textEditor : MonoBehaviour
                                     break;
                                 }
                             }
-                            if(addedProduce) break;
+                            if(addedProduce) break; //break out of nested case
                         }
-                        errorList.Add(new KeyValuePair<int, string>(j, "No known command"));
+                        errorList.Add(new KeyValuePair<int, string>(j, "Produce cannot be used for this building"));
                         break;
-
-                    //Move command.
+                    /*Move command.
                     case "moveTo":
                         if (i + 1 < elementsInCode.Count)
                         {
@@ -354,47 +363,7 @@ public class textEditor : MonoBehaviour
                         {
                             errorList.Add(new KeyValuePair<int, string>(j, "No argument in " + elementsInCode[i]));
                         }
-                        break;
-                    
-                    //Next four are variables for checkpoints and homebase.
-                    case "A":
-                        for (int d = 0; d < database.commandDatabase.Count; d++)
-                        {
-                            if (database.commandDatabase[d].commandId == "varA")
-                            {
-                                listOfCommands.Add(database.commandDatabase[d]);
-
-                                if (lvlManager.currentLevel == 1 && elementsInCode[i - 1] == "attack" && !belongsToCheckpoint && tutorial1.currentTutorialPage == 11)
-                                {
-                                        tutorial1.currentTutorialPage++;
-                                }
-                                break;
-                            }
-                        }
-                        break;
-
-                    case "B":
-                        for (int d = 0; d < database.commandDatabase.Count; d++)
-                        {
-                            if (database.commandDatabase[d].commandId == "varB")
-                            {
-                                listOfCommands.Add(database.commandDatabase[d]);
-                                break;
-                            }
-                        }
-                        break;
-
-                    case "C":
-                        for (int d = 0; d < database.commandDatabase.Count; d++)
-                        {
-                            if (database.commandDatabase[d].commandId == "varC")
-                            {
-                                listOfCommands.Add(database.commandDatabase[d]);
-                                break;
-                            }
-                        }
-                        break;
-
+                        break;*/
                     default:
                         errorList.Add(new KeyValuePair<int, string>(j, "No known command"));
                         break;
@@ -407,16 +376,30 @@ public class textEditor : MonoBehaviour
     void ValidCheckpoint(string check, int line)
     {
         //A list of all the checkpoints in the level.
-        string[] checkpoints = new[] { "Homebase", "A", "B", "C" };
+        string[] checkpoints = new[] {"A", "B", "C" };
+        string[] checkpointID = new[] { "varA", "varB", "varC" };
 
         //Check if the entered checkpoint matches any of the checkpoints in the level, and add the command to the list if it does.
-        foreach (string s in checkpoints)
+        for(int i = 0; i < 3; i++)
         {
-            if (check == s)
+            if(check == checkpoints[i])
             {
+                for (int d = 0; d < database.commandDatabase.Count; d++)
+                {
+                    if (database.commandDatabase[d].commandId == checkpointID[i])
+                    {
+                        listOfCommands.Add(database.commandDatabase[d]);
+                        if (i == 0 && lvlManager.currentLevel == 1 && !belongsToCheckpoint && tutorial1.currentTutorialPage == 11)
+                        {
+                            tutorial1.currentTutorialPage++;
+                        }
+                        break;
+                    }
+                }
                 return;
             }
         }
-        errorList.Add(new KeyValuePair<int, string>(line, "No eligible checkpoint"));
+        //send error
+        errorList.Add(new KeyValuePair<int, string>(line, "No eligible variable"));
     }
 }

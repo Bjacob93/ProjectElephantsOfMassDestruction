@@ -49,14 +49,14 @@ public class Level2TutorialText : MonoBehaviour {
             dndTutorialPage3   = "The \"Spilt\" command needs a variable. Right now, \"Every Other\" is available.\n\n" +
                                  "Drag it into the variable-slot.",
 
-            dndTutorialPage4   = "Now, if you enter two Attack commands with different destinations in the two next command slots, the split variable will make newly spawned giraffes move to one or the other, alternately." +
+			dndTutorialPage4   = "Now, if you enter two Attack commands with different destinations in the two next command slots, the split variable will make newly spawned giraffes move to one or the other, alternately.\n" +
                                  "Do that, then click \"Play\" and see what happens!",
 
             dndTutorialPage5   = "Did you forget the \"Produce\" command? You better restart, and try again.",
 
             dndTutorialPage6   = "Seems you did not enter two attack commands with different variables after the split command. Try to fix that!",
 
-            dndTutorialPage7   = "See? Your giraffes are splitting their numbers between the two checkpoints. You can now defend your base from two fronts!" +
+			dndTutorialPage7   = "See? Your giraffes are splitting their numbers between the two checkpoints. You can now defend your base from two fronts!\n\n" +
                                  "Click \"Next\" to continue.",
 
             dndTutorialPage8   = "In later levels, \"Every Third\" will be available for the \"Split\" command as well, which will then send every third giraffe to one location, and the other two to the other location.\n\n" +
@@ -72,14 +72,14 @@ public class Level2TutorialText : MonoBehaviour {
             textTutorialPage3  = "The \"splitAt(X)\" command needs a variable. Right now, \"2\" is available.\n\n" +
                                  "Replace the X with that, if you didn't already.",
 
-            textTutorialPage4  = "Now, if you enter two Attack commands with different destinations on the next two lines, the split variable will make newly spawned giraffes move to one or the other, alternately." +
+			textTutorialPage4  = "Now, if you enter two Attack commands with different destinations on the next two lines, the split variable will make newly spawned giraffes move to one or the other, alternately.\n\n" +
                                  "Do that, then click \"Play\" and see what happens!",
 
             textTutorialPage5  = "Did you forget the \"Produce\" command? You better restart, and try again.",
 
             textTutorialPage6  = "Seems you did not enter two attack commands with different variables after the split command. Try to fix that!",
 
-            textTutorialPage7  = "See? Your giraffes are splitting their numbers between the two checkpoints. You can now defend your base from two fronts!" +
+			textTutorialPage7  = "See? Your giraffes are splitting their numbers between the two checkpoints. You can now defend your base from two fronts!\n\n" +
                                  "Click \"Next\" to continue.",
 
             textTutorialPage8  = "In later levels, \"3\" will be available for the \"splitAt(X)\" command as well, which will then send every third giraffe to one location, and the other two to the other location.\n\n" +
