@@ -131,6 +131,10 @@ public class HomebaseGUI : MonoBehaviour {
                     forEveryRan = false;
                 }
                 command(i, id, units, fish);
+                if (id == "FoE")
+                {
+                    i += 5;
+                }
             }
         }
     }
@@ -143,14 +147,15 @@ public class HomebaseGUI : MonoBehaviour {
             case "FoE":
                 if (forEveryRan == false)
                 {
-                    id = listComponent.slots[i].commandId;
                     if (shrimp % fish != 0)
                     {
+                        id = listComponent.slots[i + 2].commandId;
                         command(i + 2, id, units, fish);
                     }
                     else
                     {
-                        command(i + 3, id, units, fish);
+                        id = listComponent.slots[i + 4].commandId;
+                        command(i + 4, id, units, fish);
                     }
                 }
                 break;
@@ -218,23 +223,15 @@ public class HomebaseGUI : MonoBehaviour {
             case "FoE":
                 if (!forEveryRan)
                 {
-                    id = textListComponent.listOfCommands[i].commandId;
-
-                    if(lvlManager.currentLevel == 2)
+                    if (shrimp % fisk != 0)
                     {
-                        if (textListComponent.listOfCommands.Count >= i + 4 && tutorial2.currentTutorialPage == 5)
-                        {
-                            tutorial2.currentTutorialPage++;
-                        }
-                    }
-
-                    if (shrimp % fish != 0)
-                    {
-                        commandTextEditor(i + 2, id, units, fish);
+                        id = textListComponent.listOfCommands[i + 2].commandId;
+                        commandTextEditor(i + 2, id, units, fisk);
                     }
                     else
                     {
-                        commandTextEditor(i + 3, id, units, fish);
+                        id = textListComponent.listOfCommands[i + 4].commandId;
+                        commandTextEditor(i + 4, id, units, fisk);
                     }
                 }
                 break;

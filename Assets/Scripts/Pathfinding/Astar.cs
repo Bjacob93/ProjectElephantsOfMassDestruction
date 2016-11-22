@@ -214,15 +214,12 @@ public class Astar : MonoBehaviour {
 
         if (receivedDefenceOrder)
         {
-            Debug.Log("I received defence");
             healthScript.alliedArmour = 5;
             isDefending = true;
             receivedDefenceOrder = false;
         }
         if (isDefending)
         {
-            Debug.Log("It's true");
-
             Defend();
         }
 

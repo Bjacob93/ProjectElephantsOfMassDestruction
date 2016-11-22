@@ -309,6 +309,7 @@ public class textEditor : MonoBehaviour
                             if (database.commandDatabase[d].commandId == "D01")
                             {
                                 listOfCommands.Add(database.commandDatabase[d]);
+                                listOfCommands.Add(new Command());
 
                                 if (lvlManager.currentLevel == 1 && tutorial1.currentTutorialPage == 16 && belongsToCheckpoint)
                                 {

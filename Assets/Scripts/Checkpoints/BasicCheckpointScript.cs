@@ -95,13 +95,6 @@ public class BasicCheckpointScript : MonoBehaviour {
         {
             gatherCommands(units);
         }
-
-        Debug.Log(textListComponent.listOfCommands.Count);
-        for(int i = 0; i < textListComponent.listOfCommands.Count; i++)
-        {
-            Debug.Log(textListComponent.listOfCommands[i].commandId);
-        }
-
     }
 
     void gatherCommands(GameObject[] units)
@@ -112,10 +105,9 @@ public class BasicCheckpointScript : MonoBehaviour {
             //check to see if the slot is empty
             if (i % 2 == 0 && listComponent.slots[i].commandName != "")
             {
-                //crate a sting to keep track of the slots commandId
+                //create a sting to keep track of the slots commandId
                 string id = listComponent.slots[i].commandId;
                 fish = listComponent.slots[i + 1].variableForEveryX;
-
 
                 if (forEveryRan)
                 {
@@ -123,6 +115,10 @@ public class BasicCheckpointScript : MonoBehaviour {
                     forEveryRan = false;
                 }
                 commandDragonDrop(i, id, units, fish);
+                if (id == "FoE")
+                {
+                    i += 5;
+                }
             }
         }
     }
@@ -135,18 +131,18 @@ public class BasicCheckpointScript : MonoBehaviour {
             case "FoE":
                 if (!forEveryRan)
                 {
-                    id = listComponent.slots[i].commandId;
                     if (shrimp % fisk != 0)
                     {
+                        id = listComponent.slots[i + 2].commandId;
                         commandDragonDrop(i + 2, id, units, fisk);
                     }
                     else
                     {
+                        id = listComponent.slots[i + 4].commandId;
                         commandDragonDrop(i + 4, id, units, fisk);
                     }
                 }
                 break;
-
 
             case "A01":
                 //if attack command is initiated set target to the slot var to the left of the attack command
@@ -179,20 +175,28 @@ public class BasicCheckpointScript : MonoBehaviour {
         //check if the slot is to the left in the editor
         for (int i = 0; i < textListComponent.listOfCommands.Count; i++)
         {
-            //crate a sting to keep track of the slots commandId
-            string id = textListComponent.listOfCommands[i].commandId;
-
-            if(textListComponent.listOfCommands.Count > i + 1)
+            if(i % 2 == 0)
             {
-                fish = textListComponent.listOfCommands[i + 1].variableForEveryX;
-            }
+                //crate a sting to keep track of the slots commandId
+                string id = textListComponent.listOfCommands[i].commandId;
 
-            if (forEveryRan)
-            {
-                shrimp++;
-                forEveryRan = false;
+                if (textListComponent.listOfCommands.Count > i + 1)
+                {
+                    fish = textListComponent.listOfCommands[i + 1].variableForEveryX;
+                }
+
+                if (forEveryRan)
+                {
+                    shrimp++;
+                    forEveryRan = false;
+                }
+               
+                commandTextEditor(i, id, units, fish);
+                if (id == "FoE")
+                {
+                    i += 5;
+                }
             }
-            commandTextEditor(i, id, units, fish);
         }
     }
 
@@ -204,21 +208,15 @@ public class BasicCheckpointScript : MonoBehaviour {
             case "FoE":
                 if (!forEveryRan)
                 {
-                    id = textListComponent.listOfCommands[i].commandId;
                     if (shrimp % fisk != 0)
                     {
+                        id = textListComponent.listOfCommands[i + 2].commandId;
                         commandTextEditor(i + 2, id, units, fisk);
                     }
                     else
                     {
-                        if (textListComponent.listOfCommands[i + 2].commandId == "D01")
-                        {
-                            commandTextEditor(i + 3, id, units, fisk);
-                        }
-                        else
-                        {
-                            commandTextEditor(i + 4, id, units, fisk);
-                        }
+                        id = textListComponent.listOfCommands[i + 4].commandId;
+                        commandTextEditor(i + 4, id, units, fisk);
                     }
                 }
                 break;
