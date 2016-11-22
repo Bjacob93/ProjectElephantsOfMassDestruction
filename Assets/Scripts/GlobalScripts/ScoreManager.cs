@@ -47,7 +47,6 @@ public class ScoreManager : MonoBehaviour {
         livesRemaining = livesStart;
 		if (currentSceneIndex == 1) {
 			levelMusic.clip = Resources.Load("Audio/level1") as AudioClip;
-			Debug.Log ("jeg er her");
 		}
 		if (currentSceneIndex == 2) {
 			levelMusic.clip = Resources.Load("Audio/level2") as AudioClip;
