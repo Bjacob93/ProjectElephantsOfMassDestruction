@@ -344,9 +344,9 @@ public class textEditor : MonoBehaviour
                                     break;
                                 }
                             }
-                            if(addedProduce) break;
+                            if(addedProduce) break; //break out of nested case
                         }
-                        errorList.Add(new KeyValuePair<int, string>(j, "No known command"));
+                        errorList.Add(new KeyValuePair<int, string>(j, "Produce cannot be used for this building"));
                         break;
 
                     /*Move command.
