@@ -92,11 +92,11 @@ public class BuyEnemyUnits : MonoBehaviour
 			if (wattTimeTimer >= waitTime) {
                 if(sm.currentSceneIndex >= 5)
                 {
-                    SceneManager.LoadSceneAsync("mainMenu", LoadSceneMode.Single);
+                    SceneManager.LoadScene("mainMenu", LoadSceneMode.Single);
                 }
                 else
                 {
-                    SceneManager.LoadSceneAsync(sm.currentSceneIndex + 1, LoadSceneMode.Single);
+                    SceneManager.LoadScene(sm.currentSceneIndex + 1, LoadSceneMode.Single);
                 }	
 			}
 		}
