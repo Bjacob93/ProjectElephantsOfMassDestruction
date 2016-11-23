@@ -60,8 +60,6 @@ public class ResetButton : MonoBehaviour {
             //If the button is pressed, pause the game and call the reset function.
             if (GUI.Button(button, "", buttonSkin.GetStyle("ResetButton")))
             {
-                pauseScript.PausePlay();
-
                 resetScript.GameReset();
 
                 if (lvlManager.currentLevel == 1 && tutorial.currentTutorialPage == 9)
