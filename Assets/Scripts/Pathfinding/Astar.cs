@@ -13,10 +13,10 @@ public class Astar : MonoBehaviour {
     public string commanderID;
 
     //Cache variables for base stats
-    public float speed = 30f;
-	float rotationSpeed = 10f;
-    public float meleeRange = 3f;
-	public float engagementRange = 10f;
+    private float speed = 100f;
+    private float rotationSpeed = 10f;
+    private float meleeRange = 3f;
+	private float engagementRange = 10f;
 
 	//Cache variables for pathfinding behaviour
 	public Vector3 direction;
