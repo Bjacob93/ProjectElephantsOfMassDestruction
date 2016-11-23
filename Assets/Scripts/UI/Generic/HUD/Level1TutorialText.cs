@@ -51,7 +51,7 @@ public class Level1TutorialText : MonoBehaviour {
                                  "Click \"Next\" to continue.",
 
             dndTutorialPage2   = "You can use the W,A,S, and D-buttons to move the camera. Take a look around and note the location of the castle, and the checkpoint, " +
-                                 "signified by a flag in a circle near the middle of the map.\n\n" +
+                                 "signified by a flag in a circle near the middle of the area.\n\n" +
                                  "Click \"Next\" to continue.",
 
             dndTutorialPage3   = "At the top of the screen you can see your current Lives. You lose a life if an elephant makes it to your castle. If your lives drops to 0, you lose.\n\n" +
@@ -110,7 +110,7 @@ public class Level1TutorialText : MonoBehaviour {
                                  "Click \"Next\" to continue.",
 
 			textTutorialPage2  = "You can use the W,A,S, and D-buttons to move the camera. Take a look around and note the location of the castle, and the checkpoint, " +
-                                 "signified by a flag in a circle near the middle of the map.\n\n" +
+                                 "signified by a flag in a circle near the middle of the area.\n\n" +
                                  "Click \"Next\" to continue.",
 
             textTutorialPage3  = "At the top of the screen you can see your current Lives. You lose a life if an elephant makes it to your castle. If your lives drops to 0, you lose.\n\n"+
@@ -129,7 +129,7 @@ public class Level1TutorialText : MonoBehaviour {
                                  "Click \"Next\" to continue",
 
             textTutorialPage8  = "You do this by writing the commands from the command list, exactly as they are displayed, and finish by clicking the \"Compile Code\" button.  \n \n" +
-                                 "Now, enter the \"produce\" command, and click compile.",
+                                 "Now, type \"produce\" in the \"Script Editor\", and click compile.",
 
             textTutorialPage9  = "The \"Produce Unit\" command is your most basic command. Only available at the castle, it continuously produces giraffes - up to a cap.\n\n" +
                                  "Now, try click the \"Play\" button in the top of the screen, and lets see what happens.",
