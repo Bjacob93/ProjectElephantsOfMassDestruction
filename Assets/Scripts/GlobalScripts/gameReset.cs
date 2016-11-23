@@ -23,6 +23,8 @@ public class gameReset : MonoBehaviour {
 	GameObject[] allies;
 	GameObject[] enemies;
 
+    PauseScript pauseScript;
+
     // Use this for initialization
     void Start () {
         homeBaseGUI = GameObject.Find("GiraffeBase").GetComponent<HomebaseGUI>();
@@ -38,6 +40,8 @@ public class gameReset : MonoBehaviour {
 
 		unitManager = GameObject.Find("UnitManager");
 		Uarray = unitManager.GetComponent<UnitArrays>();
+
+        pauseScript = GameObject.Find("UIButtons").GetComponent<PauseScript>();
     }
 
 	public void GameReset(){
@@ -61,6 +65,7 @@ public class gameReset : MonoBehaviour {
         basicCheckpointScript.shrimp = 1;
 
 		Uarray.resetGame ();
+        pauseScript.PausePlay();
 
 		return;
 

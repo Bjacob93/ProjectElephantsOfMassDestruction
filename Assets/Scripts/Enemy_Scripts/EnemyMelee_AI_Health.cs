@@ -17,6 +17,7 @@ public class EnemyMelee_AI_Health : MonoBehaviour {
     bool unitAdded = false;
 
     ScoreManager scoreManager;
+    bool levelLost = false;
 
     bool Died;
 
@@ -55,8 +56,24 @@ public class EnemyMelee_AI_Health : MonoBehaviour {
         if (distance < 10)
         {
             AtPlayerBase();
-        }	
-	}
+        }
+
+        if (scoreManager.GetLivesRemaining() <= 0 && levelLost == false)
+        {
+            Gameover.clip = Resources.Load("Audio/GameOver") as AudioClip;
+            Gameover.playOnAwake = true;
+            Gameover.loop = false;
+            scoreManager.UIdisable.SetActive(false);
+            scoreManager.GameOver();
+            Gameover.Play();
+            levelLost = true;
+        }
+        if (!Gameover.isPlaying && scoreManager.GetLivesRemaining() <= 0 && levelLost == true)
+        {
+            scoreManager.GameOverReset();
+            levelLost = false;
+        }
+    }
 
 	public void TakeDamage (float damageTaken)
 	{
@@ -85,18 +102,6 @@ public class EnemyMelee_AI_Health : MonoBehaviour {
     {
         this.gameObject.transform.position = enemySpawn.transform.position;
         scoreManager.LoseLife(1);
-		if (scoreManager.GetLivesRemaining() == 0) {		
-			Gameover.clip = Resources.Load ("Audio/GameOver") as AudioClip;
-			Gameover.playOnAwake = true;
-            Gameover.loop = false;
-			scoreManager.UIdisable.SetActive (false);
-			scoreManager.GameOver ();
-			Gameover.Play ();
-		}
-        if (!Gameover.isPlaying && scoreManager.GetLivesRemaining() <= 0)
-        {
-            Uarray.resetGame();
-            scoreManager.GameOverReset();
-        }
+		
     }
 }

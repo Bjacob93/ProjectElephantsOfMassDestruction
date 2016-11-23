@@ -31,11 +31,15 @@ public class ScoreManager : MonoBehaviour {
 
 	public GameObject UIdisable;
 
+    gameReset resetGame;
+
 	void Start()
     {
 		UIdisable = GameObject.Find ("UIManager");
         //Reference the animator.
         anim = GetComponent<Animator>();
+
+        resetGame = GameObject.Find("UIButtons").GetComponent<gameReset>();
 
         //Define the index of the current scene.
         currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
@@ -123,7 +127,11 @@ public class ScoreManager : MonoBehaviour {
 
     public void GameOverReset()
     {
-        SceneManager.LoadScene(currentSceneIndex);
+        resetGame.GameReset();
+        UIdisable.SetActive(true);
+        anim.ResetTrigger("GameOver");
+        levelMusic.Play();  
+
     }
 
     public void Victory()
