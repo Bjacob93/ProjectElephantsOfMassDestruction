@@ -15,7 +15,6 @@ public class MainMenuButton : MonoBehaviour {
     //Cache skin.
     GUISkin buttonSkin;
 
-
 	void Start () {
 
         //Calculate dimensions.
