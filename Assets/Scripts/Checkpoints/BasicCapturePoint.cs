@@ -17,7 +17,7 @@ public class BasicCapturePoint : MonoBehaviour {
     float maxCaptureTimer; // used to cache the captureTime at the start of the scropt to make sure that it does not change in regards to the player
     public float avCaptureTimer; // cache avarage of the Capture time
     public float capturePoints; // this is the variable which increase or decrese depending on who is capturing the point
-    public float distanceNeededToCapture = 10; // maximum distance units can be away to capture the point
+    public float distanceNeededToCapture = 8; // maximum distance units can be away to capture the point
     public bool neutralCapturePoint = true; // bool used as neutral state of the capture point
     public int modIndex = 1;
 

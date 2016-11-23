@@ -279,7 +279,7 @@ public class CommandList : MonoBehaviour {
                                     {
                                         variableNeeded = true;
                                     }
-                                    else if (sequenceEditor.slots[i].commandId == "FoE")
+                                    if (sequenceEditor.slots[i].commandId == "FoE")
                                     {
                                         forEveryHasBeenUsed = true;
                                     }   
@@ -352,7 +352,7 @@ public class CommandList : MonoBehaviour {
                                     {
                                         variableNeeded = true;
                                     }
-                                    else if (sequenceEditor.slots[i].commandId == "FoE")
+                                    if (sequenceEditor.slots[i].commandId == "FoE")
                                     {
                                         forEveryHasBeenUsed = true;
                                     }

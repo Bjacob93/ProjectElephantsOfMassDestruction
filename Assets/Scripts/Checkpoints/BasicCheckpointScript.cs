@@ -25,7 +25,7 @@ public class BasicCheckpointScript : MonoBehaviour {
     levelManager lvlManager;
 
     //Range within which the checkpoint will give orders to units.
-    public float controlRange = 10f;
+    public float controlRange = 5f;
 
     //Variables for the ForEvery() function
     bool forEveryRan = false;
@@ -105,10 +105,9 @@ public class BasicCheckpointScript : MonoBehaviour {
             //check to see if the slot is empty
             if (i % 2 == 0 && listComponent.slots[i].commandName != "")
             {
-                //crate a sting to keep track of the slots commandId
+                //create a sting to keep track of the slots commandId
                 string id = listComponent.slots[i].commandId;
                 fish = listComponent.slots[i + 1].variableForEveryX;
-
 
                 if (forEveryRan)
                 {
@@ -116,6 +115,10 @@ public class BasicCheckpointScript : MonoBehaviour {
                     forEveryRan = false;
                 }
                 commandDragonDrop(i, id, units, fish);
+                if (id == "FoE")
+                {
+                    i += 5;
+                }
             }
         }
     }
@@ -128,18 +131,18 @@ public class BasicCheckpointScript : MonoBehaviour {
             case "FoE":
                 if (!forEveryRan)
                 {
-                    id = listComponent.slots[i].commandId;
-                    if (shrimp % fish != 0)
+                    if (shrimp % fisk != 0)
                     {
-                        commandDragonDrop(i + 2, id, units, fish);
+                        id = listComponent.slots[i + 2].commandId;
+                        commandDragonDrop(i + 2, id, units, fisk);
                     }
                     else
                     {
-                        commandDragonDrop(i + 3, id, units, fish);
+                        id = listComponent.slots[i + 4].commandId;
+                        commandDragonDrop(i + 4, id, units, fisk);
                     }
                 }
                 break;
-
 
             case "A01":
                 //if attack command is initiated set target to the slot var to the left of the attack command
@@ -155,7 +158,7 @@ public class BasicCheckpointScript : MonoBehaviour {
                 break;
 
             case "D01":
-                target = listComponent.slots[i + 1].locationOfTarget;
+                target = location;
                 //run the defend command
                 Defend(units, target);
                 break;
@@ -172,20 +175,28 @@ public class BasicCheckpointScript : MonoBehaviour {
         //check if the slot is to the left in the editor
         for (int i = 0; i < textListComponent.listOfCommands.Count; i++)
         {
-            //crate a sting to keep track of the slots commandId
-            string id = textListComponent.listOfCommands[i].commandId;
-
-            if(textListComponent.listOfCommands.Count > i + 1)
+            if(i % 2 == 0)
             {
-                fish = textListComponent.listOfCommands[i + 1].variableForEveryX;
-            }
+                //crate a sting to keep track of the slots commandId
+                string id = textListComponent.listOfCommands[i].commandId;
 
-            if (forEveryRan)
-            {
-                shrimp++;
-                forEveryRan = false;
+                if (textListComponent.listOfCommands.Count > i + 1)
+                {
+                    fish = textListComponent.listOfCommands[i + 1].variableForEveryX;
+                }
+
+                if (forEveryRan)
+                {
+                    shrimp++;
+                    forEveryRan = false;
+                }
+               
+                commandTextEditor(i, id, units, fish);
+                if (id == "FoE")
+                {
+                    i += 5;
+                }
             }
-            commandTextEditor(i, id, units, fish);
         }
     }
 
@@ -197,14 +208,15 @@ public class BasicCheckpointScript : MonoBehaviour {
             case "FoE":
                 if (!forEveryRan)
                 {
-                    id = textListComponent.listOfCommands[i].commandId;
-                    if (shrimp % fish != 0)
+                    if (shrimp % fisk != 0)
                     {
-                        commandTextEditor(i + 2, id, units, fish);
+                        id = textListComponent.listOfCommands[i + 2].commandId;
+                        commandTextEditor(i + 2, id, units, fisk);
                     }
                     else
                     {
-                        commandTextEditor(i + 3, id, units, fish);
+                        id = textListComponent.listOfCommands[i + 4].commandId;
+                        commandTextEditor(i + 4, id, units, fisk);
                     }
                 }
                 break;
@@ -266,12 +278,12 @@ public class BasicCheckpointScript : MonoBehaviour {
                 Astar aStar = e.GetComponent<Astar>();
                 if (checkpointName != aStar.commanderID)
                 {
+                    aStar.receivedNewDestination = true;
                     aStar.targetPosition = targetLocation;
                     aStar.receivedNewDestination = true;
                     aStar.commanderID = checkpointName;
                     forEveryRan = true;
                 }
-                aStar.receivedNewDestination = true;
             }
         }
     }
@@ -287,6 +299,7 @@ public class BasicCheckpointScript : MonoBehaviour {
                 Astar aStar = e.GetComponent<Astar>();
                 if (checkpointName != aStar.commanderID)
                 {
+                    aStar.targetPosition = targetLocation;
                     aStar.commanderID = checkpointName;
                     aStar.receivedDefenceOrder = true;
                     forEveryRan = true;

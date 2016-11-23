@@ -15,7 +15,6 @@ public class MainMenuButton : MonoBehaviour {
     //Cache skin.
     GUISkin buttonSkin;
 
-
 	void Start () {
 
         //Calculate dimensions.
@@ -41,6 +40,7 @@ public class MainMenuButton : MonoBehaviour {
         //Go to the main menu if button is pressed.
         if (GUI.Button(mainMenuButton, "", buttonSkin.GetStyle("MainMenuButton")))
         {
+            DestroyImmediate(GameObject.Find("KeeperOfVariables"));
             SceneManager.LoadScene("mainMenu");
         }
     }

@@ -4828,8 +4828,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 40150215fbb21624084497c46333ecb7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playSprite: {fileID: 0}
-  gameIsPaused: 1
 --- !u!114 &114000010948193372
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -5152,6 +5150,7 @@ MonoBehaviour:
   enemyArmour: 0
   currentHealth: 0
   moneyValue: 8
+  Gameover: {fileID: 0}
   enemyUnits: {fileID: 0}
   enemySpawn: {fileID: 0}
 --- !u!114 &114000013391528026
@@ -5246,8 +5245,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 40150215fbb21624084497c46333ecb7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playSprite: {fileID: 0}
-  gameIsPaused: 1
 --- !u!114 &114000013875681580
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -5287,7 +5284,7 @@ MonoBehaviour:
   commanderID: 
   speed: 100
   meleeRange: 3
-  engagementRange: 15
+  engagementRange: 8
   direction: {x: 0, y: 0, z: 0}
   receivedDefenceOrder: 0
   receivedNewDestination: 0

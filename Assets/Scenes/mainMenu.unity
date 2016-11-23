@@ -37,7 +37,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44692492, g: 0.4967869, b: 0.57508546, a: 1}
+  m_IndirectSpecularColor: {r: 0.44692558, g: 0.49678743, b: 0.57508624, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -246,6 +246,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c28ee7b3c0059514a8f567bd7f7d5172, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  MainMenuSprite: {fileID: 0}
 --- !u!224 &62310754 stripped
 RectTransform:
   m_PrefabParentObject: {fileID: 22400008, guid: b6a1cf4e3eeaf9a4ca38bf8acb910a6d,
@@ -283,8 +284,8 @@ RectTransform:
   m_RootOrder: 1
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 480.00006, y: -292.88855}
-  m_SizeDelta: {x: 780.0001, y: 141.35689}
+  m_AnchoredPosition: {x: 960.00006, y: -537.64453}
+  m_SizeDelta: {x: 1740.0001, y: 295.13306}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &73109684
 MonoBehaviour:
@@ -524,6 +525,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c28ee7b3c0059514a8f567bd7f7d5172, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  MainMenuSprite: {fileID: 0}
 --- !u!114 &118794937
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -828,6 +830,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c28ee7b3c0059514a8f567bd7f7d5172, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  MainMenuSprite: {fileID: 0}
 --- !u!114 &155949414
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -968,10 +971,10 @@ RectTransform:
   - {fileID: 469030583}
   m_Father: {fileID: 1758635695}
   m_RootOrder: 7
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 959.99976, y: 2471.2502}
-  m_SizeDelta: {x: 1739.9999, y: 687.50006}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 960.00006, y: -932.3877}
+  m_SizeDelta: {x: 1740.0001, y: 164.78442}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &159233370
 MonoBehaviour:
@@ -984,6 +987,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c28ee7b3c0059514a8f567bd7f7d5172, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  MainMenuSprite: {fileID: 0}
 --- !u!114 &159233371
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1136,8 +1140,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d070dc91779ef2c4f855a77ca86fc6b5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  eventSystem: {fileID: 1396489475}
-  selectedObject: {fileID: 637998580}
 --- !u!114 &165243081
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1269,8 +1271,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d070dc91779ef2c4f855a77ca86fc6b5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  eventSystem: {fileID: 1396489475}
-  selectedObject: {fileID: 0}
 --- !u!114 &166829150
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1668,6 +1668,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c28ee7b3c0059514a8f567bd7f7d5172, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  MainMenuSprite: {fileID: 0}
 --- !u!114 &194096169
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2027,6 +2028,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c28ee7b3c0059514a8f567bd7f7d5172, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  MainMenuSprite: {fileID: 0}
 --- !u!114 &228405717
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2257,6 +2259,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c28ee7b3c0059514a8f567bd7f7d5172, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  MainMenuSprite: {fileID: 0}
 --- !u!114 &310372480
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2466,8 +2469,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d070dc91779ef2c4f855a77ca86fc6b5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  eventSystem: {fileID: 1396489475}
-  selectedObject: {fileID: 1439178560}
 --- !u!1 &384423647
 GameObject:
   m_ObjectHideFlags: 0
@@ -2926,6 +2927,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c28ee7b3c0059514a8f567bd7f7d5172, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  MainMenuSprite: {fileID: 0}
 --- !u!114 &534326375
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3164,6 +3166,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c28ee7b3c0059514a8f567bd7f7d5172, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  MainMenuSprite: {fileID: 0}
 --- !u!114 &632088092
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3331,6 +3334,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c28ee7b3c0059514a8f567bd7f7d5172, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  MainMenuSprite: {fileID: 0}
 --- !u!114 &637998582
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3506,6 +3510,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c28ee7b3c0059514a8f567bd7f7d5172, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  MainMenuSprite: {fileID: 0}
 --- !u!114 &674082416
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3691,8 +3696,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d070dc91779ef2c4f855a77ca86fc6b5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  eventSystem: {fileID: 1396489475}
-  selectedObject: {fileID: 118794934}
 --- !u!114 &726357016
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4124,19 +4127,19 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 22400008, guid: b6a1cf4e3eeaf9a4ca38bf8acb910a6d, type: 2}
       propertyPath: m_AnchoredPosition.x
-      value: 90
+      value: 960.00006
       objectReference: {fileID: 0}
     - target: {fileID: 22400008, guid: b6a1cf4e3eeaf9a4ca38bf8acb910a6d, type: 2}
       propertyPath: m_AnchoredPosition.y
-      value: -418.3922
+      value: -767.6033
       objectReference: {fileID: 0}
     - target: {fileID: 22400008, guid: b6a1cf4e3eeaf9a4ca38bf8acb910a6d, type: 2}
       propertyPath: m_SizeDelta.x
-      value: 780
+      value: 1740
       objectReference: {fileID: 0}
     - target: {fileID: 22400008, guid: b6a1cf4e3eeaf9a4ca38bf8acb910a6d, type: 2}
       propertyPath: m_SizeDelta.y
-      value: 109.65047
+      value: 164.78442
       objectReference: {fileID: 0}
     - target: {fileID: 22400008, guid: b6a1cf4e3eeaf9a4ca38bf8acb910a6d, type: 2}
       propertyPath: m_AnchorMin.x
@@ -4156,7 +4159,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 22400008, guid: b6a1cf4e3eeaf9a4ca38bf8acb910a6d, type: 2}
       propertyPath: m_Pivot.x
-      value: 0
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 22400008, guid: b6a1cf4e3eeaf9a4ca38bf8acb910a6d, type: 2}
       propertyPath: m_Pivot.y
@@ -4204,7 +4207,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 11400000, guid: b6a1cf4e3eeaf9a4ca38bf8acb910a6d, type: 2}
       propertyPath: m_Colors.m_NormalColor.r
-      value: 0
+      value: 0.875
       objectReference: {fileID: 0}
     - target: {fileID: 11400000, guid: b6a1cf4e3eeaf9a4ca38bf8acb910a6d, type: 2}
       propertyPath: m_Colors.m_NormalColor.g
@@ -4216,15 +4219,15 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 11400000, guid: b6a1cf4e3eeaf9a4ca38bf8acb910a6d, type: 2}
       propertyPath: m_Colors.m_PressedColor.r
-      value: 0.22794116
+      value: 0.6764706
       objectReference: {fileID: 0}
     - target: {fileID: 11400000, guid: b6a1cf4e3eeaf9a4ca38bf8acb910a6d, type: 2}
       propertyPath: m_Colors.m_PressedColor.g
-      value: 0.22794116
+      value: 0.34989855
       objectReference: {fileID: 0}
     - target: {fileID: 11400000, guid: b6a1cf4e3eeaf9a4ca38bf8acb910a6d, type: 2}
       propertyPath: m_Colors.m_PressedColor.b
-      value: 0.22794116
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 11400000, guid: b6a1cf4e3eeaf9a4ca38bf8acb910a6d, type: 2}
       propertyPath: m_Colors.m_ColorMultiplier
@@ -4252,6 +4255,22 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 11400004, guid: b6a1cf4e3eeaf9a4ca38bf8acb910a6d, type: 2}
       propertyPath: m_Color.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 22400008, guid: b6a1cf4e3eeaf9a4ca38bf8acb910a6d, type: 2}
+      propertyPath: m_LocalScale.x
+      value: 0.7985707
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: b6a1cf4e3eeaf9a4ca38bf8acb910a6d, type: 2}
+      propertyPath: m_Colors.m_HighlightedColor.r
+      value: 0.8745099
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: b6a1cf4e3eeaf9a4ca38bf8acb910a6d, type: 2}
+      propertyPath: m_Colors.m_HighlightedColor.g
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: b6a1cf4e3eeaf9a4ca38bf8acb910a6d, type: 2}
+      propertyPath: m_Colors.m_HighlightedColor.b
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -4516,8 +4535,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d070dc91779ef2c4f855a77ca86fc6b5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  eventSystem: {fileID: 1396489475}
-  selectedObject: {fileID: 2122589577}
 --- !u!1 &1215441038
 GameObject:
   m_ObjectHideFlags: 0
@@ -5345,8 +5362,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d070dc91779ef2c4f855a77ca86fc6b5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  eventSystem: {fileID: 1396489475}
-  selectedObject: {fileID: 0}
 --- !u!114 &1569700237
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5560,8 +5575,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d070dc91779ef2c4f855a77ca86fc6b5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  eventSystem: {fileID: 1396489475}
-  selectedObject: {fileID: 1758635694}
 --- !u!1 &1765769365
 GameObject:
   m_ObjectHideFlags: 0
@@ -5668,8 +5681,8 @@ RectTransform:
   m_RootOrder: 0
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 480.00006, y: -143.60504}
-  m_SizeDelta: {x: 780.0001, y: 157.2101}
+  m_AnchoredPosition: {x: 960.00006, y: -227.539}
+  m_SizeDelta: {x: 1740.0001, y: 325.078}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1852283252
 MonoBehaviour:
@@ -6227,6 +6240,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c28ee7b3c0059514a8f567bd7f7d5172, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  MainMenuSprite: {fileID: 0}
 --- !u!114 &2070480614
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6553,6 +6567,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c28ee7b3c0059514a8f567bd7f7d5172, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  MainMenuSprite: {fileID: 0}
 --- !u!1 &2141725768
 GameObject:
   m_ObjectHideFlags: 0
