@@ -223,6 +223,11 @@ public class HomebaseGUI : MonoBehaviour {
             case "FoE":
                 if (!forEveryRan)
                 {
+                    if (textListComponent.listOfCommands.Count >= i + 4 && tutorial2.currentTutorialPage == 5)
+                    {
+                        tutorial2.currentTutorialPage++;
+                    }
+
                     if (shrimp % fisk != 0)
                     {
                         id = textListComponent.listOfCommands[i + 2].commandId;
