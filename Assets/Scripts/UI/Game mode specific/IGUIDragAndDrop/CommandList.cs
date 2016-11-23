@@ -18,7 +18,7 @@ public class CommandList : MonoBehaviour {
 	private bool drawCommandList = false;
 
     //Cache the database, SequenceManger and Editolist scripts, as well as the LevelManager.
-    public CommandDatabase database;
+    CommandDatabase database;
     public SequenceManager sequenceManager;
     public EditorList sequenceEditor;
     levelManager lvlManager;
