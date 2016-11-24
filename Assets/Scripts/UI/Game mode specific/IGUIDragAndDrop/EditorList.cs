@@ -283,15 +283,7 @@ public class EditorList : MonoBehaviour{
                 {
                     if(x == 0)
                     {
-                        if ((slotNumber >= 2 && slots[slotNumber - 2].commandId == "FoE") || (slotNumber >= 4 && slots[slotNumber - 4].commandId == "FoE"))
-                        {
-                            GUI.Box(slotRect, "<color=#000000>" + "Insert Command" + "</color>", commandSkin.GetStyle("commandUnavailable"));
-                        }
-                        else
-                        {
-                            GUI.Box(slotRect, "", commandSkin.GetStyle("commandEmpty"));
-
-                        }
+                        GUI.Box(slotRect, "", commandSkin.GetStyle("commandEmpty"));
                     }
                     else if (slots[slotNumber - 1].requiresVariable)
                     {

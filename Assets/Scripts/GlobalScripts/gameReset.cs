@@ -47,7 +47,7 @@ public class gameReset : MonoBehaviour {
 	public void GameReset(){
         scoreManagerScript.ResetLives();
 
-		buyEnemyUnitsScript.restartTimer = 0;
+        buyEnemyUnitsScript.ResetSpawnTimer();
         buyEnemyUnitsScript.amountOfEnemySpawned = 0;
 
         for(int i = 0; i < scoreManagerScript.basicCapturePointScripts.Count; i++)
@@ -59,6 +59,8 @@ public class gameReset : MonoBehaviour {
             scoreManagerScript.basicCapturePointScripts[i].elephantCapture.fillAmount = 0;
             scoreManagerScript.basicCapturePointScripts[i].giraffeCapture.fillAmount = 0;
         }
+
+        homeBaseGUI.ResetSpawnTimer();
 
         homeBaseGUI.shrimp = 1;
         homeBaseGUI.unitCount = 0;

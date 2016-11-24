@@ -5,7 +5,7 @@ using System.Linq;
 
 public class textEditor : MonoBehaviour
 {
-    //Set the character limit, and the text which is visible in the window at first.
+    //Set the character limit, and the text which is visible in the window at first. 
     int charLimit = 250;
     private string textAreaString = "";
 
@@ -62,8 +62,14 @@ public class textEditor : MonoBehaviour
           errorHeight;
     Rect  errorRect;
 
+    AudioSource coding;
+
     void Start()
     {
+        //add an audio source
+        coding = gameObject.AddComponent<AudioSource>();
+        coding.clip = Resources.Load("Audio/Compile") as AudioClip;
+
         //Define dimensions of the textWindow.
         textBoxStartX = Screen.width / 6;
         textBoxStartY = Screen.height / 4;
@@ -79,7 +85,7 @@ public class textEditor : MonoBehaviour
         boundingBox = new Rect(boundingBoxStartX, boundingBoxStartY, boundingBoxWidth, boundingBoxHeight);
 
         //Define dimenstions of the Compile button.
-        comButtonStartX = boundingBoxStartX;
+        comButtonStartX = boundingBoxStartX + (boundingBoxWidth / 2);
         comButtonStartY = Screen.height / 35 * 19;
         comButtonWidth = Screen.width / 8;
         comButtonHeight = Screen.height / 24;
@@ -166,11 +172,14 @@ public class textEditor : MonoBehaviour
             if (pauseScript.GetPauseStatus())
             {
                 textAreaString = GUI.TextArea(textBox, textAreaString, charLimit);
-                
+
                 //Check if the Compile button is pressed.
-                if (GUI.Button(comButton, "Compile Code"))
+                commandSkin.GetStyle("EditorBoundingBox").padding.top = 7;
+                if (GUI.Button(comButton, "Compile Code", commandSkin.GetStyle("EditorBoundingBox")))
                 {
                     CompileCode();
+                    coding.Play();
+
                 }
             }
             else
@@ -304,6 +313,11 @@ public class textEditor : MonoBehaviour
 
                     //Defend command.
                     case "defend":
+                        if (!belongsToCheckpoint)
+                        {
+                            errorList.Add(new KeyValuePair<int, string>(j, "defend not available at castle."));
+                            break;
+                        }
                         for (int d = 0; d < database.commandDatabase.Count; d++)
                         {
                             if (database.commandDatabase[d].commandId == "D01")
@@ -343,27 +357,8 @@ public class textEditor : MonoBehaviour
                             }
                             if(addedProduce) break; //break out of nested case
                         }
-                        errorList.Add(new KeyValuePair<int, string>(j, "Produce cannot be used for this building"));
+                        errorList.Add(new KeyValuePair<int, string>(j, "Produce only available at castle."));
                         break;
-                    /*Move command.
-                    case "moveTo":
-                        if (i + 1 < elementsInCode.Count)
-                        {
-                            for (int d = 0; d < database.commandDatabase.Count; d++)
-                            {
-                                if (database.commandDatabase[d].commandId == "M01")
-                                {
-                                    listOfCommands.Add(database.commandDatabase[d]);
-                                    break;
-                                }
-                            }
-                            ValidCheckpoint(elementsInCode[i + 1], j);
-                        }
-                        else
-                        {
-                            errorList.Add(new KeyValuePair<int, string>(j, "No argument in " + elementsInCode[i]));
-                        }
-                        break;*/
                     default:
                         errorList.Add(new KeyValuePair<int, string>(j, "No known command"));
                         break;

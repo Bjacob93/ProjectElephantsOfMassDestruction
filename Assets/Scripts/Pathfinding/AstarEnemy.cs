@@ -13,8 +13,9 @@ public class AstarEnemy : MonoBehaviour
     public string commanderID;
 
     //Cache variables for base stats
-    private float speed = 100f;
-    private float rotationSpeed = 10f;
+
+    private float speed = 200f;
+    private float rotationSpeed = 20f;
     private float meleeRange = 3f;
     private float engagementRange = 10f;
 

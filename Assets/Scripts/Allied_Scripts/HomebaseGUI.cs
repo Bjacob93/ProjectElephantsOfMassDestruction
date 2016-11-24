@@ -4,8 +4,8 @@ using System.Collections;
 public class HomebaseGUI : MonoBehaviour {
 
 	//unit prduction management vars
-	public float unitSpawnCoolDown = 5f;
-	float unitSpawnCoolDownLeft = 0f;
+	private float unitSpawnCoolDown = 2.5f;
+    private float unitSpawnCoolDownLeft = 0f;
     public int unitCap;
     public int unitCount;
 
@@ -112,6 +112,11 @@ public class HomebaseGUI : MonoBehaviour {
         }
 			
 	}
+
+    public void ResetSpawnTimer()
+    {
+        unitSpawnCoolDownLeft = 0;
+    }
 
     void gatherCommands(GameObject[] units)
     {
@@ -307,6 +312,10 @@ public class HomebaseGUI : MonoBehaviour {
                 Astar aStar = e.GetComponent<Astar>();
                 if (baseName != aStar.commanderID)
                 {
+                    if(targetLocation == new Vector3(0, 0, 0))
+                    {
+                        targetLocation = this.gameObject.transform.position + new Vector3(-10, 1, -10);
+                    }
                     aStar.targetPosition = targetLocation;
                     aStar.receivedNewDestination = true;
                     aStar.commanderID = baseName;

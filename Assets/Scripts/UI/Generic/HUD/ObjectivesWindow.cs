@@ -22,7 +22,7 @@ public class ObjectivesWindow : MonoBehaviour {
     public GUISkin  commandSkin;
 
     public string   objective1 = "Kill all enemies.",
-                    objective2 = "Hold all Capture points.",
+                    objective2 = "Hold all Checkpoints with a circle.",
                     objective3 = "Defend your base agains enemy attacks.";
 
     void Start()

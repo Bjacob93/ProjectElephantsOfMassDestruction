@@ -25,7 +25,7 @@ public class BasicCheckpointScript : MonoBehaviour {
     levelManager lvlManager;
 
     //Range within which the checkpoint will give orders to units.
-    public float controlRange = 5f;
+    private float controlRange = 5f;
 
     //Variables for the ForEvery() function
     bool forEveryRan = false;
@@ -278,6 +278,10 @@ public class BasicCheckpointScript : MonoBehaviour {
                 Astar aStar = e.GetComponent<Astar>();
                 if (checkpointName != aStar.commanderID)
                 {
+                    if (targetLocation == new Vector3(0, 0, 0))
+                    {
+                        targetLocation = this.gameObject.transform.position;
+                    }
                     aStar.receivedNewDestination = true;
                     aStar.targetPosition = targetLocation;
                     aStar.receivedNewDestination = true;
