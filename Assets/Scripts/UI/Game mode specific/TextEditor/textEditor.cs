@@ -62,8 +62,14 @@ public class textEditor : MonoBehaviour
           errorHeight;
     Rect  errorRect;
 
+    AudioSource coding;
+
     void Start()
     {
+        //add an audio source
+        coding = gameObject.AddComponent<AudioSource>();
+        coding.clip = Resources.Load("Audio/codingsound") as AudioClip;
+
         //Define dimensions of the textWindow.
         textBoxStartX = Screen.width / 6;
         textBoxStartY = Screen.height / 4;
@@ -79,7 +85,7 @@ public class textEditor : MonoBehaviour
         boundingBox = new Rect(boundingBoxStartX, boundingBoxStartY, boundingBoxWidth, boundingBoxHeight);
 
         //Define dimenstions of the Compile button.
-        comButtonStartX = boundingBoxStartX;
+        comButtonStartX = boundingBoxStartX + (boundingBoxWidth / 2);
         comButtonStartY = Screen.height / 35 * 19;
         comButtonWidth = Screen.width / 8;
         comButtonHeight = Screen.height / 24;
@@ -166,11 +172,14 @@ public class textEditor : MonoBehaviour
             if (pauseScript.GetPauseStatus())
             {
                 textAreaString = GUI.TextArea(textBox, textAreaString, charLimit);
-                
+
                 //Check if the Compile button is pressed.
-                if (GUI.Button(comButton, "Compile Code"))
+                commandSkin.GetStyle("EditorBoundingBox").padding.top = 7;
+                if (GUI.Button(comButton, "Compile Code", commandSkin.GetStyle("EditorBoundingBox")))
                 {
                     CompileCode();
+                    coding.Play();
+
                 }
             }
             else
