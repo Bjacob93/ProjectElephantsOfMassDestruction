@@ -13,6 +13,7 @@ public class Astar : MonoBehaviour {
     public string commanderID;
 
     //Cache variables for base stats
+
     private float speed = 200f;
     private float rotationSpeed = 20f;
     private float meleeRange = 3f;

@@ -50,8 +50,9 @@ public class Level1TutorialText : MonoBehaviour {
                                  "Your goal is to defeat all the elephants and take control of the checkpoint in order to win.\n\n" +
                                  "Click \"Next\" to continue.",
 
+
             dndTutorialPage2   = "You can use the W,A,S, and D-buttons to move the camera. Take a look around and note the location of the castle, and the checkpoint which is " +
-                                 "signified by a flag in a circle near the middle of the map.\n\n" +
+                                 "signified by a flag in a circle near the middle of the area.\n\n" +
                                  "Click \"Next\" to continue.",
 
             dndTutorialPage3   = "At the top of the screen you can see your current Lives. You lose a life if an elephant makes it to your castle. If your lives drops to 0, you lose.\n\n" +
@@ -111,8 +112,8 @@ public class Level1TutorialText : MonoBehaviour {
                                  "Your goal is to defeat all the elephants and take control of the checkpoint in order to win.\n\n" +
                                  "Click \"Next\" to continue.",
 
-			textTutorialPage2  = "You can use the W,A,S, and D-buttons to move the camera. Take a look around and note the location of the castle, and the checkpoint, " +
-                                 "signified by a flag in a circle near the middle of the map.\n\n" +
+	    textTutorialPage2  = "You can use the W,A,S, and D-buttons to move the camera. Take a look around and note the location of the castle, and the checkpoint, " +
+                                 "signified by a flag in a circle near the middle of the area.\n\n" +
                                  "Click \"Next\" to continue.",
 
             textTutorialPage3  = "At the top of the screen you can see your current Lives. You lose a life if an elephant makes it to your castle. If your lives drops to 0, you lose.\n\n"+
@@ -124,14 +125,14 @@ public class Level1TutorialText : MonoBehaviour {
                                  "to learn what each command does.\n\n" +
                                  "Click \"Next\" to continue",
 
-			textTutorialPage6  = "You can open and close the command list at any time by pressing \"Tab\", or cliking the white arrow lext to the list.\n\n" +
+			textTutorialPage6  = "You can open and close the command list at any time by pressing \"Tab\", or cliking the white arrow next to the list.\n\n" +
                                  "Now, click the castle.",
 
             textTutorialPage7  = "This is the editor window. Here you will program your castle and giraffes to do what you want them to.\n\n" +
                                  "Click \"Next\" to continue",
 
             textTutorialPage8  = "You do this by typing the commands from the command list into the editor window, exactly as they are displayed, and finish by clicking the \"Compile Code\" button.\n \n" +
-                                 "Now, enter the \"produce\" command, and click compile.",
+                                 "Now, type  \"produce\" in the \"Script Editor\", and click compile.",
 
             textTutorialPage9  = "The \"Produce Unit\" command is your most basic command. Only available at the castle, it continuously produces giraffes - up to a cap.\n\n" +
                                  "Click the \"Play\" button in the top of the screen, and lets see what happens.",
