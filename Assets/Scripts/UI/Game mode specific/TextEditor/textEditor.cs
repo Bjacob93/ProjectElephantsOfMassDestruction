@@ -352,27 +352,8 @@ public class textEditor : MonoBehaviour
                             }
                             if(addedProduce) break; //break out of nested case
                         }
-                        errorList.Add(new KeyValuePair<int, string>(j, "Produce cannot be used for this building"));
+                        errorList.Add(new KeyValuePair<int, string>(j, "Produce only available at castle."));
                         break;
-                    /*Move command.
-                    case "moveTo":
-                        if (i + 1 < elementsInCode.Count)
-                        {
-                            for (int d = 0; d < database.commandDatabase.Count; d++)
-                            {
-                                if (database.commandDatabase[d].commandId == "M01")
-                                {
-                                    listOfCommands.Add(database.commandDatabase[d]);
-                                    break;
-                                }
-                            }
-                            ValidCheckpoint(elementsInCode[i + 1], j);
-                        }
-                        else
-                        {
-                            errorList.Add(new KeyValuePair<int, string>(j, "No argument in " + elementsInCode[i]));
-                        }
-                        break;*/
                     default:
                         errorList.Add(new KeyValuePair<int, string>(j, "No known command"));
                         break;

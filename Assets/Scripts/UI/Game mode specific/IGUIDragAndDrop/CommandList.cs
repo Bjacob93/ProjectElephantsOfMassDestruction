@@ -62,7 +62,7 @@ public class CommandList : MonoBehaviour {
     //GUI appearence.
     public GUISkin commandSkin;
 
-    void Start() { 
+    void Start() {
         //Reference the database of commands so that we can always find any command we need.
         database = GameObject.FindGameObjectWithTag("CommandDatabase").GetComponent<CommandDatabase>();
 
@@ -207,13 +207,15 @@ public class CommandList : MonoBehaviour {
         //Draw a representation of the command at the mouse position if a command is being dragged.
         if (sequenceEditor != null) {
             if (sequenceEditor.isDraggingCommand) {
+                slotRect = new Rect(Event.current.mousePosition.x - boxWidth * 0.5f, Event.current.mousePosition.y - boxHeight * 0.5f, boxWidth, boxHeight);
+
                 if (sequenceEditor.draggedCommand.isVariable)
                 {
-                    GUI.Box(new Rect(Event.current.mousePosition.x + 13, Event.current.mousePosition.y, 200, 40), "<color=#000000>" + sequenceEditor.draggedCommand.commandName + "</color>", commandSkin.GetStyle("variableAvailable"));
+                    GUI.Box(slotRect, "<color=#000000>" + sequenceEditor.draggedCommand.commandName + "</color>", commandSkin.GetStyle("variableAvailable"));
 
                 }else
                 {
-                    GUI.Box(new Rect(Event.current.mousePosition.x + 13, Event.current.mousePosition.y, 200, 40), "<color=#000000>" + sequenceEditor.draggedCommand.commandName + "</color>", commandSkin.GetStyle("commandAvailable"));
+                    GUI.Box(slotRect, "<color=#000000>" + sequenceEditor.draggedCommand.commandName + "</color>", commandSkin.GetStyle("commandAvailable"));
 
                 }
             }
