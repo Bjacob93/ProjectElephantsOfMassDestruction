@@ -5,7 +5,7 @@ using System.Linq;
 
 public class textEditor : MonoBehaviour
 {
-    //Set the character limit, and the text which is visible in the window at first.
+    //Set the character limit, and the text which is visible in the window at first. 
     int charLimit = 250;
     private string textAreaString = "";
 

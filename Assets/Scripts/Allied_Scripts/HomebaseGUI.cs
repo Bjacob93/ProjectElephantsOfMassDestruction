@@ -4,8 +4,8 @@ using System.Collections;
 public class HomebaseGUI : MonoBehaviour {
 
 	//unit prduction management vars
-	public float unitSpawnCoolDown = 5f;
-	public float unitSpawnCoolDownLeft = 0f;
+	private float unitSpawnCoolDown = 2.5f;
+    private float unitSpawnCoolDownLeft = 0f;
     public int unitCap;
     public int unitCount;
 
@@ -112,6 +112,11 @@ public class HomebaseGUI : MonoBehaviour {
         }
 			
 	}
+
+    public void ResetSpawnTimer()
+    {
+        unitSpawnCoolDownLeft = 0;
+    }
 
     void gatherCommands(GameObject[] units)
     {
