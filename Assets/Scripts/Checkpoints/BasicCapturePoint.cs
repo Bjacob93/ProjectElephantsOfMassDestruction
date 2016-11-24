@@ -17,7 +17,7 @@ public class BasicCapturePoint : MonoBehaviour {
     float maxCaptureTimer; // used to cache the captureTime at the start of the scropt to make sure that it does not change in regards to the player
     public float avCaptureTimer; // cache avarage of the Capture time
     public float capturePoints; // this is the variable which increase or decrese depending on who is capturing the point
-    public float distanceNeededToCapture = 8; // maximum distance units can be away to capture the point
+    private float distanceNeededToCapture = 5; // maximum distance units can be away to capture the point
     public bool neutralCapturePoint = true; // bool used as neutral state of the capture point
     public int modIndex = 1;
 
@@ -33,8 +33,14 @@ public class BasicCapturePoint : MonoBehaviour {
     float playerDistanceToCapturePoint;
     List<GameObject> nearbyPlayers = new List<GameObject>();
 
+    levelManager lvlManager;
+
     // Use this for initialization
     void Start () {
+        lvlManager = GameObject.Find("LevelManager").GetComponent<levelManager>();
+
+        if (lvlManager.currentLevel == 4) distanceNeededToCapture = 10;
+
         maxCaptureTimer = CaptureTime; // set the maxCapture timer to the capturePoints
         avCaptureTimer = maxCaptureTimer / 2; // calculate the avarage capturePoints
         capturePoints = CaptureTime / 2;

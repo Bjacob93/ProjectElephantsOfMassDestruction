@@ -307,6 +307,10 @@ public class HomebaseGUI : MonoBehaviour {
                 Astar aStar = e.GetComponent<Astar>();
                 if (baseName != aStar.commanderID)
                 {
+                    if(targetLocation == new Vector3(0, 0, 0))
+                    {
+                        targetLocation = this.gameObject.transform.position + new Vector3(-10, 1, -10);
+                    }
                     aStar.targetPosition = targetLocation;
                     aStar.receivedNewDestination = true;
                     aStar.commanderID = baseName;
