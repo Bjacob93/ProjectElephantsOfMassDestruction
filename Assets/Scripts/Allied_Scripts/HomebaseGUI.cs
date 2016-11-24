@@ -5,7 +5,7 @@ public class HomebaseGUI : MonoBehaviour {
 
 	//unit prduction management vars
 	public float unitSpawnCoolDown = 5f;
-	float unitSpawnCoolDownLeft = 0f;
+	public float unitSpawnCoolDownLeft = 0f;
     public int unitCap;
     public int unitCount;
 

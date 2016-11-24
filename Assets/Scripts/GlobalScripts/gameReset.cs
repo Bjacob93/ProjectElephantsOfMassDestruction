@@ -60,6 +60,8 @@ public class gameReset : MonoBehaviour {
             scoreManagerScript.basicCapturePointScripts[i].giraffeCapture.fillAmount = 0;
         }
 
+        homeBaseGUI.unitSpawnCoolDownLeft = 0;
+
         homeBaseGUI.shrimp = 1;
         homeBaseGUI.unitCount = 0;
         basicCheckpointScript.shrimp = 1;
