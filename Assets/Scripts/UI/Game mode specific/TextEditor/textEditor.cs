@@ -313,6 +313,11 @@ public class textEditor : MonoBehaviour
 
                     //Defend command.
                     case "defend":
+                        if (!belongsToCheckpoint)
+                        {
+                            errorList.Add(new KeyValuePair<int, string>(j, "defend not available at castle."));
+                            break;
+                        }
                         for (int d = 0; d < database.commandDatabase.Count; d++)
                         {
                             if (database.commandDatabase[d].commandId == "D01")
