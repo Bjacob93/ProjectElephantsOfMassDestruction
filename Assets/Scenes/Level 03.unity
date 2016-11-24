@@ -4255,7 +4255,7 @@ MonoBehaviour:
   restartDelay: 5
   restartTimer: 0
   amountOfEnemySpawned: 0
-  maxEnemySpawn: 11
+  maxEnemySpawn: 9
   victoryCheck: 0
   enemyUnits: {fileID: 1000011621710164, guid: 67917ec56833846428930e641a3cd7f1, type: 2}
 --- !u!23 &695198821
@@ -9416,7 +9416,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   unitSpawnCoolDown: 5
-  unitCap: 6
+  unitCap: 7
   unitCount: 0
   playerUnits: {fileID: 1000012675579912, guid: 67917ec56833846428930e641a3cd7f1,
     type: 2}
