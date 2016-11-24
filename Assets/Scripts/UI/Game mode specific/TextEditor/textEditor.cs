@@ -68,7 +68,7 @@ public class textEditor : MonoBehaviour
     {
         //add an audio source
         coding = gameObject.AddComponent<AudioSource>();
-        coding.clip = Resources.Load("Audio/codingsound") as AudioClip;
+        coding.clip = Resources.Load("Audio/Compile") as AudioClip;
 
         //Define dimensions of the textWindow.
         textBoxStartX = Screen.width / 6;
