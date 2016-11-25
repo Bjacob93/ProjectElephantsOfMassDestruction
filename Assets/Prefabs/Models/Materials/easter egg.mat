@@ -81,7 +81,7 @@ Material:
       second: 1
     - first:
         name: _DiffuseThreshold
-      second: 0.1
+      second: -0.031
     - first:
         name: _DstBlend
       second: 0
@@ -136,10 +136,10 @@ Material:
       second: {r: 0, g: 0, b: 0, a: 1}
     - first:
         name: _ShadowColor
-      second: {r: 25, g: 25, b: 25, a: 1}
+      second: {r: 0.09803922, g: 0.09803922, b: 0.09803922, a: 1}
     - first:
         name: _SpecColor
       second: {r: 1, g: 1, b: 1, a: 1}
     - first:
         name: _UnlitColor
-      second: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+      second: {r: 0.77647066, g: 1, b: 0.85098046, a: 1}

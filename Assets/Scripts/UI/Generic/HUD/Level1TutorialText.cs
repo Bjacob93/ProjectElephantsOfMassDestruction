@@ -100,7 +100,7 @@ public class Level1TutorialText : MonoBehaviour {
                                  "Now, you'd prefer if your units have a bit of an edge, right? Drag a \"Defend\" order into the checkpoint's editor.",
 
             dndTutorialPage18  = "The Defend order will order your giraffes to stay near the checkpoint, and defend it.\n" +
-                                 "In addition, you giraffes will receive less damage from enemy attacks whenever they are defending.\n\n" +
+                                 "In addition, your giraffes will receive less damage from enemy attacks whenever they are defending.\n\n" +
                                  "Click \"Next\" to continue.",
 
             dndTutorialPage19  = "Your are now ready to defend your castle. Click \"Play\" again, when you're ready.\n\n" +
