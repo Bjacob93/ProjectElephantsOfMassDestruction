@@ -44,33 +44,41 @@ public class BasicCapturePoint : MonoBehaviour {
 			distanceNeededToCapture = 10;
 			CaptureTime = 40f;
 		}
-
-        maxCaptureTimer = CaptureTime; // set the maxCapture timer to the capturePoints
-        avCaptureTimer = maxCaptureTimer / 2; // calculate the avarage capturePoints
+        // set the maxCapture timer to the capturePoints and avarage capturePoints
+        maxCaptureTimer = CaptureTime; 
+        avCaptureTimer = maxCaptureTimer / 2;
         capturePoints = CaptureTime / 2;
 
-        unitManager = GameObject.Find("UnitManager"); // find the unitManager
-        uArray = unitManager.GetComponent<UnitArrays>(); // find the UnitArrays script on the unitManager
+        // find the unitManager an UnitArrays
+        unitManager = GameObject.Find("UnitManager"); 
+        uArray = unitManager.GetComponent<UnitArrays>();
     }
     //The EnemyCapturePoint and PlayerCapturePoint are the same so comments will only be written in here, the only difference is the variables and strings
     void EnemyCapturePoint()
     {
-        closestEnemy = uArray.scan(this.gameObject, "Enemy"); // run function form UnitArrays to find all Enemies on the map. "Enemy" is used to indicate what we are looking for
+        // run function form UnitArrays to find all Enemies on the map. "Enemy" is used to indicate what we are looking for
+        closestEnemy = uArray.scan(this.gameObject, "Enemy"); 
 
-        if (closestEnemy != null) //if we find an enemy do the following
+        if (closestEnemy != null)
         {
-            enemyDistanceToCapturePoint = Vector3.Distance(transform.position, closestEnemy.transform.position); // calculate the distance from the capture point to the enemy
-            if (enemyDistanceToCapturePoint <= distanceNeededToCapture) // check if the enemy is close enough
+            // calculate the distance from the capture point to the enemy
+            enemyDistanceToCapturePoint = Vector3.Distance(transform.position, closestEnemy.transform.position); 
+            // check if the enemy is close enough
+            if (enemyDistanceToCapturePoint <= distanceNeededToCapture) 
             {
-                if (!nearbyEnemies.Contains(closestEnemy)) // if our list of close enemies does not contain the current enemy add it
+                // if our list of close enemies does not contain the current enemy add it
+                if (!nearbyEnemies.Contains(closestEnemy)) 
                 {
                     nearbyEnemies.Add(closestEnemy);
                 }
-                capturePoints -= Time.deltaTime * nearbyEnemies.Count; // timer used to capturePoint, the more units there are the faster it goes 
-                if (capturePoints <= 0) // when the timer reaches 0 the enemies have the point and if the timer reaches maxCaptureTime the player has the capturePoint
+                // timer used to capturePoint, the more units there are the faster it goes 
+                capturePoints -= (Time.deltaTime * nearbyEnemies.Count) * 1.2f;
+                // when the timer reaches 0 the enemies have the point and if the timer reaches maxCaptureTime the player has the capturePoint
+                if (capturePoints <= 0) 
                 {
-                    capturePoints = 0; // make sure we do not go lower than possible
-                                       //change the different states of the bools to say that the enemy currently has the capturepoint
+                    // make sure we do not go lower than possible
+                    capturePoints = 0; 
+                    //change the different states of the bools to say that the enemy currently has the capturepoint
                     playerHasCapturePoint = false;
                     enemyHasCapturePoint = true;
                     neutralCapturePoint = false;
@@ -78,13 +86,15 @@ public class BasicCapturePoint : MonoBehaviour {
                 }
             }  
         }
-        for (int i = 0; i < nearbyEnemies.Count; i++) //check if the enemy is still in range if not remove them from the list
+        //check if the enemy is still in range if not remove them from the list
+        for (int i = 0; i < nearbyEnemies.Count; i++) 
         {
             if (enemyDistanceToCapturePoint > distanceNeededToCapture)
             {
                 nearbyEnemies.RemoveAt(i);
             }
-            else if (nearbyEnemies[i] == null) // if the enemy was killed while they were range we remove them
+            // if the enemy was killed while they were range we remove them
+            else if (nearbyEnemies[i] == null) 
             {
                 nearbyEnemies.RemoveAt(i);
             }
@@ -104,7 +114,7 @@ public class BasicCapturePoint : MonoBehaviour {
                 {
                     nearbyPlayers.Add(closestPlayer);
                 }
-                capturePoints += Time.deltaTime * nearbyPlayers.Count;
+                capturePoints += (Time.deltaTime * nearbyPlayers.Count) * 1.2f;
                 if (capturePoints >= maxCaptureTimer)
                 {
                     capturePoints = maxCaptureTimer;
@@ -141,21 +151,27 @@ public class BasicCapturePoint : MonoBehaviour {
             neutralCapturePoint = true;
         }
 
-        if(neutralCapturePoint == true && nearbyEnemies.Count <= 0 && nearbyPlayers.Count <= 0) // if the capturepoint is in neutral state and an enemy r player did not completly capture the point slowly reset the timer
+        // if the capturepoint is in neutral state and an enemy r player did not completly capture the point slowly reset the timer
+        if (neutralCapturePoint == true && nearbyEnemies.Count <= 0 && nearbyPlayers.Count <= 0) 
         {
-            if (capturePoints < avCaptureTimer) // check if we are below the avarage time and reset
+            // check if we are below the avarage time and reset
+            if (capturePoints < avCaptureTimer) 
             {
-                capturePoints += Time.deltaTime;
-            }else if(capturePoints > avCaptureTimer) // check if we are above the avarage time and reset
+                capturePoints += (Time.deltaTime / 2);
+            }
+            // check if we are above the avarage time and reset
+            else if (capturePoints > avCaptureTimer) 
             {
-                capturePoints -= Time.deltaTime;
+                capturePoints -= (Time.deltaTime / 2);
             }
         }
-        if (capturePoints > avCaptureTimer) // fill the capture indicate for the giraffes if we are above the avarage timer and there are player units in range
+        // fill the capture indicate for the giraffes if we are above the avarage timer and there are player units in range
+        if (capturePoints > avCaptureTimer)
         {
             giraffeCapture.fillAmount = (capturePoints - avCaptureTimer) / avCaptureTimer;
         }
-        else if(capturePoints < avCaptureTimer) // fill the capture indicate for the elepants if we are below the avarage timer and there are enemy units in range
+        // fill the capture indicate for the elepants if we are below the avarage timer and there are enemy units in range
+        else if (capturePoints < avCaptureTimer) 
         {
             elephantCapture.fillAmount = (avCaptureTimer - capturePoints) / avCaptureTimer;
         }
