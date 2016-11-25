@@ -52,7 +52,7 @@ public class Level2TutorialText : MonoBehaviour {
 			dndTutorialPage4   = "Now, if you enter two Attack commands with different destinations in the two next command slots, the split variable will make newly spawned giraffes move to one or the other, alternately.\n" +
                                  "Do that, then click \"Play\" and see what happens!",
 
-            dndTutorialPage5   = "Did you forget the \"Produce\" command? You better restart, and try again.",
+            dndTutorialPage5   = "Did you forget the \"Produce Units\" command? You better restart, and try again.",
 
             dndTutorialPage6   = "Seems you did not enter two attack commands with different variables after the split command. Try to fix that!",
 
@@ -75,7 +75,7 @@ public class Level2TutorialText : MonoBehaviour {
 			textTutorialPage4  = "Now, if you enter two Attack commands with different destinations on the next two lines, the split variable will make newly spawned giraffes move to one or the other, alternately.\n\n" +
                                  "Do that, then click \"Play\" and see what happens!",
 
-            textTutorialPage5  = "Did you forget the \"Produce\" command? You better restart, and try again.",
+            textTutorialPage5  = "Did you forget the \"produceUnits\" command? You better restart, and try again.",
 
             textTutorialPage6  = "Seems you did not enter two attack commands with different variables after the split command. Try to fix that!",
 
