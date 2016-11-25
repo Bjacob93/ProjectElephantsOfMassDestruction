@@ -23,8 +23,25 @@ public class BuyEnemyUnits : MonoBehaviour
     float wattTimeTimer;
     float victoryTimer;
 
+    EditorList dndEditor;
+    textEditor TextEditor;
+    SequenceManager seqMan;
+
+    mainMenuVariables keeperOfVariables;
+
     void Start()
     {
+        keeperOfVariables = GameObject.Find("KeeperOfVariables").GetComponent<mainMenuVariables>();
+       
+        if(keeperOfVariables.useDragonDrop == false)
+        {
+            TextEditor = GameObject.Find("textEditorList").GetComponent<textEditor>();
+        }
+        else
+        {
+            dndEditor = GameObject.Find("DndEditorList").GetComponent<EditorList>();
+        }
+
         listOfEnemyUnits = GameObject.Find("UnitManager").GetComponent<UnitArrays>();
 
         pause = GameObject.Find("UIButtons").GetComponent<PauseScript>();
@@ -34,11 +51,28 @@ public class BuyEnemyUnits : MonoBehaviour
             Debug.Log("Didn't find pause");
         }
         sm = GameObject.Find("ScoreManager").GetComponent<ScoreManager>();
+        seqMan = GameObject.Find ("UIManager").GetComponent<SequenceManager>();
 
     }
 
 	void victory(){
-		sm.Victory();
+
+        if (keeperOfVariables.useDragonDrop == true)
+        {
+            for (int i = 0; i < seqMan.editorlistGO.Count; i++)
+            {
+                    seqMan.editorlistGO[i].drawEditorWindow = false;
+            }
+        }
+        else
+        {
+            for (int i = 0; i < seqMan.editorListText.Count; i++)
+            {
+                seqMan.editorListText[i].drawSequenceEditor = false;
+            }
+        }
+
+        sm.Victory();
 	}
 
     public void ResetSpawnTimer()

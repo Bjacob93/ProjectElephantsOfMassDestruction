@@ -71,9 +71,9 @@ public class Level1TutorialText : MonoBehaviour {
                                  "Click \"Next\" to continue.",
                                  
             dndTutorialPage8   = "You do this by dragging a command from the list in the window, and dropping it into a empty slot in the editor window.\n\n" +
-                                 "Now, drag a \"Produce Unit\" command into the editor window.",
+                                 "Now, drag a \"Produce Units\" command into the editor window.",
 
-            dndTutorialPage9   = "The \"Produce Unit\" command is your most basic command. Only available at the castle, it continuously produces giraffes - up to a cap.\n\n" +
+            dndTutorialPage9   = "The \"Produce Units\" command is your most basic command. Only available at the castle, it continuously produces giraffes - up to a cap.\n\n" +
                                  "Click the \"Play\" button in the top of the screen, and lets see what happens.",
 
             dndTutorialPage10  = "Congratulations, you produced your first giraffe! But what's this? He's not moving. We better do something about that.\n" +
@@ -100,7 +100,7 @@ public class Level1TutorialText : MonoBehaviour {
                                  "Now, you'd prefer if your units have a bit of an edge, right? Drag a \"Defend\" order into the checkpoint's editor.",
 
             dndTutorialPage18  = "The Defend order will order your giraffes to stay near the checkpoint, and defend it.\n" +
-                                 "In addition, you giraffes will receive less damage from enemy attacks whenever they are defending.\n\n" +
+                                 "In addition, your giraffes will receive less damage from enemy attacks whenever they are defending.\n\n" +
                                  "Click \"Next\" to continue.",
 
             dndTutorialPage19  = "Your are now ready to defend your castle. Click \"Play\" again, when you're ready.\n\n" +
@@ -132,9 +132,9 @@ public class Level1TutorialText : MonoBehaviour {
                                  "Click \"Next\" to continue",
 
             textTutorialPage8  = "You do this by typing the commands from the command list into the editor window, exactly as they are displayed, and finish by clicking the \"Compile Code\" button.\n \n" +
-                                 "Now, type  \"produce\" in the \"Script Editor\", and click compile.",
+                                 "Now, type  \"produceUnits\" in the \"Script Editor\", and click compile.",
 
-            textTutorialPage9  = "The \"Produce Unit\" command is your most basic command. Only available at the castle, it continuously produces giraffes - up to a cap.\n\n" +
+            textTutorialPage9  = "The \"produceUnits\" command is your most basic command. Only available at the castle, it continuously produces giraffes - up to a cap.\n\n" +
                                  "Click the \"Play\" button in the top of the screen, and lets see what happens.",
 
 			textTutorialPage10 = "Congratulations, you produced your first giraffe, but what's this? He's not moving. We better do something about that.\n" +

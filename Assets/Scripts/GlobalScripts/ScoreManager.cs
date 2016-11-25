@@ -12,7 +12,8 @@ public class ScoreManager : MonoBehaviour {
     //Cache the audio sources
 	public AudioSource levelMusic;
     public AudioSource victoryMusic;
-
+	AudioSource victorycrowd;
+	public float volume;
 	levelManager lvlManager;
     //Cache the index of the current scene.
     public int currentSceneIndex; 
@@ -35,6 +36,7 @@ public class ScoreManager : MonoBehaviour {
 
 	void Start()
     {
+		volume = 0.5f;
 		UIdisable = GameObject.Find ("UIManager");
         //Reference the animator.
         anim = GetComponent<Animator>();
@@ -46,6 +48,7 @@ public class ScoreManager : MonoBehaviour {
 
         victoryMusic = gameObject.AddComponent<AudioSource>();
 		levelMusic = gameObject.AddComponent<AudioSource>();
+		victorycrowd = gameObject.AddComponent<AudioSource>();
 
         capturePoint = GameObject.FindGameObjectsWithTag("CapturePoint");
 
@@ -140,8 +143,14 @@ public class ScoreManager : MonoBehaviour {
 		UIdisable.SetActive (false);
 		anim.SetTrigger("VictoryAnimation");
         victoryMusic.clip = Resources.Load ("Audio/Victory") as AudioClip;
+		victorycrowd.clip= Resources.Load ("Audio/crowed") as AudioClip;
         victoryMusic.playOnAwake = true;
         victoryMusic.loop =false;
+		victorycrowd.playOnAwake = true;
+		victorycrowd.loop =false;
+		victorycrowd.volume = volume;
+		victorycrowd.Play ();
         victoryMusic.Play ();
+
 	}
 }
