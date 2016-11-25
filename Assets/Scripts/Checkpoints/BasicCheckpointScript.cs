@@ -34,6 +34,7 @@ public class BasicCheckpointScript : MonoBehaviour {
 
     //Cache target waypoint
     Vector3 target;
+    Vector3 randomValueToAdd = new Vector3(0, 0, 0);
 
     public float distance;
 
@@ -79,7 +80,7 @@ public class BasicCheckpointScript : MonoBehaviour {
     }
 	
 	void Update () {
-
+        randomValueToAdd = new Vector3(Random.Range(-4, 4), 0, Random.Range(-4, 4));
         //Find all player units.
         GameObject[] units = GameObject.FindGameObjectsWithTag("playerUnits");
 
@@ -283,7 +284,7 @@ public class BasicCheckpointScript : MonoBehaviour {
                         targetLocation = this.gameObject.transform.position;
                     }
                     aStar.receivedNewDestination = true;
-                    aStar.targetPosition = targetLocation;
+                    aStar.targetPosition = targetLocation + randomValueToAdd;
                     aStar.receivedNewDestination = true;
                     aStar.commanderID = checkpointName;
                     forEveryRan = true;
@@ -303,7 +304,7 @@ public class BasicCheckpointScript : MonoBehaviour {
                 Astar aStar = e.GetComponent<Astar>();
                 if (checkpointName != aStar.commanderID)
                 {
-                    aStar.targetPosition = targetLocation;
+                    aStar.targetPosition = targetLocation + randomValueToAdd;
                     aStar.commanderID = checkpointName;
                     aStar.receivedDefenceOrder = true;
                     forEveryRan = true;
