@@ -2315,7 +2315,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000010115348100}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -1, z: 0}
+  m_LocalPosition: {x: 0, y: -1.04, z: 0}
   m_LocalScale: {x: 3, y: 3, z: 3}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children:
@@ -3145,7 +3145,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000014108698182}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -1, z: 0}
+  m_LocalPosition: {x: 0, y: -1.18, z: 0}
   m_LocalScale: {x: 12, y: 12, z: 12}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children:
@@ -5076,7 +5076,7 @@ MonoBehaviour:
     pivotPointRoot: {fileID: 0}
     spreadOutCount: 1
   showGraphs: 1
-  lastUniqueAreaIndex: 41
+  lastUniqueAreaIndex: 3
 --- !u!114 &114000012746621914
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -5166,9 +5166,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   targetPosition: {x: 0, y: 0, z: 0}
   commanderID: 
-  speed: 100
-  meleeRange: 3
-  engagementRange: 15
   direction: {x: 0, y: 0, z: 0}
   receivedDefenceOrder: 0
   receivedNewDestination: 0
@@ -5282,11 +5279,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   targetPosition: {x: -45, y: 0, z: -45}
   commanderID: 
-  speed: 100
-  meleeRange: 3
-  engagementRange: 8
   direction: {x: 0, y: 0, z: 0}
   receivedDefenceOrder: 0
+  isDefending: 0
   receivedNewDestination: 0
   GiraffeRunAnim: {fileID: 0}
   nearestEnemy: {fileID: 0}
