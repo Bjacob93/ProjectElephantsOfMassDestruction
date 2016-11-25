@@ -31,7 +31,7 @@ public class HomebaseGUI : MonoBehaviour {
 
     //The base's location
     public Vector3 location;
-
+    Vector3 randomValueToAdd = new Vector3(0, 0, 0);
     //Boolean for checking if the game is paused
     PauseScript pauseScript;
 
@@ -50,6 +50,8 @@ public class HomebaseGUI : MonoBehaviour {
     levelManager lvlManager;
 
     void Start () {
+        
+
         //Reference to the correct mainMenuVariables script.
         varKeeper = GameObject.Find("KeeperOfVariables").GetComponent<mainMenuVariables>();
 
@@ -94,8 +96,9 @@ public class HomebaseGUI : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		//array containing each playerUnits which can be affected by the script
-		GameObject[] units = GameObject.FindGameObjectsWithTag("playerUnits");
+        randomValueToAdd = new Vector3(Random.Range(-4, 4), 0, Random.Range(-4, 4));
+        //array containing each playerUnits which can be affected by the script
+        GameObject[] units = GameObject.FindGameObjectsWithTag("playerUnits");
 
 		//if the bool is set to true skip the update and check bool again
         if (pauseScript.GetPauseStatus())
@@ -309,9 +312,9 @@ public class HomebaseGUI : MonoBehaviour {
                 {
                     if(targetLocation == new Vector3(0, 0, 0))
                     {
-                        targetLocation = this.gameObject.transform.position + new Vector3(-10, 1, -10);
+                        targetLocation = this.gameObject.transform.position;
                     }
-                    aStar.targetPosition = targetLocation;
+                    aStar.targetPosition = targetLocation + randomValueToAdd;
                     aStar.receivedNewDestination = true;
                     aStar.commanderID = baseName;
                     forEveryRan = true;
@@ -332,7 +335,7 @@ public class HomebaseGUI : MonoBehaviour {
                 Astar aStar = e.GetComponent<Astar>();
                 if (baseName != aStar.commanderID)
                 {
-                    aStar.targetPosition = targetLocation;
+                    aStar.targetPosition = targetLocation + randomValueToAdd;
                     aStar.receivedNewDestination = true;
                     aStar.commanderID = baseName;
                     aStar.receivedDefenceOrder = true;
