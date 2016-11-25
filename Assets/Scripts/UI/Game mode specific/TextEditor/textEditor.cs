@@ -166,6 +166,7 @@ public class textEditor : MonoBehaviour
             }
 
             //Draw the bounding box and the text window.
+            commandSkin.GetStyle("EditorBoundingBox").fontSize = Screen.width / 80;
             GUI.Box(boundingBox, "Script Editor - " + this.gameObject.name, commandSkin.GetStyle("EditorBoundingBox"));
 
             //Make text editble only when the game is paused.
@@ -174,7 +175,8 @@ public class textEditor : MonoBehaviour
                 textAreaString = GUI.TextArea(textBox, textAreaString, charLimit);
 
                 //Check if the Compile button is pressed.
-                commandSkin.GetStyle("EditorBoundingBox").padding.top = 7;
+                commandSkin.GetStyle("EditorBoundingBox").fontSize = Screen.width / 100;
+                commandSkin.GetStyle("EditorBoundingBox").padding.top = Screen.width / 140;
                 if (GUI.Button(comButton, "Compile Code", commandSkin.GetStyle("EditorBoundingBox")))
                 {
                     CompileCode();
