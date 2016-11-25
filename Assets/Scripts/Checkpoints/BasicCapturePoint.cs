@@ -39,7 +39,11 @@ public class BasicCapturePoint : MonoBehaviour {
     void Start () {
         lvlManager = GameObject.Find("LevelManager").GetComponent<levelManager>();
 
-        if (lvlManager.currentLevel == 4) distanceNeededToCapture = 10;
+		if (lvlManager.currentLevel == 4) 
+		{
+			distanceNeededToCapture = 10;
+			CaptureTime = 40f;
+		}
 
         maxCaptureTimer = CaptureTime; // set the maxCapture timer to the capturePoints
         avCaptureTimer = maxCaptureTimer / 2; // calculate the avarage capturePoints

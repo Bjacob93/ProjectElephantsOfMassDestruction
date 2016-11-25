@@ -4,8 +4,8 @@ using UnityEngine.SceneManagement;
 
 public class BuyEnemyUnits : MonoBehaviour
 {
-    public float restartDelay = 5f;         // Time to wait before restarting the level, the number indicates seconds
-    public float restartTimer;              // Timer to count up to restarting the level
+    private float restartDelay = 2.5f;         // Time to wait before restarting the level, the number indicates seconds
+    private float restartTimer;              // Timer to count up to restarting the level
 
     public int amountOfEnemySpawned = 0;    // Keep track of the amount of enemies spawn.
     public int maxEnemySpawn = 20;          // Used to set the maximum amount of enemies a level can spawn. 
@@ -40,6 +40,12 @@ public class BuyEnemyUnits : MonoBehaviour
 	void victory(){
 		sm.Victory();
 	}
+
+    public void ResetSpawnTimer()
+    {
+        restartTimer = 0;
+    }
+
     void Update()
     {
 

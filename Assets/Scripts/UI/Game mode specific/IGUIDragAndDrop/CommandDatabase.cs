@@ -27,8 +27,8 @@ public class CommandDatabase : MonoBehaviour {
                                             false, true, false, new Vector3(),0, false, 1));
 
         //production orders
-		commandDatabase.Add (new Command (  "Produce Unit", 
-                                            "produce", 
+		commandDatabase.Add (new Command (  "Produce Units", 
+                                            "produceUnits", 
                                             "P01", 
                                             "<color=#FFFFF>" + "Produce a unit. Only available at the castle." + "</color>",
                                             "<color=#FFFFF>" + "Produce a unit. Only available at the castle." + "</color>", 
