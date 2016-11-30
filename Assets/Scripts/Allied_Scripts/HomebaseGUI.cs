@@ -96,7 +96,7 @@ public class HomebaseGUI : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        randomValueToAdd = new Vector3(Random.Range(-4, 4), 0, Random.Range(-4, 4));
+        randomValueToAdd = new Vector3(Random.Range(-2, 2), 0, Random.Range(-2, 2));
         //array containing each playerUnits which can be affected by the script
         GameObject[] units = GameObject.FindGameObjectsWithTag("playerUnits");
 

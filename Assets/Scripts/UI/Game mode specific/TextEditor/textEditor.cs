@@ -336,7 +336,7 @@ public class textEditor : MonoBehaviour
                         break;
 
                     //Produce command.
-                    case "produce":
+                    case "produceUnits":
                         if (!belongsToCheckpoint)
                         {
                             bool addedProduce = false;

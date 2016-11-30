@@ -74,7 +74,7 @@ public class Level1TutorialText : MonoBehaviour {
                                  "Now, drag a \"Produce Units\" command into the editor window.",
 
             dndTutorialPage9   = "The \"Produce Units\" command is your most basic command. Only available at the castle, it continuously produces giraffes - up to a cap.\n\n" +
-                                 "Click the \"Play\" button in the top of the screen, and lets see what happens.",
+                                 "Click the \"Play\" button - the right-pointing arrow in the top of the screen - and lets see what happens.",
 
             dndTutorialPage10  = "Congratulations, you produced your first giraffe! But what's this? He's not moving. We better do something about that.\n" +
                                  "Click the \"Reset\" button where the \"Play\" button was, so you can continue programming.",
@@ -135,7 +135,7 @@ public class Level1TutorialText : MonoBehaviour {
                                  "Now, type  \"produceUnits\" in the \"Script Editor\", and click compile.",
 
             textTutorialPage9  = "The \"produceUnits\" command is your most basic command. Only available at the castle, it continuously produces giraffes - up to a cap.\n\n" +
-                                 "Click the \"Play\" button in the top of the screen, and lets see what happens.",
+                                 "Click the \"Play\" button - the right-pointing arrow in the top of the screen - and lets see what happens.",
 
 			textTutorialPage10 = "Congratulations, you produced your first giraffe, but what's this? He's not moving. We better do something about that.\n" +
                                  "Click the \"Reset\" button where the \"Play\" button was, so you can continue programming.",
@@ -177,7 +177,7 @@ public class Level1TutorialText : MonoBehaviour {
     {
         TutorialBoxStartPosX = (Screen.width / 2) - (Screen.width / 6);
         TutorialBoxStartPosY = (Screen.height / 2) + (Screen.height / 6);
-        TutorialBoxHeight = Screen.height / 4;
+        TutorialBoxHeight = (Screen.height / 4) + (Screen.height / 16);
         TutorialBoxWidth = Screen.width / 3;
         drawStartInfo = true;
         TutorialBox = new Rect(TutorialBoxStartPosX, TutorialBoxStartPosY, TutorialBoxWidth, TutorialBoxHeight);

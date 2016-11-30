@@ -80,7 +80,7 @@ public class BasicCheckpointScript : MonoBehaviour {
     }
 	
 	void Update () {
-        randomValueToAdd = new Vector3(Random.Range(-4, 4), 0, Random.Range(-4, 4));
+        randomValueToAdd = new Vector3(Random.Range(-2, 2), 0, Random.Range(-2, 2));
         //Find all player units.
         GameObject[] units = GameObject.FindGameObjectsWithTag("playerUnits");
 
