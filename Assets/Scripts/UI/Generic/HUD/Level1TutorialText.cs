@@ -177,7 +177,7 @@ public class Level1TutorialText : MonoBehaviour {
     {
         TutorialBoxStartPosX = (Screen.width / 2) - (Screen.width / 6);
         TutorialBoxStartPosY = (Screen.height / 2) + (Screen.height / 6);
-        TutorialBoxHeight = Screen.height / 4;
+        TutorialBoxHeight = (Screen.height / 4) + (Screen.height / 16);
         TutorialBoxWidth = Screen.width / 3;
         drawStartInfo = true;
         TutorialBox = new Rect(TutorialBoxStartPosX, TutorialBoxStartPosY, TutorialBoxWidth, TutorialBoxHeight);
